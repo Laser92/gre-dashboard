@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRE Prep Dashboard | 5 lb. Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>GRE<span>Tracker</span></h2>
+                <p>Manhattan 5 lb. Edition</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" id="nav-overview">
+                    <i class="fas fa-home"></i> Overview
+                </a>
+                <a href="#" class="nav-item" id="nav-chapters">
+                    <i class="fas fa-book-open"></i> Chapters & Questions
+                </a>
+                <a href="#" class="nav-item" id="nav-diagnostics">
+                    <i class="fas fa-chart-line"></i> Diagnostics
+                </a>
+            </nav>
+            <div class="book-info-card">
+                <div class="book-info-header">Book Stats</div>
+                <div class="stat-row"><span>Total Chapters:</span> <span>4</span></div>
+                <div class="stat-row"><span>Total Questions:</span> <span>--</span></div>
+                <div class="stat-row"><span>Diagnostic:</span> <span>130-170</span></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="topbar">
+                <div class="welcome-text">
+                    <h1>Welcome back, Scholar</h1>
+                    <p>Track your real progress and practice questions directly from the book.</p>
+                </div>
+                <div class="profile-widget">
+                    <div class="score-badge" id="top-target-score">Current: -- / 170</div>
+                    <div class="avatar">A</div>
+                </div>
+            </header>
+
+            <!-- OVERVIEW VIEW -->
+            <div id="overview-view">
+                <!-- KPIs -->
+                <section class="kpi-grid">
+                    <div class="kpi-card glass">
+                        <div class="kpi-title">Current Score</div>
+                        <div class="kpi-value" id="kpi-score">--<span class="kpi-sub">/170</span></div>
+                        <div class="kpi-trend" id="kpi-score-trend">Needs more data</div>
+                        <div class="kpi-icon">V</div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-title">Questions Attempted</div>
+                        <div class="kpi-value" id="kpi-attempted">0<span class="kpi-sub"></span></div>
+                        <div class="kpi-trend neutral" id="kpi-accuracy">Accuracy: --%</div>
+                        <div class="kpi-icon">Q</div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-title">Chapters Completed</div>
+                        <div class="kpi-value" id="kpi-chapters">0<span class="kpi-sub">/4</span></div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="kpi-chapters-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="kpi-icon">C</div>
+                    </div>
+                </section>
+
+                <!-- Charts Section -->
+                <section class="charts-grid">
+                    <div class="chart-card glass large">
+                        <h3>Accuracy by Subject</h3>
+                        <div class="chart-container">
+                            <canvas id="accuracyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card glass">
+                        <h3>Score Progression</h3>
+                        <div class="chart-container">
+                            <canvas id="progressionChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter Progress Table -->
+                <section class="table-section glass">
+                    <div class="section-header">
+                        <h3>Study Plan</h3>
+                        <button class="view-all-btn" id="start-diagnostic-btn">Start Diagnostic Test</button>
+                    </div>
+                    <table class="progress-table">
+                        <thead>
+                            <tr>
+                                <th>Chapter</th>
+                                <th>Subject</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="chapter-table-body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <!-- QUIZ VIEW -->
+            <div id="quiz-view" style="display: none;">
+                <div class="quiz-header">
+                    <button class="back-btn" id="back-to-overview"><i class="fas fa-arrow-left"></i> Back to Overview</button>
+                    <h2 id="quiz-chapter-title">Chapter 1: Verbal Diagnostic Test</h2>
+                    <div class="quiz-progress">Question <span id="current-q-num">1</span> of <span id="total-q-num">4</span></div>
+                </div>
+
+                <div class="quiz-card glass">
+                    <div id="quiz-passage" class="quiz-passage" style="display: none;"></div>
+                    <h3 class="quiz-question" id="quiz-question-text">Question goes here</h3>
+                    
+                    <div class="quiz-options" id="quiz-options-container">
+                        <!-- Options generated by JS -->
+                    </div>
+
+                    <div class="quiz-feedback" id="quiz-feedback" style="display: none; flex-direction: column; align-items: flex-start; gap: 1rem;">
+                        <p id="feedback-text" style="font-size: 1.25rem;">Correct!</p>
+                        <p id="feedback-explanation" style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent-primary); width: 100%;"></p>
+                        <button class="primary-btn" id="next-question-btn" style="align-self: flex-end;">Next Question</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTS VIEW -->
+            <div id="results-view" style="display: none;">
+                <div class="results-card glass">
+                    <div class="results-icon"><i class="fas fa-check-circle"></i></div>
+                    <h2>Chapter Completed!</h2>
+                    <p>You have finished the <span id="results-chapter-name"></span>.</p>
+                    <div class="results-stats">
+                        <div class="result-stat-box">
+                            <h4>Accuracy</h4>
+                            <div class="result-value" id="result-accuracy">75%</div>
+                        </div>
+                        <div class="result-stat-box">
+                            <h4>Correct</h4>
+                            <div class="result-value" id="result-correct">3/4</div>
+                        </div>
+                    </div>
+                    <button class="primary-btn mt-4" id="results-home-btn">Return to Dashboard</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="questions_bank.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
