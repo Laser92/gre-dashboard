@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GRE Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: var(--bg-main);
+        }
+        .login-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .login-card h2 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            outline: none;
+        }
+        .form-group input:focus {
+            border-color: var(--accent-primary);
+        }
+        .login-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .toggle-text {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .toggle-text:hover {
+            color: var(--accent-primary);
+        }
+        #error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2 id="form-title">Login</h2>
+        <form id="auth-form">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <p id="error-msg"></p>
+            <button type="submit" class="primary-btn login-btn" id="submit-btn">Sign In</button>
+        </form>
+        <p class="toggle-text" id="toggle-auth">Need an account? Register</p>
+    </div>
+
+    <script>
+        let isLogin = true;
+        
+        document.getElementById('toggle-auth').addEventListener('click', () => {
+            isLogin = !isLogin;
+            document.getElementById('form-title').innerText = isLogin ? 'Login' : 'Register';
+            document.getElementById('submit-btn').innerText = isLogin ? 'Sign In' : 'Sign Up';
+            document.getElementById('toggle-auth').innerText = isLogin ? 'Need an account? Register' : 'Already have an account? Login';
+            document.getElementById('error-msg').style.display = 'none';
+        });
+
+        document.getElementById('auth-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const endpoint = isLogin ? '/api/login' : '/api/register';
+
+            const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                window.location.href = '/';
+            } else {
+                const errMsg = document.getElementById('error-msg');
+                errMsg.innerText = data.error;
+                errMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

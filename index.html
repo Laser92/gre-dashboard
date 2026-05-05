@@ -43,9 +43,16 @@
                     <h1>Welcome back, Scholar</h1>
                     <p>Track your real progress and practice questions directly from the book.</p>
                 </div>
-                <div class="profile-widget">
+                <div class="profile-widget" id="profile-widget" style="position: relative; cursor: pointer;">
                     <div class="score-badge" id="top-target-score">Current: -- / 170</div>
-                    <div class="avatar">A</div>
+                    <div class="avatar" id="nav-avatar">?</div>
+                    
+                    <div class="profile-dropdown" id="profile-dropdown" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); width: 150px; z-index: 100;">
+                        <div style="padding: 0.5rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 0.5rem;">
+                            <strong id="dropdown-username" style="color: var(--text-primary);">User</strong>
+                        </div>
+                        <button id="logout-btn" style="width: 100%; text-align: left; background: none; border: none; color: var(--text-secondary); padding: 0.5rem; cursor: pointer; border-radius: 4px;">Logout</button>
+                    </div>
                 </div>
             </header>
 
