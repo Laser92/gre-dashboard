@@ -6,14 +6,29 @@ const MongoStore = connectMongo.MongoStore || connectMongo.default || connectMon
 const bcrypt = require('bcrypt');
 const path = require('path');
 
+// Prevent unhandled errors from crashing the server
+process.on('unhandledRejection', (err) => {
+    console.error('Unhandled rejection:', err.message || err);
+});
+process.on('uncaughtException', (err) => {
+    console.error('Uncaught exception:', err.message || err);
+});
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust Render's reverse proxy (needed for secure cookies behind HTTPS)
+app.set('trust proxy', 1);
+
 // Database setup
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gre-dashboard';
-mongoose.connect(MONGODB_URI)
-    .then(() => console.log('Connected to MongoDB.'))
-    .catch(err => console.error('MongoDB connection error:', err));
+
+let dbConnected = false;
+mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 10000,
+})
+    .then(() => { dbConnected = true; console.log('Connected to MongoDB.'); })
+    .catch(err => console.error('MongoDB connection error:', err.message));
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
@@ -21,15 +36,32 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('User', userSchema);
 
+// Build session config — only use MongoStore if URI looks valid
+let sessionStore;
+try {
+    sessionStore = MongoStore.create({
+        mongoUrl: MONGODB_URI,
+        ttl: 60 * 60 * 24,
+    });
+    // Handle store errors gracefully
+    sessionStore.on('error', (err) => {
+        console.error('Session store error:', err.message);
+    });
+} catch (err) {
+    console.error('MongoStore init failed, using in-memory sessions:', err.message);
+    sessionStore = undefined;
+}
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: process.env.SESSION_SECRET || 'gre_dashboard_secret_key',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: MONGODB_URI }),
+    store: sessionStore,
     cookie: { 
         secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 // 1 day
     }
@@ -50,8 +82,14 @@ app.post('/api/register', async (req, res) => {
         
         req.session.userId = newUser._id;
         req.session.username = newUser.username;
-        res.json({ success: true, username });
+        
+        // Wait for session to be saved before responding
+        req.session.save((err) => {
+            if (err) console.error('Session save error:', err.message);
+            res.json({ success: true, username });
+        });
     } catch (err) {
+        console.error('Register error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
 });
@@ -67,11 +105,17 @@ app.post('/api/login', async (req, res) => {
         if (match) {
             req.session.userId = user._id;
             req.session.username = user.username;
-            res.json({ success: true, username: user.username });
+            
+            // Wait for session to be saved before responding
+            req.session.save((err) => {
+                if (err) console.error('Session save error:', err.message);
+                res.json({ success: true, username: user.username });
+            });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
         }
     } catch (err) {
+        console.error('Login error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
 });
