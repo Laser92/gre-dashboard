@@ -12,21 +12,21 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: var(--bg-darker);
+            background: #f8fafc; /* Light gray-white background */
         }
         .login-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: #ffffff; /* White card */
+            border: 1px solid #e2e8f0;
             padding: 2rem;
             border-radius: 12px;
             width: 100%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         .login-card h2 {
             margin-bottom: 1.5rem;
-            color: var(--text-primary);
+            color: #0f172a; /* Dark almost-black text */
         }
         .form-group {
             margin-bottom: 1rem;
@@ -35,16 +35,18 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-secondary);
+            color: #334155; /* Dark gray */
+            font-weight: 500;
         }
         .form-group input {
             width: 100%;
             padding: 0.75rem;
             border-radius: 6px;
-            border: 1px solid var(--card-border);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: #0f172a; /* Dark text */
             outline: none;
+            transition: border-color 0.2s;
         }
         .form-group input:focus {
             border-color: var(--accent-primary);
@@ -55,12 +57,13 @@
         }
         .toggle-text {
             margin-top: 1rem;
-            color: var(--text-secondary);
+            color: #475569;
             font-size: 0.9rem;
             cursor: pointer;
         }
         .toggle-text:hover {
             color: var(--accent-primary);
+            text-decoration: underline;
         }
         #error-msg {
             color: #ef4444;
