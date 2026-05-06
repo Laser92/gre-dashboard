@@ -64,10 +64,45 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function setupEventListeners() {
-    // Navigation
-    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); });
-    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); });
-    document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); });
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        mobileToggle.classList.add('active');
+        sidebarOverlay.classList.add('active');
+        sidebarOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => { sidebarOverlay.style.display = 'none'; }, 300);
+    }
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            if (sidebar.classList.contains('open')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        });
+    }
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    // Navigation (auto-close sidebar on mobile)
+    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
+    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
+    document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
     document.getElementById('back-to-overview').addEventListener('click', () => switchView('overview'));
     document.getElementById('results-home-btn').addEventListener('click', () => switchView('overview'));
     document.getElementById('start-diagnostic-btn').addEventListener('click', () => {

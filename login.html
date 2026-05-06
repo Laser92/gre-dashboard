@@ -4,125 +4,546 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | GRE Dashboard</title>
+    <meta name="description" content="Sign in to your GRE Prep Dashboard to track your progress and practice questions.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
     <style>
+        :root {
+            --bg-dark: #0a0f16;
+            --bg-darker: #06090d;
+            --card-bg: rgba(22, 30, 43, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f0f4f8;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-success: #10b981;
+            --accent-error: #ef4444;
+            --glass-bg: rgba(22, 30, 43, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
+            font-family: var(--font-body);
+            background-color: var(--bg-darker);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: #f8fafc; /* Light gray-white background */
+            justify-content: center;
+            padding: 1.5rem;
+            overflow: hidden;
         }
-        .login-card {
-            background: #ffffff; /* White card */
-            border: 1px solid #e2e8f0;
-            padding: 2rem;
-            border-radius: 12px;
+
+        /* Animated background orbs */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-orb-1 {
+            width: 350px;
+            height: 350px;
+            background: rgba(59, 130, 246, 0.2);
+            top: -100px;
+            left: -80px;
+            animation-delay: 0s;
+        }
+
+        .bg-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(139, 92, 246, 0.2);
+            bottom: -80px;
+            right: -60px;
+            animation-delay: -4s;
+        }
+
+        .bg-orb-3 {
+            width: 200px;
+            height: 200px;
+            background: rgba(16, 185, 129, 0.1);
+            top: 50%;
+            left: 60%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Login Container */
+        .login-container {
+            position: relative;
+            z-index: 1;
             width: 100%;
-            max-width: 400px;
+            max-width: 440px;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo / Branding */
+        .login-branding {
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
         }
+
+        .login-branding h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .login-branding h1 span {
+            color: var(--accent-primary);
+        }
+
+        .login-branding p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Glass Card */
+        .login-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+            padding: 2.5rem;
+        }
+
         .login-card h2 {
-            margin-bottom: 1.5rem;
-            color: #0f172a; /* Dark almost-black text */
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
         }
+
+        .login-card .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Form Groups */
         .form-group {
-            margin-bottom: 1rem;
-            text-align: left;
+            margin-bottom: 1.25rem;
+            position: relative;
         }
+
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #334155; /* Dark gray */
+            font-size: 0.85rem;
             font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
         }
+
         .form-group input {
             width: 100%;
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
-            background: #ffffff;
-            color: #0f172a; /* Dark text */
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.25s ease;
         }
+
+        .form-group input::placeholder {
+            color: rgba(148, 163, 184, 0.5);
+        }
+
         .form-group input:focus {
             border-color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.05);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            color: var(--accent-primary);
+        }
+
+        /* Password toggle */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+
+        .password-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        /* Submit Button */
         .login-btn {
             width: 100%;
-            margin-top: 1rem;
-        }
-        .toggle-text {
-            margin-top: 1rem;
-            color: #475569;
-            font-size: 0.9rem;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.75rem;
+            position: relative;
+            overflow: hidden;
         }
-        .toggle-text:hover {
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+        }
+
+        .login-btn:hover::before {
+            opacity: 1;
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .login-btn .btn-text {
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+
+        .login-btn .btn-loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        .login-btn.loading .btn-text { display: none; }
+        .login-btn.loading .btn-loader { display: inline-block; }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error Message */
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: var(--accent-error);
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: none;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.75rem 0;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--card-border);
+        }
+
+        /* Toggle link */
+        .toggle-text {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .toggle-text a {
             color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .toggle-text a:hover {
+            color: var(--accent-secondary);
             text-decoration: underline;
         }
-        #error-msg {
-            color: #ef4444;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            display: none;
+
+        /* Footer text */
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: rgba(148, 163, 184, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+                padding-top: 2rem;
+            }
+
+            .login-branding h1 {
+                font-size: 2rem;
+            }
+
+            .login-card {
+                padding: 1.75rem;
+                border-radius: 16px;
+            }
+
+            .login-card h2 {
+                font-size: 1.4rem;
+            }
+
+            .bg-orb-1 { width: 200px; height: 200px; }
+            .bg-orb-2 { width: 180px; height: 180px; }
+            .bg-orb-3 { display: none; }
+        }
+
+        @media (max-width: 360px) {
+            .login-card {
+                padding: 1.25rem;
+            }
+
+            .form-group input {
+                padding: 0.75rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <h2 id="form-title">Login</h2>
-        <form id="auth-form">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" id="username" required>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" required>
-            </div>
-            <p id="error-msg"></p>
-            <button type="submit" class="primary-btn login-btn" id="submit-btn">Sign In</button>
-        </form>
-        <p class="toggle-text" id="toggle-auth">Need an account? Register</p>
+    <!-- Animated background orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
+    <div class="login-container">
+        <!-- Branding -->
+        <div class="login-branding">
+            <h1>GRE<span>Tracker</span></h1>
+            <p>Manhattan 5 lb. Edition</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <h2 id="form-title">Welcome back</h2>
+            <p class="subtitle" id="form-subtitle">Sign in to continue your prep</p>
+
+            <div class="error-msg" id="error-msg"></div>
+
+            <form id="auth-form" autocomplete="on">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+                        <button type="button" class="password-toggle" id="password-toggle" aria-label="Toggle password visibility">Show</button>
+                    </div>
+                </div>
+                <button type="submit" class="login-btn" id="submit-btn">
+                    <span class="btn-text">Sign In</span>
+                    <div class="btn-loader"></div>
+                </button>
+            </form>
+
+            <div class="divider">or</div>
+
+            <p class="toggle-text">
+                <span id="toggle-label">Don't have an account?</span>
+                <a id="toggle-auth">Create one</a>
+            </p>
+        </div>
+
+        <p class="login-footer">GRE Prep Dashboard &bull; Practice smarter, score higher</p>
     </div>
 
     <script>
         let isLogin = true;
-        
-        document.getElementById('toggle-auth').addEventListener('click', () => {
-            isLogin = !isLogin;
-            document.getElementById('form-title').innerText = isLogin ? 'Login' : 'Register';
-            document.getElementById('submit-btn').innerText = isLogin ? 'Sign In' : 'Sign Up';
-            document.getElementById('toggle-auth').innerText = isLogin ? 'Need an account? Register' : 'Already have an account? Login';
-            document.getElementById('error-msg').style.display = 'none';
+        const titleEl = document.getElementById('form-title');
+        const subtitleEl = document.getElementById('form-subtitle');
+        const btnText = document.querySelector('.btn-text');
+        const toggleLabel = document.getElementById('toggle-label');
+        const toggleLink = document.getElementById('toggle-auth');
+        const errorMsg = document.getElementById('error-msg');
+        const submitBtn = document.getElementById('submit-btn');
+        const passwordInput = document.getElementById('password');
+        const passwordToggle = document.getElementById('password-toggle');
+
+        // Toggle password visibility
+        passwordToggle.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            passwordToggle.textContent = isPassword ? 'Hide' : 'Show';
         });
 
-        document.getElementById('auth-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const endpoint = isLogin ? '/api/login' : '/api/register';
+        // Toggle between login and register
+        toggleLink.addEventListener('click', () => {
+            isLogin = !isLogin;
+            errorMsg.style.display = 'none';
 
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
-
-            const data = await res.json();
-            if (data.success) {
-                window.location.href = '/';
+            if (isLogin) {
+                titleEl.textContent = 'Welcome back';
+                subtitleEl.textContent = 'Sign in to continue your prep';
+                btnText.textContent = 'Sign In';
+                toggleLabel.textContent = "Don't have an account?";
+                toggleLink.textContent = 'Create one';
+                passwordInput.autocomplete = 'current-password';
             } else {
-                const errMsg = document.getElementById('error-msg');
-                errMsg.innerText = data.error;
-                errMsg.style.display = 'block';
+                titleEl.textContent = 'Create account';
+                subtitleEl.textContent = 'Start your GRE prep journey';
+                btnText.textContent = 'Create Account';
+                toggleLabel.textContent = 'Already have an account?';
+                toggleLink.textContent = 'Sign in';
+                passwordInput.autocomplete = 'new-password';
             }
         });
+
+        // Form submission
+        document.getElementById('auth-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = passwordInput.value;
+            const endpoint = isLogin ? '/api/login' : '/api/register';
+
+            // Basic validation
+            if (!username || !password) {
+                showError('Please fill in all fields');
+                return;
+            }
+
+            if (!isLogin && password.length < 4) {
+                showError('Password must be at least 4 characters');
+                return;
+            }
+
+            // Loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            errorMsg.style.display = 'none';
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+                if (data.success) {
+                    window.location.href = '/';
+                } else {
+                    showError(data.error || 'Something went wrong');
+                }
+            } catch (err) {
+                showError('Unable to connect to server');
+            } finally {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
+
+        function showError(msg) {
+            errorMsg.textContent = msg;
+            errorMsg.style.display = 'block';
+            // Re-trigger shake animation
+            errorMsg.style.animation = 'none';
+            errorMsg.offsetHeight; // force reflow
+            errorMsg.style.animation = '';
+        }
+
+        // Focus first input on load
+        document.getElementById('username').focus();
     </script>
 </body>
 </html>
