@@ -133,6 +133,54 @@ app.get('/api/me', (req, res) => {
     }
 });
 
+// Profile update: change username
+app.put('/api/profile/username', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    const { newUsername } = req.body;
+    if (!newUsername || newUsername.trim().length < 2) {
+        return res.status(400).json({ error: 'Username must be at least 2 characters' });
+    }
+    try {
+        const existing = await User.findOne({ username: newUsername.trim() });
+        if (existing && existing._id.toString() !== req.session.userId.toString()) {
+            return res.status(400).json({ error: 'Username already taken' });
+        }
+        await User.findByIdAndUpdate(req.session.userId, { username: newUsername.trim() });
+        req.session.username = newUsername.trim();
+        req.session.save((err) => {
+            if (err) console.error('Session save error:', err.message);
+            res.json({ success: true, username: newUsername.trim() });
+        });
+    } catch (err) {
+        console.error('Username update error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Profile update: change password
+app.put('/api/profile/password', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+        return res.status(400).json({ error: 'Both current and new password required' });
+    }
+    if (newPassword.length < 4) {
+        return res.status(400).json({ error: 'New password must be at least 4 characters' });
+    }
+    try {
+        const user = await User.findById(req.session.userId);
+        if (!user) return res.status(404).json({ error: 'User not found' });
+        const match = await bcrypt.compare(currentPassword, user.password);
+        if (!match) return res.status(401).json({ error: 'Current password is incorrect' });
+        user.password = await bcrypt.hash(newPassword, 10);
+        await user.save();
+        res.json({ success: true });
+    } catch (err) {
+        console.error('Password update error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 // Serve frontend files securely
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));

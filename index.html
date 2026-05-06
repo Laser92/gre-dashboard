@@ -55,11 +55,12 @@
                     <div class="score-badge" id="top-target-score">Current: -- / 170</div>
                     <div class="avatar" id="nav-avatar">?</div>
                     
-                    <div class="profile-dropdown" id="profile-dropdown" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; padding: 0.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); width: 150px; z-index: 100;">
-                        <div style="padding: 0.5rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 0.5rem;">
-                            <strong id="dropdown-username" style="color: var(--text-primary);">User</strong>
+                    <div class="profile-dropdown" id="profile-dropdown" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 10px; padding: 0.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.4); width: 180px; z-index: 100;">
+                        <div style="padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 0.25rem;">
+                            <strong id="dropdown-username" style="color: var(--text-primary); font-size: 0.9rem;">User</strong>
                         </div>
-                        <button id="logout-btn" style="width: 100%; text-align: left; background: none; border: none; color: var(--text-secondary); padding: 0.5rem; cursor: pointer; border-radius: 4px;">Logout</button>
+                        <button id="edit-profile-btn" class="dropdown-item">Edit Profile</button>
+                        <button id="logout-btn" class="dropdown-item dropdown-item-danger">Logout</button>
                     </div>
                 </div>
             </header>
@@ -87,6 +88,12 @@
                             <div class="progress-bar" id="kpi-chapters-bar" style="width: 0%;"></div>
                         </div>
                         <div class="kpi-icon">C</div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-title">Study Time</div>
+                        <div class="kpi-value" id="kpi-time">0<span class="kpi-sub">min</span></div>
+                        <div class="kpi-trend neutral" id="kpi-time-trend">This session</div>
+                        <div class="kpi-icon">⏱</div>
                     </div>
                 </section>
 
@@ -133,7 +140,10 @@
                 <div class="quiz-header">
                     <button class="back-btn" id="back-to-overview"><i class="fas fa-arrow-left"></i> Back to Overview</button>
                     <h2 id="quiz-chapter-title">Chapter 1: Verbal Diagnostic Test</h2>
-                    <div class="quiz-progress">Question <span id="current-q-num">1</span> of <span id="total-q-num">4</span></div>
+                    <div class="quiz-meta">
+                        <div class="quiz-timer" id="quiz-timer"><span class="timer-icon">⏱</span> <span id="quiz-timer-text">00:00</span></div>
+                        <div class="quiz-progress">Question <span id="current-q-num">1</span> of <span id="total-q-num">4</span></div>
+                    </div>
                 </div>
 
                 <div class="quiz-card glass">
@@ -167,6 +177,10 @@
                             <h4>Correct</h4>
                             <div class="result-value" id="result-correct">3/4</div>
                         </div>
+                        <div class="result-stat-box">
+                            <h4>Time Spent</h4>
+                            <div class="result-value" id="result-time">0:00</div>
+                        </div>
                     </div>
                     <button class="primary-btn mt-4" id="results-home-btn">Return to Dashboard</button>
                 </div>
@@ -174,6 +188,52 @@
 
         </main>
     </div>
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profile-modal-overlay">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="modal-close" id="profile-modal-close">&times;</button>
+            </div>
+            <div class="modal-tabs">
+                <button class="modal-tab active" id="tab-username" data-tab="username">Username</button>
+                <button class="modal-tab" id="tab-password" data-tab="password">Password</button>
+            </div>
+            <div class="modal-body">
+                <!-- Username Tab -->
+                <form id="username-form" class="modal-tab-content active" data-tab="username">
+                    <div class="modal-form-group">
+                        <label>Current Username</label>
+                        <input type="text" id="profile-current-username" disabled>
+                    </div>
+                    <div class="modal-form-group">
+                        <label>New Username</label>
+                        <input type="text" id="profile-new-username" placeholder="Enter new username" required minlength="2">
+                    </div>
+                    <div class="modal-msg" id="username-msg"></div>
+                    <button type="submit" class="modal-save-btn">Update Username</button>
+                </form>
+                <!-- Password Tab -->
+                <form id="password-form" class="modal-tab-content" data-tab="password">
+                    <div class="modal-form-group">
+                        <label>Current Password</label>
+                        <input type="password" id="profile-current-password" placeholder="Enter current password" required>
+                    </div>
+                    <div class="modal-form-group">
+                        <label>New Password</label>
+                        <input type="password" id="profile-new-password" placeholder="Enter new password" required minlength="4">
+                    </div>
+                    <div class="modal-form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" id="profile-confirm-password" placeholder="Confirm new password" required minlength="4">
+                    </div>
+                    <div class="modal-msg" id="password-msg"></div>
+                    <button type="submit" class="modal-save-btn">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="questions_bank.js"></script>
     <script src="script.js"></script>
 </body>

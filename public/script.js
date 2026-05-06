@@ -18,6 +18,72 @@ const state = {
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
 
+// === TIME TRACKING ===
+let totalStudyTimeSeconds = 0;    // Total across all chapters this session
+let chapterStartTime = null;      // When current chapter started
+let chapterElapsedSeconds = 0;    // Time for current chapter
+let questionStartTime = null;     // When current question started
+let timerInterval = null;         // Interval for live timer
+
+function startTimer() {
+    chapterStartTime = Date.now();
+    chapterElapsedSeconds = 0;
+    questionStartTime = Date.now();
+    
+    // Clear any existing interval
+    if (timerInterval) clearInterval(timerInterval);
+    
+    timerInterval = setInterval(() => {
+        if (chapterStartTime) {
+            const elapsed = Math.floor((Date.now() - chapterStartTime) / 1000);
+            updateTimerDisplay(elapsed);
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (chapterStartTime) {
+        chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
+        totalStudyTimeSeconds += chapterElapsedSeconds;
+    }
+    if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    chapterStartTime = null;
+}
+
+function updateTimerDisplay(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    const timerText = document.getElementById('quiz-timer-text');
+    if (timerText) {
+        timerText.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+}
+
+function formatTime(totalSeconds) {
+    const hrs = Math.floor(totalSeconds / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+    if (hrs > 0) {
+        return `${hrs}h ${mins}m`;
+    } else if (mins > 0) {
+        return `${mins}m ${secs}s`;
+    } else {
+        return `${secs}s`;
+    }
+}
+
+function formatTimeShort(totalSeconds) {
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Current user info (populated on load)
+let currentUsername = '';
+
 document.addEventListener('DOMContentLoaded', async () => {
     console.log("DOMContentLoaded started");
     
@@ -29,6 +95,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             window.location.href = '/login';
             return;
         }
+        
+        currentUsername = data.username;
         
         // Update UI with user info
         document.getElementById('nav-avatar').innerText = data.username.charAt(0).toUpperCase();
@@ -44,6 +112,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     setupEventListeners();
+    setupProfileModal();
+    
     try {
         initCharts();
     } catch (e) {
@@ -103,7 +173,10 @@ function setupEventListeners() {
     document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
     document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
     document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
-    document.getElementById('back-to-overview').addEventListener('click', () => switchView('overview'));
+    document.getElementById('back-to-overview').addEventListener('click', () => {
+        stopTimer(); // Stop timer if leaving quiz mid-way
+        switchView('overview');
+    });
     document.getElementById('results-home-btn').addEventListener('click', () => switchView('overview'));
     document.getElementById('start-diagnostic-btn').addEventListener('click', () => {
         startChapter('1');
@@ -118,7 +191,7 @@ function setupEventListeners() {
     
     if (profileWidget) {
         profileWidget.addEventListener('click', (e) => {
-            if (e.target.id !== 'logout-btn') {
+            if (e.target.id !== 'logout-btn' && e.target.id !== 'edit-profile-btn') {
                 profileDropdown.style.display = profileDropdown.style.display === 'none' ? 'block' : 'none';
             }
         });
@@ -130,9 +203,142 @@ function setupEventListeners() {
         }
     });
 
+    // Edit Profile button
+    document.getElementById('edit-profile-btn').addEventListener('click', () => {
+        profileDropdown.style.display = 'none';
+        openProfileModal();
+    });
+
     document.getElementById('logout-btn').addEventListener('click', async () => {
         await fetch('/api/logout', { method: 'POST' });
         window.location.href = '/login';
+    });
+}
+
+// === PROFILE MODAL ===
+
+function openProfileModal() {
+    document.getElementById('profile-current-username').value = currentUsername;
+    document.getElementById('profile-new-username').value = '';
+    document.getElementById('profile-current-password').value = '';
+    document.getElementById('profile-new-password').value = '';
+    document.getElementById('profile-confirm-password').value = '';
+    document.getElementById('username-msg').textContent = '';
+    document.getElementById('username-msg').className = 'modal-msg';
+    document.getElementById('password-msg').textContent = '';
+    document.getElementById('password-msg').className = 'modal-msg';
+    document.getElementById('profile-modal-overlay').classList.add('open');
+}
+
+function closeProfileModal() {
+    document.getElementById('profile-modal-overlay').classList.remove('open');
+}
+
+function setupProfileModal() {
+    // Close modal
+    document.getElementById('profile-modal-close').addEventListener('click', closeProfileModal);
+    document.getElementById('profile-modal-overlay').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeProfileModal();
+    });
+
+    // Tab switching
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.dataset.tab;
+            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelector(`.modal-tab-content[data-tab="${tabId}"]`).classList.add('active');
+        });
+    });
+
+    // Username form
+    document.getElementById('username-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msgEl = document.getElementById('username-msg');
+        const newUsername = document.getElementById('profile-new-username').value.trim();
+        
+        if (!newUsername || newUsername.length < 2) {
+            msgEl.textContent = 'Username must be at least 2 characters';
+            msgEl.className = 'modal-msg error';
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/profile/username', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ newUsername })
+            });
+            const data = await res.json();
+            
+            if (data.success) {
+                currentUsername = data.username;
+                document.getElementById('nav-avatar').innerText = currentUsername.charAt(0).toUpperCase();
+                document.getElementById('dropdown-username').innerText = currentUsername;
+                document.getElementById('profile-current-username').value = currentUsername;
+                document.getElementById('profile-new-username').value = '';
+                msgEl.textContent = 'Username updated successfully!';
+                msgEl.className = 'modal-msg success';
+            } else {
+                msgEl.textContent = data.error || 'Failed to update username';
+                msgEl.className = 'modal-msg error';
+            }
+        } catch (err) {
+            msgEl.textContent = 'Connection error';
+            msgEl.className = 'modal-msg error';
+        }
+    });
+
+    // Password form
+    document.getElementById('password-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msgEl = document.getElementById('password-msg');
+        const currentPassword = document.getElementById('profile-current-password').value;
+        const newPassword = document.getElementById('profile-new-password').value;
+        const confirmPassword = document.getElementById('profile-confirm-password').value;
+
+        if (newPassword !== confirmPassword) {
+            msgEl.textContent = 'New passwords do not match';
+            msgEl.className = 'modal-msg error';
+            return;
+        }
+
+        if (newPassword.length < 4) {
+            msgEl.textContent = 'Password must be at least 4 characters';
+            msgEl.className = 'modal-msg error';
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/profile/password', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ currentPassword, newPassword })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                document.getElementById('profile-current-password').value = '';
+                document.getElementById('profile-new-password').value = '';
+                document.getElementById('profile-confirm-password').value = '';
+                msgEl.textContent = 'Password updated successfully!';
+                msgEl.className = 'modal-msg success';
+            } else {
+                msgEl.textContent = data.error || 'Failed to update password';
+                msgEl.className = 'modal-msg error';
+            }
+        } catch (err) {
+            msgEl.textContent = 'Connection error';
+            msgEl.className = 'modal-msg error';
+        }
+    });
+
+    // Escape key closes modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('profile-modal-overlay').classList.contains('open')) {
+            closeProfileModal();
+        }
     });
 }
 
@@ -163,6 +369,9 @@ function renderDashboard() {
     
     document.getElementById('kpi-chapters').innerHTML = `${state.chaptersCompleted}<span class="kpi-sub">/4</span>`;
     document.getElementById('kpi-chapters-bar').style.width = `${(state.chaptersCompleted / 4) * 100}%`;
+
+    // Update time KPI
+    updateTimeKPI();
 
     // Render Table
     const tbody = document.getElementById('chapter-table-body');
@@ -205,6 +414,34 @@ function renderDashboard() {
     }
 }
 
+function updateTimeKPI() {
+    const timeEl = document.getElementById('kpi-time');
+    const trendEl = document.getElementById('kpi-time-trend');
+    if (!timeEl) return;
+
+    // Include currently running timer if active
+    let displayTime = totalStudyTimeSeconds;
+    if (chapterStartTime) {
+        displayTime += Math.floor((Date.now() - chapterStartTime) / 1000);
+    }
+
+    const hrs = Math.floor(displayTime / 3600);
+    const mins = Math.floor((displayTime % 3600) / 60);
+
+    if (hrs > 0) {
+        timeEl.innerHTML = `${hrs}<span class="kpi-sub">h</span> ${mins}<span class="kpi-sub">m</span>`;
+    } else {
+        timeEl.innerHTML = `${mins}<span class="kpi-sub">min</span>`;
+    }
+
+    // Show per-question average if we have data
+    if (state.questionsAttempted > 0) {
+        const avgSecs = Math.round(displayTime / state.questionsAttempted);
+        trendEl.innerText = `~${avgSecs}s per question`;
+        trendEl.className = 'kpi-trend neutral';
+    }
+}
+
 // === QUIZ ENGINE ===
 
 let currentQuizCorrect = 0;
@@ -229,6 +466,9 @@ window.startChapter = function(chapterId) {
     document.getElementById('quiz-chapter-title').innerText = chapter.title;
     document.getElementById('total-q-num').innerText = state.questions[chapterId].length;
     
+    // Start timer
+    startTimer();
+    
     renderQuestion();
     switchView('quiz');
 }
@@ -238,6 +478,9 @@ function renderQuestion() {
     const q = qList[state.currentQuestionIndex];
     
     document.getElementById('current-q-num').innerText = state.currentQuestionIndex + 1;
+    
+    // Reset question timer
+    questionStartTime = Date.now();
     
     // Render passage
     const passageEl = document.getElementById('quiz-passage');
@@ -309,6 +552,9 @@ function nextQuestion() {
 }
 
 function finishChapter() {
+    // Stop timer and record time
+    stopTimer();
+    
     const chapter = state.chapters.find(c => c.id === state.currentChapterId);
     chapter.status = 'completed';
     state.chaptersCompleted++;
@@ -320,6 +566,7 @@ function finishChapter() {
     document.getElementById('results-chapter-name').innerText = chapter.title;
     document.getElementById('result-correct').innerText = `${currentQuizCorrect} / ${currentQuizAttempted}`;
     document.getElementById('result-accuracy').innerText = `${Math.round((currentQuizCorrect/currentQuizAttempted)*100)}%`;
+    document.getElementById('result-time').innerText = formatTime(chapterElapsedSeconds);
     
     switchView('results');
 }
