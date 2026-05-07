@@ -36,6 +36,26 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('User', userSchema);
 
+// === PROGRESS SCHEMA ===
+// Stores per-user, per-question progress for spaced repetition
+const progressSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    chapterId: { type: String, required: true },
+    questionId: { type: Number, required: true },
+    // Status: 'unseen' | 'missed' | 'revision' | 'correct'
+    // missed = answered incorrectly, needs retry
+    // revision = was missed but got it right on retry, revision recommended
+    // correct = answered correctly (either first time or after revision)
+    status: { type: String, default: 'unseen', enum: ['unseen', 'missed', 'revision', 'correct'] },
+    attempts: { type: Number, default: 0 },
+    lastAttemptedAt: { type: Date, default: null },
+}, { timestamps: true });
+
+progressSchema.index({ userId: 1, chapterId: 1, questionId: 1 }, { unique: true });
+progressSchema.index({ userId: 1, chapterId: 1, status: 1 });
+
+const Progress = mongoose.model('Progress', progressSchema);
+
 // Build session config — only use MongoStore if URI looks valid
 let sessionStore;
 try {
@@ -177,6 +197,115 @@ app.put('/api/profile/password', async (req, res) => {
         res.json({ success: true });
     } catch (err) {
         console.error('Password update error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// === PROGRESS API ENDPOINTS ===
+
+// GET /api/progress/:chapterId — load all progress for a chapter
+app.get('/api/progress/:chapterId', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    try {
+        const docs = await Progress.find({
+            userId: req.session.userId,
+            chapterId: req.params.chapterId
+        }).lean();
+        // Return as a map: questionId -> { status, attempts, lastAttemptedAt }
+        const progressMap = {};
+        docs.forEach(d => {
+            progressMap[d.questionId] = {
+                status: d.status,
+                attempts: d.attempts,
+                lastAttemptedAt: d.lastAttemptedAt
+            };
+        });
+        res.json({ progress: progressMap });
+    } catch (err) {
+        console.error('Progress load error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// GET /api/progress — load ALL progress for the user (all chapters)
+app.get('/api/progress', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    try {
+        const docs = await Progress.find({
+            userId: req.session.userId
+        }).lean();
+        // Return as nested map: chapterId -> questionId -> { status, attempts, lastAttemptedAt }
+        const progressMap = {};
+        docs.forEach(d => {
+            if (!progressMap[d.chapterId]) progressMap[d.chapterId] = {};
+            progressMap[d.chapterId][d.questionId] = {
+                status: d.status,
+                attempts: d.attempts,
+                lastAttemptedAt: d.lastAttemptedAt
+            };
+        });
+        res.json({ progress: progressMap });
+    } catch (err) {
+        console.error('Progress load error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// POST /api/progress — save a single question result
+app.post('/api/progress', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    const { chapterId, questionId, isCorrect } = req.body;
+    if (!chapterId || questionId === undefined || isCorrect === undefined) {
+        return res.status(400).json({ error: 'chapterId, questionId, and isCorrect required' });
+    }
+    try {
+        let doc = await Progress.findOne({
+            userId: req.session.userId,
+            chapterId,
+            questionId
+        });
+
+        if (!doc) {
+            // First attempt on this question
+            doc = new Progress({
+                userId: req.session.userId,
+                chapterId,
+                questionId,
+                status: isCorrect ? 'correct' : 'missed',
+                attempts: 1,
+                lastAttemptedAt: new Date()
+            });
+        } else {
+            doc.attempts += 1;
+            doc.lastAttemptedAt = new Date();
+
+            if (doc.status === 'missed') {
+                // Second attempt after missing
+                if (isCorrect) {
+                    doc.status = 'revision'; // Got it right on retry
+                }
+                // If still wrong, stays as 'missed'
+            } else if (doc.status === 'revision') {
+                // Third+ attempt after revision recommended
+                if (isCorrect) {
+                    doc.status = 'correct'; // Finally mastered
+                }
+                // If wrong, stays as 'revision'
+            } else if (doc.status === 'correct') {
+                // Re-attempting a correct question (from 5% correct pool)
+                if (!isCorrect) {
+                    doc.status = 'missed'; // Demoted
+                }
+            } else {
+                // unseen (shouldn't normally hit this path)
+                doc.status = isCorrect ? 'correct' : 'missed';
+            }
+        }
+
+        await doc.save();
+        res.json({ success: true, status: doc.status });
+    } catch (err) {
+        console.error('Progress save error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
 });

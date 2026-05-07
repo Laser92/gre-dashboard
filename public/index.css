@@ -319,6 +319,41 @@ body {
 
 .kpi-trend.positive { color: var(--accent-success); }
 .kpi-trend.neutral { color: var(--accent-warning); }
+.kpi-trend.negative { color: var(--accent-error); }
+
+/* Question Tags (spaced repetition badges) */
+.question-tag {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    animation: tagFadeIn 0.3s ease;
+}
+
+@keyframes tagFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.question-tag.missed {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-error);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.question-tag.revision {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-warning);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.question-tag.correct-review {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
 
 .kpi-icon {
     position: absolute;

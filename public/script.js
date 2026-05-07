@@ -15,6 +15,11 @@ const state = {
     questions: window.QUESTION_BANK || {}
 };
 
+// Per-user progress: { chapterId: { questionId: { status, attempts, lastAttemptedAt } } }
+let userProgress = {};
+// The ordered quiz queue built by the spaced-repetition algorithm
+let quizQueue = [];
+
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
 
@@ -101,7 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Update UI with user info
         document.getElementById('nav-avatar').innerText = data.username.charAt(0).toUpperCase();
         document.getElementById('dropdown-username').innerText = data.username;
-        // In the overview section
         const overviewAvatar = document.querySelector('.user-profile .avatar');
         const overviewName = document.querySelector('.user-profile .user-name');
         if (overviewAvatar) overviewAvatar.innerText = data.username.charAt(0).toUpperCase();
@@ -109,6 +113,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         
     } catch (e) {
         console.error("Auth check failed", e);
+    }
+    
+    // Load saved progress from server
+    try {
+        const pRes = await fetch('/api/progress');
+        const pData = await pRes.json();
+        if (pData.progress) {
+            userProgress = pData.progress;
+            rehydrateStatsFromProgress();
+        }
+    } catch (e) {
+        console.error("Progress load failed", e);
     }
     
     setupEventListeners();
@@ -132,6 +148,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderDashboard();
     console.log("DOMContentLoaded finished");
 });
+
+// Rehydrate state stats from saved progress
+function rehydrateStatsFromProgress() {
+    let attempted = 0, correct = 0;
+    for (const chId of Object.keys(userProgress)) {
+        const chProgress = userProgress[chId];
+        for (const qId of Object.keys(chProgress)) {
+            const p = chProgress[qId];
+            attempted += p.attempts || 0;
+            if (p.status === 'correct') correct++;
+        }
+        // Check if chapter is completed or in-progress
+        const chapter = state.chapters.find(c => c.id === chId);
+        if (chapter) {
+            const totalQs = state.questions[chId] ? state.questions[chId].length : 0;
+            const attemptedQs = Object.keys(chProgress).length;
+            if (attemptedQs >= totalQs && totalQs > 0) {
+                chapter.status = 'completed';
+                state.chaptersCompleted++;
+            } else if (attemptedQs > 0) {
+                chapter.status = 'in-progress';
+            }
+        }
+    }
+    state.questionsAttempted = attempted;
+    state.correctAnswers = correct;
+    if (attempted > 0) {
+        const overallAcc = correct / attempted;
+        state.diagnosticScore = Math.round(130 + (overallAcc * 40));
+    }
+}
 
 function setupEventListeners() {
     // Mobile menu toggle
@@ -365,7 +412,16 @@ function renderDashboard() {
     }
 
     document.getElementById('kpi-attempted').innerText = state.questionsAttempted;
-    document.getElementById('kpi-accuracy').innerText = `Accuracy: ${state.questionsAttempted > 0 ? acc + '%' : '--'}`;
+    const accEl = document.getElementById('kpi-accuracy');
+    accEl.innerText = `Accuracy: ${state.questionsAttempted > 0 ? acc + '%' : '--'}`;
+    // Dynamic accuracy color
+    if (state.questionsAttempted > 0) {
+        if (acc >= 70) { accEl.className = 'kpi-trend positive'; }
+        else if (acc >= 40) { accEl.className = 'kpi-trend neutral'; }
+        else { accEl.className = 'kpi-trend negative'; }
+    } else {
+        accEl.className = 'kpi-trend neutral';
+    }
     
     document.getElementById('kpi-chapters').innerHTML = `${state.chaptersCompleted}<span class="kpi-sub">/4</span>`;
     document.getElementById('kpi-chapters-bar').style.width = `${(state.chaptersCompleted / 4) * 100}%`;
@@ -447,6 +503,125 @@ function updateTimeKPI() {
 let currentQuizCorrect = 0;
 let currentQuizAttempted = 0;
 
+// Build the quiz queue using spaced repetition rules:
+// 80% unseen, 10% missed, 5% revision, 5% correct
+// For diagnostic (chapter 1): cluster RC questions together
+function buildQuizQueue(chapterId) {
+    const allQuestions = state.questions[chapterId] || [];
+    const chProgress = userProgress[chapterId] || {};
+
+    // Categorize questions by status
+    const unseen = [], missed = [], revision = [], correct = [];
+    allQuestions.forEach((q, idx) => {
+        const p = chProgress[q.id || idx];
+        if (!p) { unseen.push(q); }
+        else if (p.status === 'missed') { missed.push(q); }
+        else if (p.status === 'revision') { revision.push(q); }
+        else if (p.status === 'correct') { correct.push(q); }
+        else { unseen.push(q); }
+    });
+
+    // Keep unseen in original order (Q1, Q2, Q3...)
+    // Shuffle missed, revision, correct pools
+    shuffleArray(missed);
+    shuffleArray(revision);
+    shuffleArray(correct);
+
+    // Target total = all available questions up to a session cap
+    const totalAvailable = unseen.length + missed.length + revision.length + correct.length;
+    const sessionCap = totalAvailable; // show all available
+
+    // Calculate target counts per bucket
+    const targetMissed = Math.min(missed.length, Math.max(1, Math.round(sessionCap * 0.10)));
+    const targetRevision = Math.min(revision.length, Math.max(0, Math.round(sessionCap * 0.05)));
+    const targetCorrect = Math.min(correct.length, Math.max(0, Math.round(sessionCap * 0.05)));
+    const targetUnseen = Math.min(unseen.length, sessionCap - targetMissed - targetRevision - targetCorrect);
+
+    // Pick questions from each bucket
+    const pickedUnseen = unseen.slice(0, Math.max(0, targetUnseen));
+    const pickedMissed = missed.slice(0, targetMissed);
+    const pickedRevision = revision.slice(0, targetRevision);
+    const pickedCorrect = correct.slice(0, targetCorrect);
+
+    // Build the final queue: unseen first (in order), then interleave review questions
+    let queue = [];
+
+    // For diagnostic test (chapter 1), cluster RC questions together
+    if (chapterId === '1') {
+        queue = clusterRCQuestions([...pickedUnseen, ...pickedMissed, ...pickedRevision, ...pickedCorrect]);
+    } else {
+        // Unseen in sequential order first, then review items shuffled in
+        const reviewItems = [...pickedMissed, ...pickedRevision, ...pickedCorrect];
+        shuffleArray(reviewItems);
+        queue = [...pickedUnseen, ...reviewItems];
+    }
+
+    // Tag each question with its source bucket for UI
+    queue.forEach(q => {
+        const p = chProgress[q.id];
+        if (!p) { q._tag = null; }
+        else if (p.status === 'missed') { q._tag = 'missed'; }
+        else if (p.status === 'revision') { q._tag = 'revision'; }
+        else if (p.status === 'correct') { q._tag = 'correct_review'; }
+    });
+
+    return queue;
+}
+
+// Cluster RC questions (those with passages) together in sequence
+function clusterRCQuestions(questions) {
+    const rc = [], nonRc = [];
+    const passageGroups = {};
+
+    questions.forEach(q => {
+        if (q.passage) {
+            const key = q.passage.substring(0, 100);
+            if (!passageGroups[key]) passageGroups[key] = [];
+            passageGroups[key].push(q);
+        } else {
+            nonRc.push(q);
+        }
+    });
+
+    // Build ordered list: non-RC first in order, then each RC passage group together
+    const result = [...nonRc];
+    // Insert RC groups interspersed (every ~3 non-RC questions, insert an RC group)
+    const rcGroups = Object.values(passageGroups);
+    if (rcGroups.length === 0) return result;
+
+    // Sort RC within each group by id
+    rcGroups.forEach(g => g.sort((a, b) => (a.id || 0) - (b.id || 0)));
+
+    // Interleave: place RC clusters at regular intervals
+    const interval = Math.max(3, Math.floor(nonRc.length / (rcGroups.length + 1)));
+    const finalQueue = [];
+    let nonRcIdx = 0, rcIdx = 0;
+
+    while (nonRcIdx < nonRc.length || rcIdx < rcGroups.length) {
+        // Add a batch of non-RC
+        const batchEnd = Math.min(nonRcIdx + interval, nonRc.length);
+        for (let i = nonRcIdx; i < batchEnd; i++) {
+            finalQueue.push(nonRc[i]);
+        }
+        nonRcIdx = batchEnd;
+
+        // Add an RC cluster
+        if (rcIdx < rcGroups.length) {
+            rcGroups[rcIdx].forEach(q => finalQueue.push(q));
+            rcIdx++;
+        }
+    }
+
+    return finalQueue;
+}
+
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
+
 window.startChapter = function(chapterId) {
     if (!state.questions[chapterId] || state.questions[chapterId].length === 0) {
         alert("No questions found for this chapter!");
@@ -456,6 +631,14 @@ window.startChapter = function(chapterId) {
     state.currentChapterId = chapterId;
     state.currentQuestionIndex = 0;
     
+    // Build spaced-repetition queue
+    quizQueue = buildQuizQueue(chapterId);
+
+    if (quizQueue.length === 0) {
+        alert("You've completed all questions in this chapter! All questions are marked correct.");
+        return;
+    }
+    
     // Reset chapter stats
     currentQuizCorrect = 0;
     currentQuizAttempted = 0;
@@ -464,7 +647,7 @@ window.startChapter = function(chapterId) {
     chapter.status = 'in-progress';
     
     document.getElementById('quiz-chapter-title').innerText = chapter.title;
-    document.getElementById('total-q-num').innerText = state.questions[chapterId].length;
+    document.getElementById('total-q-num').innerText = quizQueue.length;
     
     // Start timer
     startTimer();
@@ -474,13 +657,36 @@ window.startChapter = function(chapterId) {
 }
 
 function renderQuestion() {
-    const qList = state.questions[state.currentChapterId];
-    const q = qList[state.currentQuestionIndex];
+    const q = quizQueue[state.currentQuestionIndex];
     
     document.getElementById('current-q-num').innerText = state.currentQuestionIndex + 1;
     
     // Reset question timer
     questionStartTime = Date.now();
+
+    // Show tag badge if this is a review question
+    let tagEl = document.getElementById('quiz-question-tag');
+    if (!tagEl) {
+        tagEl = document.createElement('div');
+        tagEl.id = 'quiz-question-tag';
+        const quizCard = document.querySelector('.quiz-card');
+        quizCard.insertBefore(tagEl, quizCard.firstChild);
+    }
+    if (q._tag === 'missed') {
+        tagEl.className = 'question-tag missed';
+        tagEl.innerText = '🔄 Missed last time';
+        tagEl.style.display = 'block';
+    } else if (q._tag === 'revision') {
+        tagEl.className = 'question-tag revision';
+        tagEl.innerText = '📝 Revision recommended';
+        tagEl.style.display = 'block';
+    } else if (q._tag === 'correct_review') {
+        tagEl.className = 'question-tag correct-review';
+        tagEl.innerText = '✅ Review (correct last time)';
+        tagEl.style.display = 'block';
+    } else {
+        tagEl.style.display = 'none';
+    }
     
     // Render passage
     const passageEl = document.getElementById('quiz-passage');
@@ -509,9 +715,8 @@ function renderQuestion() {
     document.getElementById('quiz-feedback').style.display = 'none';
 }
 
-function handleAnswer(selectedIndex, optElement) {
-    const qList = state.questions[state.currentChapterId];
-    const q = qList[state.currentQuestionIndex];
+async function handleAnswer(selectedIndex, optElement) {
+    const q = quizQueue[state.currentQuestionIndex];
     
     const options = document.querySelectorAll('.quiz-option');
     options.forEach(opt => opt.style.pointerEvents = 'none'); // Disable clicking
@@ -519,11 +724,13 @@ function handleAnswer(selectedIndex, optElement) {
     state.questionsAttempted++;
     currentQuizAttempted++;
     
+    const isCorrect = selectedIndex === q.answer;
+    
     const feedback = document.getElementById('quiz-feedback');
     const fText = document.getElementById('feedback-text');
     const fExp = document.getElementById('feedback-explanation');
     
-    if (selectedIndex === q.answer) {
+    if (isCorrect) {
         optElement.classList.add('correct');
         fText.innerText = "Correct! Well done.";
         fText.className = "success";
@@ -538,13 +745,36 @@ function handleAnswer(selectedIndex, optElement) {
 
     fExp.innerText = "Explanation: " + q.explanation;
     feedback.style.display = 'flex';
+
+    // Save progress to server
+    try {
+        const resp = await fetch('/api/progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chapterId: state.currentChapterId,
+                questionId: q.id,
+                isCorrect
+            })
+        });
+        const data = await resp.json();
+        // Update local progress cache
+        if (!userProgress[state.currentChapterId]) userProgress[state.currentChapterId] = {};
+        const prev = userProgress[state.currentChapterId][q.id];
+        userProgress[state.currentChapterId][q.id] = {
+            status: data.status || (isCorrect ? 'correct' : 'missed'),
+            attempts: (prev ? prev.attempts + 1 : 1),
+            lastAttemptedAt: new Date().toISOString()
+        };
+    } catch (e) {
+        console.error('Failed to save progress:', e);
+    }
 }
 
 function nextQuestion() {
-    const qList = state.questions[state.currentChapterId];
     state.currentQuestionIndex++;
     
-    if (state.currentQuestionIndex >= qList.length) {
+    if (state.currentQuestionIndex >= quizQueue.length) {
         finishChapter();
     } else {
         renderQuestion();
@@ -556,12 +786,19 @@ function finishChapter() {
     stopTimer();
     
     const chapter = state.chapters.find(c => c.id === state.currentChapterId);
-    chapter.status = 'completed';
-    state.chaptersCompleted++;
+    // Check if all questions in chapter have been attempted
+    const chProgress = userProgress[state.currentChapterId] || {};
+    const totalQs = state.questions[state.currentChapterId] ? state.questions[state.currentChapterId].length : 0;
+    if (Object.keys(chProgress).length >= totalQs && totalQs > 0) {
+        chapter.status = 'completed';
+        state.chaptersCompleted++;
+    }
     
     // Update diagnostic score based on ALL questions attempted
-    const overallAcc = state.correctAnswers / state.questionsAttempted;
-    state.diagnosticScore = Math.round(130 + (overallAcc * 40)); 
+    if (state.questionsAttempted > 0) {
+        const overallAcc = state.correctAnswers / state.questionsAttempted;
+        state.diagnosticScore = Math.round(130 + (overallAcc * 40));
+    }
 
     document.getElementById('results-chapter-name').innerText = chapter.title;
     document.getElementById('result-correct').innerText = `${currentQuizCorrect} / ${currentQuizAttempted}`;
@@ -597,13 +834,13 @@ function initCharts() {
     accuracyChartInstance = new Chart(accuracyCtx, {
         type: 'bar',
         data: {
-            labels: ['Verbal', 'Reading Comp.', 'Arithmetic', 'Algebra', 'Geometry', 'Data Interp.'],
+            labels: ['Diagnostic', 'Text Comp.', 'Sentence Eq.', 'Reading Comp.'],
             datasets: [{
                 label: 'Accuracy %',
-                data: [0, 0, 0, 0, 0, 0], // Starts empty
+                data: [0, 0, 0, 0], // Starts empty
                 backgroundColor: [
                     gradientPurple, gradientPurple, 
-                    gradientBlue, gradientBlue, gradientBlue, gradientBlue
+                    gradientBlue, gradientBlue
                 ],
                 borderRadius: 6,
                 borderSkipped: false,
@@ -638,13 +875,6 @@ function initCharts() {
                     backgroundColor: 'rgba(139, 92, 246, 0.2)',
                     borderColor: '#8b5cf6',
                     pointBackgroundColor: '#8b5cf6',
-                },
-                {
-                    label: 'Quant',
-                    data: [130, 130, 130, 130, 130, 130],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: '#3b82f6',
-                    pointBackgroundColor: '#3b82f6',
                 }
             ]
         },
