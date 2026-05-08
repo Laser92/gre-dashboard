@@ -176,6 +176,17 @@ function getTotalQuestionCount() {
     return state.chapters.reduce((total, chapter) => total + (state.questions[chapter.id]?.length || 0), 0);
 }
 
+function splitQuestionLabel(text, fallbackNumber) {
+    const match = String(text || '').match(/^((?:SE|TC|RC)?\s*Question\s*\d+):\s*(.*)$/i);
+    if (!match) {
+        return { label: `Question ${fallbackNumber}`, body: text || '' };
+    }
+    return {
+        label: match[1].replace(/\s+/g, ' ').trim(),
+        body: match[2].trim()
+    };
+}
+
 // Current user info (populated on load)
 let currentUsername = '';
 
@@ -723,7 +734,7 @@ function buildQuizQueue(chapterId) {
     // Tag each question with its source bucket for UI
     queue.forEach(q => {
         const p = chProgress[q.id];
-        if (!p) { q._tag = null; }
+        if (!p) { q._tag = 'new'; }
         else if (p.status === 'missed') { q._tag = 'missed'; }
         else if (p.status === 'revision') { q._tag = 'revision'; }
         else if (p.status === 'correct') { q._tag = 'correct_review'; }
@@ -829,30 +840,20 @@ function renderQuestion() {
     // Reset question timer
     questionStartTime = Date.now();
 
-    // Show tag badge if this is a review question
-    let tagEl = document.getElementById('quiz-question-tag');
-    if (!tagEl) {
-        tagEl = document.createElement('div');
-        tagEl.id = 'quiz-question-tag';
-        const quizCard = document.querySelector('.quiz-card');
-        quizCard.insertBefore(tagEl, quizCard.firstChild);
-    }
-    if (q._tag === 'missed') {
-        tagEl.className = 'question-tag missed';
-        tagEl.innerText = '🔄 Missed last time';
-        tagEl.style.display = 'block';
-    } else if (q._tag === 'revision') {
-        tagEl.className = 'question-tag revision';
-        tagEl.innerText = '📝 Revision recommended';
-        tagEl.style.display = 'block';
-    } else if (q._tag === 'correct_review') {
-        tagEl.className = 'question-tag correct-review';
-        tagEl.innerText = '✅ Review (correct last time)';
-        tagEl.style.display = 'block';
-    } else {
-        tagEl.style.display = 'none';
-    }
-    
+    const questionParts = splitQuestionLabel(q.text, state.currentQuestionIndex + 1);
+    document.getElementById('quiz-question-number').innerText = questionParts.label;
+    const tagEl = document.getElementById('quiz-question-tag');
+
+    const statusTag = {
+        new: { className: 'question-tag new', text: 'New' },
+        correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
+        revision: { className: 'question-tag revision', text: 'Revision' },
+        missed: { className: 'question-tag missed', text: 'Missed last time' }
+    }[q._tag] || { className: 'question-tag new', text: 'New' };
+    tagEl.className = statusTag.className;
+    tagEl.innerText = statusTag.text;
+    tagEl.style.display = 'inline-flex';
+
     // Render passage
     const passageEl = document.getElementById('quiz-passage');
     if (q.passage) {
@@ -868,8 +869,15 @@ function renderQuestion() {
     
     const correctAnswers = getCorrectAnswers(q);
     const isMultiAnswer = correctAnswers.length > 1;
-    const questionText = isMultiAnswer ? `${q.text}\n\nSelect exactly two answer choices.` : q.text;
-    document.getElementById('quiz-question-text').innerText = questionText;
+    document.getElementById('quiz-question-text').innerText = questionParts.body;
+
+    const instructionEl = document.getElementById('quiz-question-instruction');
+    if (isMultiAnswer) {
+        instructionEl.innerText = 'Select exactly two answer choices.';
+        instructionEl.style.display = 'block';
+    } else {
+        instructionEl.style.display = 'none';
+    }
     
     q.options.forEach((optText, index) => {
         const div = document.createElement('div');
