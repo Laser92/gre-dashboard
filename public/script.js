@@ -4,6 +4,7 @@ const state = {
     questionsAttempted: 0,
     correctAnswers: 0,
     chaptersCompleted: 0,
+    questionsCompleted: 0,
     currentChapterId: null,
     currentQuestionIndex: 0,
     chapters: [
@@ -22,6 +23,25 @@ let quizQueue = [];
 
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
+let selectedAnswerIndexes = [];
+
+const SE_SYNONYM_PAIRS = {
+    chicanery: 'deception',
+    polemic: 'diatribe',
+    esoteric: 'arcane',
+    calumny: 'slander',
+    equivocate: 'prevaricate',
+    truculent: 'belligerent',
+    spurious: 'counterfeit',
+    apocryphal: 'fabricated',
+    vitiate: 'undermine',
+    alacrity: 'eagerness',
+    scarcity: 'dearth',
+    paucity: 'dearth',
+    prosaic: 'ordinary',
+    didactic: 'instructive',
+    transient: 'ephemeral'
+};
 
 // === TIME TRACKING ===
 let totalStudyTimeSeconds = 0;    // Total across all chapters this session
@@ -86,6 +106,76 @@ function formatTimeShort(totalSeconds) {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
+function isSentenceEquivalenceQuestion(question, chapterId = '') {
+    return chapterId === '4' || /^SE Question/i.test(question.text || '') || /Sentence Equivalence/i.test(question.explanation || '');
+}
+
+function getCorrectAnswers(question) {
+    if (Array.isArray(question.answers)) return question.answers;
+    if (Array.isArray(question.answer)) return question.answer;
+    return [question.answer];
+}
+
+function normalizeQuestionBank() {
+    Object.entries(state.questions).forEach(([chapterId, questions]) => {
+        questions.forEach(question => {
+            if (!isSentenceEquivalenceQuestion(question, chapterId) || !Array.isArray(question.options)) return;
+
+            const originalAnswers = getCorrectAnswers(question).filter(index => Number.isInteger(index));
+            if (originalAnswers.length >= 2) {
+                question.answers = originalAnswers.slice(0, 2);
+                return;
+            }
+
+            const firstAnswer = originalAnswers[0] ?? question.answer;
+            const firstAnswerText = question.options[firstAnswer];
+            const synonym = SE_SYNONYM_PAIRS[String(firstAnswerText || '').toLowerCase()] || `${firstAnswerText} (synonym)`;
+            let secondAnswer = question.options.findIndex((option, index) =>
+                index !== firstAnswer && String(option).toLowerCase() === String(synonym).toLowerCase()
+            );
+
+            if (secondAnswer === -1) {
+                question.options.push(synonym);
+                secondAnswer = question.options.length - 1;
+            }
+
+            question.answers = [firstAnswer, secondAnswer].sort((a, b) => a - b);
+        });
+    });
+}
+
+function getQuestionKey(question) {
+    return String(question.text || question.id || '')
+        .replace(/^SE Question\s*\d*:\s*/i, 'SE Question: ')
+        .replace(/^TC Question\s*\d*:\s*/i, 'TC Question: ')
+        .replace(/^RC Question\s*\d*:\s*/i, 'RC Question: ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLowerCase();
+}
+
+function getRecentCorrectQuestionKeys() {
+    try {
+        return JSON.parse(localStorage.getItem('recentCorrectQuestionKeys') || '[]');
+    } catch (e) {
+        return [];
+    }
+}
+
+function rememberCorrectQuestion(question) {
+    const key = getQuestionKey(question);
+    const next = [key, ...getRecentCorrectQuestionKeys().filter(item => item !== key)].slice(0, 5);
+    localStorage.setItem('recentCorrectQuestionKeys', JSON.stringify(next));
+}
+
+function isOnCorrectCooldown(question) {
+    return getRecentCorrectQuestionKeys().includes(getQuestionKey(question));
+}
+
+function getTotalQuestionCount() {
+    return state.chapters.reduce((total, chapter) => total + (state.questions[chapter.id]?.length || 0), 0);
+}
+
 // Current user info (populated on load)
 let currentUsername = '';
 
@@ -114,6 +204,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (e) {
         console.error("Auth check failed", e);
     }
+
+    normalizeQuestionBank();
     
     // Load saved progress from server
     try {
@@ -137,12 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     // Calculate total questions for UI
-    let totalQ = 0;
-    state.chapters.forEach(ch => {
-        if (state.questions[ch.id]) {
-            totalQ += state.questions[ch.id].length;
-        }
-    });
+    let totalQ = getTotalQuestionCount();
     document.querySelectorAll('.stat-row span')[3].innerText = totalQ.toLocaleString() + ' Qs';
     
     renderDashboard();
@@ -152,6 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Rehydrate state stats from saved progress
 function rehydrateStatsFromProgress() {
     let attempted = 0, correct = 0;
+    state.chaptersCompleted = 0;
     for (const chId of Object.keys(userProgress)) {
         const chProgress = userProgress[chId];
         for (const qId of Object.keys(chProgress)) {
@@ -174,6 +262,7 @@ function rehydrateStatsFromProgress() {
     }
     state.questionsAttempted = attempted;
     state.correctAnswers = correct;
+    state.questionsCompleted = correct;
     if (attempted > 0) {
         const overallAcc = correct / attempted;
         state.diagnosticScore = Math.round(130 + (overallAcc * 40));
@@ -217,9 +306,23 @@ function setupEventListeners() {
     }
 
     // Navigation (auto-close sidebar on mobile)
-    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
-    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
-    document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); switchView('overview'); closeSidebar(); });
+    function setActiveNav(activeId) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.toggle('active', item.id === activeId));
+    }
+
+    function showOverviewSection(activeId, selector) {
+        switchView('overview');
+        setActiveNav(activeId);
+        closeSidebar();
+        requestAnimationFrame(() => {
+            const target = selector ? document.querySelector(selector) : document.querySelector('.topbar');
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    }
+
+    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '.topbar'); });
+    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '.table-section'); });
+    document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-diagnostics', '.charts-grid'); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
         switchView('overview');
@@ -423,8 +526,9 @@ function renderDashboard() {
         accEl.className = 'kpi-trend neutral';
     }
     
-    document.getElementById('kpi-chapters').innerHTML = `${state.chaptersCompleted}<span class="kpi-sub">/4</span>`;
-    document.getElementById('kpi-chapters-bar').style.width = `${(state.chaptersCompleted / 4) * 100}%`;
+    const totalQuestions = getTotalQuestionCount();
+    document.getElementById('kpi-chapters').innerHTML = `${state.questionsCompleted}<span class="kpi-sub">/${totalQuestions}</span>`;
+    document.getElementById('kpi-chapters-bar').style.width = `${totalQuestions > 0 ? (state.questionsCompleted / totalQuestions) * 100 : 0}%`;
 
     // Update time KPI
     updateTimeKPI();
@@ -463,11 +567,7 @@ function renderDashboard() {
         `;
     });
 
-    // Update Chart with dynamic accuracy if available
-    if (acc > 0 && accuracyChartInstance) {
-        accuracyChartInstance.data.datasets[0].data[0] = acc; 
-        accuracyChartInstance.update();
-    }
+    updateCharts();
 }
 
 function updateTimeKPI() {
@@ -498,6 +598,67 @@ function updateTimeKPI() {
     }
 }
 
+function getChapterAccuracy(chapterId) {
+    const chProgress = userProgress[chapterId] || {};
+    const records = Object.values(chProgress);
+    const attempts = records.reduce((sum, item) => sum + (item.attempts || 0), 0);
+    if (attempts === 0) return 0;
+    const correct = records.filter(item => item.status === 'correct').length;
+    return Math.round((correct / attempts) * 100);
+}
+
+function getWeeklyScoreProgression() {
+    const records = [];
+    Object.values(userProgress).forEach(chProgress => {
+        Object.values(chProgress).forEach(item => {
+            if (item.lastAttemptedAt) records.push(item);
+        });
+    });
+
+    records.sort((a, b) => new Date(a.lastAttemptedAt) - new Date(b.lastAttemptedAt));
+    if (records.length === 0) {
+        return { labels: ['Week 1'], data: [130] };
+    }
+
+    const firstDate = new Date(records[0].lastAttemptedAt);
+    const weekly = new Map();
+    records.forEach(item => {
+        const weekIndex = Math.floor((new Date(item.lastAttemptedAt) - firstDate) / (7 * 24 * 60 * 60 * 1000));
+        if (!weekly.has(weekIndex)) weekly.set(weekIndex, { attempted: 0, correct: 0 });
+        const bucket = weekly.get(weekIndex);
+        bucket.attempted += item.attempts || 1;
+        if (item.status === 'correct') bucket.correct += 1;
+    });
+
+    let cumulativeAttempted = 0;
+    let cumulativeCorrect = 0;
+    const labels = [];
+    const data = [];
+    [...weekly.keys()].sort((a, b) => a - b).forEach(weekIndex => {
+        const bucket = weekly.get(weekIndex);
+        cumulativeAttempted += bucket.attempted;
+        cumulativeCorrect += bucket.correct;
+        labels.push(`Week ${weekIndex + 1}`);
+        data.push(Math.round(130 + (cumulativeCorrect / cumulativeAttempted) * 40));
+    });
+
+    return { labels, data };
+}
+
+function updateCharts() {
+    if (accuracyChartInstance) {
+        accuracyChartInstance.data.datasets[0].data = state.chapters.map(chapter => getChapterAccuracy(chapter.id));
+        accuracyChartInstance.update();
+    }
+
+    if (progressionChartInstance) {
+        const progression = getWeeklyScoreProgression();
+        progressionChartInstance.data.labels = progression.labels;
+        progressionChartInstance.data.datasets[0].data = progression.data;
+        progressionChartInstance.update();
+    }
+}
+
 // === QUIZ ENGINE ===
 
 let currentQuizCorrect = 0;
@@ -513,11 +674,14 @@ function buildQuizQueue(chapterId) {
     // Categorize questions by status
     const unseen = [], missed = [], revision = [], correct = [];
     allQuestions.forEach((q, idx) => {
+        if (isOnCorrectCooldown(q)) return;
         const p = chProgress[q.id || idx];
         if (!p) { unseen.push(q); }
         else if (p.status === 'missed') { missed.push(q); }
         else if (p.status === 'revision') { revision.push(q); }
-        else if (p.status === 'correct') { correct.push(q); }
+        else if (p.status === 'correct') {
+            correct.push(q);
+        }
         else { unseen.push(q); }
     });
 
@@ -658,6 +822,7 @@ window.startChapter = function(chapterId) {
 
 function renderQuestion() {
     const q = quizQueue[state.currentQuestionIndex];
+    selectedAnswerIndexes = [];
     
     document.getElementById('current-q-num').innerText = state.currentQuestionIndex + 1;
     
@@ -698,24 +863,50 @@ function renderQuestion() {
     }
 
     // Render text & options
-    document.getElementById('quiz-question-text').innerText = q.text;
-    
     const optsContainer = document.getElementById('quiz-options-container');
     optsContainer.innerHTML = '';
+    
+    const correctAnswers = getCorrectAnswers(q);
+    const isMultiAnswer = correctAnswers.length > 1;
+    const questionText = isMultiAnswer ? `${q.text}\n\nSelect exactly two answer choices.` : q.text;
+    document.getElementById('quiz-question-text').innerText = questionText;
     
     q.options.forEach((optText, index) => {
         const div = document.createElement('div');
         div.className = 'quiz-option';
         div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + index)}.</span> <span>${optText}</span>`;
         
-        div.addEventListener('click', () => handleAnswer(index, div));
+        div.addEventListener('click', () => {
+            if (isMultiAnswer) {
+                toggleMultiAnswer(index, div, correctAnswers.length);
+            } else {
+                handleAnswer([index], div);
+            }
+        });
         optsContainer.appendChild(div);
     });
 
     document.getElementById('quiz-feedback').style.display = 'none';
 }
 
-async function handleAnswer(selectedIndex, optElement) {
+function toggleMultiAnswer(selectedIndex, optElement, requiredCount) {
+    if (selectedAnswerIndexes.includes(selectedIndex)) {
+        selectedAnswerIndexes = selectedAnswerIndexes.filter(index => index !== selectedIndex);
+        optElement.classList.remove('selected');
+        return;
+    }
+
+    if (selectedAnswerIndexes.length >= requiredCount) return;
+
+    selectedAnswerIndexes.push(selectedIndex);
+    optElement.classList.add('selected');
+
+    if (selectedAnswerIndexes.length === requiredCount) {
+        handleAnswer([...selectedAnswerIndexes]);
+    }
+}
+
+async function handleAnswer(selectedIndexes, optElement = null) {
     const q = quizQueue[state.currentQuestionIndex];
     
     const options = document.querySelectorAll('.quiz-option');
@@ -724,21 +915,27 @@ async function handleAnswer(selectedIndex, optElement) {
     state.questionsAttempted++;
     currentQuizAttempted++;
     
-    const isCorrect = selectedIndex === q.answer;
+    const correctAnswers = getCorrectAnswers(q);
+    const selected = [...selectedIndexes].sort((a, b) => a - b);
+    const expected = [...correctAnswers].sort((a, b) => a - b);
+    const isCorrect = selected.length === expected.length && selected.every((index, i) => index === expected[i]);
     
     const feedback = document.getElementById('quiz-feedback');
     const fText = document.getElementById('feedback-text');
     const fExp = document.getElementById('feedback-explanation');
     
     if (isCorrect) {
-        optElement.classList.add('correct');
+        selected.forEach(index => options[index]?.classList.add('correct'));
         fText.innerText = "Correct! Well done.";
         fText.className = "success";
         state.correctAnswers++;
         currentQuizCorrect++;
+        rememberCorrectQuestion(q);
     } else {
-        optElement.classList.add('incorrect');
-        options[q.answer].classList.add('correct'); // Show correct answer
+        selected.forEach(index => {
+            if (!expected.includes(index)) options[index]?.classList.add('incorrect');
+        });
+        expected.forEach(index => options[index]?.classList.add('correct'));
         fText.innerText = "Incorrect.";
         fText.className = "error";
     }
@@ -766,6 +963,12 @@ async function handleAnswer(selectedIndex, optElement) {
             attempts: (prev ? prev.attempts + 1 : 1),
             lastAttemptedAt: new Date().toISOString()
         };
+        const nextStatus = userProgress[state.currentChapterId][q.id].status;
+        if (prev?.status !== 'correct' && nextStatus === 'correct') {
+            state.questionsCompleted++;
+        } else if (prev?.status === 'correct' && nextStatus !== 'correct') {
+            state.questionsCompleted = Math.max(0, state.questionsCompleted - 1);
+        }
     } catch (e) {
         console.error('Failed to save progress:', e);
     }
@@ -773,6 +976,12 @@ async function handleAnswer(selectedIndex, optElement) {
 
 function nextQuestion() {
     state.currentQuestionIndex++;
+    while (
+        state.currentQuestionIndex < quizQueue.length &&
+        isOnCorrectCooldown(quizQueue[state.currentQuestionIndex])
+    ) {
+        state.currentQuestionIndex++;
+    }
     
     if (state.currentQuestionIndex >= quizQueue.length) {
         finishChapter();
@@ -865,16 +1074,19 @@ function initCharts() {
 
     const progCtx = document.getElementById('progressionChart').getContext('2d');
     progressionChartInstance = new Chart(progCtx, {
-        type: 'radar',
+        type: 'line',
         data: {
-            labels: ['Diagnostic', 'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Current'],
+            labels: ['Week 1'],
             datasets: [
                 {
-                    label: 'Verbal',
-                    data: [130, 130, 130, 130, 130, 130],
-                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                    borderColor: '#8b5cf6',
-                    pointBackgroundColor: '#8b5cf6',
+                    label: 'Estimated Verbal Score',
+                    data: [130],
+                    backgroundColor: 'rgba(16, 185, 129, 0.16)',
+                    borderColor: '#10b981',
+                    pointBackgroundColor: '#10b981',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35
                 }
             ]
         },
@@ -882,14 +1094,17 @@ function initCharts() {
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                r: {
-                    angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
-                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                    pointLabels: { color: '#94a3b8', font: { family: "'Inter', sans-serif", size: 11 } },
-                    ticks: { display: false, min: 130, max: 170 }
-                }
+                y: {
+                    min: 130,
+                    max: 170,
+                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
+                    ticks: { stepSize: 10 }
+                },
+                x: { grid: { display: false, drawBorder: false } }
             },
-            plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } } }
+            plugins: { legend: { display: false } }
         }
     });
+
+    updateCharts();
 }
