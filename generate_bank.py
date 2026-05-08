@@ -1,4 +1,5 @@
 import json
+import gzip
 import random
 import re
 import xml.etree.ElementTree as ET
@@ -10,6 +11,7 @@ from zipfile import ZipFile
 RANDOM_SEED = 1701
 VOCAB_XLSX = Path(r"C:/Users/avikr/Downloads/Magoosh 1000 Words.xlsx")
 PUBLIC_BANK_PATH = Path("public/questions_bank.js")
+PUBLIC_BANK_GZIP_PATH = Path("public/questions_bank.js.gz")
 JSON_BANK_PATH = Path("questions.json")
 
 SHEET_NS = {"a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
@@ -343,10 +345,11 @@ def main():
         "window.QUESTION_BANK = " + json.dumps(bank, indent=2, ensure_ascii=False) + ";\n",
         encoding="utf-8"
     )
+    PUBLIC_BANK_GZIP_PATH.write_bytes(gzip.compress(PUBLIC_BANK_PATH.read_bytes(), compresslevel=9))
     JSON_BANK_PATH.write_text(json.dumps(bank, indent=2, ensure_ascii=False), encoding="utf-8")
 
     print(f"Generated {sum(len(v) for v in bank.values())} questions from {len(entries)} Magoosh words.")
-    print(f"Wrote {PUBLIC_BANK_PATH} and {JSON_BANK_PATH}.")
+    print(f"Wrote {PUBLIC_BANK_PATH}, {PUBLIC_BANK_GZIP_PATH}, and {JSON_BANK_PATH}.")
 
 
 if __name__ == "__main__":

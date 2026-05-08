@@ -5,6 +5,7 @@ const connectMongo = require('connect-mongo');
 const MongoStore = connectMongo.MongoStore || connectMongo.default || connectMongo;
 const bcrypt = require('bcrypt');
 const path = require('path');
+const fs = require('fs');
 
 // Prevent unhandled errors from crashing the server
 process.on('unhandledRejection', (err) => {
@@ -73,7 +74,26 @@ try {
 }
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/questions_bank.js', (req, res, next) => {
+    const gzPath = path.join(__dirname, 'public', 'questions_bank.js.gz');
+    if (!req.headers['accept-encoding']?.includes('gzip') || !fs.existsSync(gzPath)) {
+        return next();
+    }
+
+    res.set({
+        'Content-Encoding': 'gzip',
+        'Content-Type': 'application/javascript; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600',
+        'Vary': 'Accept-Encoding'
+    });
+    res.sendFile(gzPath);
+});
+
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '1h',
+    etag: true
+}));
 app.use(session({
     secret: process.env.SESSION_SECRET || 'gre_dashboard_secret_key',
     resave: false,
