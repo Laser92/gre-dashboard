@@ -1212,6 +1212,10 @@ function showFlashcard() {
     if (cardInner) {
         cardInner.classList.remove('is-flipped');
     }
+    const actions = document.getElementById('fc-actions');
+    if (actions) {
+        actions.style.display = 'none';
+    }
     document.getElementById('fc-counter').innerText = `${currentFlashcardIndex + 1} / ${flashcardQueue.length}`;
 }
 
@@ -1247,5 +1251,12 @@ window.handleFlashcardAnswer = async function(isCorrect) {
 };
 
 window.flipFlashcard = function() {
-    document.querySelector('.flashcard-inner').classList.toggle('is-flipped');
+    const inner = document.querySelector('.flashcard-inner');
+    if (inner) {
+        inner.classList.toggle('is-flipped');
+        const actions = document.getElementById('fc-actions');
+        if (actions) {
+            actions.style.display = inner.classList.contains('is-flipped') ? 'flex' : 'none';
+        }
+    }
 };
