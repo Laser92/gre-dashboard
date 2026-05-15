@@ -512,7 +512,7 @@ function switchView(viewName) {
 
     if (viewName === 'overview') {
         renderDashboard(); // Refresh stats when coming back
-    } else if (viewName === 'flashcards' && flashcards.length === 0) {
+    } else if (viewName === 'flashcards' && typeof flashcardsData !== 'undefined' && flashcardsData.length === 0) {
         loadFlashcards();
     }
 }
@@ -1106,51 +1106,144 @@ function initCharts() {
 }
 
 // === FLASHCARDS ENGINE ===
-let flashcards = [];
+let flashcardsData = [];
+let flashcardQueue = [];
 let currentFlashcardIndex = 0;
 
 async function loadFlashcards() {
     try {
         const res = await fetch('/flashcards.json');
         if (res.ok) {
-            flashcards = await res.json();
-            shuffleArray(flashcards);
+            const raw = await res.json();
+            flashcardsData = raw.map((fc, i) => ({ ...fc, id: i }));
+            
+            const progRes = await fetch('/api/progress/flashcards');
+            if (progRes.ok) {
+                const progData = await progRes.json();
+                if (!userProgress) userProgress = {};
+                userProgress['flashcards'] = progData.progress;
+            }
+            
+            buildFlashcardQueue();
             currentFlashcardIndex = 0;
-            showFlashcard(currentFlashcardIndex);
+            showFlashcard();
         }
     } catch (e) {
         console.error('Failed to load flashcards:', e);
     }
 }
 
-function showFlashcard(index) {
-    if (!flashcards || flashcards.length === 0) return;
-    const card = flashcards[index];
+function buildFlashcardQueue() {
+    const chProgress = userProgress['flashcards'] || {};
+    const unseen = [], missed = [], revision = [], correct = [];
+    
+    flashcardsData.forEach(q => {
+        const p = chProgress[q.id];
+        if (!p) { unseen.push(q); }
+        else if (p.status === 'missed') { missed.push(q); }
+        else if (p.status === 'revision') { revision.push(q); }
+        else if (p.status === 'correct') { correct.push(q); }
+        else { unseen.push(q); }
+    });
+
+    shuffleArray(unseen);
+    shuffleArray(missed);
+    shuffleArray(revision);
+    shuffleArray(correct);
+
+    const pools = [
+        { arr: unseen, weight: 6, tag: 'new' },
+        { arr: missed, weight: 2, tag: 'missed' },
+        { arr: revision, weight: 1, tag: 'revision' },
+        { arr: correct, weight: 1, tag: 'correct_review' }
+    ];
+
+    flashcardQueue = [];
+    const totalFlashcards = flashcardsData.length;
+
+    for (let i = 0; i < totalFlashcards; i++) {
+        let availablePools = pools.filter(p => p.arr.length > 0);
+        if (availablePools.length === 0) break;
+
+        let totalWeight = availablePools.reduce((sum, p) => sum + p.weight, 0);
+        let rand = Math.random() * totalWeight;
+        let cumulative = 0;
+
+        for (let p of availablePools) {
+            cumulative += p.weight;
+            if (rand <= cumulative) {
+                const q = p.arr.pop();
+                q._tag = p.tag;
+                flashcardQueue.push(q);
+                break;
+            }
+        }
+    }
+}
+
+function showFlashcard() {
+    if (!flashcardQueue || flashcardQueue.length === 0) return;
+    if (currentFlashcardIndex >= flashcardQueue.length) {
+        buildFlashcardQueue();
+        currentFlashcardIndex = 0;
+        if (flashcardQueue.length === 0) return;
+    }
+    
+    const card = flashcardQueue[currentFlashcardIndex];
     document.getElementById('fc-word').innerText = card.word || '';
     document.getElementById('fc-pos').innerText = card['part of speech'] ? `(${card['part of speech']})` : '';
     document.getElementById('fc-def').innerText = card.definition || '';
     document.getElementById('fc-example').innerText = card.example ? `"${card.example}"` : '';
     document.getElementById('fc-root').innerText = card.root ? `Root: ${card.root}` : '';
     
+    const tagEl = document.getElementById('fc-tag');
+    if (tagEl) {
+        const statusTag = {
+            new: { className: 'question-tag new', text: 'New' },
+            correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
+            revision: { className: 'question-tag revision', text: 'Revision' },
+            missed: { className: 'question-tag missed', text: 'Missed last time' }
+        }[card._tag] || { className: 'question-tag new', text: 'New' };
+        tagEl.className = statusTag.className;
+        tagEl.innerText = statusTag.text;
+    }
+    
     const cardInner = document.querySelector('.flashcard-inner');
     if (cardInner) {
         cardInner.classList.remove('is-flipped');
     }
-    document.getElementById('fc-counter').innerText = `${index + 1} / ${flashcards.length}`;
+    document.getElementById('fc-counter').innerText = `${currentFlashcardIndex + 1} / ${flashcardQueue.length}`;
 }
 
-window.nextFlashcard = function() {
-    if (currentFlashcardIndex < flashcards.length - 1) {
-        currentFlashcardIndex++;
-        showFlashcard(currentFlashcardIndex);
+window.handleFlashcardAnswer = async function(isCorrect) {
+    if (!flashcardQueue || flashcardQueue.length === 0) return;
+    const card = flashcardQueue[currentFlashcardIndex];
+    
+    try {
+        const resp = await fetch('/api/progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chapterId: 'flashcards',
+                questionId: card.id,
+                isCorrect
+            })
+        });
+        const data = await resp.json();
+        if (!userProgress) userProgress = {};
+        if (!userProgress['flashcards']) userProgress['flashcards'] = {};
+        const prev = userProgress['flashcards'][card.id];
+        userProgress['flashcards'][card.id] = {
+            status: data.status || (isCorrect ? 'correct' : 'missed'),
+            attempts: (prev ? prev.attempts + 1 : 1),
+            lastAttemptedAt: new Date().toISOString()
+        };
+    } catch (e) {
+        console.error('Failed to save flashcard progress:', e);
     }
-};
-
-window.prevFlashcard = function() {
-    if (currentFlashcardIndex > 0) {
-        currentFlashcardIndex--;
-        showFlashcard(currentFlashcardIndex);
-    }
+    
+    currentFlashcardIndex++;
+    showFlashcard();
 };
 
 window.flipFlashcard = function() {

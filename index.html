@@ -198,7 +198,10 @@
             <!-- FLASHCARDS VIEW -->
             <div id="flashcards-view" style="display: none; padding-top: 2rem; max-width: 600px; margin: 0 auto;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                    <h2>Vocabulary Flashcards</h2>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <h2>Vocabulary Flashcards</h2>
+                        <div id="fc-tag" class="question-tag new" style="display:inline-flex;">New</div>
+                    </div>
                     <div id="fc-counter" style="color: var(--text-secondary); font-weight: 500;"></div>
                 </div>
                 
@@ -218,9 +221,9 @@
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-                    <button class="primary-btn" onclick="prevFlashcard()" style="background: var(--glass-bg); color: var(--text-primary);"><i class="fas fa-arrow-left"></i> Previous</button>
-                    <button class="primary-btn" onclick="nextFlashcard()">Next <i class="fas fa-arrow-right"></i></button>
+                <div style="display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem;">
+                    <button class="primary-btn" onclick="handleFlashcardAnswer(false)" style="flex: 1; background: rgba(239, 68, 68, 0.15); color: var(--accent-error); border: 1px solid var(--accent-error);"><i class="fas fa-times"></i> Didn't know this</button>
+                    <button class="primary-btn" onclick="handleFlashcardAnswer(true)" style="flex: 1; background: rgba(16, 185, 129, 0.15); color: var(--accent-success); border: 1px solid var(--accent-success);"><i class="fas fa-check"></i> Knew it</button>
                 </div>
             </div>
 
