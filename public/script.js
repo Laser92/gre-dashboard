@@ -933,6 +933,19 @@ async function handleAnswer(selectedIndexes, optElement = null) {
         state.correctAnswers++;
         currentQuizCorrect++;
         rememberCorrectQuestion(q);
+        
+        // GREAT floating animation
+        const quizCard = document.querySelector('.quiz-card');
+        if (quizCard) {
+            const greatEl = document.createElement('div');
+            greatEl.className = 'floating-great';
+            greatEl.innerText = 'GREAT!';
+            greatEl.style.left = '50%';
+            greatEl.style.top = '40%';
+            quizCard.style.position = 'relative';
+            quizCard.appendChild(greatEl);
+            setTimeout(() => greatEl.remove(), 1200);
+        }
     } else {
         selected.forEach(index => {
             if (!expected.includes(index)) options[index]?.classList.add('incorrect');
@@ -940,6 +953,17 @@ async function handleAnswer(selectedIndexes, optElement = null) {
         expected.forEach(index => options[index]?.classList.add('correct'));
         fText.innerText = "Incorrect.";
         fText.className = "error";
+        
+        // Shake and Haptics
+        const quizCard = document.querySelector('.quiz-card');
+        if (quizCard) {
+            quizCard.classList.remove('shake');
+            void quizCard.offsetWidth; // Trigger reflow
+            quizCard.classList.add('shake');
+        }
+        if (navigator.vibrate) {
+            navigator.vibrate([100, 50, 100]); // Short vibration pattern
+        }
     }
 
     fExp.innerText = "Explanation: " + q.explanation;
