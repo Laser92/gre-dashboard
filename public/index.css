@@ -1327,6 +1327,16 @@ body {
     align-items: center;
     padding: 2.5rem;
     border-radius: 20px;
+    /* Smoked Glass Effect - No backdrop filter to fix WebKit 3D flip bleeding */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.flashcard-front {
+    transform: rotateY(0deg);
 }
 
 .flashcard-back {

@@ -1037,19 +1037,19 @@ function initCharts() {
     gradientPurple.addColorStop(1, 'rgba(139, 92, 246, 0.2)');
 
     accuracyChartInstance = new Chart(accuracyCtx, {
-        type: 'bar',
+        type: 'radar',
         data: {
             labels: ['Diagnostic', 'Text Comp.', 'Sentence Eq.', 'Reading Comp.'],
             datasets: [{
                 label: 'Accuracy %',
                 data: [0, 0, 0, 0], // Starts empty
-                backgroundColor: [
-                    gradientPurple, gradientPurple, 
-                    gradientBlue, gradientBlue
-                ],
-                borderRadius: 6,
-                borderSkipped: false,
-                barThickness: 32
+                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                borderColor: 'rgba(59, 130, 246, 0.8)',
+                pointBackgroundColor: 'rgba(139, 92, 246, 0.8)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(139, 92, 246, 0.8)',
+                borderWidth: 2
             }]
         },
         options: {
@@ -1057,13 +1057,17 @@ function initCharts() {
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                y: {
+                r: {
                     beginAtZero: true,
                     max: 100,
-                    grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false },
-                    ticks: { callback: function(value) { return value + '%'; } }
-                },
-                x: { grid: { display: false, drawBorder: false } }
+                    ticks: { display: false, stepSize: 20 },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    pointLabels: {
+                        color: '#94a3b8',
+                        font: { family: "'Inter', sans-serif", size: 12 }
+                    },
+                    angleLines: { color: 'rgba(255, 255, 255, 0.1)' }
+                }
             }
         }
     });
