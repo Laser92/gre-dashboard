@@ -1227,31 +1227,54 @@ window.handleFlashcardAnswer = async function(isCorrect) {
     if (!flashcardQueue || flashcardQueue.length === 0) return;
     const card = flashcardQueue[currentFlashcardIndex];
     
-    try {
-        const resp = await fetch('/api/progress', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chapterId: 'flashcards',
-                questionId: card.id,
-                isCorrect
-            })
-        });
-        const data = await resp.json();
-        if (!userProgress) userProgress = {};
-        if (!userProgress['flashcards']) userProgress['flashcards'] = {};
-        const prev = userProgress['flashcards'][card.id];
-        userProgress['flashcards'][card.id] = {
-            status: data.status || (isCorrect ? 'correct' : 'missed'),
-            attempts: (prev ? prev.attempts + 1 : 1),
-            lastAttemptedAt: new Date().toISOString()
-        };
-    } catch (e) {
-        console.error('Failed to save flashcard progress:', e);
-    }
+    // Save progress in background for a snappy UI
+    (async () => {
+        try {
+            const resp = await fetch('/api/progress', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chapterId: 'flashcards',
+                    questionId: card.id,
+                    isCorrect
+                })
+            });
+            const data = await resp.json();
+            if (!userProgress) userProgress = {};
+            if (!userProgress['flashcards']) userProgress['flashcards'] = {};
+            const prev = userProgress['flashcards'][card.id];
+            userProgress['flashcards'][card.id] = {
+                status: data.status || (isCorrect ? 'correct' : 'missed'),
+                attempts: (prev ? prev.attempts + 1 : 1),
+                lastAttemptedAt: new Date().toISOString()
+            };
+        } catch (e) {
+            console.error('Failed to save flashcard progress:', e);
+        }
+    })();
     
-    currentFlashcardIndex++;
-    showFlashcard();
+    const container = document.querySelector('.flashcard-container');
+    if (container) {
+        // Hide buttons immediately
+        const actions = document.getElementById('fc-actions');
+        if (actions) actions.style.display = 'none';
+        
+        // Apply swipe animation
+        container.classList.add(isCorrect ? 'swipe-right' : 'swipe-left');
+        
+        setTimeout(() => {
+            container.classList.remove('swipe-right', 'swipe-left');
+            container.classList.add('card-enter');
+            
+            currentFlashcardIndex++;
+            showFlashcard();
+            
+            setTimeout(() => container.classList.remove('card-enter'), 300);
+        }, 350);
+    } else {
+        currentFlashcardIndex++;
+        showFlashcard();
+    }
 };
 
 window.flipFlashcard = function() {

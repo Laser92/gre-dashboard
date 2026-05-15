@@ -1344,3 +1344,31 @@ body {
     align-items: flex-start;
     text-align: left;
 }
+
+/* Flashcard Swipe Animations */
+.swipe-left {
+    animation: swipeLeftAnim 0.4s ease-in forwards;
+}
+
+.swipe-right {
+    animation: swipeRightAnim 0.4s ease-in forwards;
+}
+
+.card-enter {
+    animation: cardEnterAnim 0.3s ease-out forwards;
+}
+
+@keyframes swipeLeftAnim {
+    0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateX(-150%) rotate(-15deg); opacity: 0; }
+}
+
+@keyframes swipeRightAnim {
+    0% { transform: translateX(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateX(150%) rotate(15deg); opacity: 0; }
+}
+
+@keyframes cardEnterAnim {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
