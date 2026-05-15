@@ -334,6 +334,7 @@ function setupEventListeners() {
     document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '.topbar'); });
     document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '.table-section'); });
     document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-diagnostics', '.charts-grid'); });
+    document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
         switchView('overview');
@@ -507,9 +508,12 @@ function switchView(viewName) {
     document.getElementById('overview-view').style.display = viewName === 'overview' ? 'block' : 'none';
     document.getElementById('quiz-view').style.display = viewName === 'quiz' ? 'block' : 'none';
     document.getElementById('results-view').style.display = viewName === 'results' ? 'block' : 'none';
+    document.getElementById('flashcards-view').style.display = viewName === 'flashcards' ? 'block' : 'none';
 
     if (viewName === 'overview') {
         renderDashboard(); // Refresh stats when coming back
+    } else if (viewName === 'flashcards' && flashcards.length === 0) {
+        loadFlashcards();
     }
 }
 
@@ -675,70 +679,60 @@ function updateCharts() {
 let currentQuizCorrect = 0;
 let currentQuizAttempted = 0;
 
-// Build the quiz queue using spaced repetition rules:
-// 80% unseen, 10% missed, 5% revision, 5% correct
-// For diagnostic (chapter 1): cluster RC questions together
+// Build the quiz queue using user-defined probabilities:
+// 60% unseen, 20% missed, 10% revision, 10% correct
 function buildQuizQueue(chapterId) {
     const allQuestions = state.questions[chapterId] || [];
     const chProgress = userProgress[chapterId] || {};
 
-    // Categorize questions by status
     const unseen = [], missed = [], revision = [], correct = [];
     allQuestions.forEach((q, idx) => {
-        if (isOnCorrectCooldown(q)) return;
         const p = chProgress[q.id || idx];
         if (!p) { unseen.push(q); }
         else if (p.status === 'missed') { missed.push(q); }
         else if (p.status === 'revision') { revision.push(q); }
-        else if (p.status === 'correct') {
-            correct.push(q);
-        }
+        else if (p.status === 'correct') { correct.push(q); }
         else { unseen.push(q); }
     });
 
-    // Keep unseen in original order (Q1, Q2, Q3...)
-    // Shuffle missed, revision, correct pools
+    shuffleArray(unseen);
     shuffleArray(missed);
     shuffleArray(revision);
     shuffleArray(correct);
 
-    // Target total = all available questions up to a session cap
-    const totalAvailable = unseen.length + missed.length + revision.length + correct.length;
-    const sessionCap = totalAvailable; // show all available
+    const pools = [
+        { arr: unseen, weight: 6, tag: 'new' },
+        { arr: missed, weight: 2, tag: 'missed' },
+        { arr: revision, weight: 1, tag: 'revision' },
+        { arr: correct, weight: 1, tag: 'correct_review' }
+    ];
 
-    // Calculate target counts per bucket
-    const targetMissed = Math.min(missed.length, Math.max(1, Math.round(sessionCap * 0.10)));
-    const targetRevision = Math.min(revision.length, Math.max(0, Math.round(sessionCap * 0.05)));
-    const targetCorrect = Math.min(correct.length, Math.max(0, Math.round(sessionCap * 0.05)));
-    const targetUnseen = Math.min(unseen.length, sessionCap - targetMissed - targetRevision - targetCorrect);
-
-    // Pick questions from each bucket
-    const pickedUnseen = unseen.slice(0, Math.max(0, targetUnseen));
-    const pickedMissed = missed.slice(0, targetMissed);
-    const pickedRevision = revision.slice(0, targetRevision);
-    const pickedCorrect = correct.slice(0, targetCorrect);
-
-    // Build the final queue: unseen first (in order), then interleave review questions
     let queue = [];
+    const totalQuestions = unseen.length + missed.length + revision.length + correct.length;
+
+    for (let i = 0; i < totalQuestions; i++) {
+        let availablePools = pools.filter(p => p.arr.length > 0);
+        if (availablePools.length === 0) break;
+
+        let totalWeight = availablePools.reduce((sum, p) => sum + p.weight, 0);
+        let rand = Math.random() * totalWeight;
+        let cumulative = 0;
+
+        for (let p of availablePools) {
+            cumulative += p.weight;
+            if (rand <= cumulative) {
+                const q = p.arr.pop();
+                q._tag = p.tag;
+                queue.push(q);
+                break;
+            }
+        }
+    }
 
     // For diagnostic test (chapter 1), cluster RC questions together
     if (chapterId === '1') {
-        queue = clusterRCQuestions([...pickedUnseen, ...pickedMissed, ...pickedRevision, ...pickedCorrect]);
-    } else {
-        // Unseen in sequential order first, then review items shuffled in
-        const reviewItems = [...pickedMissed, ...pickedRevision, ...pickedCorrect];
-        shuffleArray(reviewItems);
-        queue = [...pickedUnseen, ...reviewItems];
+        queue = clusterRCQuestions(queue);
     }
-
-    // Tag each question with its source bucket for UI
-    queue.forEach(q => {
-        const p = chProgress[q.id];
-        if (!p) { q._tag = 'new'; }
-        else if (p.status === 'missed') { q._tag = 'missed'; }
-        else if (p.status === 'revision') { q._tag = 'revision'; }
-        else if (p.status === 'correct') { q._tag = 'correct_review'; }
-    });
 
     return queue;
 }
@@ -984,12 +978,6 @@ async function handleAnswer(selectedIndexes, optElement = null) {
 
 function nextQuestion() {
     state.currentQuestionIndex++;
-    while (
-        state.currentQuestionIndex < quizQueue.length &&
-        isOnCorrectCooldown(quizQueue[state.currentQuestionIndex])
-    ) {
-        state.currentQuestionIndex++;
-    }
     
     if (state.currentQuestionIndex >= quizQueue.length) {
         finishChapter();
@@ -1116,3 +1104,55 @@ function initCharts() {
 
     updateCharts();
 }
+
+// === FLASHCARDS ENGINE ===
+let flashcards = [];
+let currentFlashcardIndex = 0;
+
+async function loadFlashcards() {
+    try {
+        const res = await fetch('/flashcards.json');
+        if (res.ok) {
+            flashcards = await res.json();
+            shuffleArray(flashcards);
+            currentFlashcardIndex = 0;
+            showFlashcard(currentFlashcardIndex);
+        }
+    } catch (e) {
+        console.error('Failed to load flashcards:', e);
+    }
+}
+
+function showFlashcard(index) {
+    if (!flashcards || flashcards.length === 0) return;
+    const card = flashcards[index];
+    document.getElementById('fc-word').innerText = card.word || '';
+    document.getElementById('fc-pos').innerText = card['part of speech'] ? `(${card['part of speech']})` : '';
+    document.getElementById('fc-def').innerText = card.definition || '';
+    document.getElementById('fc-example').innerText = card.example ? `"${card.example}"` : '';
+    document.getElementById('fc-root').innerText = card.root ? `Root: ${card.root}` : '';
+    
+    const cardInner = document.querySelector('.flashcard-inner');
+    if (cardInner) {
+        cardInner.classList.remove('is-flipped');
+    }
+    document.getElementById('fc-counter').innerText = `${index + 1} / ${flashcards.length}`;
+}
+
+window.nextFlashcard = function() {
+    if (currentFlashcardIndex < flashcards.length - 1) {
+        currentFlashcardIndex++;
+        showFlashcard(currentFlashcardIndex);
+    }
+};
+
+window.prevFlashcard = function() {
+    if (currentFlashcardIndex > 0) {
+        currentFlashcardIndex--;
+        showFlashcard(currentFlashcardIndex);
+    }
+};
+
+window.flipFlashcard = function() {
+    document.querySelector('.flashcard-inner').classList.toggle('is-flipped');
+};

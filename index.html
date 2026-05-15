@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRE Prep Dashboard | 5 lb. Book</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -34,6 +35,9 @@
                 </a>
                 <a href="#" class="nav-item" id="nav-diagnostics">
                     <i class="fas fa-chart-line"></i> Diagnostics
+                </a>
+                <a href="#" class="nav-item" id="nav-flashcards">
+                    <i class="fas fa-clone"></i> Flashcards
                 </a>
             </nav>
             <div class="book-info-card">
@@ -188,6 +192,35 @@
                         </div>
                     </div>
                     <button class="primary-btn mt-4" id="results-home-btn">Return to Dashboard</button>
+                </div>
+            </div>
+
+            <!-- FLASHCARDS VIEW -->
+            <div id="flashcards-view" style="display: none; padding-top: 2rem; max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2>Vocabulary Flashcards</h2>
+                    <div id="fc-counter" style="color: var(--text-secondary); font-weight: 500;"></div>
+                </div>
+                
+                <div class="flashcard-container" onclick="flipFlashcard()">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front glass">
+                            <h3 id="fc-word" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 0.5rem; text-transform: capitalize;"></h3>
+                            <p id="fc-pos" style="color: var(--text-secondary); font-style: italic;"></p>
+                            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">Tap to flip</p>
+                        </div>
+                        <div class="flashcard-back glass">
+                            <h4 style="font-size: 1.25rem; margin-bottom: 1rem;">Definition</h4>
+                            <p id="fc-def" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;"></p>
+                            <p id="fc-example" style="font-style: italic; color: var(--text-secondary); margin-bottom: 1rem;"></p>
+                            <div id="fc-root" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--glass-border); color: var(--accent-secondary); font-weight: 600;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                    <button class="primary-btn" onclick="prevFlashcard()" style="background: var(--glass-bg); color: var(--text-primary);"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="primary-btn" onclick="nextFlashcard()">Next <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
