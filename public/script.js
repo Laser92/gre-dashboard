@@ -12,6 +12,7 @@ const state = {
         { id: '3', title: '3. Text Completions', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
         { id: '4', title: '4. Sentence Equivalence', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
         { id: '5', title: '5. Reading Comprehension', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
+        { id: '6', title: '6. Sentence Completion Multiple Blanks', subject: 'Verbal', status: 'not-started', totalQuestions: 5 },
     ],
     questions: window.QUESTION_BANK || {}
 };
@@ -24,6 +25,7 @@ let quizQueue = [];
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
 let selectedAnswerIndexes = [];
+let multiBlankSelections = {};
 
 const SE_SYNONYM_PAIRS = {
     chicanery: 'deception',
@@ -917,11 +919,15 @@ function renderQuestion() {
     optsContainer.innerHTML = '';
     
     const correctAnswers = getCorrectAnswers(q);
-    const isMultiAnswer = correctAnswers.length > 1;
+    const isMultiBlank = Array.isArray(q.options[0]);
+    const isMultiAnswer = !isMultiBlank && correctAnswers.length > 1;
     document.getElementById('quiz-question-text').innerText = questionParts.body;
 
     const instructionEl = document.getElementById('quiz-question-instruction');
-    if (isMultiAnswer) {
+    if (isMultiBlank) {
+        instructionEl.innerText = `Select one entry for each blank. (${q.options.length} blanks)`;
+        instructionEl.style.display = 'block';
+    } else if (isMultiAnswer) {
         instructionEl.innerText = 'Select exactly two answer choices.';
         instructionEl.style.display = 'block';
     } else {
@@ -941,20 +947,69 @@ function renderQuestion() {
         challengePrompt.style.display = 'none';
     }
     
-    q.options.forEach((optText, index) => {
-        const div = document.createElement('div');
-        div.className = 'quiz-option';
-        div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + index)}.</span> <span>${optText}</span>`;
-        
-        div.addEventListener('click', () => {
-            if (isMultiAnswer) {
-                toggleMultiAnswer(index, div, correctAnswers.length);
-            } else {
-                handleAnswer([index], div);
-            }
+    if (isMultiBlank) {
+        multiBlankSelections = {};
+        optsContainer.style.display = 'flex';
+        optsContainer.style.gap = '2rem';
+        optsContainer.style.flexWrap = 'wrap';
+
+        q.options.forEach((blankOptions, blankIndex) => {
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'quiz-blank-group';
+            groupDiv.style.flex = '1';
+            groupDiv.style.minWidth = '200px';
+            
+            const groupTitle = document.createElement('h4');
+            groupTitle.innerText = `Blank ${blankIndex + 1}`;
+            groupTitle.style.marginBottom = '10px';
+            groupTitle.style.color = 'var(--text-secondary)';
+            groupDiv.appendChild(groupTitle);
+            
+            blankOptions.forEach((optText, optIndex) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-option';
+                div.dataset.blank = blankIndex;
+                div.dataset.option = optIndex;
+                div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + optIndex)}.</span> <span>${optText}</span>`;
+                
+                div.addEventListener('click', () => {
+                    const groupOptions = document.querySelectorAll(`.quiz-option[data-blank="${blankIndex}"]`);
+                    groupOptions.forEach(el => el.classList.remove('selected'));
+                    
+                    div.classList.add('selected');
+                    multiBlankSelections[blankIndex] = optIndex;
+                    
+                    if (Object.keys(multiBlankSelections).length === q.options.length) {
+                        const selected = [];
+                        for (let i = 0; i < q.options.length; i++) {
+                            selected.push(multiBlankSelections[i]);
+                        }
+                        handleAnswer(selected, null, true);
+                    }
+                });
+                groupDiv.appendChild(div);
+            });
+            optsContainer.appendChild(groupDiv);
         });
-        optsContainer.appendChild(div);
-    });
+    } else {
+        optsContainer.style.display = 'flex';
+        optsContainer.style.flexDirection = 'column';
+        optsContainer.style.gap = '1rem';
+        q.options.forEach((optText, index) => {
+            const div = document.createElement('div');
+            div.className = 'quiz-option';
+            div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + index)}.</span> <span>${optText}</span>`;
+            
+            div.addEventListener('click', () => {
+                if (isMultiAnswer) {
+                    toggleMultiAnswer(index, div, correctAnswers.length);
+                } else {
+                    handleAnswer([index], div);
+                }
+            });
+            optsContainer.appendChild(div);
+        });
+    }
 
     document.getElementById('quiz-feedback').style.display = 'none';
 }
@@ -976,7 +1031,7 @@ function toggleMultiAnswer(selectedIndex, optElement, requiredCount) {
     }
 }
 
-async function handleAnswer(selectedIndexes, optElement = null) {
+async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = false) {
     const q = quizQueue[state.currentQuestionIndex];
     
     const options = document.querySelectorAll('.quiz-option');
@@ -986,16 +1041,31 @@ async function handleAnswer(selectedIndexes, optElement = null) {
     currentQuizAttempted++;
     
     const correctAnswers = getCorrectAnswers(q);
-    const selected = [...selectedIndexes].sort((a, b) => a - b);
-    const expected = [...correctAnswers].sort((a, b) => a - b);
-    const isCorrect = selected.length === expected.length && selected.every((index, i) => index === expected[i]);
+    let isCorrect = false;
+    let expected = [];
+    if (isMultiBlank) {
+        const selected = [...selectedIndexes];
+        expected = [...correctAnswers];
+        isCorrect = selected.length === expected.length && selected.every((val, i) => val === expected[i]);
+    } else {
+        const selected = [...selectedIndexes].sort((a, b) => a - b);
+        expected = [...correctAnswers].sort((a, b) => a - b);
+        isCorrect = selected.length === expected.length && selected.every((index, i) => index === expected[i]);
+    }
     
     const feedback = document.getElementById('quiz-feedback');
     const fText = document.getElementById('feedback-text');
     const fExp = document.getElementById('feedback-explanation');
     
     if (isCorrect) {
-        selected.forEach(index => options[index]?.classList.add('correct'));
+        if (isMultiBlank) {
+            selectedIndexes.forEach((optIdx, blankIdx) => {
+                const el = document.querySelector(`.quiz-option[data-blank="${blankIdx}"][data-option="${optIdx}"]`);
+                if (el) el.classList.add('correct');
+            });
+        } else {
+            selectedIndexes.forEach(index => options[index]?.classList.add('correct'));
+        }
         const successMessages = ["Correct! Well done.", "Nice one!", "Great job!", "Spot on!", "Excellent work!", "Awesome!"];
         fText.innerText = successMessages[Math.floor(Math.random() * successMessages.length)];
         fText.className = "success";
@@ -1016,10 +1086,21 @@ async function handleAnswer(selectedIndexes, optElement = null) {
             setTimeout(() => greatEl.remove(), 1200);
         }
     } else {
-        selected.forEach(index => {
-            if (!expected.includes(index)) options[index]?.classList.add('incorrect');
-        });
-        expected.forEach(index => options[index]?.classList.add('correct'));
+        if (isMultiBlank) {
+            selectedIndexes.forEach((optIdx, blankIdx) => {
+                const el = document.querySelector(`.quiz-option[data-blank="${blankIdx}"][data-option="${optIdx}"]`);
+                if (el && expected[blankIdx] !== optIdx) el.classList.add('incorrect');
+            });
+            expected.forEach((optIdx, blankIdx) => {
+                const el = document.querySelector(`.quiz-option[data-blank="${blankIdx}"][data-option="${optIdx}"]`);
+                if (el) el.classList.add('correct');
+            });
+        } else {
+            selectedIndexes.forEach(index => {
+                if (!expected.includes(index)) options[index]?.classList.add('incorrect');
+            });
+            expected.forEach(index => options[index]?.classList.add('correct'));
+        }
         fText.innerText = "Incorrect.";
         fText.className = "error";
         
