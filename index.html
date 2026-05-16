@@ -150,12 +150,41 @@
                     </div>
                 </div>
 
-                <div class="quiz-controls" style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 15px;">
-                    <label style="color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                        <input type="checkbox" id="enable-countdown" style="cursor: pointer;"> Question Countdown
-                    </label>
-                    <input type="number" id="countdown-time" value="60" style="width: 60px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: var(--text-primary); outline: none;" min="5" max="600">
-                    <span style="color: var(--text-secondary); font-size: 0.9rem;">sec</span>
+                <div class="timer-settings" style="position: relative; margin-bottom: 15px; display: flex; justify-content: flex-end; align-items: center;">
+                    <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 100%; margin-right: 15px; top: 50%; transform: translateY(-50%); padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceHorizontal 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
+                        <span style="color: #fff; font-weight: 500; font-size: 0.95rem;">Ready for a challenge? Turn on the timer.</span>
+                        <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%) rotate(45deg); width: 10px; height: 10px; background: var(--card-bg); border-top: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
+                    </div>
+                    <button id="timer-settings-btn" class="secondary-btn" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 6px 12px; border-radius: 8px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <i class="fas fa-cog"></i> Timer Settings
+                    </button>
+                    <div id="timer-settings-dropdown" class="glass" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 8px; padding: 16px; border-radius: 12px; z-index: 100; min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; color: #fff; font-weight: 500; cursor: pointer;">
+                            Question Countdown
+                            <input type="checkbox" id="enable-countdown" style="accent-color: var(--accent-primary); width: 16px; height: 16px; cursor: pointer;">
+                        </label>
+                        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                            <button id="timer-sub-btn" style="background: none; border: none; color: var(--text-secondary); font-size: 1rem; font-weight: bold; cursor: pointer; padding: 0 8px;">-15</button>
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <input type="number" id="countdown-time" value="60" style="width: 40px; background: transparent; border: none; color: #fff; font-size: 1.1rem; font-weight: 600; text-align: center; outline: none; -moz-appearance: textfield;" readonly>
+                                <span style="color: var(--text-secondary); font-size: 0.9rem;">sec</span>
+                            </div>
+                            <button id="timer-add-btn" style="background: none; border: none; color: var(--text-secondary); font-size: 1rem; font-weight: bold; cursor: pointer; padding: 0 8px;">+15</button>
+                        </div>
+                        <style>
+                            input[type=number]::-webkit-inner-spin-button, 
+                            input[type=number]::-webkit-outer-spin-button { 
+                                -webkit-appearance: none; 
+                                margin: 0; 
+                            }
+                            #timer-sub-btn:hover, #timer-add-btn:hover { color: #fff; }
+                            #timer-settings-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+                            @keyframes bounceHorizontal {
+                                0%, 100% { transform: translateY(-50%) translateX(0); }
+                                50% { transform: translateY(-50%) translateX(-6px); }
+                            }
+                        </style>
+                    </div>
                 </div>
 
                 <div class="quiz-card glass">

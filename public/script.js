@@ -397,6 +397,39 @@ function setupEventListeners() {
         await fetch('/api/logout', { method: 'POST' });
         window.location.href = '/login';
     });
+
+    // Timer dropdown logic
+    const timerSettingsBtn = document.getElementById('timer-settings-btn');
+    const timerSettingsDropdown = document.getElementById('timer-settings-dropdown');
+    if (timerSettingsBtn && timerSettingsDropdown) {
+        timerSettingsBtn.addEventListener('click', () => {
+            const prompt = document.getElementById('timer-challenge-prompt');
+            if (prompt) prompt.style.display = 'none';
+            timerSettingsDropdown.style.display = timerSettingsDropdown.style.display === 'none' ? 'block' : 'none';
+        });
+        document.addEventListener('click', (e) => {
+            if (!timerSettingsBtn.contains(e.target) && !timerSettingsDropdown.contains(e.target)) {
+                timerSettingsDropdown.style.display = 'none';
+            }
+        });
+    }
+
+    const timerAddBtn = document.getElementById('timer-add-btn');
+    const timerSubBtn = document.getElementById('timer-sub-btn');
+    const countdownInput = document.getElementById('countdown-time');
+    
+    if (timerAddBtn && timerSubBtn && countdownInput) {
+        timerAddBtn.addEventListener('click', () => {
+            let val = parseInt(countdownInput.value, 10) || 60;
+            countdownInput.value = val + 15;
+        });
+        timerSubBtn.addEventListener('click', () => {
+            let val = parseInt(countdownInput.value, 10) || 60;
+            if (val > 15) {
+                countdownInput.value = val - 15;
+            }
+        });
+    }
 }
 
 // === PROFILE MODAL ===
@@ -723,9 +756,9 @@ function buildQuizQueue(chapterId) {
     shuffleArray(correct);
 
     const pools = [
-        { arr: unseen, weight: 6, tag: 'new' },
+        { arr: unseen, weight: 5, tag: 'new' },
         { arr: missed, weight: 2, tag: 'missed' },
-        { arr: revision, weight: 1, tag: 'revision' },
+        { arr: revision, weight: 2, tag: 'revision' },
         { arr: correct, weight: 1, tag: 'correct_review' }
     ];
 
@@ -862,7 +895,7 @@ function renderQuestion() {
 
     const statusTag = {
         new: { className: 'question-tag new', text: 'New' },
-        correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
+        correct_review: { className: 'question-tag correct-review', text: 'Correct previously' },
         revision: { className: 'question-tag revision', text: 'Revision' },
         missed: { className: 'question-tag missed', text: 'Missed last time' }
     }[q._tag] || { className: 'question-tag new', text: 'New' };
@@ -893,6 +926,19 @@ function renderQuestion() {
         instructionEl.style.display = 'block';
     } else {
         instructionEl.style.display = 'none';
+    }
+    
+    // Challenge prompt logic
+    const enableCountdown = document.getElementById('enable-countdown');
+    const challengePrompt = document.getElementById('timer-challenge-prompt');
+    if (enableCountdown && !enableCountdown.checked && challengePrompt) {
+        if (Math.random() < 0.15 && currentQuizAttempted >= 2) {
+            challengePrompt.style.display = 'block';
+        } else {
+            challengePrompt.style.display = 'none';
+        }
+    } else if (challengePrompt) {
+        challengePrompt.style.display = 'none';
     }
     
     q.options.forEach((optText, index) => {
@@ -1208,9 +1254,9 @@ function buildFlashcardQueue() {
     shuffleArray(correct);
 
     const pools = [
-        { arr: unseen, weight: 6, tag: 'new' },
+        { arr: unseen, weight: 5, tag: 'new' },
         { arr: missed, weight: 2, tag: 'missed' },
-        { arr: revision, weight: 1, tag: 'revision' },
+        { arr: revision, weight: 2, tag: 'revision' },
         { arr: correct, weight: 1, tag: 'correct_review' }
     ];
 
@@ -1256,7 +1302,7 @@ function showFlashcard() {
     if (tagEl) {
         const statusTag = {
             new: { className: 'question-tag new', text: 'New' },
-            correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
+            correct_review: { className: 'question-tag correct-review', text: 'Correct previously' },
             revision: { className: 'question-tag revision', text: 'Revision' },
             missed: { className: 'question-tag missed', text: 'Missed last time' }
         }[card._tag] || { className: 'question-tag new', text: 'New' };
