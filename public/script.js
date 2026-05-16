@@ -51,6 +51,32 @@ let chapterStartTime = null;      // When current chapter started
 let chapterElapsedSeconds = 0;    // Time for current chapter
 let questionStartTime = null;     // When current question started
 let timerInterval = null;         // Interval for live timer
+let passiveStudyStartTime = null; // Non-quiz study time, such as flashcards
+let currentViewName = 'overview';
+
+function getStudyTimeStorageKey() {
+    return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
+}
+
+function loadStoredStudyTime() {
+    const saved = Number(localStorage.getItem(getStudyTimeStorageKey()) || 0);
+    totalStudyTimeSeconds = Number.isFinite(saved) ? saved : 0;
+}
+
+function persistStudyTime() {
+    localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
+}
+
+function startPassiveStudyTimer() {
+    if (!passiveStudyStartTime) passiveStudyStartTime = Date.now();
+}
+
+function stopPassiveStudyTimer() {
+    if (!passiveStudyStartTime) return;
+    totalStudyTimeSeconds += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
+    passiveStudyStartTime = null;
+    persistStudyTime();
+}
 
 function startTimer() {
     chapterStartTime = Date.now();
@@ -89,12 +115,26 @@ function stopTimer() {
     if (chapterStartTime) {
         chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
         totalStudyTimeSeconds += chapterElapsedSeconds;
+        persistStudyTime();
     }
     if (timerInterval) {
         clearInterval(timerInterval);
         timerInterval = null;
     }
     chapterStartTime = null;
+}
+
+function persistActiveStudyTime() {
+    let pendingSeconds = 0;
+    if (chapterStartTime) {
+        pendingSeconds += Math.floor((Date.now() - chapterStartTime) / 1000);
+    }
+    if (passiveStudyStartTime) {
+        pendingSeconds += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
+    }
+    if (pendingSeconds > 0) {
+        localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds + pendingSeconds));
+    }
 }
 
 function updateTimerDisplay(seconds) {
@@ -222,6 +262,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         currentUsername = data.username;
+        loadStoredStudyTime();
         
         // Update UI with user info
         document.getElementById('nav-avatar').innerText = data.username.charAt(0).toUpperCase();
@@ -256,6 +297,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     setupEventListeners();
     setupProfileModal();
+    window.addEventListener('beforeunload', persistActiveStudyTime);
     
     try {
         initCharts();
@@ -404,11 +446,14 @@ function setupEventListeners() {
     const timerSettingsBtn = document.getElementById('timer-settings-btn');
     const timerSettingsDropdown = document.getElementById('timer-settings-dropdown');
     if (timerSettingsBtn && timerSettingsDropdown) {
-        timerSettingsBtn.addEventListener('click', () => {
+        timerSettingsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const prompt = document.getElementById('timer-challenge-prompt');
             if (prompt) prompt.style.display = 'none';
             timerSettingsDropdown.style.display = timerSettingsDropdown.style.display === 'none' ? 'block' : 'none';
         });
+        timerSettingsDropdown.addEventListener('click', (e) => e.stopPropagation());
         document.addEventListener('click', (e) => {
             if (!timerSettingsBtn.contains(e.target) && !timerSettingsDropdown.contains(e.target)) {
                 timerSettingsDropdown.style.display = 'none';
@@ -562,6 +607,10 @@ function setupProfileModal() {
 }
 
 function switchView(viewName) {
+    if (currentViewName === 'flashcards' && viewName !== 'flashcards') {
+        stopPassiveStudyTimer();
+    }
+
     document.getElementById('overview-view').style.display = viewName === 'overview' ? 'block' : 'none';
     document.getElementById('quiz-view').style.display = viewName === 'quiz' ? 'block' : 'none';
     document.getElementById('results-view').style.display = viewName === 'results' ? 'block' : 'none';
@@ -572,6 +621,11 @@ function switchView(viewName) {
     } else if (viewName === 'flashcards' && typeof flashcardsData !== 'undefined' && flashcardsData.length === 0) {
         loadFlashcards();
     }
+
+    if (viewName === 'flashcards') {
+        startPassiveStudyTimer();
+    }
+    currentViewName = viewName;
 }
 
 function renderDashboard() {
@@ -652,6 +706,9 @@ function updateTimeKPI() {
     if (chapterStartTime) {
         displayTime += Math.floor((Date.now() - chapterStartTime) / 1000);
     }
+    if (passiveStudyStartTime) {
+        displayTime += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
+    }
 
     const hrs = Math.floor(displayTime / 3600);
     const mins = Math.floor((displayTime % 3600) / 60);
@@ -719,7 +776,10 @@ function getWeeklyScoreProgression() {
 
 function updateCharts() {
     if (accuracyChartInstance) {
-        accuracyChartInstance.data.datasets[0].data = state.chapters.map(chapter => getChapterAccuracy(chapter.id));
+        accuracyChartInstance.data.datasets[0].data = [
+            ...state.chapters.map(chapter => getChapterAccuracy(chapter.id)),
+            getChapterAccuracy('flashcards')
+        ];
         accuracyChartInstance.update();
     }
 
@@ -897,7 +957,7 @@ function renderQuestion() {
 
     const statusTag = {
         new: { className: 'question-tag new', text: 'New' },
-        correct_review: { className: 'question-tag correct-review', text: 'Correct previously' },
+        correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
         revision: { className: 'question-tag revision', text: 'Revision' },
         missed: { className: 'question-tag missed', text: 'Missed last time' }
     }[q._tag] || { className: 'question-tag new', text: 'New' };
@@ -1218,10 +1278,10 @@ function initCharts() {
     accuracyChartInstance = new Chart(accuracyCtx, {
         type: 'radar',
         data: {
-            labels: ['Diagnostic', 'Text Comp.', 'Sentence Eq.', 'Reading Comp.'],
+            labels: ['Diagnostic', 'Text Comp.', 'Sentence Eq.', 'Reading Comp.', 'Multi-Blank', 'Flashcards'],
             datasets: [{
                 label: 'Accuracy %',
-                data: [0, 0, 0, 0], // Starts empty
+                data: [0, 0, 0, 0, 0, 0], // Starts empty
                 backgroundColor: 'rgba(59, 130, 246, 0.2)',
                 borderColor: 'rgba(59, 130, 246, 0.8)',
                 pointBackgroundColor: 'rgba(139, 92, 246, 0.8)',
@@ -1383,7 +1443,7 @@ function showFlashcard() {
     if (tagEl) {
         const statusTag = {
             new: { className: 'question-tag new', text: 'New' },
-            correct_review: { className: 'question-tag correct-review', text: 'Correct previously' },
+            correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
             revision: { className: 'question-tag revision', text: 'Revision' },
             missed: { className: 'question-tag missed', text: 'Missed last time' }
         }[card._tag] || { className: 'question-tag new', text: 'New' };
