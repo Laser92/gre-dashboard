@@ -12,7 +12,7 @@ const state = {
         { id: '3', title: '3. Text Completions', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
         { id: '4', title: '4. Sentence Equivalence', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
         { id: '5', title: '5. Reading Comprehension', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
-        { id: '6', title: '6. Sentence Completion Multiple Blanks', subject: 'Verbal', status: 'not-started', totalQuestions: 5 },
+        { id: '6', title: '6. Sentence Completion Multiple Blanks', subject: 'Verbal', status: 'not-started', totalQuestions: 300 },
     ],
     questions: window.QUESTION_BANK || {}
 };
@@ -235,6 +235,33 @@ function getTotalQuestionCount() {
     return state.chapters.reduce((total, chapter) => total + (state.questions[chapter.id]?.length || 0), 0);
 }
 
+function syncChaptersFromQuestionBank() {
+    const knownChapters = {
+        '1': { title: '1. Verbal Diagnostic Test', subject: 'Verbal' },
+        '3': { title: '3. Text Completions', subject: 'Verbal' },
+        '4': { title: '4. Sentence Equivalence', subject: 'Verbal' },
+        '5': { title: '5. Reading Comprehension', subject: 'Verbal' },
+        '6': { title: '6. Sentence Completion Multiple Blanks', subject: 'Verbal' }
+    };
+
+    Object.keys(state.questions).forEach(chapterId => {
+        if (state.chapters.some(chapter => chapter.id === chapterId)) return;
+        const meta = knownChapters[chapterId] || { title: `${chapterId}. Chapter ${chapterId}`, subject: 'Verbal' };
+        state.chapters.push({
+            id: chapterId,
+            title: meta.title,
+            subject: meta.subject,
+            status: 'not-started',
+            totalQuestions: state.questions[chapterId]?.length || 0
+        });
+    });
+
+    state.chapters.forEach(chapter => {
+        chapter.totalQuestions = state.questions[chapter.id]?.length || chapter.totalQuestions;
+    });
+    state.chapters.sort((a, b) => Number(a.id) - Number(b.id));
+}
+
 function splitQuestionLabel(text, fallbackNumber) {
     const match = String(text || '').match(/^((?:SE|TC|RC)?\s*Question\s*\d+):\s*(.*)$/i);
     if (!match) {
@@ -246,11 +273,44 @@ function splitQuestionLabel(text, fallbackNumber) {
     };
 }
 
+function getStatusCredit(status) {
+    if (status === 'correct' || status === 'revision') return 1;
+    return 0;
+}
+
+function getProgressAccuracy(chapterId = null) {
+    const records = [];
+    if (chapterId) {
+        records.push(...Object.values(userProgress[chapterId] || {}));
+    } else {
+        Object.values(userProgress).forEach(chProgress => {
+            records.push(...Object.values(chProgress || {}));
+        });
+    }
+    const attemptedRecords = records.filter(item => (item.attempts || 0) > 0);
+    if (attemptedRecords.length === 0) return { attempted: 0, correct: 0, percent: 0 };
+    const correct = attemptedRecords.reduce((sum, item) => sum + getStatusCredit(item.status), 0);
+    return {
+        attempted: attemptedRecords.length,
+        correct,
+        percent: Math.round((correct / attemptedRecords.length) * 100)
+    };
+}
+
+function refreshStatsFromProgress() {
+    const overall = getProgressAccuracy();
+    state.questionsAttempted = overall.attempted;
+    state.correctAnswers = overall.correct;
+    state.questionsCompleted = overall.correct;
+    state.diagnosticScore = overall.attempted > 0 ? Math.round(130 + (overall.correct / overall.attempted) * 40) : 0;
+}
+
 // Current user info (populated on load)
 let currentUsername = '';
 
 document.addEventListener('DOMContentLoaded', async () => {
     console.log("DOMContentLoaded started");
+    syncChaptersFromQuestionBank();
     
     // Auth Check
     try {
@@ -315,15 +375,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Rehydrate state stats from saved progress
 function rehydrateStatsFromProgress() {
-    let attempted = 0, correct = 0;
     state.chaptersCompleted = 0;
     for (const chId of Object.keys(userProgress)) {
         const chProgress = userProgress[chId];
-        for (const qId of Object.keys(chProgress)) {
-            const p = chProgress[qId];
-            attempted += p.attempts || 0;
-            if (p.status === 'correct') correct++;
-        }
         // Check if chapter is completed or in-progress
         const chapter = state.chapters.find(c => c.id === chId);
         if (chapter) {
@@ -337,13 +391,7 @@ function rehydrateStatsFromProgress() {
             }
         }
     }
-    state.questionsAttempted = attempted;
-    state.correctAnswers = correct;
-    state.questionsCompleted = correct;
-    if (attempted > 0) {
-        const overallAcc = correct / attempted;
-        state.diagnosticScore = Math.round(130 + (overallAcc * 40));
-    }
+    refreshStatsFromProgress();
 }
 
 function setupEventListeners() {
@@ -630,6 +678,7 @@ function switchView(viewName) {
 
 function renderDashboard() {
     // Update KPI Cards
+    refreshStatsFromProgress();
     const acc = state.questionsAttempted > 0 ? Math.round((state.correctAnswers / state.questionsAttempted) * 100) : 0;
     
     document.getElementById('kpi-score').innerHTML = `${state.diagnosticScore > 0 ? state.diagnosticScore : '--'}<span class="kpi-sub">/170</span>`;
@@ -728,12 +777,7 @@ function updateTimeKPI() {
 }
 
 function getChapterAccuracy(chapterId) {
-    const chProgress = userProgress[chapterId] || {};
-    const records = Object.values(chProgress);
-    const attempts = records.reduce((sum, item) => sum + (item.attempts || 0), 0);
-    if (attempts === 0) return 0;
-    const correct = records.filter(item => item.status === 'correct').length;
-    return Math.round((correct / attempts) * 100);
+    return getProgressAccuracy(chapterId).percent;
 }
 
 function getWeeklyScoreProgression() {
@@ -755,8 +799,8 @@ function getWeeklyScoreProgression() {
         const weekIndex = Math.floor((new Date(item.lastAttemptedAt) - firstDate) / (7 * 24 * 60 * 60 * 1000));
         if (!weekly.has(weekIndex)) weekly.set(weekIndex, { attempted: 0, correct: 0 });
         const bucket = weekly.get(weekIndex);
-        bucket.attempted += item.attempts || 1;
-        if (item.status === 'correct') bucket.correct += 1;
+        bucket.attempted += 1;
+        bucket.correct += getStatusCredit(item.status);
     });
 
     let cumulativeAttempted = 0;
@@ -1097,7 +1141,6 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     const options = document.querySelectorAll('.quiz-option');
     options.forEach(opt => opt.style.pointerEvents = 'none'); // Disable clicking
     
-    state.questionsAttempted++;
     currentQuizAttempted++;
     
     const correctAnswers = getCorrectAnswers(q);
@@ -1129,7 +1172,6 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         const successMessages = ["Correct! Well done.", "Nice one!", "Great job!", "Spot on!", "Excellent work!", "Awesome!"];
         fText.innerText = successMessages[Math.floor(Math.random() * successMessages.length)];
         fText.className = "success";
-        state.correctAnswers++;
         currentQuizCorrect++;
         rememberCorrectQuestion(q);
         
@@ -1210,6 +1252,8 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         } else if (prev?.status === 'correct' && nextStatus !== 'correct') {
             state.questionsCompleted = Math.max(0, state.questionsCompleted - 1);
         }
+        refreshStatsFromProgress();
+        renderDashboard();
     } catch (e) {
         console.error('Failed to save progress:', e);
     }
@@ -1238,11 +1282,7 @@ function finishChapter() {
         state.chaptersCompleted++;
     }
     
-    // Update diagnostic score based on ALL questions attempted
-    if (state.questionsAttempted > 0) {
-        const overallAcc = state.correctAnswers / state.questionsAttempted;
-        state.diagnosticScore = Math.round(130 + (overallAcc * 40));
-    }
+    refreshStatsFromProgress();
 
     document.getElementById('results-chapter-name').innerText = chapter.title;
     document.getElementById('result-correct').innerText = `${currentQuizCorrect} / ${currentQuizAttempted}`;
@@ -1492,6 +1532,8 @@ window.handleFlashcardAnswer = async function(isCorrect) {
                 attempts: (prev ? prev.attempts + 1 : 1),
                 lastAttemptedAt: new Date().toISOString()
             };
+            refreshStatsFromProgress();
+            renderDashboard();
         } catch (e) {
             console.error('Failed to save flashcard progress:', e);
         }

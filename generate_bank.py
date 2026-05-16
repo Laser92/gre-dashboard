@@ -176,6 +176,13 @@ def clean_cell(value):
     return re.sub(r"\s+", " ", value or "").strip()
 
 
+def clue_text(definition):
+    text = re.split(r"[.;]", definition, maxsplit=1)[0]
+    text = re.sub(r"\([^)]*\)", "", text)
+    text = text.replace("esp.", "especially")
+    return text.strip().rstrip(",") or definition
+
+
 def word_forms(word):
     base = word.lower()
     forms = {
@@ -278,6 +285,93 @@ def make_se_question(q_id, pair, lookup, grouped):
     }
 
 
+def make_multi_blank_question(q_id, entries, grouped):
+    blanks = 2 + (q_id % 3 == 0)
+    adjective_pool = [entry for entry in entries if entry["pos"] == "adjective"]
+    noun_pool = [entry for entry in entries if entry["pos"] == "noun"]
+    verb_pool = [entry for entry in entries if entry["pos"] == "verb"]
+    selected = random.sample(adjective_pool, 2)
+    if blanks == 3:
+        selected.append(random.choice(noun_pool if q_id % 2 else verb_pool))
+
+    definitions = [clue_text(entry["definition"]) for entry in selected]
+    if blanks == 2:
+        frames = [
+            (
+                "Although the report appeared (1) ________ at first glance, its central argument proved "
+                "(2) ________ once the committee noticed that the evidence suggested {d1}, while the "
+                "reasoning was {d2}."
+            ),
+            (
+                "The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested "
+                "{d1}, but the conclusion displayed {d2}."
+            ),
+            (
+                "The policy was praised as (1) ________, yet its implementation became (2) ________, "
+                "a contrast captured by the ideas of {d1} and {d2}."
+            )
+        ]
+    else:
+        if selected[2]["pos"] == "noun":
+            frames = [
+                (
+                    "The committee described the proposal as (1) ________, the opposition called it "
+                    "(2) ________, and the auditors finally treated the supporting claim as a form of "
+                    "(3) ________; in context, the blanks require ideas of {d1}, {d2}, and {d3}."
+                ),
+                (
+                    "What began as a (1) ________ exchange became (2) ________ after the witness's testimony "
+                    "introduced an element of (3) ________, matching the senses {d1}, {d2}, and {d3}."
+                ),
+                (
+                    "The novelist's style is at once (1) ________ and (2) ________, but the plot depends on "
+                    "a surprising degree of (3) ________, requiring words associated with {d1}, {d2}, and {d3}."
+                )
+            ]
+        else:
+            frames = [
+                (
+                    "The committee described the proposal as (1) ________, the opposition called it "
+                    "(2) ________, and the auditors finally chose to (3) ________ the central claim; in context, "
+                    "the blanks require ideas of {d1}, {d2}, and {d3}."
+                ),
+                (
+                    "What began as a (1) ________ exchange became (2) ________ after the witness tried to "
+                    "(3) ________ the record, matching the senses {d1}, {d2}, and {d3}."
+                ),
+                (
+                    "The novelist's style is at once (1) ________ and (2) ________, yet the narrator repeatedly "
+                    "tries to (3) ________ the reader's expectations, requiring words associated with {d1}, {d2}, and {d3}."
+                )
+            ]
+    template = frames[q_id % len(frames)]
+    text = f"SC Question {q_id}: " + template.format(
+        d1=definitions[0],
+        d2=definitions[1],
+        d3=definitions[2] if blanks == 3 else ""
+    )
+
+    option_groups = []
+    answers = []
+    explanations = []
+    for entry in selected:
+        options = [entry["word"], *choose_distractors(entry, grouped, 2, excluded={e["word"] for e in selected if e != entry})]
+        random.shuffle(options)
+        option_groups.append(options)
+        answers.append(options.index(entry["word"]))
+        explanations.append(f"Blank {len(explanations) + 1}: '{entry['word']}' means {entry['definition']}.")
+
+    return {
+        "id": q_id,
+        "passage": None,
+        "text": text,
+        "options": option_groups,
+        "answer": answers,
+        "answers": answers,
+        "explanation": " ".join(explanations)
+    }
+
+
 def make_rc_questions():
     questions = []
     q_id = 1
@@ -323,6 +417,10 @@ def build_bank(entries):
         make_se_question(i + 1, pair_words[i % len(pair_words)], lookup, grouped)
         for i in range(300)
     ]
+    mb_list = [
+        make_multi_blank_question(i + 1, blankable, grouped)
+        for i in range(300)
+    ]
     rc_list = make_rc_questions()
 
     diagnostic = []
@@ -332,7 +430,7 @@ def build_bank(entries):
         q["id"] = i + 1
         diagnostic.append(q)
 
-    return {"1": diagnostic, "3": tc_list, "4": se_list, "5": rc_list}
+    return {"1": diagnostic, "3": tc_list, "4": se_list, "5": rc_list, "6": mb_list}
 
 
 def main():

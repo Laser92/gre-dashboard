@@ -36,13 +36,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 3: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 3,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -83,13 +83,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 6: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses."
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 6,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -130,13 +130,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 9: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 9,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -177,13 +177,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 12: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
         "methodical",
+        "ceremonial",
+        "rebellious",
         "insular",
-        "prosperous",
-        "ceremonial"
+        "prosperous"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 12,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -225,10 +225,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 15: The passage primarily warns that archival evidence may:",
       "options": [
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents."
       ],
       "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -271,13 +271,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 18: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 18,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -318,10 +318,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 21: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -365,13 +365,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 24: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "methodical",
+        "ceremonial",
         "insular",
         "prosperous",
-        "ceremonial"
+        "methodical",
+        "rebellious"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 24,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -412,13 +412,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 27: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 27,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -460,10 +460,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 30: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
       "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -507,12 +507,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 33: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 33,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -553,13 +553,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 36: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
         "methodical",
         "prosperous",
         "ceremonial",
-        "insular"
+        "insular",
+        "rebellious"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 36,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -600,13 +600,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 39: The passage primarily warns that archival evidence may:",
       "options": [
+        "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 39,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -647,13 +647,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 42: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 42,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -694,10 +694,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 45: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -741,13 +741,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 48: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "ceremonial",
+        "methodical",
         "prosperous",
+        "rebellious",
         "insular",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 48,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -788,13 +788,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 51: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 51,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -835,13 +835,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 54: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution."
+        "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 54,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -885,8 +885,8 @@ window.QUESTION_BANK = {
         "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority."
       ],
       "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -930,10 +930,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 60: In context, 'fractious' most nearly means:",
       "options": [
         "rebellious",
-        "ceremonial",
-        "insular",
+        "prosperous",
         "methodical",
-        "prosperous"
+        "ceremonial",
+        "insular"
       ],
       "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -976,13 +976,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 63: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 63,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1023,13 +1023,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 66: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 66,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1070,13 +1070,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 69: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 69,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1117,13 +1117,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 72: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
         "rebellious",
+        "ceremonial",
+        "methodical",
         "insular",
-        "methodical"
+        "prosperous"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 72,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1165,12 +1165,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 75: The passage primarily warns that archival evidence may:",
       "options": [
         "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 75,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1211,13 +1211,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 78: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 78,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1258,13 +1258,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 81: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 81,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1305,13 +1305,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 84: In context, 'fractious' most nearly means:",
       "options": [
+        "prosperous",
         "rebellious",
-        "methodical",
         "insular",
-        "ceremonial",
-        "prosperous"
+        "methodical",
+        "ceremonial"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 84,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1352,13 +1352,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 87: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 87,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1399,10 +1399,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 90: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses."
       ],
       "answer": 1,
@@ -1446,10 +1446,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 93: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -1494,12 +1494,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 96: In context, 'fractious' most nearly means:",
       "options": [
         "ceremonial",
-        "prosperous",
         "insular",
-        "rebellious",
-        "methodical"
+        "methodical",
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 96,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1540,13 +1540,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 99: The passage primarily warns that archival evidence may:",
       "options": [
+        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 99,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1587,13 +1587,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 102: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 102,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1635,12 +1635,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 105: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 105,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1681,13 +1681,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 108: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "prosperous",
         "ceremonial",
+        "rebellious",
         "insular",
-        "rebellious"
+        "methodical",
+        "prosperous"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 108,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1728,13 +1728,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 111: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 111,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1775,13 +1775,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 114: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 114,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1822,13 +1822,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 117: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 117,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -1869,13 +1869,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 120: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "ceremonial",
         "rebellious",
+        "methodical",
+        "prosperous",
         "insular",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 120,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1916,13 +1916,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 123: The passage primarily warns that archival evidence may:",
       "options": [
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 123,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -1963,13 +1963,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 126: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 126,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2010,13 +2010,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 129: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 129,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2057,13 +2057,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 132: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "ceremonial",
-        "methodical",
         "prosperous",
-        "rebellious"
+        "ceremonial",
+        "insular",
+        "rebellious",
+        "methodical"
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 132,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2106,11 +2106,11 @@ window.QUESTION_BANK = {
       "options": [
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents."
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 135,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2151,13 +2151,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 138: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 138,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2198,13 +2198,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 141: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 141,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2245,13 +2245,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 144: In context, 'fractious' most nearly means:",
       "options": [
+        "ceremonial",
         "methodical",
-        "prosperous",
-        "insular",
         "rebellious",
-        "ceremonial"
+        "insular",
+        "prosperous"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 144,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2292,13 +2292,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 147: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 147,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2339,13 +2339,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 150: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution."
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 150,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2386,13 +2386,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 153: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement."
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 153,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2433,13 +2433,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 156: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "ceremonial",
-        "insular",
+        "rebellious",
         "methodical",
-        "rebellious"
+        "insular",
+        "prosperous",
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 156,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2480,13 +2480,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 159: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 159,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2528,12 +2528,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 162: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 162,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2574,13 +2574,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 165: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 165,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2621,13 +2621,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 168: In context, 'fractious' most nearly means:",
       "options": [
+        "insular",
+        "methodical",
         "rebellious",
         "ceremonial",
-        "insular",
-        "prosperous",
-        "methodical"
+        "prosperous"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 168,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2668,13 +2668,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 171: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 171,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2716,10 +2716,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 174: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
       "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -2762,13 +2762,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 177: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 177,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2810,12 +2810,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 180: In context, 'fractious' most nearly means:",
       "options": [
         "methodical",
-        "prosperous",
         "rebellious",
+        "ceremonial",
         "insular",
-        "ceremonial"
+        "prosperous"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 180,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2856,13 +2856,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 183: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 183,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -2904,12 +2904,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 186: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 186,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2950,13 +2950,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 189: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 189,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -2997,13 +2997,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 192: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "ceremonial",
-        "rebellious",
         "prosperous",
-        "methodical"
+        "ceremonial",
+        "methodical",
+        "insular",
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 192,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3044,11 +3044,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 195: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents."
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
       "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -3091,13 +3091,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 198: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 198,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3139,10 +3139,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 201: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a conclusion that can no longer be modified by later evidence."
       ],
       "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -3185,10 +3185,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 204: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "insular",
         "ceremonial",
+        "methodical",
         "prosperous",
+        "insular",
         "rebellious"
       ],
       "answer": 4,
@@ -3232,13 +3232,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 207: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 207,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3279,13 +3279,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 210: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 210,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3326,13 +3326,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 213: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a claim protected from criticism by institutional authority.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 213,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3374,12 +3374,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 216: In context, 'fractious' most nearly means:",
       "options": [
         "prosperous",
+        "methodical",
         "rebellious",
         "insular",
-        "ceremonial",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 216,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3420,11 +3420,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 219: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "privilege private letters over official documents."
       ],
       "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -3467,13 +3467,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 222: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses."
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 222,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3514,13 +3514,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 225: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 225,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3563,11 +3563,11 @@ window.QUESTION_BANK = {
       "options": [
         "prosperous",
         "insular",
+        "rebellious",
         "methodical",
-        "ceremonial",
-        "rebellious"
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 228,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3608,13 +3608,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 231: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 231,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3655,13 +3655,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 234: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 234,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3702,13 +3702,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 237: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 237,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3749,13 +3749,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 240: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "prosperous",
         "ceremonial",
-        "rebellious",
-        "methodical"
+        "insular",
+        "methodical",
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 240,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3796,13 +3796,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 243: The passage primarily warns that archival evidence may:",
       "options": [
+        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 243,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3843,10 +3843,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 246: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -3891,12 +3891,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 249: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 249,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -3937,13 +3937,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 252: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "methodical",
         "rebellious",
+        "methodical",
+        "ceremonial",
         "prosperous",
         "insular"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 252,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -3985,9 +3985,9 @@ window.QUESTION_BANK = {
       "text": "RC Question 255: The passage primarily warns that archival evidence may:",
       "options": [
         "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -4031,13 +4031,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 258: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert."
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 258,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4078,13 +4078,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 261: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 261,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4125,13 +4125,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 264: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
         "ceremonial",
+        "methodical",
         "insular",
-        "rebellious",
-        "prosperous"
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 264,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -4172,13 +4172,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 267: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 267,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -4219,13 +4219,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 270: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 270,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4267,12 +4267,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 273: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 273,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4313,13 +4313,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 276: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "rebellious",
         "ceremonial",
         "insular",
+        "prosperous",
+        "rebellious",
         "methodical"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 276,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -4360,13 +4360,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 279: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 279,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -4407,10 +4407,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 282: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -4454,13 +4454,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 285: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement."
+        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 285,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4501,11 +4501,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 288: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
         "insular",
+        "ceremonial",
+        "methodical",
         "rebellious",
-        "methodical"
+        "prosperous"
       ],
       "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -4548,13 +4548,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 291: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "privilege private letters over official documents."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 291,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -4595,13 +4595,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 294: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 294,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -4642,9 +4642,9 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 297: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation."
       ],
@@ -4689,13 +4689,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 300: In context, 'fractious' most nearly means:",
       "options": [
+        "methodical",
+        "ceremonial",
         "rebellious",
         "prosperous",
-        "insular",
-        "ceremonial",
-        "methodical"
+        "insular"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 300,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14609,13 +14609,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 1: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 1,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14624,12 +14624,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 2: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 2,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14637,13 +14637,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 3: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 3,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14651,13 +14651,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 4: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "rebellious",
-        "insular",
+        "ceremonial",
         "prosperous",
-        "ceremonial"
+        "insular",
+        "methodical",
+        "rebellious"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 4,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14665,13 +14665,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 5: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 5,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14679,13 +14679,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 6: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses."
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 6,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14693,13 +14693,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 7: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 7,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14707,13 +14707,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 8: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
         "rebellious",
         "prosperous",
         "ceremonial",
-        "insular"
+        "insular",
+        "methodical"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 8,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14721,13 +14721,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 9: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 9,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14735,13 +14735,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 10: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 10,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14749,10 +14749,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 11: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -14763,13 +14763,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 12: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
         "methodical",
+        "ceremonial",
+        "rebellious",
         "insular",
-        "prosperous",
-        "ceremonial"
+        "prosperous"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 12,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14777,13 +14777,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 13: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 13,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14791,13 +14791,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 14: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 14,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14806,10 +14806,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 15: The passage primarily warns that archival evidence may:",
       "options": [
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents."
       ],
       "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -14820,12 +14820,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 16: In context, 'fractious' most nearly means:",
       "options": [
         "prosperous",
-        "insular",
-        "rebellious",
+        "ceremonial",
         "methodical",
-        "ceremonial"
+        "insular",
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 16,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14833,9 +14833,9 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 17: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation."
       ],
@@ -14847,13 +14847,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 18: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 18,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14861,13 +14861,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 19: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 19,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14875,11 +14875,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 20: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
-        "rebellious",
+        "insular",
         "methodical",
-        "insular"
+        "rebellious",
+        "prosperous",
+        "ceremonial"
       ],
       "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -14889,10 +14889,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 21: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -14903,13 +14903,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 22: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 22,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14917,13 +14917,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 23: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 23,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14931,13 +14931,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 24: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "methodical",
+        "ceremonial",
         "insular",
         "prosperous",
-        "ceremonial"
+        "methodical",
+        "rebellious"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 24,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14945,13 +14945,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 25: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 25,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14959,13 +14959,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 26: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 26,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -14973,13 +14973,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 27: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 27,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -14988,10 +14988,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 28: In context, 'fractious' most nearly means:",
       "options": [
         "insular",
-        "methodical",
+        "ceremonial",
         "rebellious",
         "prosperous",
-        "ceremonial"
+        "methodical"
       ],
       "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -15001,11 +15001,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 29: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
       "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -15016,10 +15016,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 30: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
       "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -15029,13 +15029,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 31: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 31,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15043,13 +15043,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 32: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "prosperous",
-        "insular",
         "ceremonial",
-        "methodical"
+        "methodical",
+        "rebellious",
+        "insular",
+        "prosperous"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 32,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15058,12 +15058,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 33: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 33,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15072,12 +15072,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 34: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 34,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15085,13 +15085,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 35: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 35,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15099,13 +15099,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 36: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
         "methodical",
         "prosperous",
         "ceremonial",
-        "insular"
+        "insular",
+        "rebellious"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 36,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15113,11 +15113,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 37: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
       "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -15127,13 +15127,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 38: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 38,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15141,13 +15141,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 39: The passage primarily warns that archival evidence may:",
       "options": [
+        "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 39,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15156,12 +15156,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 40: In context, 'fractious' most nearly means:",
       "options": [
         "methodical",
-        "prosperous",
         "rebellious",
-        "insular",
-        "ceremonial"
+        "prosperous",
+        "ceremonial",
+        "insular"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 40,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15183,13 +15183,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 42: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 42,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15197,13 +15197,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 43: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 43,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15213,11 +15213,11 @@ window.QUESTION_BANK = {
       "options": [
         "methodical",
         "ceremonial",
-        "rebellious",
         "prosperous",
+        "rebellious",
         "insular"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 44,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15225,10 +15225,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 45: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -15239,13 +15239,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 46: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 46,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15253,13 +15253,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 47: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 47,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15267,13 +15267,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 48: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "ceremonial",
+        "methodical",
         "prosperous",
+        "rebellious",
         "insular",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 48,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15281,13 +15281,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 49: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation."
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 49,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15295,13 +15295,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 50: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
         "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 50,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15309,13 +15309,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 51: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 51,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15323,13 +15323,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 52: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
         "rebellious",
-        "methodical",
+        "prosperous",
         "insular",
-        "ceremonial"
+        "ceremonial",
+        "methodical"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 52,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15337,13 +15337,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 53: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 53,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15351,13 +15351,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 54: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution."
+        "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 54,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15365,13 +15365,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 55: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 55,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15380,9 +15380,9 @@ window.QUESTION_BANK = {
       "text": "RC Question 56: In context, 'fractious' most nearly means:",
       "options": [
         "ceremonial",
-        "prosperous",
-        "rebellious",
         "insular",
+        "rebellious",
+        "prosperous",
         "methodical"
       ],
       "answer": 2,
@@ -15396,8 +15396,8 @@ window.QUESTION_BANK = {
         "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority."
       ],
       "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -15407,13 +15407,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 58: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 58,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15421,13 +15421,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 59: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 59,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15436,10 +15436,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 60: In context, 'fractious' most nearly means:",
       "options": [
         "rebellious",
-        "ceremonial",
-        "insular",
+        "prosperous",
         "methodical",
-        "prosperous"
+        "ceremonial",
+        "insular"
       ],
       "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -15449,13 +15449,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 61: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 61,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15464,12 +15464,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 62: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 62,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15477,13 +15477,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 63: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 63,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15491,8 +15491,8 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 64: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
         "insular",
+        "prosperous",
         "methodical",
         "rebellious",
         "ceremonial"
@@ -15505,13 +15505,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 65: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement."
+        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 65,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15519,13 +15519,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 66: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 66,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15534,9 +15534,9 @@ window.QUESTION_BANK = {
       "text": "RC Question 67: The passage primarily warns that archival evidence may:",
       "options": [
         "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
       "answer": 0,
@@ -15548,12 +15548,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 68: In context, 'fractious' most nearly means:",
       "options": [
         "methodical",
-        "rebellious",
-        "prosperous",
+        "ceremonial",
         "insular",
-        "ceremonial"
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 68,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15561,13 +15561,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 69: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 69,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15575,13 +15575,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 70: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 70,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15589,13 +15589,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 71: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 71,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15603,13 +15603,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 72: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
         "rebellious",
+        "ceremonial",
+        "methodical",
         "insular",
-        "methodical"
+        "prosperous"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 72,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15617,13 +15617,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 73: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 73,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15633,9 +15633,9 @@ window.QUESTION_BANK = {
       "options": [
         "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution."
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
       "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -15646,12 +15646,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 75: The passage primarily warns that archival evidence may:",
       "options": [
         "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 75,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15659,13 +15659,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 76: In context, 'fractious' most nearly means:",
       "options": [
+        "methodical",
         "prosperous",
-        "rebellious",
-        "insular",
         "ceremonial",
-        "methodical"
+        "insular",
+        "rebellious"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 76,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15673,13 +15673,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 77: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority."
+        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 77,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15687,13 +15687,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 78: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 78,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15701,11 +15701,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 79: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions."
+        "provide unreliable dates for otherwise well-attested events."
       ],
       "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -15716,12 +15716,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 80: In context, 'fractious' most nearly means:",
       "options": [
         "ceremonial",
-        "insular",
+        "rebellious",
         "prosperous",
         "methodical",
-        "rebellious"
+        "insular"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 80,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15729,13 +15729,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 81: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 81,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15743,13 +15743,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 82: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 82,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15757,10 +15757,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 83: The passage primarily warns that archival evidence may:",
       "options": [
+        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -15771,13 +15771,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 84: In context, 'fractious' most nearly means:",
       "options": [
+        "prosperous",
         "rebellious",
-        "methodical",
         "insular",
-        "ceremonial",
-        "prosperous"
+        "methodical",
+        "ceremonial"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 84,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15785,13 +15785,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 85: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 85,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15799,13 +15799,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 86: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 86,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15813,13 +15813,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 87: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 87,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15827,13 +15827,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 88: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
         "rebellious",
-        "ceremonial",
+        "methodical",
         "prosperous",
+        "ceremonial",
         "insular"
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 88,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15841,13 +15841,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 89: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 89,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15855,10 +15855,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 90: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses."
       ],
       "answer": 1,
@@ -15869,11 +15869,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 91: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
       "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -15883,13 +15883,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 92: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
-        "methodical",
+        "insular",
         "rebellious",
-        "insular"
+        "prosperous",
+        "ceremonial",
+        "methodical"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 92,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15897,10 +15897,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 93: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a position that has survived sustained efforts at refutation."
       ],
       "answer": 4,
@@ -15911,13 +15911,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 94: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 94,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15925,13 +15925,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 95: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 95,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15940,12 +15940,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 96: In context, 'fractious' most nearly means:",
       "options": [
         "ceremonial",
-        "prosperous",
         "insular",
-        "rebellious",
-        "methodical"
+        "methodical",
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 96,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15953,13 +15953,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 97: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 97,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15968,12 +15968,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 98: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 98,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -15981,13 +15981,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 99: The passage primarily warns that archival evidence may:",
       "options": [
+        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 99,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -15996,12 +15996,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 100: In context, 'fractious' most nearly means:",
       "options": [
         "prosperous",
-        "rebellious",
         "insular",
-        "ceremonial",
-        "methodical"
+        "methodical",
+        "rebellious",
+        "ceremonial"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 100,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16009,13 +16009,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 101: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 101,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16023,13 +16023,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 102: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 102,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16037,13 +16037,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 103: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
+        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 103,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16051,11 +16051,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 104: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "insular",
         "ceremonial",
+        "methodical",
+        "prosperous",
         "rebellious",
-        "prosperous"
+        "insular"
       ],
       "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -16066,12 +16066,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 105: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 105,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16079,13 +16079,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 106: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a useful corrective to excessive academic caution."
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 106,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16093,13 +16093,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 107: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 107,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16107,13 +16107,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 108: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "prosperous",
         "ceremonial",
+        "rebellious",
         "insular",
-        "rebellious"
+        "methodical",
+        "prosperous"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 108,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16121,75 +16121,19 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 109: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 109,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
     },
     {
       "text": "RC Question 110: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
-      "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
-      ],
-      "answer": 0,
-      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
-      "id": 110,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 111: The passage primarily warns that archival evidence may:",
-      "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
-      ],
-      "answer": 3,
-      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
-      "id": 111,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 112: In context, 'fractious' most nearly means:",
-      "options": [
-        "insular",
-        "ceremonial",
-        "prosperous",
-        "methodical",
-        "rebellious"
-      ],
-      "answer": 4,
-      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
-      "id": 112,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 113: The passage suggests that a mature scientific consensus is best understood as:",
-      "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation."
-      ],
-      "answer": 4,
-      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
-      "id": 113,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 114: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
@@ -16199,25 +16143,193 @@ window.QUESTION_BANK = {
       ],
       "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
+      "id": 110,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 111: The passage primarily warns that archival evidence may:",
+      "options": [
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents."
+      ],
+      "answer": 0,
+      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
+      "id": 111,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 112: In context, 'fractious' most nearly means:",
+      "options": [
+        "rebellious",
+        "methodical",
+        "prosperous",
+        "ceremonial",
+        "insular"
+      ],
+      "answer": 0,
+      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
+      "id": 112,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 113: The passage suggests that a mature scientific consensus is best understood as:",
+      "options": [
+        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
+      ],
+      "answer": 0,
+      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
+      "id": 113,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 114: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
+      "options": [
+        "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
+      ],
+      "answer": 4,
+      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 114,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
     },
     {
       "text": "RC Question 115: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 115,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
     },
     {
       "text": "RC Question 116: In context, 'fractious' most nearly means:",
+      "options": [
+        "methodical",
+        "rebellious",
+        "prosperous",
+        "ceremonial",
+        "insular"
+      ],
+      "answer": 1,
+      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
+      "id": 116,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 117: The passage suggests that a mature scientific consensus is best understood as:",
+      "options": [
+        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
+      ],
+      "answer": 2,
+      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
+      "id": 117,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 118: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
+      "options": [
+        "a necessary stage in the validation of novel hypotheses.",
+        "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
+      ],
+      "answer": 2,
+      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
+      "id": 118,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 119: The passage primarily warns that archival evidence may:",
+      "options": [
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events."
+      ],
+      "answer": 3,
+      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
+      "id": 119,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 120: In context, 'fractious' most nearly means:",
+      "options": [
+        "rebellious",
+        "methodical",
+        "prosperous",
+        "insular",
+        "ceremonial"
+      ],
+      "answer": 0,
+      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
+      "id": 120,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 121: The passage suggests that a mature scientific consensus is best understood as:",
+      "options": [
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation."
+      ],
+      "answer": 4,
+      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
+      "id": 121,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 122: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
+      "options": [
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
+      ],
+      "answer": 3,
+      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
+      "id": 122,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 123: The passage primarily warns that archival evidence may:",
+      "options": [
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
+      ],
+      "answer": 3,
+      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
+      "id": 123,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 124: In context, 'fractious' most nearly means:",
       "options": [
         "insular",
         "methodical",
@@ -16227,131 +16339,19 @@ window.QUESTION_BANK = {
       ],
       "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
-      "id": 116,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 117: The passage suggests that a mature scientific consensus is best understood as:",
-      "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation."
-      ],
-      "answer": 4,
-      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
-      "id": 117,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 118: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
-      "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
-      ],
-      "answer": 4,
-      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
-      "id": 118,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 119: The passage primarily warns that archival evidence may:",
-      "options": [
-        "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
-      ],
-      "answer": 2,
-      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
-      "id": 119,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 120: In context, 'fractious' most nearly means:",
-      "options": [
-        "prosperous",
-        "ceremonial",
-        "rebellious",
-        "insular",
-        "methodical"
-      ],
-      "answer": 2,
-      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
-      "id": 120,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 121: The passage suggests that a mature scientific consensus is best understood as:",
-      "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement."
-      ],
-      "answer": 3,
-      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
-      "id": 121,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 122: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
-      "options": [
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
-      ],
-      "answer": 1,
-      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
-      "id": 122,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 123: The passage primarily warns that archival evidence may:",
-      "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
-      ],
-      "answer": 2,
-      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
-      "id": 123,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 124: In context, 'fractious' most nearly means:",
-      "options": [
-        "prosperous",
-        "ceremonial",
-        "insular",
-        "rebellious",
-        "methodical"
-      ],
-      "answer": 3,
-      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 124,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
     },
     {
       "text": "RC Question 125: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 125,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16359,13 +16359,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 126: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
         "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 126,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16373,9 +16373,9 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 127: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
@@ -16387,13 +16387,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 128: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "ceremonial",
-        "insular",
         "prosperous",
-        "methodical"
+        "methodical",
+        "rebellious",
+        "insular",
+        "ceremonial"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 128,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16401,13 +16401,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 129: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 129,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16415,13 +16415,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 130: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 130,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16429,13 +16429,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 131: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 131,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16443,13 +16443,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 132: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "ceremonial",
-        "methodical",
         "prosperous",
-        "rebellious"
+        "ceremonial",
+        "insular",
+        "rebellious",
+        "methodical"
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 132,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16457,13 +16457,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 133: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority."
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 133,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16471,13 +16471,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 134: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 134,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16487,11 +16487,11 @@ window.QUESTION_BANK = {
       "options": [
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents."
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 135,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16499,11 +16499,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 136: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
         "prosperous",
-        "methodical",
+        "ceremonial",
+        "insular",
         "rebellious",
-        "insular"
+        "methodical"
       ],
       "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -16513,11 +16513,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 137: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
       "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -16527,13 +16527,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 138: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 138,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16542,12 +16542,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 139: The passage primarily warns that archival evidence may:",
       "options": [
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 139,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16555,13 +16555,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 140: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
         "methodical",
-        "rebellious",
         "insular",
-        "ceremonial"
+        "ceremonial",
+        "rebellious",
+        "prosperous"
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 140,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16569,13 +16569,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 141: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 141,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16584,12 +16584,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 142: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 142,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16599,9 +16599,9 @@ window.QUESTION_BANK = {
       "options": [
         "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
       ],
       "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -16611,13 +16611,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 144: In context, 'fractious' most nearly means:",
       "options": [
+        "ceremonial",
         "methodical",
-        "prosperous",
-        "insular",
         "rebellious",
-        "ceremonial"
+        "insular",
+        "prosperous"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 144,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16625,13 +16625,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 145: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 145,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16640,10 +16640,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 146: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert."
       ],
       "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -16653,13 +16653,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 147: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 147,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16668,9 +16668,9 @@ window.QUESTION_BANK = {
       "text": "RC Question 148: In context, 'fractious' most nearly means:",
       "options": [
         "rebellious",
+        "prosperous",
         "insular",
         "methodical",
-        "prosperous",
         "ceremonial"
       ],
       "answer": 0,
@@ -16681,13 +16681,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 149: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 149,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16695,13 +16695,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 150: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution."
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 150,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16710,12 +16710,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 151: The passage primarily warns that archival evidence may:",
       "options": [
         "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 151,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16723,11 +16723,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 152: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "insular",
         "methodical",
+        "insular",
+        "ceremonial",
         "rebellious",
-        "ceremonial"
+        "prosperous"
       ],
       "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -16737,13 +16737,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 153: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement."
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 153,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16751,13 +16751,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 154: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 154,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16765,13 +16765,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 155: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 155,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16779,13 +16779,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 156: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "ceremonial",
-        "insular",
+        "rebellious",
         "methodical",
-        "rebellious"
+        "insular",
+        "prosperous",
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 156,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16793,11 +16793,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 157: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
       "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -16807,13 +16807,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 158: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 158,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16821,13 +16821,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 159: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 159,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16835,13 +16835,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 160: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
+        "methodical",
+        "rebellious",
         "prosperous",
         "insular",
-        "methodical",
-        "rebellious"
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 160,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16849,13 +16849,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 161: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 161,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16864,12 +16864,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 162: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 162,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16877,13 +16877,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 163: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 163,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16891,13 +16891,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 164: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
         "insular",
+        "rebellious",
         "methodical",
-        "prosperous",
-        "rebellious"
+        "ceremonial",
+        "prosperous"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 164,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16905,13 +16905,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 165: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 165,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -16919,10 +16919,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 166: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -16933,13 +16933,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 167: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events."
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 167,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -16947,75 +16947,19 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 168: In context, 'fractious' most nearly means:",
       "options": [
+        "insular",
+        "methodical",
         "rebellious",
         "ceremonial",
-        "insular",
-        "prosperous",
-        "methodical"
+        "prosperous"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 168,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
     },
     {
       "text": "RC Question 169: The passage suggests that a mature scientific consensus is best understood as:",
-      "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
-      ],
-      "answer": 4,
-      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
-      "id": 169,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 170: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
-      "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution."
-      ],
-      "answer": 2,
-      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
-      "id": 170,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 171: The passage primarily warns that archival evidence may:",
-      "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions."
-      ],
-      "answer": 0,
-      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
-      "id": 171,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 172: In context, 'fractious' most nearly means:",
-      "options": [
-        "insular",
-        "methodical",
-        "prosperous",
-        "rebellious",
-        "ceremonial"
-      ],
-      "answer": 3,
-      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
-      "id": 172,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 173: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
@@ -17025,6 +16969,62 @@ window.QUESTION_BANK = {
       ],
       "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
+      "id": 169,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 170: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
+      "options": [
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert."
+      ],
+      "answer": 1,
+      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
+      "id": 170,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 171: The passage primarily warns that archival evidence may:",
+      "options": [
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
+      ],
+      "answer": 1,
+      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
+      "id": 171,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 172: In context, 'fractious' most nearly means:",
+      "options": [
+        "rebellious",
+        "ceremonial",
+        "prosperous",
+        "methodical",
+        "insular"
+      ],
+      "answer": 0,
+      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
+      "id": 172,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 173: The passage suggests that a mature scientific consensus is best understood as:",
+      "options": [
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
+      ],
+      "answer": 1,
+      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 173,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
     },
@@ -17032,10 +17032,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 174: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
       "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -17046,12 +17046,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 175: The passage primarily warns that archival evidence may:",
       "options": [
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 175,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17059,11 +17059,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 176: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
+        "ceremonial",
         "prosperous",
         "rebellious",
-        "ceremonial",
-        "methodical"
+        "methodical",
+        "insular"
       ],
       "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -17073,13 +17073,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 177: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 177,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17087,13 +17087,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 178: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 178,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17101,13 +17101,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 179: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 179,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17116,12 +17116,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 180: In context, 'fractious' most nearly means:",
       "options": [
         "methodical",
-        "prosperous",
         "rebellious",
+        "ceremonial",
         "insular",
-        "ceremonial"
+        "prosperous"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 180,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17129,13 +17129,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 181: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 181,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17143,10 +17143,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 182: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert."
       ],
       "answer": 2,
@@ -17157,13 +17157,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 183: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 183,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17185,13 +17185,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 185: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 185,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17200,12 +17200,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 186: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 186,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17213,13 +17213,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 187: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 187,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17227,13 +17227,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 188: In context, 'fractious' most nearly means:",
       "options": [
+        "insular",
         "rebellious",
         "prosperous",
         "methodical",
-        "insular",
         "ceremonial"
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 188,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17241,13 +17241,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 189: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation.",
         "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 189,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17255,13 +17255,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 190: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 190,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17269,13 +17269,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 191: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 191,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17283,13 +17283,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 192: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "ceremonial",
-        "rebellious",
         "prosperous",
-        "methodical"
+        "ceremonial",
+        "methodical",
+        "insular",
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 192,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17297,13 +17297,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 193: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 193,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17311,13 +17311,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 194: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
         "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 194,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17325,11 +17325,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 195: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents."
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
       "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -17339,13 +17339,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 196: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "ceremonial",
         "insular",
         "methodical",
-        "rebellious"
+        "rebellious",
+        "prosperous",
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 196,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17354,12 +17354,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 197: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation."
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 197,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17367,13 +17367,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 198: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 198,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17381,13 +17381,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 199: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 199,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17397,11 +17397,11 @@ window.QUESTION_BANK = {
       "options": [
         "methodical",
         "prosperous",
-        "insular",
         "rebellious",
-        "ceremonial"
+        "ceremonial",
+        "insular"
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 200,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17410,10 +17410,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 201: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement."
+        "a conclusion that can no longer be modified by later evidence."
       ],
       "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
@@ -17423,13 +17423,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 202: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
         "an indication that consensus has become intellectually inert.",
-        "a useful corrective to excessive academic caution."
+        "a useful corrective to excessive academic caution.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 202,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17437,10 +17437,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 203: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -17451,10 +17451,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 204: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "insular",
         "ceremonial",
+        "methodical",
         "prosperous",
+        "insular",
         "rebellious"
       ],
       "answer": 4,
@@ -17465,13 +17465,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 205: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority."
+        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 205,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17480,12 +17480,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 206: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 206,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17493,13 +17493,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 207: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 207,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17507,13 +17507,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 208: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "insular",
         "ceremonial",
         "prosperous",
-        "methodical"
+        "rebellious",
+        "methodical",
+        "insular"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 208,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17521,13 +17521,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 209: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 209,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17535,13 +17535,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 210: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 210,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17549,10 +17549,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 211: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -17563,13 +17563,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 212: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
-        "insular",
-        "prosperous",
+        "ceremonial",
         "rebellious",
-        "ceremonial"
+        "prosperous",
+        "insular",
+        "methodical"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 212,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17577,13 +17577,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 213: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a claim protected from criticism by institutional authority."
+        "a claim protected from criticism by institutional authority.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 213,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17591,10 +17591,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 214: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -17606,12 +17606,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 215: The passage primarily warns that archival evidence may:",
       "options": [
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 215,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17620,12 +17620,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 216: In context, 'fractious' most nearly means:",
       "options": [
         "prosperous",
+        "methodical",
         "rebellious",
         "insular",
-        "ceremonial",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 216,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17633,13 +17633,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 217: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement."
+        "a claim protected from criticism by institutional authority.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 217,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17647,13 +17647,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 218: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 218,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17661,11 +17661,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 219: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
+        "provide unreliable dates for otherwise well-attested events.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "privilege private letters over official documents."
       ],
       "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -17675,13 +17675,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 220: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
         "prosperous",
         "rebellious",
+        "methodical",
         "insular",
-        "methodical"
+        "ceremonial"
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 220,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17689,19 +17689,75 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 221: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation."
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 221,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
     },
     {
       "text": "RC Question 222: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
+      "options": [
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert."
+      ],
+      "answer": 0,
+      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
+      "id": 222,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 223: The passage primarily warns that archival evidence may:",
+      "options": [
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions.",
+        "make bureaucracies seem less intrusive than they actually were."
+      ],
+      "answer": 0,
+      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
+      "id": 223,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 224: In context, 'fractious' most nearly means:",
+      "options": [
+        "insular",
+        "methodical",
+        "prosperous",
+        "rebellious",
+        "ceremonial"
+      ],
+      "answer": 3,
+      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
+      "id": 224,
+      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    },
+    {
+      "text": "RC Question 225: The passage suggests that a mature scientific consensus is best understood as:",
+      "options": [
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation."
+      ],
+      "answer": 4,
+      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
+      "id": 225,
+      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
+    },
+    {
+      "text": "RC Question 226: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
         "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
@@ -17711,62 +17767,6 @@ window.QUESTION_BANK = {
       ],
       "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
-      "id": 222,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 223: The passage primarily warns that archival evidence may:",
-      "options": [
-        "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents."
-      ],
-      "answer": 2,
-      "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
-      "id": 223,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 224: In context, 'fractious' most nearly means:",
-      "options": [
-        "rebellious",
-        "methodical",
-        "ceremonial",
-        "insular",
-        "prosperous"
-      ],
-      "answer": 0,
-      "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
-      "id": 224,
-      "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
-    },
-    {
-      "text": "RC Question 225: The passage suggests that a mature scientific consensus is best understood as:",
-      "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
-      ],
-      "answer": 1,
-      "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
-      "id": 225,
-      "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
-    },
-    {
-      "text": "RC Question 226: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
-      "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals."
-      ],
-      "answer": 0,
-      "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 226,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
     },
@@ -17774,12 +17774,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 227: The passage primarily warns that archival evidence may:",
       "options": [
         "provide unreliable dates for otherwise well-attested events.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents."
+        "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 227,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17789,11 +17789,11 @@ window.QUESTION_BANK = {
       "options": [
         "prosperous",
         "insular",
+        "rebellious",
         "methodical",
-        "ceremonial",
-        "rebellious"
+        "ceremonial"
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 228,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17802,12 +17802,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 229: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
+        "a claim protected from criticism by institutional authority.",
+        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 229,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17817,11 +17817,11 @@ window.QUESTION_BANK = {
       "options": [
         "a useful corrective to excessive academic caution.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 230,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17829,13 +17829,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 231: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 231,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17843,13 +17843,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 232: In context, 'fractious' most nearly means:",
       "options": [
+        "insular",
         "ceremonial",
-        "rebellious",
         "methodical",
         "prosperous",
-        "insular"
+        "rebellious"
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 232,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17857,13 +17857,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 233: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 233,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17871,13 +17871,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 234: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 234,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17885,13 +17885,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 235: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events."
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 235,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17899,13 +17899,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 236: In context, 'fractious' most nearly means:",
       "options": [
+        "prosperous",
         "ceremonial",
         "rebellious",
-        "insular",
-        "prosperous",
-        "methodical"
+        "methodical",
+        "insular"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 236,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17913,13 +17913,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 237: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a compromise adopted to avoid public disagreement.",
+        "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement."
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 237,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17927,13 +17927,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 238: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 238,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17941,13 +17941,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 239: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 239,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17955,13 +17955,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 240: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
-        "prosperous",
         "ceremonial",
-        "rebellious",
-        "methodical"
+        "insular",
+        "methodical",
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 240,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -17969,13 +17969,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 241: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation."
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 241,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17983,13 +17983,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 242: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution."
+        "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 242,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -17997,13 +17997,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 243: The passage primarily warns that archival evidence may:",
       "options": [
+        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
         "provide unreliable dates for otherwise well-attested events.",
-        "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 243,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18011,13 +18011,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 244: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
-        "prosperous",
         "ceremonial",
-        "methodical",
-        "insular"
+        "prosperous",
+        "rebellious",
+        "insular",
+        "methodical"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 244,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18025,13 +18025,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 245: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation."
+        "a compromise adopted to avoid public disagreement."
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 245,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18039,10 +18039,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 246: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -18053,13 +18053,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 247: The passage primarily warns that archival evidence may:",
       "options": [
+        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 247,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18068,12 +18068,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 248: In context, 'fractious' most nearly means:",
       "options": [
         "prosperous",
-        "insular",
-        "ceremonial",
         "methodical",
-        "rebellious"
+        "rebellious",
+        "ceremonial",
+        "insular"
       ],
-      "answer": 4,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 248,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18082,12 +18082,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 249: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 249,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18095,13 +18095,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 250: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution."
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 250,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18109,13 +18109,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 251: The passage primarily warns that archival evidence may:",
       "options": [
-        "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "privilege private letters over official documents.",
         "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events."
+        "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 251,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18123,13 +18123,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 252: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "methodical",
         "rebellious",
+        "methodical",
+        "ceremonial",
         "prosperous",
         "insular"
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 252,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18137,13 +18137,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 253: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a position that has survived sustained efforts at refutation.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 253,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18151,13 +18151,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 254: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
         "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert."
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 254,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18166,9 +18166,9 @@ window.QUESTION_BANK = {
       "text": "RC Question 255: The passage primarily warns that archival evidence may:",
       "options": [
         "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
         "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior."
       ],
       "answer": 4,
@@ -18179,13 +18179,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 256: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
         "prosperous",
-        "rebellious",
+        "ceremonial",
+        "insular",
         "methodical",
-        "insular"
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 256,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18193,13 +18193,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 257: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence.",
         "a position that has survived sustained efforts at refutation.",
-        "a claim protected from criticism by institutional authority."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 257,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18207,13 +18207,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 258: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert."
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 258,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18221,13 +18221,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 259: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
         "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events."
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 259,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18237,9 +18237,9 @@ window.QUESTION_BANK = {
       "options": [
         "rebellious",
         "methodical",
-        "ceremonial",
         "insular",
-        "prosperous"
+        "prosperous",
+        "ceremonial"
       ],
       "answer": 0,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -18249,13 +18249,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 261: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
+        "a position that has survived sustained efforts at refutation.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
         "a compromise adopted to avoid public disagreement.",
-        "a position that has survived sustained efforts at refutation.",
         "a conclusion that can no longer be modified by later evidence."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 261,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18263,13 +18263,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 262: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 262,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18277,13 +18277,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 263: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 263,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18291,13 +18291,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 264: In context, 'fractious' most nearly means:",
       "options": [
-        "methodical",
         "ceremonial",
+        "methodical",
         "insular",
-        "rebellious",
-        "prosperous"
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 264,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18305,13 +18305,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 265: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
         "a claim protected from criticism by institutional authority.",
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 265,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18322,8 +18322,8 @@ window.QUESTION_BANK = {
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
       "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -18333,13 +18333,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 267: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "make bureaucracies seem less intrusive than they actually were.",
+        "privilege private letters over official documents.",
         "provide unreliable dates for otherwise well-attested events.",
+        "make bureaucracies seem less intrusive than they actually were.",
         "erase the role of elites in shaping public institutions."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 267,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18347,13 +18347,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 268: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "rebellious",
+        "methodical",
         "insular",
+        "rebellious",
         "ceremonial",
-        "methodical"
+        "prosperous"
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 268,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18361,13 +18361,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 269: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
         "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a conclusion that can no longer be modified by later evidence."
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 269,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18375,13 +18375,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 270: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a necessary stage in the validation of novel hypotheses.",
-        "an indication that consensus has become intellectually inert."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
+        "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 270,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18389,13 +18389,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 271: The passage primarily warns that archival evidence may:",
       "options": [
-        "provide unreliable dates for otherwise well-attested events.",
         "privilege private letters over official documents.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "erase the role of elites in shaping public institutions."
+        "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 271,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18403,13 +18403,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 272: In context, 'fractious' most nearly means:",
       "options": [
-        "insular",
+        "ceremonial",
         "prosperous",
+        "insular",
         "methodical",
-        "rebellious",
-        "ceremonial"
+        "rebellious"
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 272,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18418,12 +18418,12 @@ window.QUESTION_BANK = {
       "text": "RC Question 273: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
         "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a claim protected from criticism by institutional authority.",
-        "a rhetorical strategy used to marginalize dissenting scholars."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 1,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 273,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18431,13 +18431,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 274: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert.",
         "a useful corrective to excessive academic caution.",
+        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 274,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18445,13 +18445,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 275: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents."
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 275,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18459,13 +18459,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 276: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
-        "rebellious",
         "ceremonial",
         "insular",
+        "prosperous",
+        "rebellious",
         "methodical"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 276,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18473,13 +18473,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 277: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a claim protected from criticism by institutional authority."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 277,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18487,13 +18487,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 278: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "an indication that consensus has become intellectually inert.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a useful corrective to excessive academic caution."
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a useful corrective to excessive academic caution.",
+        "a necessary stage in the validation of novel hypotheses."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 278,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18501,13 +18501,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 279: The passage primarily warns that archival evidence may:",
       "options": [
-        "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 279,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18515,13 +18515,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 280: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
         "insular",
-        "rebellious",
+        "ceremonial",
+        "prosperous",
         "methodical",
-        "ceremonial"
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 280,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18529,13 +18529,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 281: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a compromise adopted to avoid public disagreement.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation."
+        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 281,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18543,10 +18543,10 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 282: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a necessary stage in the validation of novel hypotheses.",
         "a distortion that exaggerates ordinary scholarly disagreement."
       ],
       "answer": 4,
@@ -18557,13 +18557,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 283: The passage primarily warns that archival evidence may:",
       "options": [
-        "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions.",
         "overrepresent disruptions while underrepresenting routine behavior.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events."
+        "provide unreliable dates for otherwise well-attested events.",
+        "privilege private letters over official documents.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 283,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18571,13 +18571,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 284: In context, 'fractious' most nearly means:",
       "options": [
+        "prosperous",
+        "rebellious",
         "insular",
         "ceremonial",
-        "prosperous",
-        "methodical",
-        "rebellious"
+        "methodical"
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 284,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18585,13 +18585,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 285: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a claim protected from criticism by institutional authority.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a position that has survived sustained efforts at refutation.",
-        "a compromise adopted to avoid public disagreement."
+        "a claim protected from criticism by institutional authority.",
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
+        "a position that has survived sustained efforts at refutation."
       ],
-      "answer": 3,
+      "answer": 4,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 285,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18599,13 +18599,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 286: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a necessary stage in the validation of novel hypotheses.",
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "an indication that consensus has become intellectually inert."
+        "a necessary stage in the validation of novel hypotheses.",
+        "a useful corrective to excessive academic caution.",
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 286,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18614,10 +18614,10 @@ window.QUESTION_BANK = {
       "text": "RC Question 287: The passage primarily warns that archival evidence may:",
       "options": [
         "make bureaucracies seem less intrusive than they actually were.",
+        "provide unreliable dates for otherwise well-attested events.",
         "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents.",
         "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events."
+        "privilege private letters over official documents."
       ],
       "answer": 3,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
@@ -18627,11 +18627,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 288: In context, 'fractious' most nearly means:",
       "options": [
-        "ceremonial",
-        "prosperous",
         "insular",
+        "ceremonial",
+        "methodical",
         "rebellious",
-        "methodical"
+        "prosperous"
       ],
       "answer": 3,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
@@ -18641,13 +18641,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 289: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a position that has survived sustained efforts at refutation.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
         "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a position that has survived sustained efforts at refutation.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 289,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18655,13 +18655,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 290: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "an indication that consensus has become intellectually inert.",
-        "a distortion that exaggerates ordinary scholarly disagreement.",
         "a useful corrective to excessive academic caution.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a necessary stage in the validation of novel hypotheses.",
+        "an indication that consensus has become intellectually inert.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
+        "a distortion that exaggerates ordinary scholarly disagreement."
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 290,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18669,13 +18669,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 291: The passage primarily warns that archival evidence may:",
       "options": [
+        "provide unreliable dates for otherwise well-attested events.",
+        "overrepresent disruptions while underrepresenting routine behavior.",
         "erase the role of elites in shaping public institutions.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "provide unreliable dates for otherwise well-attested events.",
-        "privilege private letters over official documents.",
-        "overrepresent disruptions while underrepresenting routine behavior."
+        "privilege private letters over official documents."
       ],
-      "answer": 4,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 291,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18683,13 +18683,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 292: In context, 'fractious' most nearly means:",
       "options": [
-        "prosperous",
         "ceremonial",
-        "rebellious",
+        "insular",
         "methodical",
-        "insular"
+        "prosperous",
+        "rebellious"
       ],
-      "answer": 2,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 292,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18697,13 +18697,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 293: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a rhetorical strategy used to marginalize dissenting scholars.",
-        "a compromise adopted to avoid public disagreement.",
+        "a position that has survived sustained efforts at refutation.",
         "a claim protected from criticism by institutional authority.",
-        "a position that has survived sustained efforts at refutation."
+        "a conclusion that can no longer be modified by later evidence.",
+        "a compromise adopted to avoid public disagreement.",
+        "a rhetorical strategy used to marginalize dissenting scholars."
       ],
-      "answer": 4,
+      "answer": 0,
       "explanation": "The author says mature consensus comes from repeated failed attempts to dislodge a claim, not from immunity to criticism.",
       "id": 293,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18711,13 +18711,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 294: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "an indication that consensus has become intellectually inert.",
         "a necessary stage in the validation of novel hypotheses.",
         "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a useful corrective to excessive academic caution.",
-        "a distortion that exaggerates ordinary scholarly disagreement."
+        "a distortion that exaggerates ordinary scholarly disagreement.",
+        "an indication that consensus has become intellectually inert."
       ],
-      "answer": 4,
+      "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
       "id": 294,
       "passage": "Some critics treat scientific consensus as a monolith, but that caricature obscures the provisional and often contentious nature of research. A mature consensus is not a refusal to reconsider evidence; rather, it is the result of repeated attempts to dislodge a claim that have, so far, failed. The public debate becomes distorted when every dissenting paper is portrayed as a revolution and every correction as a collapse of the field."
@@ -18725,13 +18725,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 295: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "privilege private letters over official documents.",
-        "erase the role of elites in shaping public institutions.",
         "provide unreliable dates for otherwise well-attested events.",
-        "make bureaucracies seem less intrusive than they actually were."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "make bureaucracies seem less intrusive than they actually were.",
+        "erase the role of elites in shaping public institutions.",
+        "privilege private letters over official documents."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 295,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18739,13 +18739,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 296: In context, 'fractious' most nearly means:",
       "options": [
-        "rebellious",
         "prosperous",
         "insular",
         "methodical",
-        "ceremonial"
+        "ceremonial",
+        "rebellious"
       ],
-      "answer": 0,
+      "answer": 4,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 296,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18753,9 +18753,9 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 297: The passage suggests that a mature scientific consensus is best understood as:",
       "options": [
-        "a conclusion that can no longer be modified by later evidence.",
-        "a compromise adopted to avoid public disagreement.",
         "a rhetorical strategy used to marginalize dissenting scholars.",
+        "a compromise adopted to avoid public disagreement.",
+        "a conclusion that can no longer be modified by later evidence.",
         "a claim protected from criticism by institutional authority.",
         "a position that has survived sustained efforts at refutation."
       ],
@@ -18767,11 +18767,11 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 298: The author would most likely regard the public treatment of every dissenting paper as a revolution as:",
       "options": [
-        "a sign that scientific fields advance chiefly through abrupt reversals.",
-        "a useful corrective to excessive academic caution.",
         "an indication that consensus has become intellectually inert.",
+        "a necessary stage in the validation of novel hypotheses.",
+        "a sign that scientific fields advance chiefly through abrupt reversals.",
         "a distortion that exaggerates ordinary scholarly disagreement.",
-        "a necessary stage in the validation of novel hypotheses."
+        "a useful corrective to excessive academic caution."
       ],
       "answer": 3,
       "explanation": "The final sentence calls this framing distorted because it mistakes routine dissent and correction for wholesale upheaval.",
@@ -18781,13 +18781,13 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 299: The passage primarily warns that archival evidence may:",
       "options": [
-        "overrepresent disruptions while underrepresenting routine behavior.",
-        "provide unreliable dates for otherwise well-attested events.",
         "make bureaucracies seem less intrusive than they actually were.",
-        "erase the role of elites in shaping public institutions.",
-        "privilege private letters over official documents."
+        "overrepresent disruptions while underrepresenting routine behavior.",
+        "privilege private letters over official documents.",
+        "provide unreliable dates for otherwise well-attested events.",
+        "erase the role of elites in shaping public institutions."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "The author emphasizes that records preserve disputes and infractions more readily than ordinary compliance.",
       "id": 299,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
@@ -18795,16 +18795,8518 @@ window.QUESTION_BANK = {
     {
       "text": "RC Question 300: In context, 'fractious' most nearly means:",
       "options": [
+        "methodical",
+        "ceremonial",
         "rebellious",
         "prosperous",
-        "insular",
-        "ceremonial",
-        "methodical"
+        "insular"
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "A complaint-heavy archive can make a society seem more quarrelsome or rebellious than it really was.",
       "id": 300,
       "passage": "The historian's task is complicated by the fact that archives rarely preserve the ordinary in proportion to its prevalence. Bureaucracies record disputes, crises, and infractions more assiduously than routine compliance. Consequently, a society reconstructed only from official complaints can appear more fractious than it was, while the habits that made daily life possible remain nearly invisible."
+    }
+  ],
+  "6": [
+    {
+      "id": 1,
+      "passage": null,
+      "text": "SC Question 1: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested fraught with danger, but the conclusion displayed immune to attack.",
+      "options": [
+        [
+          "precocious",
+          "diminutive",
+          "precarious"
+        ],
+        [
+          "punctilious",
+          "impregnable",
+          "treacherous"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'precarious' means fraught with danger. Blank 2: 'impregnable' means immune to attack; incapable of being tampered with."
+    },
+    {
+      "id": 2,
+      "passage": null,
+      "text": "SC Question 2: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of in an early stage of development and powerful.",
+      "options": [
+        [
+          "veritable",
+          "embryonic",
+          "voracious"
+        ],
+        [
+          "feckless",
+          "puissant",
+          "hegemony"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'embryonic' means in an early stage of development. Blank 2: 'puissant' means powerful."
+    },
+    {
+      "id": 3,
+      "passage": null,
+      "text": "SC Question 3: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of hostile, too sacred to be uttered, and something that soothes or relieves pain.",
+      "options": [
+        [
+          "diligent",
+          "besotted",
+          "inimical"
+        ],
+        [
+          "tenacious",
+          "maladroit",
+          "ineffable"
+        ],
+        [
+          "paragon",
+          "chagrin",
+          "anodyne"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'inimical' means hostile (usually describes conditions or environments). Blank 2: 'ineffable' means too sacred to be uttered; defying expression or description. Blank 3: 'anodyne' means something that soothes or relieves pain."
+    },
+    {
+      "id": 4,
+      "passage": null,
+      "text": "SC Question 4: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested to be shy, and to be inclined to retract from company, but the conclusion displayed done routinely and with little interest or care.",
+      "options": [
+        [
+          "becoming",
+          "retiring",
+          "dilatory"
+        ],
+        [
+          "perfunctory",
+          "approbatory",
+          "crestfallen"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'retiring' means to be shy, and to be inclined to retract from company. Blank 2: 'perfunctory' means done routinely and with little interest or care."
+    },
+    {
+      "id": 5,
+      "passage": null,
+      "text": "SC Question 5: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of cleverly amusing in tone and liable to sudden unpredictable change, esp.",
+      "options": [
+        [
+          "penurious",
+          "facetious",
+          "ingenuous"
+        ],
+        [
+          "fickle",
+          "extant",
+          "docile"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'facetious' means cleverly amusing in tone. Blank 2: 'fickle' means liable to sudden unpredictable change, esp."
+    },
+    {
+      "id": 6,
+      "passage": null,
+      "text": "SC Question 6: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of irritable and is likely to cause disruption, two things are fundamentally different, and to make someone angry less angry.",
+      "options": [
+        [
+          "fractious",
+          "veritable",
+          "truculent"
+        ],
+        [
+          "disparate",
+          "inclement",
+          "impartial"
+        ],
+        [
+          "gainsay",
+          "mollify",
+          "retract"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'fractious' means irritable and is likely to cause disruption. Blank 2: 'disparate' means two things are fundamentally different. Blank 3: 'mollify' means to make someone angry less angry; placate."
+    },
+    {
+      "id": 7,
+      "passage": null,
+      "text": "SC Question 7: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested offensively self-assured or given to exercising unwarranted power, but the conclusion displayed excessively forward.",
+      "options": [
+        [
+          "magisterial",
+          "commendable",
+          "precipitous"
+        ],
+        [
+          "presumptuous",
+          "imponderable",
+          "obstreperous"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'magisterial' means offensively self-assured or given to exercising unwarranted power. Blank 2: 'presumptuous' means excessively forward."
+    },
+    {
+      "id": 8,
+      "passage": null,
+      "text": "SC Question 8: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of improperly forward or bold and easily persuaded.",
+      "options": [
+        [
+          "sedulous",
+          "esoteric",
+          "impudent"
+        ],
+        [
+          "intrepid",
+          "amenable",
+          "prolific"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'impudent' means improperly forward or bold. Blank 2: 'amenable' means easily persuaded."
+    },
+    {
+      "id": 9,
+      "passage": null,
+      "text": "SC Question 9: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of clumsy, showing modest reserve, and destroying or killing a large part of the population.",
+      "options": [
+        [
+          "tractable",
+          "fledgling",
+          "maladroit"
+        ],
+        [
+          "immutable",
+          "apathetic",
+          "diffident"
+        ],
+        [
+          "smattering",
+          "decimation",
+          "apotheosis"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'maladroit' means clumsy. Blank 2: 'diffident' means showing modest reserve; lacking self-confidence. Blank 3: 'decimation' means destroying or killing a large part of the population."
+    },
+    {
+      "id": 10,
+      "passage": null,
+      "text": "SC Question 10: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested filled with or evoking sadness, but the conclusion displayed suggesting war or military life.",
+      "options": [
+        [
+          "boorish",
+          "doleful",
+          "oblique"
+        ],
+        [
+          "endemic",
+          "martial",
+          "laconic"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'doleful' means filled with or evoking sadness. Blank 2: 'martial' means suggesting war or military life."
+    },
+    {
+      "id": 11,
+      "passage": null,
+      "text": "SC Question 11: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of having a depressing or gloomy outlook and like a meteor in speed or brilliance or transience.",
+      "options": [
+        [
+          "bleak",
+          "surly",
+          "chary"
+        ],
+        [
+          "meteoric",
+          "reticent",
+          "petulant"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'bleak' means having a depressing or gloomy outlook. Blank 2: 'meteoric' means like a meteor in speed or brilliance or transience."
+    },
+    {
+      "id": 12,
+      "passage": null,
+      "text": "SC Question 12: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of narrowly restricted in scope or outlook, characterized by jokes and good humor, and prevent the progress or free movement of.",
+      "options": [
+        [
+          "provident",
+          "estimable",
+          "parochial"
+        ],
+        [
+          "endemic",
+          "jocular",
+          "haughty"
+        ],
+        [
+          "immure",
+          "hamper",
+          "betray"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        1
+      ],
+      "answers": [
+        2,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'parochial' means narrowly restricted in scope or outlook. Blank 2: 'jocular' means characterized by jokes and good humor. Blank 3: 'hamper' means prevent the progress or free movement of."
+    },
+    {
+      "id": 13,
+      "passage": null,
+      "text": "SC Question 13: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested only partly in existence, but the conclusion displayed too sacred to be uttered.",
+      "options": [
+        [
+          "contrite",
+          "inchoate",
+          "picayune"
+        ],
+        [
+          "pertinent",
+          "quotidian",
+          "ineffable"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'inchoate' means only partly in existence; imperfectly formed. Blank 2: 'ineffable' means too sacred to be uttered; defying expression or description."
+    },
+    {
+      "id": 14,
+      "passage": null,
+      "text": "SC Question 14: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of carelessly and hastily put together and misconduct or wrongdoing.",
+      "options": [
+        [
+          "slapdash",
+          "affluent",
+          "edifying"
+        ],
+        [
+          "belligerent",
+          "malfeasance",
+          "precipitate"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'slapdash' means carelessly and hastily put together. Blank 2: 'malfeasance' means misconduct or wrongdoing (especially by a public official)."
+    },
+    {
+      "id": 15,
+      "passage": null,
+      "text": "SC Question 15: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of lacking in harmony or compatibility or appropriateness, to be shy, and to be inclined to retract from company, and consideration in dealing with others and avoiding giving offense.",
+      "options": [
+        [
+          "impecunious",
+          "precipitate",
+          "incongruous"
+        ],
+        [
+          "dilatory",
+          "indigent",
+          "retiring"
+        ],
+        [
+          "dupe",
+          "flux",
+          "tact"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'incongruous' means lacking in harmony or compatibility or appropriateness. Blank 2: 'retiring' means to be shy, and to be inclined to retract from company. Blank 3: 'tact' means consideration in dealing with others and avoiding giving offense."
+    },
+    {
+      "id": 16,
+      "passage": null,
+      "text": "SC Question 16: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested brought low in spirit, but the conclusion displayed not wise.",
+      "options": [
+        [
+          "punctilious",
+          "mellifluous",
+          "crestfallen"
+        ],
+        [
+          "imprudent",
+          "expansive",
+          "undermine"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'crestfallen' means brought low in spirit. Blank 2: 'imprudent' means not wise."
+    },
+    {
+      "id": 17,
+      "passage": null,
+      "text": "SC Question 17: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of likely to cause resentment and timid by nature or revealing fear and nervousness.",
+      "options": [
+        [
+          "inclement",
+          "voracious",
+          "invidious"
+        ],
+        [
+          "obdurate",
+          "timorous",
+          "laudable"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'invidious' means likely to cause resentment. Blank 2: 'timorous' means timid by nature or revealing fear and nervousness."
+    },
+    {
+      "id": 18,
+      "passage": null,
+      "text": "SC Question 18: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of inoffensive, not straightforward, and hinder or prevent  of.",
+      "options": [
+        [
+          "anodyne",
+          "wanting",
+          "martial"
+        ],
+        [
+          "infelicitous",
+          "inarticulate",
+          "disingenuous"
+        ],
+        [
+          "desecrate",
+          "exonerate",
+          "frustrate"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        2
+      ],
+      "answers": [
+        0,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'anodyne' means inoffensive. Blank 2: 'disingenuous' means not straightforward; giving a false appearance of frankness. Blank 3: 'frustrate' means hinder or prevent (the efforts, plans, or desires) of."
+    },
+    {
+      "id": 19,
+      "passage": null,
+      "text": "SC Question 19: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested very small, but the conclusion displayed dependable.",
+      "options": [
+        [
+          "implacable",
+          "diminutive",
+          "vituperate"
+        ],
+        [
+          "stalwart",
+          "impudent",
+          "bumbling"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'diminutive' means very small. Blank 2: 'stalwart' means dependable; inured to fatigue or hardships."
+    },
+    {
+      "id": 20,
+      "passage": null,
+      "text": "SC Question 20: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not doing one's duties and rude and arrogant.",
+      "options": [
+        [
+          "telltale",
+          "beatific",
+          "derelict"
+        ],
+        [
+          "specious",
+          "insolent",
+          "feckless"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'derelict' means (of a person) not doing one's duties. Blank 2: 'insolent' means rude and arrogant."
+    },
+    {
+      "id": 21,
+      "passage": null,
+      "text": "SC Question 21: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of feeling anger over a perceived injustice, noisily and stubbornly defiant, and an abusive rant.",
+      "options": [
+        [
+          "convivial",
+          "indignant",
+          "benighted"
+        ],
+        [
+          "obstreperous",
+          "commensurate",
+          "hagiographic"
+        ],
+        [
+          "tumult",
+          "screed",
+          "moment"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'indignant' means feeling anger over a perceived injustice. Blank 2: 'obstreperous' means noisily and stubbornly defiant; willfully difficult to control. Blank 3: 'screed' means an abusive rant (often tedious)."
+    },
+    {
+      "id": 22,
+      "passage": null,
+      "text": "SC Question 22: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested lecherous, but the conclusion displayed relating to the ordinary world.",
+      "options": [
+        [
+          "transitory",
+          "lascivious",
+          "entrenched"
+        ],
+        [
+          "laconic",
+          "raffish",
+          "mundane"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'lascivious' means lecherous; sexually perverted. Blank 2: 'mundane' means relating to the ordinary world."
+    },
+    {
+      "id": 23,
+      "passage": null,
+      "text": "SC Question 23: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of traveling by foot and characterized by good taste in manners and conduct.",
+      "options": [
+        [
+          "peripatetic",
+          "illustrious",
+          "commendable"
+        ],
+        [
+          "vehement",
+          "gossamer",
+          "decorous"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'peripatetic' means traveling by foot. Blank 2: 'decorous' means characterized by good taste in manners and conduct."
+    },
+    {
+      "id": 24,
+      "passage": null,
+      "text": "SC Question 24: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of marked by high spirits or excitement, poor, and to express criticism towards.",
+      "options": [
+        [
+          "inarticulate",
+          "effervescent",
+          "pollyannaish"
+        ],
+        [
+          "choleric",
+          "indigent",
+          "gossamer"
+        ],
+        [
+          "reproach",
+          "squander",
+          "delegate"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'effervescent' means marked by high spirits or excitement. Blank 2: 'indigent' means poor; having very little. Blank 3: 'reproach' means to express criticism towards."
+    },
+    {
+      "id": 25,
+      "passage": null,
+      "text": "SC Question 25: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested describing a victory that comes at such a great cost that the victory is not worthwhile George W, but the conclusion displayed overly sentimental to the point that it is disgusting.",
+      "options": [
+        [
+          "restive",
+          "pyrrhic",
+          "winsome"
+        ],
+        [
+          "mawkish",
+          "endemic",
+          "mordant"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'pyrrhic' means describing a victory that comes at such a great cost that the victory is not worthwhile George W. Blank 2: 'mawkish' means overly sentimental to the point that it is disgusting."
+    },
+    {
+      "id": 26,
+      "passage": null,
+      "text": "SC Question 26: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of marked by firm determination or resolution and revealing.",
+      "options": [
+        [
+          "diffident",
+          "steadfast",
+          "maladroit"
+        ],
+        [
+          "telltale",
+          "decorous",
+          "prolific"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'steadfast' means marked by firm determination or resolution; not shakable. Blank 2: 'telltale' means revealing."
+    },
+    {
+      "id": 27,
+      "passage": null,
+      "text": "SC Question 27: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of deserving of esteem and respect, native, and a meeting of high-level leaders.",
+      "options": [
+        [
+          "estimable",
+          "benighted",
+          "itinerant"
+        ],
+        [
+          "abysmal",
+          "puerile",
+          "endemic"
+        ],
+        [
+          "pariah",
+          "summit",
+          "hubris"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        1
+      ],
+      "answers": [
+        0,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'estimable' means deserving of esteem and respect. Blank 2: 'endemic' means native; originating where it is found. Blank 3: 'summit' means a meeting of high-level leaders."
+    },
+    {
+      "id": 28,
+      "passage": null,
+      "text": "SC Question 28: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested lasting a very short time, but the conclusion displayed to have a very strong desire for revenge.",
+      "options": [
+        [
+          "diffident",
+          "transient",
+          "indignant"
+        ],
+        [
+          "evanescent",
+          "mettlesome",
+          "vindictive"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'transient' means lasting a very short time. Blank 2: 'vindictive' means to have a very strong desire for revenge."
+    },
+    {
+      "id": 29,
+      "passage": null,
+      "text": "SC Question 29: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of highly or widely praised or boasted about and miserly.",
+      "options": [
+        [
+          "amiable",
+          "vaunted",
+          "ignoble"
+        ],
+        [
+          "incessant",
+          "maladroit",
+          "penurious"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'vaunted' means highly or widely praised or boasted about. Blank 2: 'penurious' means miserly."
+    },
+    {
+      "id": 30,
+      "passage": null,
+      "text": "SC Question 30: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of marked by precise accordance with details, very drunk, and interpret in the wrong way.",
+      "options": [
+        [
+          "forthcoming",
+          "punctilious",
+          "redoubtable"
+        ],
+        [
+          "besotted",
+          "feckless",
+          "obliging"
+        ],
+        [
+          "prevaricate",
+          "misconstrue",
+          "extrapolate"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'punctilious' means marked by precise accordance with details. Blank 2: 'besotted' means very drunk. Blank 3: 'misconstrue' means interpret in the wrong way."
+    },
+    {
+      "id": 31,
+      "passage": null,
+      "text": "SC Question 31: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested effusively or insincerely emotional, especially in art, music, and literature, but the conclusion displayed made less hopeful or enthusiastic.",
+      "options": [
+        [
+          "efficacious",
+          "sentimental",
+          "impecunious"
+        ],
+        [
+          "unscrupulous",
+          "disheartened",
+          "insufferable"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'sentimental' means effusively or insincerely emotional, especially in art, music, and literature. Blank 2: 'disheartened' means made less hopeful or enthusiastic."
+    },
+    {
+      "id": 32,
+      "passage": null,
+      "text": "SC Question 32: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of involving ignoble actions and motives and a straightforward and honest look at something.",
+      "options": [
+        [
+          "sordid",
+          "rustic",
+          "stolid"
+        ],
+        [
+          "candid",
+          "jejune",
+          "limpid"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'sordid' means involving ignoble actions and motives; arousing moral distaste and contempt; foul and run-down and repulsive. Blank 2: 'candid' means a straightforward and honest look at something."
+    },
+    {
+      "id": 33,
+      "passage": null,
+      "text": "SC Question 33: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of unrestrained by convention or propriety, openly distrustful and unwilling to confide, and agreement on a secret plot.",
+      "options": [
+        [
+          "jejune",
+          "errant",
+          "brazen"
+        ],
+        [
+          "muted",
+          "pithy",
+          "leery"
+        ],
+        [
+          "collusion",
+          "animosity",
+          "miscreant"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'brazen' means unrestrained by convention or propriety. Blank 2: 'leery' means openly distrustful and unwilling to confide. Blank 3: 'collusion' means agreement on a secret plot."
+    },
+    {
+      "id": 34,
+      "passage": null,
+      "text": "SC Question 34: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested arrogant, but the conclusion displayed dull and lacking excitement.",
+      "options": [
+        [
+          "approbatory",
+          "sententious",
+          "overweening"
+        ],
+        [
+          "humdrum",
+          "eminent",
+          "mawkish"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'overweening' means arrogant; presumptuous. Blank 2: 'humdrum' means dull and lacking excitement."
+    },
+    {
+      "id": 35,
+      "passage": null,
+      "text": "SC Question 35: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of habitual and of a belief that is based on faulty reasoning.",
+      "options": [
+        [
+          "capricious",
+          "diabolical",
+          "inveterate"
+        ],
+        [
+          "solicitous",
+          "histrionic",
+          "fallacious"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'inveterate' means habitual. Blank 2: 'fallacious' means of a belief that is based on faulty reasoning."
+    },
+    {
+      "id": 36,
+      "passage": null,
+      "text": "SC Question 36: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of making a situation or outcome more likely to happen, intolerable, difficult to endure, and to speak in an evasive way.",
+      "options": [
+        [
+          "conducive",
+          "undermine",
+          "apathetic"
+        ],
+        [
+          "infelicitous",
+          "insufferable",
+          "obstreperous"
+        ],
+        [
+          "prevaricate",
+          "remonstrate",
+          "pontificate"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        0
+      ],
+      "answers": [
+        0,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'conducive' means making a situation or outcome more likely to happen. Blank 2: 'insufferable' means intolerable, difficult to endure. Blank 3: 'prevaricate' means to speak in an evasive way."
+    },
+    {
+      "id": 37,
+      "passage": null,
+      "text": "SC Question 37: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested recurring in scattered and irregular or unpredictable instances, but the conclusion displayed at ease in talking to others.",
+      "options": [
+        [
+          "intrepid",
+          "sporadic",
+          "effacing"
+        ],
+        [
+          "irrevocable",
+          "forthcoming",
+          "treacherous"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'sporadic' means recurring in scattered and irregular or unpredictable instances. Blank 2: 'forthcoming' means at ease in talking to others."
+    },
+    {
+      "id": 38,
+      "passage": null,
+      "text": "SC Question 38: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of completely stocked or furnished with something and describing a lively atmosphere.",
+      "options": [
+        [
+          "replete",
+          "martial",
+          "winsome"
+        ],
+        [
+          "convivial",
+          "byzantine",
+          "hackneyed"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'replete' means completely stocked or furnished with something. Blank 2: 'convivial' means describing a lively atmosphere."
+    },
+    {
+      "id": 39,
+      "passage": null,
+      "text": "SC Question 39: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of full of or showing high-spirited merriment, not making concessions, and an indirect suggestion.",
+      "options": [
+        [
+          "turgid",
+          "jovial",
+          "frugal"
+        ],
+        [
+          "unprepossessing",
+          "uncompromising",
+          "unconscionable"
+        ],
+        [
+          "temperance",
+          "intimation",
+          "curmudgeon"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'jovial' means full of or showing high-spirited merriment. Blank 2: 'uncompromising' means not making concessions. Blank 3: 'intimation' means an indirect suggestion."
+    },
+    {
+      "id": 40,
+      "passage": null,
+      "text": "SC Question 40: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested mixed or conflicting emotions about something, but the conclusion displayed to be negligent in one\"s duty.",
+      "options": [
+        [
+          "ambivalent",
+          "diabolical",
+          "pugnacious"
+        ],
+        [
+          "remiss",
+          "bereft",
+          "sullen"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'ambivalent' means mixed or conflicting emotions about something. Blank 2: 'remiss' means to be negligent in one\"s duty."
+    },
+    {
+      "id": 41,
+      "passage": null,
+      "text": "SC Question 41: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of uncertain how to act or proceed and immune to attack.",
+      "options": [
+        [
+          "malodorous",
+          "contingent",
+          "irresolute"
+        ],
+        [
+          "obstreperous",
+          "effervescent",
+          "unassailable"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'irresolute' means uncertain how to act or proceed. Blank 2: 'unassailable' means immune to attack; without flaws."
+    },
+    {
+      "id": 42,
+      "passage": null,
+      "text": "SC Question 42: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of kind, brave, and gain favor with somebody by deliberate efforts.",
+      "options": [
+        [
+          "ribald",
+          "arcane",
+          "benign"
+        ],
+        [
+          "humdrum",
+          "doughty",
+          "telling"
+        ],
+        [
+          "conciliate",
+          "ingratiate",
+          "promulgate"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        1
+      ],
+      "answers": [
+        2,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'benign' means kind. Blank 2: 'doughty' means brave; bold; courageous. Blank 3: 'ingratiate' means gain favor with somebody by deliberate efforts."
+    },
+    {
+      "id": 43,
+      "passage": null,
+      "text": "SC Question 43: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested humorously vulgar, but the conclusion displayed to be in abundance.",
+      "options": [
+        [
+          "cogent",
+          "artful",
+          "ribald"
+        ],
+        [
+          "savvy",
+          "surly",
+          "flush"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'ribald' means humorously vulgar. Blank 2: 'flush' means to be in abundance."
+    },
+    {
+      "id": 44,
+      "passage": null,
+      "text": "SC Question 44: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of uncertain how to act or proceed and making a situation or outcome more likely to happen.",
+      "options": [
+        [
+          "pugnacious",
+          "obsequious",
+          "irresolute"
+        ],
+        [
+          "convivial",
+          "blinkered",
+          "conducive"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'irresolute' means uncertain how to act or proceed. Blank 2: 'conducive' means making a situation or outcome more likely to happen."
+    },
+    {
+      "id": 45,
+      "passage": null,
+      "text": "SC Question 45: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of having or demonstrating ability to recognize or draw fine distinctions, characterized by or full of force and vigor, and a person who believes in the superiority of their group.",
+      "options": [
+        [
+          "incisive",
+          "pristine",
+          "specious"
+        ],
+        [
+          "trenchant",
+          "malleable",
+          "diffident"
+        ],
+        [
+          "smattering",
+          "chauvinist",
+          "capitulate"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'incisive' means having or demonstrating ability to recognize or draw fine distinctions. Blank 2: 'trenchant' means characterized by or full of force and vigor; having keenness and forcefulness and penetration in thought, expression, or intellect. Blank 3: 'chauvinist' means a person who believes in the superiority of their group."
+    },
+    {
+      "id": 46,
+      "passage": null,
+      "text": "SC Question 46: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested fraught with danger, but the conclusion displayed supply added support.",
+      "options": [
+        [
+          "convoluted",
+          "scrupulous",
+          "precarious"
+        ],
+        [
+          "extenuating",
+          "irrefutable",
+          "appurtenant"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'precarious' means fraught with danger. Blank 2: 'appurtenant' means supply added support."
+    },
+    {
+      "id": 47,
+      "passage": null,
+      "text": "SC Question 47: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of very irritable and to be likely to socialize with others.",
+      "options": [
+        [
+          "splenetic",
+          "anomalous",
+          "analogous"
+        ],
+        [
+          "complacent",
+          "meticulous",
+          "gregarious"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'splenetic' means very irritable. Blank 2: 'gregarious' means to be likely to socialize with others."
+    },
+    {
+      "id": 48,
+      "passage": null,
+      "text": "SC Question 48: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of unpleasant, stormy, not easily perturbed or excited or upset, and strive to equal or match, especially by imitating.",
+      "options": [
+        [
+          "bellicose",
+          "inclement",
+          "equitable"
+        ],
+        [
+          "treacherous",
+          "disaffected",
+          "unflappable"
+        ],
+        [
+          "emulate",
+          "expunge",
+          "augment"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "answers": [
+        1,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'inclement' means (of weather) unpleasant, stormy. Blank 2: 'unflappable' means not easily perturbed or excited or upset; marked by extreme calm and composure. Blank 3: 'emulate' means strive to equal or match, especially by imitating; compete with successfully."
+    },
+    {
+      "id": 49,
+      "passage": null,
+      "text": "SC Question 49: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested communicative, and prone to talking in a sociable manner, but the conclusion displayed deliberately vague or ambiguous.",
+      "options": [
+        [
+          "expansive",
+          "byzantine",
+          "inclement"
+        ],
+        [
+          "evasive",
+          "cryptic",
+          "furtive"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'expansive' means communicative, and prone to talking in a sociable manner. Blank 2: 'evasive' means deliberately vague or ambiguous."
+    },
+    {
+      "id": 50,
+      "passage": null,
+      "text": "SC Question 50: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to be negligent in one\"s duty and tending to vanish like vapor.",
+      "options": [
+        [
+          "fecund",
+          "remiss",
+          "placid"
+        ],
+        [
+          "evanescent",
+          "vociferous",
+          "contingent"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'remiss' means to be negligent in one\"s duty. Blank 2: 'evanescent' means tending to vanish like vapor."
+    },
+    {
+      "id": 51,
+      "passage": null,
+      "text": "SC Question 51: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of arrived at without due care or effort, readily taking on different roles, and model of excellence or perfection of a kind.",
+      "options": [
+        [
+          "obtuse",
+          "facile",
+          "remiss"
+        ],
+        [
+          "protean",
+          "germane",
+          "vaunted"
+        ],
+        [
+          "ascetic",
+          "parvenu",
+          "paragon"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        2
+      ],
+      "answers": [
+        1,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'facile' means arrived at without due care or effort; lacking depth. Blank 2: 'protean' means readily taking on different roles; versatile. Blank 3: 'paragon' means model of excellence or perfection of a kind; one having no equal."
+    },
+    {
+      "id": 52,
+      "passage": null,
+      "text": "SC Question 52: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested wildly idealistic, but the conclusion displayed relating to or involving money.",
+      "options": [
+        [
+          "colossal",
+          "pristine",
+          "quixotic"
+        ],
+        [
+          "pecuniary",
+          "penurious",
+          "diffident"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'quixotic' means wildly idealistic; impractical. Blank 2: 'pecuniary' means relating to or involving money."
+    },
+    {
+      "id": 53,
+      "passage": null,
+      "text": "SC Question 53: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of tastelessly showy and very thorough.",
+      "options": [
+        [
+          "tawdry",
+          "craven",
+          "ornate"
+        ],
+        [
+          "thoroughgoing",
+          "demonstrative",
+          "unprecedented"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'tawdry' means tastelessly showy; cheap and shoddy. Blank 2: 'thoroughgoing' means very thorough; complete."
+    },
+    {
+      "id": 54,
+      "passage": null,
+      "text": "SC Question 54: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of not relevant, open to argument or debate, and fit together tightly, as if by means of a interlocking joint.",
+      "options": [
+        [
+          "pejorative",
+          "immaterial",
+          "tantamount"
+        ],
+        [
+          "moot",
+          "rash",
+          "glib"
+        ],
+        [
+          "enthrall",
+          "confound",
+          "dovetail"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        2
+      ],
+      "answers": [
+        1,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'immaterial' means not relevant. Blank 2: 'moot' means open to argument or debate; undecidable in a meaningless or irrelevant way. Blank 3: 'dovetail' means fit together tightly, as if by means of a interlocking joint."
+    },
+    {
+      "id": 55,
+      "passage": null,
+      "text": "SC Question 55: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested characterized by directness in manner or speech, but the conclusion displayed with little chance of success.",
+      "options": [
+        [
+          "forthright",
+          "empathetic",
+          "pugnacious"
+        ],
+        [
+          "intransigent",
+          "unpropitious",
+          "imponderable"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'forthright' means characterized by directness in manner or speech; without subtlety or evasion. Blank 2: 'unpropitious' means (of a circumstance) with little chance of success."
+    },
+    {
+      "id": 56,
+      "passage": null,
+      "text": "SC Question 56: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of habitually complaining and shapeless.",
+      "options": [
+        [
+          "ephemeral",
+          "checkered",
+          "querulous"
+        ],
+        [
+          "amorphous",
+          "parochial",
+          "egregious"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'querulous' means habitually complaining. Blank 2: 'amorphous' means shapeless."
+    },
+    {
+      "id": 57,
+      "passage": null,
+      "text": "SC Question 57: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of very hungry, clarity in terms of expression, and a person who pleads for a cause or propounds an idea.",
+      "options": [
+        [
+          "transient",
+          "insolvent",
+          "voracious"
+        ],
+        [
+          "limpid",
+          "fecund",
+          "jejune"
+        ],
+        [
+          "catalyst",
+          "indigent",
+          "advocate"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'voracious' means very hungry; approaching an activity with gusto. Blank 2: 'limpid' means clarity in terms of expression. Blank 3: 'advocate' means a person who pleads for a cause or propounds an idea."
+    },
+    {
+      "id": 58,
+      "passage": null,
+      "text": "SC Question 58: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested without or deprived of the use of speech or words, but the conclusion displayed so small as to be meaningless.",
+      "options": [
+        [
+          "incorrigible",
+          "obstreperous",
+          "inarticulate"
+        ],
+        [
+          "negligible",
+          "derogative",
+          "convoluted"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'inarticulate' means without or deprived of the use of speech or words. Blank 2: 'negligible' means so small as to be meaningless; insignificant."
+    },
+    {
+      "id": 59,
+      "passage": null,
+      "text": "SC Question 59: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of one that is marked by disreputable happenings and uncooperative, not willing to give up information.",
+      "options": [
+        [
+          "facetious",
+          "checkered",
+          "ebullient"
+        ],
+        [
+          "unforthcoming",
+          "demonstrative",
+          "complementary"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'checkered' means one that is marked by disreputable happenings. Blank 2: 'unforthcoming' means uncooperative, not willing to give up information."
+    },
+    {
+      "id": 60,
+      "passage": null,
+      "text": "SC Question 60: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of overly concerned with details, to be modest and shy, and taking part in immoral and unethical plots.",
+      "options": [
+        [
+          "antiquated",
+          "obsequious",
+          "fastidious"
+        ],
+        [
+          "serene",
+          "obtain",
+          "demure"
+        ],
+        [
+          "conniving",
+          "transmute",
+          "juxtapose"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'fastidious' means overly concerned with details; fussy. Blank 2: 'demure' means to be modest and shy. Blank 3: 'conniving' means taking part in immoral and unethical plots."
+    },
+    {
+      "id": 61,
+      "passage": null,
+      "text": "SC Question 61: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested marked by active interest and enthusiasm, but the conclusion displayed lazy and irresponsible.",
+      "options": [
+        [
+          "moot",
+          "boon",
+          "avid"
+        ],
+        [
+          "jubilant",
+          "feckless",
+          "besotted"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'avid' means marked by active interest and enthusiasm. Blank 2: 'feckless' means lazy and irresponsible."
+    },
+    {
+      "id": 62,
+      "passage": null,
+      "text": "SC Question 62: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not given careful consideration and having or demonstrating ability to recognize or draw fine distinctions.",
+      "options": [
+        [
+          "impertinent",
+          "impregnable",
+          "improvident"
+        ],
+        [
+          "petulant",
+          "incisive",
+          "laudable"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'improvident' means not given careful consideration. Blank 2: 'incisive' means having or demonstrating ability to recognize or draw fine distinctions."
+    },
+    {
+      "id": 63,
+      "passage": null,
+      "text": "SC Question 63: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of completely stocked or furnished with something, not easily understood, and the power to foresee the future.",
+      "options": [
+        [
+          "arduous",
+          "wanting",
+          "replete"
+        ],
+        [
+          "contentious",
+          "inscrutable",
+          "disaffected"
+        ],
+        [
+          "malingerer",
+          "prescience",
+          "contrition"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        1
+      ],
+      "answers": [
+        2,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'replete' means completely stocked or furnished with something. Blank 2: 'inscrutable' means not easily understood; unfathomable. Blank 3: 'prescience' means the power to foresee the future."
+    },
+    {
+      "id": 64,
+      "passage": null,
+      "text": "SC Question 64: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested completely stocked or furnished with something, but the conclusion displayed irritable.",
+      "options": [
+        [
+          "replete",
+          "peevish",
+          "eminent"
+        ],
+        [
+          "bilious",
+          "puerile",
+          "haughty"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'replete' means completely stocked or furnished with something. Blank 2: 'bilious' means irritable; always angry."
+    },
+    {
+      "id": 65,
+      "passage": null,
+      "text": "SC Question 65: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of showing a high degree of refinement and the assurance that comes from wide social experience and like a meteor in speed or brilliance or transience.",
+      "options": [
+        [
+          "demure",
+          "fickle",
+          "urbane"
+        ],
+        [
+          "pellucid",
+          "meteoric",
+          "specious"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'urbane' means showing a high degree of refinement and the assurance that comes from wide social experience. Blank 2: 'meteoric' means like a meteor in speed or brilliance or transience."
+    },
+    {
+      "id": 66,
+      "passage": null,
+      "text": "SC Question 66: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of uncertain how to act or proceed, never to be broken, infringed, or dishonored, and turn away from by persuasion.",
+      "options": [
+        [
+          "aphoristic",
+          "irresolute",
+          "impervious"
+        ],
+        [
+          "inviolable",
+          "creditable",
+          "malodorous"
+        ],
+        [
+          "avert",
+          "deter",
+          "inure"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'irresolute' means uncertain how to act or proceed. Blank 2: 'inviolable' means never to be broken, infringed, or dishonored. Blank 3: 'deter' means turn away from by persuasion."
+    },
+    {
+      "id": 67,
+      "passage": null,
+      "text": "SC Question 67: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested defying imitation, but the conclusion displayed made less hopeful or enthusiastic.",
+      "options": [
+        [
+          "admonitory",
+          "inimitable",
+          "vindictive"
+        ],
+        [
+          "disheartened",
+          "infelicitous",
+          "disingenuous"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'inimitable' means defying imitation; matchless. Blank 2: 'disheartened' means made less hopeful or enthusiastic."
+    },
+    {
+      "id": 68,
+      "passage": null,
+      "text": "SC Question 68: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not straightforward and constituting a separate entity or part.",
+      "options": [
+        [
+          "cosmopolitan",
+          "obstreperous",
+          "disingenuous"
+        ],
+        [
+          "discrete",
+          "moribund",
+          "debonair"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'disingenuous' means not straightforward; giving a false appearance of frankness. Blank 2: 'discrete' means constituting a separate entity or part."
+    },
+    {
+      "id": 69,
+      "passage": null,
+      "text": "SC Question 69: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of reluctant to draw attention to yourself, feeling anger over a perceived injustice, and joy from watching the suffering of others.",
+      "options": [
+        [
+          "effacing",
+          "prolific",
+          "jaundice"
+        ],
+        [
+          "ephemeral",
+          "palatable",
+          "indignant"
+        ],
+        [
+          "recrimination",
+          "conflagration",
+          "schadenfreude"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        2
+      ],
+      "answers": [
+        0,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'effacing' means reluctant to draw attention to yourself. Blank 2: 'indignant' means feeling anger over a perceived injustice. Blank 3: 'schadenfreude' means joy from watching the suffering of others."
+    },
+    {
+      "id": 70,
+      "passage": null,
+      "text": "SC Question 70: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested made less hopeful or enthusiastic, but the conclusion displayed to be overly theatrical.",
+      "options": [
+        [
+          "supercilious",
+          "infelicitous",
+          "disheartened"
+        ],
+        [
+          "diminutive",
+          "histrionic",
+          "mettlesome"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'disheartened' means made less hopeful or enthusiastic. Blank 2: 'histrionic' means to be overly theatrical."
+    },
+    {
+      "id": 71,
+      "passage": null,
+      "text": "SC Question 71: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of noble and generous in spirit, especially towards a rival or someone less powerful and to be wandering.",
+      "options": [
+        [
+          "magnanimous",
+          "impregnable",
+          "superfluous"
+        ],
+        [
+          "errant",
+          "fickle",
+          "benign"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'magnanimous' means noble and generous in spirit, especially towards a rival or someone less powerful. Blank 2: 'errant' means to be wandering; not sticking to a circumscribed path."
+    },
+    {
+      "id": 72,
+      "passage": null,
+      "text": "SC Question 72: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of cautious, to be overly theatrical, and clarify by giving an example of.",
+      "options": [
+        [
+          "leery",
+          "chary",
+          "surly"
+        ],
+        [
+          "pejorative",
+          "malodorous",
+          "histrionic"
+        ],
+        [
+          "objurgate",
+          "excoriate",
+          "exemplify"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'chary' means cautious. Blank 2: 'histrionic' means to be overly theatrical. Blank 3: 'exemplify' means clarify by giving an example of."
+    },
+    {
+      "id": 73,
+      "passage": null,
+      "text": "SC Question 73: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested difficult to handle or use especially because of size or weight, but the conclusion displayed highly or widely praised or boasted about.",
+      "options": [
+        [
+          "aboveboard",
+          "cumbersome",
+          "lascivious"
+        ],
+        [
+          "vaunted",
+          "furtive",
+          "martial"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'cumbersome' means difficult to handle or use especially because of size or weight. Blank 2: 'vaunted' means highly or widely praised or boasted about."
+    },
+    {
+      "id": 74,
+      "passage": null,
+      "text": "SC Question 74: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lasting a very short time and to be overly theatrical.",
+      "options": [
+        [
+          "transient",
+          "pertinent",
+          "disparate"
+        ],
+        [
+          "profligate",
+          "histrionic",
+          "precarious"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'transient' means lasting a very short time. Blank 2: 'histrionic' means to be overly theatrical."
+    },
+    {
+      "id": 75,
+      "passage": null,
+      "text": "SC Question 75: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of intellectually productive, showing a cheerful willingness to do favors for others, and a right reserved exclusively by a particular person or group.",
+      "options": [
+        [
+          "besotted",
+          "puissant",
+          "prolific"
+        ],
+        [
+          "indigent",
+          "obliging",
+          "decorous"
+        ],
+        [
+          "intimation",
+          "misogynist",
+          "perquisite"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        2
+      ],
+      "answers": [
+        2,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'prolific' means intellectually productive. Blank 2: 'obliging' means showing a cheerful willingness to do favors for others. Blank 3: 'perquisite' means a right reserved exclusively by a particular person or group (especially a hereditary or official right)."
+    },
+    {
+      "id": 76,
+      "passage": null,
+      "text": "SC Question 76: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested causing harm or injury, but the conclusion displayed describing an event or situation that happens at the same time as or in connection with another.",
+      "options": [
+        [
+          "punctilious",
+          "detrimental",
+          "impermeable"
+        ],
+        [
+          "irrefutable",
+          "perfunctory",
+          "concomitant"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'detrimental' means (sometimes followed by \"to\") causing harm or injury. Blank 2: 'concomitant' means describing an event or situation that happens at the same time as or in connection with another."
+    },
+    {
+      "id": 77,
+      "passage": null,
+      "text": "SC Question 77: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of trifling or petty and without any attempt at concealment.",
+      "options": [
+        [
+          "picayune",
+          "pastoral",
+          "involved"
+        ],
+        [
+          "commendable",
+          "dilapidated",
+          "conspicuous"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'picayune' means trifling or petty (a person). Blank 2: 'conspicuous' means without any attempt at concealment; completely obvious."
+    },
+    {
+      "id": 78,
+      "passage": null,
+      "text": "SC Question 78: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of worthy of high praise, unaffected by strong emotion or prejudice, and to serve as a judge in a competition.",
+      "options": [
+        [
+          "detrimental",
+          "sentimental",
+          "commendable"
+        ],
+        [
+          "perspicacious",
+          "demonstrative",
+          "dispassionate"
+        ],
+        [
+          "ameliorate",
+          "adjudicate",
+          "nonplussed"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'commendable' means worthy of high praise. Blank 2: 'dispassionate' means unaffected by strong emotion or prejudice. Blank 3: 'adjudicate' means to serve as a judge in a competition; to arrive at a judgment or conclusion."
+    },
+    {
+      "id": 79,
+      "passage": null,
+      "text": "SC Question 79: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested disdainfully or ironically humorous, but the conclusion displayed uninteresting, lacking vitality.",
+      "options": [
+        [
+          "flippant",
+          "sardonic",
+          "decorous"
+        ],
+        [
+          "desiccated",
+          "profligate",
+          "auspicious"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'sardonic' means disdainfully or ironically humorous; scornful and mocking. Blank 2: 'desiccated' means uninteresting, lacking vitality."
+    },
+    {
+      "id": 80,
+      "passage": null,
+      "text": "SC Question 80: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of transparently clear and cheerful.",
+      "options": [
+        [
+          "dilatory",
+          "pellucid",
+          "churlish"
+        ],
+        [
+          "jaundice",
+          "impudent",
+          "sanguine"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'pellucid' means transparently clear; easily understandable. Blank 2: 'sanguine' means cheerful; optimistic."
+    },
+    {
+      "id": 81,
+      "passage": null,
+      "text": "SC Question 81: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of not able to work, survive, or succeed, found in the ordinary course of events, and a strict disciplinarian.",
+      "options": [
+        [
+          "feckless",
+          "ethereal",
+          "unviable"
+        ],
+        [
+          "quotidian",
+          "audacious",
+          "incumbent"
+        ],
+        [
+          "aphorism",
+          "exegesis",
+          "martinet"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'unviable' means not able to work, survive, or succeed (also spelled inviable). Blank 2: 'quotidian' means found in the ordinary course of events. Blank 3: 'martinet' means a strict disciplinarian."
+    },
+    {
+      "id": 82,
+      "passage": null,
+      "text": "SC Question 82: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested not normal, but the conclusion displayed not given careful consideration.",
+      "options": [
+        [
+          "steadfast",
+          "penurious",
+          "anomalous"
+        ],
+        [
+          "coterminous",
+          "sententious",
+          "improvident"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'anomalous' means not normal. Blank 2: 'improvident' means not given careful consideration."
+    },
+    {
+      "id": 83,
+      "passage": null,
+      "text": "SC Question 83: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of effusively or insincerely emotional, especially in art, music, and literature and unadorned in style or appearance.",
+      "options": [
+        [
+          "deleterious",
+          "commendable",
+          "sentimental"
+        ],
+        [
+          "austere",
+          "mundane",
+          "mundane"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'sentimental' means effusively or insincerely emotional, especially in art, music, and literature. Blank 2: 'austere' means unadorned in style or appearance."
+    },
+    {
+      "id": 84,
+      "passage": null,
+      "text": "SC Question 84: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of complete and wholly, without partiality, and deny or contradict.",
+      "options": [
+        [
+          "arrant",
+          "turgid",
+          "facile"
+        ],
+        [
+          "economical",
+          "factitious",
+          "evenhanded"
+        ],
+        [
+          "espouse",
+          "expound",
+          "gainsay"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        2
+      ],
+      "answers": [
+        0,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'arrant' means complete and wholly (usually modifying a noun with negative connotation). Blank 2: 'evenhanded' means without partiality. Blank 3: 'gainsay' means deny or contradict; speak against or oppose."
+    },
+    {
+      "id": 85,
+      "passage": null,
+      "text": "SC Question 85: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested intolerable, difficult to endure, but the conclusion displayed showing a brooding ill humor.",
+      "options": [
+        [
+          "excruciating",
+          "unassailable",
+          "insufferable"
+        ],
+        [
+          "obtuse",
+          "sullen",
+          "facile"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'insufferable' means intolerable, difficult to endure. Blank 2: 'sullen' means showing a brooding ill humor."
+    },
+    {
+      "id": 86,
+      "passage": null,
+      "text": "SC Question 86: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of wildly idealistic and impervious to correction by punishment.",
+      "options": [
+        [
+          "vehement",
+          "quixotic",
+          "sanguine"
+        ],
+        [
+          "iconoclastic",
+          "effervescent",
+          "incorrigible"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'quixotic' means wildly idealistic; impractical. Blank 2: 'incorrigible' means impervious to correction by punishment."
+    },
+    {
+      "id": 87,
+      "passage": null,
+      "text": "SC Question 87: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of dependable, excessively greedy, and deceitfulness, pretending to want one thing but interested in something else.",
+      "options": [
+        [
+          "stalwart",
+          "inimical",
+          "ethereal"
+        ],
+        [
+          "avaricious",
+          "pernicious",
+          "exorbitant"
+        ],
+        [
+          "profusion",
+          "ingenuity",
+          "duplicity"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'stalwart' means dependable; inured to fatigue or hardships. Blank 2: 'avaricious' means excessively greedy. Blank 3: 'duplicity' means deceitfulness, pretending to want one thing but interested in something else."
+    },
+    {
+      "id": 88,
+      "passage": null,
+      "text": "SC Question 88: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested prone to unexpected and unpredictable changes in mood, but the conclusion displayed extremely optimistic.",
+      "options": [
+        [
+          "ingenuous",
+          "truculent",
+          "mercurial"
+        ],
+        [
+          "contemptuous",
+          "pollyannaish",
+          "antithetical"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'mercurial' means (of a person) prone to unexpected and unpredictable changes in mood. Blank 2: 'pollyannaish' means extremely optimistic."
+    },
+    {
+      "id": 89,
+      "passage": null,
+      "text": "SC Question 89: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of concise and full of meaning and supply added support.",
+      "options": [
+        [
+          "trite",
+          "pithy",
+          "snide"
+        ],
+        [
+          "precipitate",
+          "irrefutable",
+          "appurtenant"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'pithy' means concise and full of meaning. Blank 2: 'appurtenant' means supply added support."
+    },
+    {
+      "id": 90,
+      "passage": null,
+      "text": "SC Question 90: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of with little chance of success, recurring in scattered and irregular or unpredictable instances, and pull inward or towards a center.",
+      "options": [
+        [
+          "unpropitious",
+          "cosmopolitan",
+          "disingenuous"
+        ],
+        [
+          "sporadic",
+          "contrite",
+          "diligent"
+        ],
+        [
+          "perturb",
+          "flummox",
+          "retract"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'unpropitious' means (of a circumstance) with little chance of success. Blank 2: 'sporadic' means recurring in scattered and irregular or unpredictable instances. Blank 3: 'retract' means pull inward or towards a center; formally reject or disavow a formerly held belief, usually under pressure."
+    },
+    {
+      "id": 91,
+      "passage": null,
+      "text": "SC Question 91: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested complicated, and difficult to comprehend, but the conclusion displayed Unspoiled, untouched (usu.",
+      "options": [
+        [
+          "involved",
+          "incisive",
+          "diligent"
+        ],
+        [
+          "pristine",
+          "laudable",
+          "derisive"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'involved' means complicated, and difficult to comprehend. Blank 2: 'pristine' means Unspoiled, untouched (usu."
+    },
+    {
+      "id": 92,
+      "passage": null,
+      "text": "SC Question 92: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of similar in some respects but otherwise different and showing sorrow.",
+      "options": [
+        [
+          "incumbent",
+          "insidious",
+          "analogous"
+        ],
+        [
+          "dolorous",
+          "discreet",
+          "quixotic"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'analogous' means similar in some respects but otherwise different. Blank 2: 'dolorous' means showing sorrow."
+    },
+    {
+      "id": 93,
+      "passage": null,
+      "text": "SC Question 93: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of shapeless, likely to lean towards a controversial view, and the final resolution of the many strands of a literary or dramatic work.",
+      "options": [
+        [
+          "penurious",
+          "amorphous",
+          "querulous"
+        ],
+        [
+          "tendentious",
+          "sentimental",
+          "incongruous"
+        ],
+        [
+          "aberration",
+          "denouement",
+          "smattering"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'amorphous' means shapeless. Blank 2: 'tendentious' means likely to lean towards a controversial view. Blank 3: 'denouement' means the final resolution of the many strands of a literary or dramatic work; the outcome of a complex sequence of events."
+    },
+    {
+      "id": 94,
+      "passage": null,
+      "text": "SC Question 94: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested repetitive and boring, but the conclusion displayed glaringly obvious.",
+      "options": [
+        [
+          "mundane",
+          "maudlin",
+          "spartan"
+        ],
+        [
+          "bereft",
+          "facile",
+          "patent"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'mundane' means repetitive and boring; not spiritual. Blank 2: 'patent' means glaringly obvious."
+    },
+    {
+      "id": 95,
+      "passage": null,
+      "text": "SC Question 95: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not easily perturbed or excited or upset and not clearly understood or expressed.",
+      "options": [
+        [
+          "unequivocal",
+          "overweening",
+          "unflappable"
+        ],
+        [
+          "errant",
+          "patent",
+          "opaque"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'unflappable' means not easily perturbed or excited or upset; marked by extreme calm and composure. Blank 2: 'opaque' means not clearly understood or expressed."
+    },
+    {
+      "id": 96,
+      "passage": null,
+      "text": "SC Question 96: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of to be negligent in one\"s duty, immune to attack, and to speak in an evasive way.",
+      "options": [
+        [
+          "remiss",
+          "extant",
+          "candid"
+        ],
+        [
+          "unassailable",
+          "commensurate",
+          "incorrigible"
+        ],
+        [
+          "remonstrate",
+          "crystallize",
+          "prevaricate"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'remiss' means to be negligent in one\"s duty. Blank 2: 'unassailable' means immune to attack; without flaws. Blank 3: 'prevaricate' means to speak in an evasive way."
+    },
+    {
+      "id": 97,
+      "passage": null,
+      "text": "SC Question 97: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested very generous, but the conclusion displayed involving intelligence rather than emotions or instinct.",
+      "options": [
+        [
+          "unstinting",
+          "transitory",
+          "impervious"
+        ],
+        [
+          "intrepid",
+          "cerebral",
+          "unviable"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'unstinting' means very generous. Blank 2: 'cerebral' means involving intelligence rather than emotions or instinct."
+    },
+    {
+      "id": 98,
+      "passage": null,
+      "text": "SC Question 98: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of tending to betray and not real or genuine.",
+      "options": [
+        [
+          "treacherous",
+          "dilapidated",
+          "disaffected"
+        ],
+        [
+          "robust",
+          "craven",
+          "ersatz"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'treacherous' means tending to betray. Blank 2: 'ersatz' means not real or genuine; phony."
+    },
+    {
+      "id": 99,
+      "passage": null,
+      "text": "SC Question 99: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of habitually reserved and uncommunicative, impervious to correction by punishment, and joy from watching the suffering of others.",
+      "options": [
+        [
+          "jaundice",
+          "gossamer",
+          "taciturn"
+        ],
+        [
+          "obstreperous",
+          "intransigent",
+          "incorrigible"
+        ],
+        [
+          "conflagration",
+          "schadenfreude",
+          "recrimination"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'taciturn' means habitually reserved and uncommunicative. Blank 2: 'incorrigible' means impervious to correction by punishment. Blank 3: 'schadenfreude' means joy from watching the suffering of others."
+    },
+    {
+      "id": 100,
+      "passage": null,
+      "text": "SC Question 100: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested liable to sudden unpredictable change, esp, but the conclusion displayed describing a victory that comes at such a great cost that the victory is not worthwhile George W.",
+      "options": [
+        [
+          "benign",
+          "fickle",
+          "turgid"
+        ],
+        [
+          "profuse",
+          "pyrrhic",
+          "haughty"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'fickle' means liable to sudden unpredictable change, esp. Blank 2: 'pyrrhic' means describing a victory that comes at such a great cost that the victory is not worthwhile George W."
+    },
+    {
+      "id": 101,
+      "passage": null,
+      "text": "SC Question 101: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of noisily and stubbornly defiant and having good judgement and acute insight.",
+      "options": [
+        [
+          "ostentatious",
+          "contemptuous",
+          "obstreperous"
+        ],
+        [
+          "tractable",
+          "maladroit",
+          "sagacious"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'obstreperous' means noisily and stubbornly defiant; willfully difficult to control. Blank 2: 'sagacious' means having good judgement and acute insight."
+    },
+    {
+      "id": 102,
+      "passage": null,
+      "text": "SC Question 102: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of not real or genuine, relating to the pleasant aspects of the country, and to placate or appease.",
+      "options": [
+        [
+          "remiss",
+          "arrant",
+          "ersatz"
+        ],
+        [
+          "bucolic",
+          "doughty",
+          "raffish"
+        ],
+        [
+          "bowdlerize",
+          "perpetuate",
+          "propitiate"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'ersatz' means not real or genuine; phony. Blank 2: 'bucolic' means relating to the pleasant aspects of the country. Blank 3: 'propitiate' means to placate or appease."
+    },
+    {
+      "id": 103,
+      "passage": null,
+      "text": "SC Question 103: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested showing sorrow, but the conclusion displayed lacking energy.",
+      "options": [
+        [
+          "catholic",
+          "dolorous",
+          "tempered"
+        ],
+        [
+          "lethargic",
+          "officious",
+          "apathetic"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'dolorous' means showing sorrow. Blank 2: 'lethargic' means lacking energy."
+    },
+    {
+      "id": 104,
+      "passage": null,
+      "text": "SC Question 104: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of charming in a childlike or naive way and fixed firmly or securely.",
+      "options": [
+        [
+          "winsome",
+          "telling",
+          "martial"
+        ],
+        [
+          "desiccated",
+          "admonitory",
+          "entrenched"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'winsome' means charming in a childlike or naive way. Blank 2: 'entrenched' means fixed firmly or securely."
+    },
+    {
+      "id": 105,
+      "passage": null,
+      "text": "SC Question 105: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of describing a victory that comes at such a great cost that the victory is not worthwhile George W, being in the earliest stages of development, and extreme generosity and giving.",
+      "options": [
+        [
+          "bilious",
+          "pyrrhic",
+          "mordant"
+        ],
+        [
+          "concomitant",
+          "rudimentary",
+          "unflappable"
+        ],
+        [
+          "largess",
+          "umbrage",
+          "decorum"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'pyrrhic' means describing a victory that comes at such a great cost that the victory is not worthwhile George W. Blank 2: 'rudimentary' means being in the earliest stages of development; being or involving basic facts or principles. Blank 3: 'largess' means extreme generosity and giving."
+    },
+    {
+      "id": 106,
+      "passage": null,
+      "text": "SC Question 106: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested traveling by foot, but the conclusion displayed discontented as toward authority.",
+      "options": [
+        [
+          "extenuating",
+          "peripatetic",
+          "crestfallen"
+        ],
+        [
+          "disaffected",
+          "detrimental",
+          "impecunious"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'peripatetic' means traveling by foot. Blank 2: 'disaffected' means discontented as toward authority."
+    },
+    {
+      "id": 107,
+      "passage": null,
+      "text": "SC Question 107: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of marked by refinement in taste and manners and characterized by or characteristic of exceptionally early development or maturity.",
+      "options": [
+        [
+          "genteel",
+          "qualify",
+          "austere"
+        ],
+        [
+          "precocious",
+          "portentous",
+          "impeccable"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'genteel' means marked by refinement in taste and manners. Blank 2: 'precocious' means characterized by or characteristic of exceptionally early development or maturity (especially in mental aptitude)."
+    },
+    {
+      "id": 108,
+      "passage": null,
+      "text": "SC Question 108: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of easily influenced, trifling or petty, and interpret in the wrong way.",
+      "options": [
+        [
+          "pragmatic",
+          "mercurial",
+          "malleable"
+        ],
+        [
+          "picayune",
+          "sanguine",
+          "retiring"
+        ],
+        [
+          "crystallize",
+          "countermand",
+          "misconstrue"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'malleable' means easily influenced. Blank 2: 'picayune' means trifling or petty (a person). Blank 3: 'misconstrue' means interpret in the wrong way."
+    },
+    {
+      "id": 109,
+      "passage": null,
+      "text": "SC Question 109: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested lasting a very short time, but the conclusion displayed characterized by dignity and propriety.",
+      "options": [
+        [
+          "palatable",
+          "destitute",
+          "transient"
+        ],
+        [
+          "bleak",
+          "chary",
+          "staid"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'transient' means lasting a very short time. Blank 2: 'staid' means characterized by dignity and propriety."
+    },
+    {
+      "id": 110,
+      "passage": null,
+      "text": "SC Question 110: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of large enough to be noticed (usu and unwilling to change one's beliefs or course of action.",
+      "options": [
+        [
+          "appreciable",
+          "forthcoming",
+          "irrevocable"
+        ],
+        [
+          "effervescent",
+          "supercilious",
+          "intransigent"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'appreciable' means large enough to be noticed (usu. Blank 2: 'intransigent' means unwilling to change one's beliefs or course of action."
+    },
+    {
+      "id": 111,
+      "passage": null,
+      "text": "SC Question 111: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of offensively self-assured or given to exercising usually unwarranted power, very irritable, and lack of concern.",
+      "options": [
+        [
+          "autocratic",
+          "pedestrian",
+          "admonitory"
+        ],
+        [
+          "haphazard",
+          "steadfast",
+          "splenetic"
+        ],
+        [
+          "insouciance",
+          "presumption",
+          "desideratum"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        0
+      ],
+      "answers": [
+        0,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'autocratic' means offensively self-assured or given to exercising usually unwarranted power. Blank 2: 'splenetic' means very irritable. Blank 3: 'insouciance' means lack of concern."
+    },
+    {
+      "id": 112,
+      "passage": null,
+      "text": "SC Question 112: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested arrived at without due care or effort, but the conclusion displayed habitually complaining.",
+      "options": [
+        [
+          "plucky",
+          "facile",
+          "gauche"
+        ],
+        [
+          "querulous",
+          "perennial",
+          "equivocal"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'facile' means arrived at without due care or effort; lacking depth. Blank 2: 'querulous' means habitually complaining."
+    },
+    {
+      "id": 113,
+      "passage": null,
+      "text": "SC Question 113: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of having never been done or known before and noisily and stubbornly defiant.",
+      "options": [
+        [
+          "disinterested",
+          "unprecedented",
+          "dispassionate"
+        ],
+        [
+          "obstreperous",
+          "iconoclastic",
+          "disheartened"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'unprecedented' means having never been done or known before; novel. Blank 2: 'obstreperous' means noisily and stubbornly defiant; willfully difficult to control."
+    },
+    {
+      "id": 114,
+      "passage": null,
+      "text": "SC Question 114: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of marked by defiant disregard for danger or consequences, not able to work, survive, or succeed, and gnaw into.",
+      "options": [
+        [
+          "foolhardy",
+          "penurious",
+          "aesthetic"
+        ],
+        [
+          "unviable",
+          "dogmatic",
+          "cohesive"
+        ],
+        [
+          "rankle",
+          "assail",
+          "tender"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'foolhardy' means marked by defiant disregard for danger or consequences. Blank 2: 'unviable' means not able to work, survive, or succeed (also spelled inviable). Blank 3: 'rankle' means gnaw into; make resentful or angry."
+    },
+    {
+      "id": 115,
+      "passage": null,
+      "text": "SC Question 115: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested carelessly and hastily put together, but the conclusion displayed incapable of making less angry or hostile.",
+      "options": [
+        [
+          "puissant",
+          "hegemony",
+          "slapdash"
+        ],
+        [
+          "implacable",
+          "histrionic",
+          "apocryphal"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'slapdash' means carelessly and hastily put together. Blank 2: 'implacable' means incapable of making less angry or hostile."
+    },
+    {
+      "id": 116,
+      "passage": null,
+      "text": "SC Question 116: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of very close and convivial and describing a lively atmosphere.",
+      "options": [
+        [
+          "avid",
+          "boon",
+          "rash"
+        ],
+        [
+          "ambiguous",
+          "recondite",
+          "convivial"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'boon' means very close and convivial. Blank 2: 'convivial' means describing a lively atmosphere."
+    },
+    {
+      "id": 117,
+      "passage": null,
+      "text": "SC Question 117: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of lacking energy and vigor, expressing sorrow, and a large indefinite number.",
+      "options": [
+        [
+          "errant",
+          "fecund",
+          "anemic"
+        ],
+        [
+          "boorish",
+          "illicit",
+          "elegiac"
+        ],
+        [
+          "malady",
+          "eponym",
+          "myriad"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'anemic' means lacking energy and vigor. Blank 2: 'elegiac' means expressing sorrow. Blank 3: 'myriad' means a large indefinite number."
+    },
+    {
+      "id": 118,
+      "passage": null,
+      "text": "SC Question 118: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested showing a cheerful willingness to do favors for others, but the conclusion displayed excessively flattering toward someone's life or work.",
+      "options": [
+        [
+          "obliging",
+          "specious",
+          "hegemony"
+        ],
+        [
+          "commensurate",
+          "hagiographic",
+          "effervescent"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'obliging' means showing a cheerful willingness to do favors for others. Blank 2: 'hagiographic' means excessively flattering toward someone's life or work."
+    },
+    {
+      "id": 119,
+      "passage": null,
+      "text": "SC Question 119: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of making a show of being pious and Unspoiled, untouched (usu.",
+      "options": [
+        [
+          "demonstrative",
+          "sanctimonious",
+          "dispassionate"
+        ],
+        [
+          "flippant",
+          "picayune",
+          "pristine"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'sanctimonious' means making a show of being pious; holier-than-thou. Blank 2: 'pristine' means Unspoiled, untouched (usu."
+    },
+    {
+      "id": 120,
+      "passage": null,
+      "text": "SC Question 120: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of attentive in an ingratiating or servile manner, overly emotional and sad, and cause to take on a definite and clear shape.",
+      "options": [
+        [
+          "meticulous",
+          "obsequious",
+          "forthright"
+        ],
+        [
+          "austere",
+          "austere",
+          "maudlin"
+        ],
+        [
+          "crystallize",
+          "gerrymander",
+          "appropriate"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "answers": [
+        1,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'obsequious' means attentive in an ingratiating or servile manner; attempting to win favor from influential people by flattery. Blank 2: 'maudlin' means overly emotional and sad. Blank 3: 'crystallize' means cause to take on a definite and clear shape."
+    },
+    {
+      "id": 121,
+      "passage": null,
+      "text": "SC Question 121: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested standing above others in quality or position, but the conclusion displayed seemingly contradictory but nonetheless possibly true.",
+      "options": [
+        [
+          "eminent",
+          "thrifty",
+          "vacuous"
+        ],
+        [
+          "inadvertent",
+          "detrimental",
+          "paradoxical"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'eminent' means standing above others in quality or position. Blank 2: 'paradoxical' means seemingly contradictory but nonetheless possibly true."
+    },
+    {
+      "id": 122,
+      "passage": null,
+      "text": "SC Question 122: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of joyously unrestrained and showing understanding and ready comprehension of other peoples' states and emotions.",
+      "options": [
+        [
+          "incumbent",
+          "ebullient",
+          "ineffable"
+        ],
+        [
+          "empathetic",
+          "solicitous",
+          "malodorous"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'ebullient' means joyously unrestrained. Blank 2: 'empathetic' means showing understanding and ready comprehension of other peoples' states and emotions."
+    },
+    {
+      "id": 123,
+      "passage": null,
+      "text": "SC Question 123: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of only partly in existence, rising again as to new life and vigor, and a regular allowance.",
+      "options": [
+        [
+          "dilatory",
+          "inchoate",
+          "unseemly"
+        ],
+        [
+          "resurgent",
+          "elaborate",
+          "impartial"
+        ],
+        [
+          "perfidy",
+          "stipend",
+          "paragon"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'inchoate' means only partly in existence; imperfectly formed. Blank 2: 'resurgent' means rising again as to new life and vigor. Blank 3: 'stipend' means a regular allowance (of money)."
+    },
+    {
+      "id": 124,
+      "passage": null,
+      "text": "SC Question 124: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested fraught with danger, but the conclusion displayed having or revealing supreme mastery or skill.",
+      "options": [
+        [
+          "vindictive",
+          "precarious",
+          "histrionic"
+        ],
+        [
+          "contingent",
+          "consummate",
+          "inveterate"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'precarious' means fraught with danger. Blank 2: 'consummate' means having or revealing supreme mastery or skill."
+    },
+    {
+      "id": 125,
+      "passage": null,
+      "text": "SC Question 125: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of misconduct or wrongdoing and intellectually productive.",
+      "options": [
+        [
+          "malfeasance",
+          "rudimentary",
+          "belligerent"
+        ],
+        [
+          "prolific",
+          "incisive",
+          "beatific"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'malfeasance' means misconduct or wrongdoing (especially by a public official). Blank 2: 'prolific' means intellectually productive."
+    },
+    {
+      "id": 126,
+      "passage": null,
+      "text": "SC Question 126: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of native, working in a subtle but destructive way, and to placate or appease.",
+      "options": [
+        [
+          "evasive",
+          "laconic",
+          "endemic"
+        ],
+        [
+          "pertinent",
+          "blinkered",
+          "insidious"
+        ],
+        [
+          "propitiate",
+          "ingratiate",
+          "recrudesce"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'endemic' means native; originating where it is found. Blank 2: 'insidious' means working in a subtle but destructive way. Blank 3: 'propitiate' means to placate or appease."
+    },
+    {
+      "id": 127,
+      "passage": null,
+      "text": "SC Question 127: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested expressing sorrow, but the conclusion displayed happening by chance or unexpectedly or unintentionally.",
+      "options": [
+        [
+          "elegiac",
+          "genteel",
+          "germane"
+        ],
+        [
+          "dilapidated",
+          "belligerent",
+          "inadvertent"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'elegiac' means expressing sorrow. Blank 2: 'inadvertent' means happening by chance or unexpectedly or unintentionally."
+    },
+    {
+      "id": 128,
+      "passage": null,
+      "text": "SC Question 128: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of creating an unfavorable or neutral first impression and without check or limitation.",
+      "options": [
+        [
+          "incontrovertible",
+          "uncompromising",
+          "unprepossessing"
+        ],
+        [
+          "serene",
+          "wanton",
+          "patent"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'unprepossessing' means creating an unfavorable or neutral first impression. Blank 2: 'wanton' means without check or limitation; showing no moral restraints to one's anger, desire, or appetites."
+    },
+    {
+      "id": 129,
+      "passage": null,
+      "text": "SC Question 129: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of lacking energy and vigor, avoiding waste, efficient, and an excessive amount of something.",
+      "options": [
+        [
+          "docile",
+          "anemic",
+          "tawdry"
+        ],
+        [
+          "autocratic",
+          "capricious",
+          "economical"
+        ],
+        [
+          "stipend",
+          "paragon",
+          "surfeit"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'anemic' means lacking energy and vigor. Blank 2: 'economical' means avoiding waste, efficient. Blank 3: 'surfeit' means an excessive amount of something."
+    },
+    {
+      "id": 130,
+      "passage": null,
+      "text": "SC Question 130: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested of a belief that is based on faulty reasoning, but the conclusion displayed noble and generous in spirit, especially towards a rival or someone less powerful.",
+      "options": [
+        [
+          "nonchalant",
+          "fallacious",
+          "pedestrian"
+        ],
+        [
+          "deferential",
+          "sententious",
+          "magnanimous"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'fallacious' means of a belief that is based on faulty reasoning. Blank 2: 'magnanimous' means noble and generous in spirit, especially towards a rival or someone less powerful."
+    },
+    {
+      "id": 131,
+      "passage": null,
+      "text": "SC Question 131: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of be valid, applicable, or true and intricate and complex.",
+      "options": [
+        [
+          "artful",
+          "placid",
+          "obtain"
+        ],
+        [
+          "byzantine",
+          "truculent",
+          "provident"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'obtain' means be valid, applicable, or true. Blank 2: 'byzantine' means intricate and complex."
+    },
+    {
+      "id": 132,
+      "passage": null,
+      "text": "SC Question 132: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of dependable, marked by excessive complacency or self-satisfaction, and take the place of or have precedence over.",
+      "options": [
+        [
+          "hegemony",
+          "stalwart",
+          "catholic"
+        ],
+        [
+          "glib",
+          "smug",
+          "boon"
+        ],
+        [
+          "preempt",
+          "maunder",
+          "assuage"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'stalwart' means dependable; inured to fatigue or hardships. Blank 2: 'smug' means marked by excessive complacency or self-satisfaction. Blank 3: 'preempt' means take the place of or have precedence over."
+    },
+    {
+      "id": 133,
+      "passage": null,
+      "text": "SC Question 133: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested having or showing profound knowledge, but the conclusion displayed humorously vulgar.",
+      "options": [
+        [
+          "martial",
+          "erudite",
+          "qualify"
+        ],
+        [
+          "ribald",
+          "jejune",
+          "taxing"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'erudite' means having or showing profound knowledge. Blank 2: 'ribald' means humorously vulgar."
+    },
+    {
+      "id": 134,
+      "passage": null,
+      "text": "SC Question 134: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of incapable of being retracted or revoked and very hungry.",
+      "options": [
+        [
+          "paradoxical",
+          "irrevocable",
+          "inflammable"
+        ],
+        [
+          "querulous",
+          "voracious",
+          "destitute"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'irrevocable' means incapable of being retracted or revoked. Blank 2: 'voracious' means very hungry; approaching an activity with gusto."
+    },
+    {
+      "id": 135,
+      "passage": null,
+      "text": "SC Question 135: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of very thorough, open to more than one interpretation, and a strong verbal or written attack on someone or something.",
+      "options": [
+        [
+          "unimpeachable",
+          "thoroughgoing",
+          "disinterested"
+        ],
+        [
+          "imprudent",
+          "ambiguous",
+          "impartial"
+        ],
+        [
+          "polemic",
+          "ascetic",
+          "panacea"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'thoroughgoing' means very thorough; complete. Blank 2: 'ambiguous' means open to more than one interpretation. Blank 3: 'polemic' means a strong verbal or written attack on someone or something."
+    },
+    {
+      "id": 136,
+      "passage": null,
+      "text": "SC Question 136: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested lacking foresight or imagination, but the conclusion displayed likely to argue.",
+      "options": [
+        [
+          "myopic",
+          "jejune",
+          "remiss"
+        ],
+        [
+          "contentious",
+          "disaffected",
+          "incongruous"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'myopic' means lacking foresight or imagination. Blank 2: 'contentious' means likely to argue."
+    },
+    {
+      "id": 137,
+      "passage": null,
+      "text": "SC Question 137: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not easily perturbed or excited or upset and relating to the pleasant aspects of the country.",
+      "options": [
+        [
+          "peripatetic",
+          "rudimentary",
+          "unflappable"
+        ],
+        [
+          "bucolic",
+          "austere",
+          "arduous"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'unflappable' means not easily perturbed or excited or upset; marked by extreme calm and composure. Blank 2: 'bucolic' means relating to the pleasant aspects of the country."
+    },
+    {
+      "id": 138,
+      "passage": null,
+      "text": "SC Question 138: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of unwilling to change one's beliefs or course of action, two things are fundamentally different, and disturb in mind or cause to be worried or alarmed.",
+      "options": [
+        [
+          "antithetical",
+          "unassailable",
+          "intransigent"
+        ],
+        [
+          "maladroit",
+          "disparate",
+          "haphazard"
+        ],
+        [
+          "bolster",
+          "perturb",
+          "prevail"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        1
+      ],
+      "answers": [
+        2,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'intransigent' means unwilling to change one's beliefs or course of action. Blank 2: 'disparate' means two things are fundamentally different. Blank 3: 'perturb' means disturb in mind or cause to be worried or alarmed."
+    },
+    {
+      "id": 139,
+      "passage": null,
+      "text": "SC Question 139: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested marked by high spirits or excitement, but the conclusion displayed marked by defiant disregard for danger or consequences.",
+      "options": [
+        [
+          "effervescent",
+          "disheartened",
+          "presumptuous"
+        ],
+        [
+          "avid",
+          "glib",
+          "rash"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'effervescent' means marked by high spirits or excitement. Blank 2: 'rash' means marked by defiant disregard for danger or consequences; imprudently incurring risk Although Bruce was able to make the delivery in time with a nightime motorcycle ride in the rain, Susan."
+    },
+    {
+      "id": 140,
+      "passage": null,
+      "text": "SC Question 140: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of describing a victory that comes at such a great cost that the victory is not worthwhile George W and extremely controversial, incendiary.",
+      "options": [
+        [
+          "telling",
+          "austere",
+          "pyrrhic"
+        ],
+        [
+          "mellifluous",
+          "inflammable",
+          "impertinent"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'pyrrhic' means describing a victory that comes at such a great cost that the victory is not worthwhile George W. Blank 2: 'inflammable' means extremely controversial, incendiary."
+    },
+    {
+      "id": 141,
+      "passage": null,
+      "text": "SC Question 141: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of of broad scope, firm and dependable especially in loyalty, and resourcefulness and determination.",
+      "options": [
+        [
+          "taciturn",
+          "dolorous",
+          "catholic"
+        ],
+        [
+          "archaic",
+          "artless",
+          "staunch"
+        ],
+        [
+          "credence",
+          "venality",
+          "gumption"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'catholic' means of broad scope; universal. Blank 2: 'staunch' means firm and dependable especially in loyalty. Blank 3: 'gumption' means resourcefulness and determination."
+    },
+    {
+      "id": 142,
+      "passage": null,
+      "text": "SC Question 142: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested available when required or as promised, but the conclusion displayed intended to attract notice and impress others.",
+      "options": [
+        [
+          "treacherous",
+          "forthcoming",
+          "impermeable"
+        ],
+        [
+          "hagiographic",
+          "effervescent",
+          "ostentatious"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'forthcoming' means available when required or as promised. Blank 2: 'ostentatious' means intended to attract notice and impress others; tawdry or vulgar."
+    },
+    {
+      "id": 143,
+      "passage": null,
+      "text": "SC Question 143: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to be shy, and to be inclined to retract from company and avoiding waste, efficient.",
+      "options": [
+        [
+          "dolorous",
+          "retiring",
+          "vehement"
+        ],
+        [
+          "immaterial",
+          "mettlesome",
+          "economical"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'retiring' means to be shy, and to be inclined to retract from company. Blank 2: 'economical' means avoiding waste, efficient."
+    },
+    {
+      "id": 144,
+      "passage": null,
+      "text": "SC Question 144: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of expressing praise or approval, as if driven by turbulent or conflicting emotions, and treat with excessive indulgence.",
+      "options": [
+        [
+          "approbatory",
+          "peripatetic",
+          "ignominious"
+        ],
+        [
+          "tempestuous",
+          "irrefutable",
+          "conspicuous"
+        ],
+        [
+          "cosseted",
+          "enthrall",
+          "reproach"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'approbatory' means expressing praise or approval. Blank 2: 'tempestuous' means as if driven by turbulent or conflicting emotions; highly energetic and wildly changing or fluctuating. Blank 3: 'cosseted' means treat with excessive indulgence."
+    },
+    {
+      "id": 145,
+      "passage": null,
+      "text": "SC Question 145: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested not easily irritated, but the conclusion displayed describing a statement that is not believable.",
+      "options": [
+        [
+          "demure",
+          "genial",
+          "placid"
+        ],
+        [
+          "implausible",
+          "illustrious",
+          "impermeable"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'placid' means not easily irritated. Blank 2: 'implausible' means describing a statement that is not believable."
+    },
+    {
+      "id": 146,
+      "passage": null,
+      "text": "SC Question 146: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not making concessions and having a depressing or gloomy outlook.",
+      "options": [
+        [
+          "uncompromising",
+          "unconscionable",
+          "perspicacious"
+        ],
+        [
+          "bleak",
+          "leery",
+          "chary"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'uncompromising' means not making concessions. Blank 2: 'bleak' means having a depressing or gloomy outlook."
+    },
+    {
+      "id": 147,
+      "passage": null,
+      "text": "SC Question 147: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of unable to pay one's bills, immune to attack, and spirit of the times.",
+      "options": [
+        [
+          "destitute",
+          "insolvent",
+          "estimable"
+        ],
+        [
+          "obstreperous",
+          "unscrupulous",
+          "unassailable"
+        ],
+        [
+          "zeitgeist",
+          "reprobate",
+          "mendicant"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "answers": [
+        1,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'insolvent' means unable to pay one's bills; bankrupt. Blank 2: 'unassailable' means immune to attack; without flaws. Blank 3: 'zeitgeist' means spirit of the times."
+    },
+    {
+      "id": 148,
+      "passage": null,
+      "text": "SC Question 148: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested having a sense of right and wrong, but the conclusion displayed sturdy and strong in form, constitution, or construction.",
+      "options": [
+        [
+          "lachrymose",
+          "implacable",
+          "scrupulous"
+        ],
+        [
+          "robust",
+          "myopic",
+          "opaque"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'scrupulous' means having a sense of right and wrong; principled. Blank 2: 'robust' means sturdy and strong in form, constitution, or construction."
+    },
+    {
+      "id": 149,
+      "passage": null,
+      "text": "SC Question 149: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of requiring and demanding accuracy and not easily perturbed or excited or upset.",
+      "options": [
+        [
+          "derisive",
+          "unviable",
+          "exacting"
+        ],
+        [
+          "inadvertent",
+          "unflappable",
+          "unequivocal"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'exacting' means requiring and demanding accuracy. Blank 2: 'unflappable' means not easily perturbed or excited or upset; marked by extreme calm and composure."
+    },
+    {
+      "id": 150,
+      "passage": null,
+      "text": "SC Question 150: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of characteristic of one eager to fight, showing a high degree of refinement and the assurance that comes from wide social experience, and precede in time.",
+      "options": [
+        [
+          "disaffected",
+          "industrious",
+          "belligerent"
+        ],
+        [
+          "urbane",
+          "fickle",
+          "rakish"
+        ],
+        [
+          "eradicate",
+          "antedated",
+          "castigate"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "answers": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'belligerent' means characteristic of one eager to fight. Blank 2: 'urbane' means showing a high degree of refinement and the assurance that comes from wide social experience. Blank 3: 'antedated' means precede in time."
+    },
+    {
+      "id": 151,
+      "passage": null,
+      "text": "SC Question 151: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested relating to or involving money, but the conclusion displayed repeated too often.",
+      "options": [
+        [
+          "pecuniary",
+          "pertinent",
+          "incumbent"
+        ],
+        [
+          "lucid",
+          "trite",
+          "banal"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'pecuniary' means relating to or involving money. Blank 2: 'banal' means repeated too often; overfamiliar through overuse."
+    },
+    {
+      "id": 152,
+      "passage": null,
+      "text": "SC Question 152: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of with little chance of success and offensively self-assured or given to exercising usually unwarranted power.",
+      "options": [
+        [
+          "commensurate",
+          "supercilious",
+          "unpropitious"
+        ],
+        [
+          "subversive",
+          "autocratic",
+          "pernicious"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'unpropitious' means (of a circumstance) with little chance of success. Blank 2: 'autocratic' means offensively self-assured or given to exercising usually unwarranted power."
+    },
+    {
+      "id": 153,
+      "passage": null,
+      "text": "SC Question 153: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of intellectually productive, impossible to avoid or evade:, and a characteristic language of a particular group.",
+      "options": [
+        [
+          "prolific",
+          "dolorous",
+          "amenable"
+        ],
+        [
+          "appreciable",
+          "deleterious",
+          "ineluctable"
+        ],
+        [
+          "apathy",
+          "tirade",
+          "jargon"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        2
+      ],
+      "answers": [
+        0,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'prolific' means intellectually productive. Blank 2: 'ineluctable' means impossible to avoid or evade:. Blank 3: 'jargon' means a characteristic language of a particular group."
+    },
+    {
+      "id": 154,
+      "passage": null,
+      "text": "SC Question 154: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested arrived at without due care or effort, but the conclusion displayed to have a very strong desire for revenge.",
+      "options": [
+        [
+          "wanton",
+          "serene",
+          "facile"
+        ],
+        [
+          "pedestrian",
+          "vindictive",
+          "forthright"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'facile' means arrived at without due care or effort; lacking depth. Blank 2: 'vindictive' means to have a very strong desire for revenge."
+    },
+    {
+      "id": 155,
+      "passage": null,
+      "text": "SC Question 155: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of marked by extreme care in treatment of details and lacking social polish.",
+      "options": [
+        [
+          "inveterate",
+          "meticulous",
+          "antiquated"
+        ],
+        [
+          "gauche",
+          "opaque",
+          "rustic"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'meticulous' means marked by extreme care in treatment of details. Blank 2: 'gauche' means lacking social polish."
+    },
+    {
+      "id": 156,
+      "passage": null,
+      "text": "SC Question 156: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of causing harm or injury, highly perceptive, and escape understanding.",
+      "options": [
+        [
+          "appurtenant",
+          "tempestuous",
+          "detrimental"
+        ],
+        [
+          "complacent",
+          "inexorable",
+          "percipient"
+        ],
+        [
+          "morph",
+          "quail",
+          "elude"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'detrimental' means (sometimes followed by \"to\") causing harm or injury. Blank 2: 'percipient' means highly perceptive. Blank 3: 'elude' means escape understanding."
+    },
+    {
+      "id": 157,
+      "passage": null,
+      "text": "SC Question 157: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested confined to and understandable by only an enlightened inner circle, but the conclusion displayed rising again as to new life and vigor.",
+      "options": [
+        [
+          "eclectic",
+          "timorous",
+          "esoteric"
+        ],
+        [
+          "resurgent",
+          "equivocal",
+          "pecuniary"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'esoteric' means confined to and understandable by only an enlightened inner circle. Blank 2: 'resurgent' means rising again as to new life and vigor."
+    },
+    {
+      "id": 158,
+      "passage": null,
+      "text": "SC Question 158: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of easily persuaded and enhancing each other's qualities.",
+      "options": [
+        [
+          "involved",
+          "moribund",
+          "amenable"
+        ],
+        [
+          "scintillating",
+          "disinterested",
+          "complementary"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'amenable' means easily persuaded. Blank 2: 'complementary' means enhancing each other's qualities (for two things or more)."
+    },
+    {
+      "id": 159,
+      "passage": null,
+      "text": "SC Question 159: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of unpredictable, showing little emotion, and a deep, long-lasting sadness.",
+      "options": [
+        [
+          "erratic",
+          "profuse",
+          "carping"
+        ],
+        [
+          "nettlesome",
+          "phlegmatic",
+          "aboveboard"
+        ],
+        [
+          "misogynist",
+          "palimpsest",
+          "melancholy"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'erratic' means unpredictable; strange and unconventional. Blank 2: 'phlegmatic' means showing little emotion. Blank 3: 'melancholy' means a deep, long-lasting sadness."
+    },
+    {
+      "id": 160,
+      "passage": null,
+      "text": "SC Question 160: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested readily reacting to suggestions and influences, but the conclusion displayed showing inappropriate levity.",
+      "options": [
+        [
+          "expansive",
+          "voracious",
+          "tractable"
+        ],
+        [
+          "flippant",
+          "obdurate",
+          "sanguine"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'tractable' means readily reacting to suggestions and influences; easily managed (controlled or taught or molded). Blank 2: 'flippant' means showing inappropriate levity."
+    },
+    {
+      "id": 161,
+      "passage": null,
+      "text": "SC Question 161: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of well integrated, forming a united whole and practicing self-denial.",
+      "options": [
+        [
+          "vehement",
+          "sedulous",
+          "cohesive"
+        ],
+        [
+          "elegiac",
+          "ascetic",
+          "humdrum"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'cohesive' means well integrated, forming a united whole. Blank 2: 'ascetic' means practicing self-denial."
+    },
+    {
+      "id": 162,
+      "passage": null,
+      "text": "SC Question 162: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of conspicuously and offensively loud, unrestrained by convention or propriety, and think about carefully.",
+      "options": [
+        [
+          "meticulous",
+          "vociferous",
+          "autocratic"
+        ],
+        [
+          "rakish",
+          "brazen",
+          "taxing"
+        ],
+        [
+          "perpetuate",
+          "deliberate",
+          "circumvent"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'vociferous' means conspicuously and offensively loud; given to vehement outcry. Blank 2: 'brazen' means unrestrained by convention or propriety. Blank 3: 'deliberate' means think about carefully; weigh the pros and cons of an issue."
+    },
+    {
+      "id": 163,
+      "passage": null,
+      "text": "SC Question 163: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested very thorough, but the conclusion displayed without or deprived of the use of speech or words.",
+      "options": [
+        [
+          "unimpeachable",
+          "thoroughgoing",
+          "perspicacious"
+        ],
+        [
+          "intransigent",
+          "parsimonious",
+          "inarticulate"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'thoroughgoing' means very thorough; complete. Blank 2: 'inarticulate' means without or deprived of the use of speech or words."
+    },
+    {
+      "id": 164,
+      "passage": null,
+      "text": "SC Question 164: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of highly or widely praised or boasted about and quickly aroused to anger.",
+      "options": [
+        [
+          "doleful",
+          "blatant",
+          "vaunted"
+        ],
+        [
+          "facetious",
+          "invidious",
+          "irascible"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'vaunted' means highly or widely praised or boasted about. Blank 2: 'irascible' means quickly aroused to anger."
+    },
+    {
+      "id": 165,
+      "passage": null,
+      "text": "SC Question 165: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of prone to unexpected and unpredictable changes in mood, showing inappropriate levity, and total lack of meaning or ideas.",
+      "options": [
+        [
+          "mercurial",
+          "steadfast",
+          "transient"
+        ],
+        [
+          "flippant",
+          "impudent",
+          "dogmatic"
+        ],
+        [
+          "parvenu",
+          "inanity",
+          "hauteur"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'mercurial' means (of a person) prone to unexpected and unpredictable changes in mood. Blank 2: 'flippant' means showing inappropriate levity. Blank 3: 'inanity' means total lack of meaning or ideas."
+    },
+    {
+      "id": 166,
+      "passage": null,
+      "text": "SC Question 166: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested plausible but false, but the conclusion displayed fraught with danger.",
+      "options": [
+        [
+          "petulant",
+          "incisive",
+          "spurious"
+        ],
+        [
+          "precarious",
+          "cadaverous",
+          "cumbersome"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'spurious' means plausible but false. Blank 2: 'precarious' means fraught with danger."
+    },
+    {
+      "id": 167,
+      "passage": null,
+      "text": "SC Question 167: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of attentive in an ingratiating or servile manner and immune to attack.",
+      "options": [
+        [
+          "philistine",
+          "provincial",
+          "obsequious"
+        ],
+        [
+          "precipitous",
+          "mellifluous",
+          "impregnable"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'obsequious' means attentive in an ingratiating or servile manner; attempting to win favor from influential people by flattery. Blank 2: 'impregnable' means immune to attack; incapable of being tampered with."
+    },
+    {
+      "id": 168,
+      "passage": null,
+      "text": "SC Question 168: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of intellectually productive, marked by a carefree unconventionality or disreputableness, and to placate or appease.",
+      "options": [
+        [
+          "myopic",
+          "fecund",
+          "fickle"
+        ],
+        [
+          "evasive",
+          "raffish",
+          "austere"
+        ],
+        [
+          "propitiate",
+          "bowdlerize",
+          "circumvent"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'fecund' means intellectually productive. Blank 2: 'raffish' means marked by a carefree unconventionality or disreputableness. Blank 3: 'propitiate' means to placate or appease."
+    },
+    {
+      "id": 169,
+      "passage": null,
+      "text": "SC Question 169: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested not confined or limited, but the conclusion displayed requiring and demanding accuracy.",
+      "options": [
+        [
+          "perfunctory",
+          "untrammeled",
+          "impregnable"
+        ],
+        [
+          "puissant",
+          "exacting",
+          "jaundice"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'untrammeled' means not confined or limited. Blank 2: 'exacting' means requiring and demanding accuracy."
+    },
+    {
+      "id": 170,
+      "passage": null,
+      "text": "SC Question 170: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of cheerful and not serious in content or attitude or behavior.",
+      "options": [
+        [
+          "sanguine",
+          "sporadic",
+          "dilatory"
+        ],
+        [
+          "steadfast",
+          "frivolous",
+          "anomalous"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'sanguine' means cheerful; optimistic. Blank 2: 'frivolous' means not serious in content or attitude or behavior."
+    },
+    {
+      "id": 171,
+      "passage": null,
+      "text": "SC Question 171: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of suggesting war or military life, sorrowful through loss or deprivation, and a large indefinite number.",
+      "options": [
+        [
+          "austere",
+          "martial",
+          "austere"
+        ],
+        [
+          "bereft",
+          "extant",
+          "futile"
+        ],
+        [
+          "hubris",
+          "myriad",
+          "foible"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'martial' means suggesting war or military life. Blank 2: 'bereft' means sorrowful through loss or deprivation. Blank 3: 'myriad' means a large indefinite number."
+    },
+    {
+      "id": 172,
+      "passage": null,
+      "text": "SC Question 172: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested native, but the conclusion displayed truthful.",
+      "options": [
+        [
+          "halcyon",
+          "endemic",
+          "winsome"
+        ],
+        [
+          "equivocal",
+          "veracious",
+          "soporific"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'endemic' means native; originating where it is found. Blank 2: 'veracious' means truthful."
+    },
+    {
+      "id": 173,
+      "passage": null,
+      "text": "SC Question 173: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of stubbornly unyielding and characterized by hard work and perseverance.",
+      "options": [
+        [
+          "tenacious",
+          "vitriolic",
+          "recondite"
+        ],
+        [
+          "impermeable",
+          "dictatorial",
+          "industrious"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'tenacious' means stubbornly unyielding. Blank 2: 'industrious' means characterized by hard work and perseverance."
+    },
+    {
+      "id": 174,
+      "passage": null,
+      "text": "SC Question 174: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of dangerously unstable and unpredictable, marked by firm determination or resolution, and talk in a dogmatic and pompous manner.",
+      "options": [
+        [
+          "inflammable",
+          "detrimental",
+          "treacherous"
+        ],
+        [
+          "steadfast",
+          "ponderous",
+          "insidious"
+        ],
+        [
+          "crystallize",
+          "gerrymander",
+          "pontificate"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'treacherous' means dangerously unstable and unpredictable. Blank 2: 'steadfast' means marked by firm determination or resolution; not shakable. Blank 3: 'pontificate' means talk in a dogmatic and pompous manner."
+    },
+    {
+      "id": 175,
+      "passage": null,
+      "text": "SC Question 175: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested causing irritation or annoyance, but the conclusion displayed likely to cause resentment.",
+      "options": [
+        [
+          "munificent",
+          "pejorative",
+          "nettlesome"
+        ],
+        [
+          "analogous",
+          "pertinent",
+          "invidious"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'nettlesome' means causing irritation or annoyance. Blank 2: 'invidious' means likely to cause resentment."
+    },
+    {
+      "id": 176,
+      "passage": null,
+      "text": "SC Question 176: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lasting an indefinitely long time and happening by chance or unexpectedly or unintentionally.",
+      "options": [
+        [
+          "equitable",
+          "imperious",
+          "perennial"
+        ],
+        [
+          "inadvertent",
+          "coterminous",
+          "precipitate"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'perennial' means lasting an indefinitely long time; eternal; everlasting. Blank 2: 'inadvertent' means happening by chance or unexpectedly or unintentionally."
+    },
+    {
+      "id": 177,
+      "passage": null,
+      "text": "SC Question 177: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of immune to attack, avoiding waste, efficient, and the trait of seeming not to care.",
+      "options": [
+        [
+          "intransigent",
+          "unassailable",
+          "intermittent"
+        ],
+        [
+          "vociferous",
+          "fastidious",
+          "economical"
+        ],
+        [
+          "apprehension",
+          "idiosyncrasy",
+          "indifference"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'unassailable' means immune to attack; without flaws. Blank 2: 'economical' means avoiding waste, efficient. Blank 3: 'indifference' means the trait of seeming not to care."
+    },
+    {
+      "id": 178,
+      "passage": null,
+      "text": "SC Question 178: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested threatening or foreshadowing evil or tragic developments, but the conclusion displayed describing a lively atmosphere.",
+      "options": [
+        [
+          "baleful",
+          "erratic",
+          "arduous"
+        ],
+        [
+          "untenable",
+          "conducive",
+          "convivial"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'baleful' means threatening or foreshadowing evil or tragic developments. Blank 2: 'convivial' means describing a lively atmosphere."
+    },
+    {
+      "id": 179,
+      "passage": null,
+      "text": "SC Question 179: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of dishonorable and truthful.",
+      "options": [
+        [
+          "bilious",
+          "ignoble",
+          "elusive"
+        ],
+        [
+          "veracious",
+          "impartial",
+          "foolhardy"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'ignoble' means dishonorable. Blank 2: 'veracious' means truthful."
+    },
+    {
+      "id": 180,
+      "passage": null,
+      "text": "SC Question 180: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of extremely hungry, causing harm or injury, and to examine and remove objectionable material.",
+      "options": [
+        [
+          "choleric",
+          "ravenous",
+          "exacting"
+        ],
+        [
+          "illustrious",
+          "detrimental",
+          "unflappable"
+        ],
+        [
+          "censor",
+          "badger",
+          "impute"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'ravenous' means extremely hungry; devouring or craving food in great quantities. Blank 2: 'detrimental' means (sometimes followed by \"to\") causing harm or injury. Blank 3: 'censor' means to examine and remove objectionable material."
+    },
+    {
+      "id": 181,
+      "passage": null,
+      "text": "SC Question 181: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested transparently clear, but the conclusion displayed very hungry.",
+      "options": [
+        [
+          "impudent",
+          "edifying",
+          "pellucid"
+        ],
+        [
+          "impetuous",
+          "voracious",
+          "ephemeral"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'pellucid' means transparently clear; easily understandable. Blank 2: 'voracious' means very hungry; approaching an activity with gusto."
+    },
+    {
+      "id": 182,
+      "passage": null,
+      "text": "SC Question 182: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lasting an indefinitely long time and suggesting war or military life.",
+      "options": [
+        [
+          "hackneyed",
+          "malleable",
+          "perennial"
+        ],
+        [
+          "anodyne",
+          "martial",
+          "macabre"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'perennial' means lasting an indefinitely long time; eternal; everlasting. Blank 2: 'martial' means suggesting war or military life."
+    },
+    {
+      "id": 183,
+      "passage": null,
+      "text": "SC Question 183: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of suggesting the operation of supernatural influences, instructive, and great coolness and composure under strain.",
+      "options": [
+        [
+          "bucolic",
+          "mordant",
+          "uncanny"
+        ],
+        [
+          "puissant",
+          "cerebral",
+          "didactic"
+        ],
+        [
+          "litany",
+          "dearth",
+          "aplomb"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'uncanny' means suggesting the operation of supernatural influences; surpassing the ordinary or normal. Blank 2: 'didactic' means instructive (especially excessively). Blank 3: 'aplomb' means great coolness and composure under strain."
+    },
+    {
+      "id": 184,
+      "passage": null,
+      "text": "SC Question 184: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested having or showing profound knowledge, but the conclusion displayed unsparing and uncompromising in discipline or judgment.",
+      "options": [
+        [
+          "languid",
+          "erudite",
+          "raffish"
+        ],
+        [
+          "languid",
+          "wanting",
+          "spartan"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'erudite' means having or showing profound knowledge. Blank 2: 'spartan' means unsparing and uncompromising in discipline or judgment; practicing great self- denial."
+    },
+    {
+      "id": 185,
+      "passage": null,
+      "text": "SC Question 185: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of showing hovering attentiveness and very irritable.",
+      "options": [
+        [
+          "solicitous",
+          "fallacious",
+          "gregarious"
+        ],
+        [
+          "haphazard",
+          "splenetic",
+          "guileless"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'solicitous' means showing hovering attentiveness. Blank 2: 'splenetic' means very irritable."
+    },
+    {
+      "id": 186,
+      "passage": null,
+      "text": "SC Question 186: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of large enough to be noticed (usu, marked by high spirits or excitement, and interpret in the wrong way.",
+      "options": [
+        [
+          "malfeasance",
+          "appreciable",
+          "incongruous"
+        ],
+        [
+          "supercilious",
+          "hagiographic",
+          "effervescent"
+        ],
+        [
+          "prevaricate",
+          "misconstrue",
+          "proselytize"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        1
+      ],
+      "answers": [
+        1,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'appreciable' means large enough to be noticed (usu. Blank 2: 'effervescent' means marked by high spirits or excitement. Blank 3: 'misconstrue' means interpret in the wrong way."
+    },
+    {
+      "id": 187,
+      "passage": null,
+      "text": "SC Question 187: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested of a belief that is based on faulty reasoning, but the conclusion displayed being of questionable authenticity.",
+      "options": [
+        [
+          "fallacious",
+          "pejorative",
+          "exorbitant"
+        ],
+        [
+          "portentous",
+          "apocryphal",
+          "vociferous"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'fallacious' means of a belief that is based on faulty reasoning. Blank 2: 'apocryphal' means being of questionable authenticity."
+    },
+    {
+      "id": 188,
+      "passage": null,
+      "text": "SC Question 188: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of incapable of making less angry or hostile and two things are fundamentally different.",
+      "options": [
+        [
+          "antiquated",
+          "implacable",
+          "cumbersome"
+        ],
+        [
+          "disparate",
+          "fledgling",
+          "inclement"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'implacable' means incapable of making less angry or hostile. Blank 2: 'disparate' means two things are fundamentally different."
+    },
+    {
+      "id": 189,
+      "passage": null,
+      "text": "SC Question 189: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of lacking money, showing respect, and significant and important value.",
+      "options": [
+        [
+          "impecunious",
+          "approbatory",
+          "impertinent"
+        ],
+        [
+          "deferential",
+          "redoubtable",
+          "magnanimous"
+        ],
+        [
+          "enmity",
+          "screed",
+          "moment"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'impecunious' means lacking money; poor. Blank 2: 'deferential' means showing respect. Blank 3: 'moment' means significant and important value."
+    },
+    {
+      "id": 190,
+      "passage": null,
+      "text": "SC Question 190: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested instructive, but the conclusion displayed not straightforward.",
+      "options": [
+        [
+          "slapdash",
+          "didactic",
+          "incisive"
+        ],
+        [
+          "disingenuous",
+          "inarticulate",
+          "intransigent"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'didactic' means instructive (especially excessively). Blank 2: 'disingenuous' means not straightforward; giving a false appearance of frankness."
+    },
+    {
+      "id": 191,
+      "passage": null,
+      "text": "SC Question 191: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of timid by nature or revealing fear and nervousness and lacking in harmony or compatibility or appropriateness.",
+      "options": [
+        [
+          "factious",
+          "sporadic",
+          "timorous"
+        ],
+        [
+          "incongruous",
+          "impregnable",
+          "commendable"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'timorous' means timid by nature or revealing fear and nervousness. Blank 2: 'incongruous' means lacking in harmony or compatibility or appropriateness."
+    },
+    {
+      "id": 192,
+      "passage": null,
+      "text": "SC Question 192: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of very generous, being disrespectful, and pronounce not guilty of criminal charges.",
+      "options": [
+        [
+          "philistine",
+          "gregarious",
+          "unstinting"
+        ],
+        [
+          "impertinent",
+          "inscrutable",
+          "disaffected"
+        ],
+        [
+          "antedated",
+          "exonerate",
+          "reconcile"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "answers": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'unstinting' means very generous. Blank 2: 'impertinent' means being disrespectful; improperly forward or bold. Blank 3: 'exonerate' means pronounce not guilty of criminal charges."
+    },
+    {
+      "id": 193,
+      "passage": null,
+      "text": "SC Question 193: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested known by only a few, but the conclusion displayed carelessly and hastily put together.",
+      "options": [
+        [
+          "copious",
+          "obscure",
+          "amiable"
+        ],
+        [
+          "slapdash",
+          "debonair",
+          "contrite"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'obscure' means known by only a few. Blank 2: 'slapdash' means carelessly and hastily put together."
+    },
+    {
+      "id": 194,
+      "passage": null,
+      "text": "SC Question 194: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of deserving of esteem and respect and easily irritated or annoyed.",
+      "options": [
+        [
+          "fledgling",
+          "sagacious",
+          "estimable"
+        ],
+        [
+          "petulant",
+          "discrete",
+          "retiring"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'estimable' means deserving of esteem and respect. Blank 2: 'petulant' means easily irritated or annoyed."
+    },
+    {
+      "id": 195,
+      "passage": null,
+      "text": "SC Question 195: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of marked by courage and determination, showing hovering attentiveness, and any long and tedious account of something.",
+      "options": [
+        [
+          "plucky",
+          "rakish",
+          "candid"
+        ],
+        [
+          "histrionic",
+          "solicitous",
+          "scrupulous"
+        ],
+        [
+          "litany",
+          "malady",
+          "nuance"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        0
+      ],
+      "answers": [
+        0,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'plucky' means marked by courage and determination. Blank 2: 'solicitous' means showing hovering attentiveness. Blank 3: 'litany' means any long and tedious account of something."
+    },
+    {
+      "id": 196,
+      "passage": null,
+      "text": "SC Question 196: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested clever in a cunning way, but the conclusion displayed intellectually productive.",
+      "options": [
+        [
+          "artful",
+          "opaque",
+          "craven"
+        ],
+        [
+          "fickle",
+          "fecund",
+          "opaque"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'artful' means clever in a cunning way. Blank 2: 'fecund' means intellectually productive."
+    },
+    {
+      "id": 197,
+      "passage": null,
+      "text": "SC Question 197: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of inspiring fear or awe and troubled persistently especially with petty annoyances.",
+      "options": [
+        [
+          "tendentious",
+          "treacherous",
+          "redoubtable"
+        ],
+        [
+          "bucolic",
+          "uncanny",
+          "harried"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'redoubtable' means inspiring fear or awe. Blank 2: 'harried' means troubled persistently especially with petty annoyances."
+    },
+    {
+      "id": 198,
+      "passage": null,
+      "text": "SC Question 198: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of to be shy, and to be inclined to retract from company, requiring and demanding accuracy, and to search for something persistently.",
+      "options": [
+        [
+          "churlish",
+          "retiring",
+          "amenable"
+        ],
+        [
+          "exacting",
+          "feckless",
+          "besotted"
+        ],
+        [
+          "assail",
+          "ferret",
+          "foment"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'retiring' means to be shy, and to be inclined to retract from company. Blank 2: 'exacting' means requiring and demanding accuracy. Blank 3: 'ferret' means to search for something persistently."
+    },
+    {
+      "id": 199,
+      "passage": null,
+      "text": "SC Question 199: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested within a group or organization, but the conclusion displayed abusing vocally.",
+      "options": [
+        [
+          "industrious",
+          "forthcoming",
+          "internecine"
+        ],
+        [
+          "jubilant",
+          "derisive",
+          "reticent"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'internecine' means (of conflict) within a group or organization. Blank 2: 'derisive' means abusing vocally; expressing contempt or ridicule."
+    },
+    {
+      "id": 200,
+      "passage": null,
+      "text": "SC Question 200: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of involving intelligence rather than emotions or instinct and lecherous.",
+      "options": [
+        [
+          "feckless",
+          "factious",
+          "cerebral"
+        ],
+        [
+          "munificent",
+          "profligate",
+          "lascivious"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'cerebral' means involving intelligence rather than emotions or instinct. Blank 2: 'lascivious' means lecherous; sexually perverted."
+    },
+    {
+      "id": 201,
+      "passage": null,
+      "text": "SC Question 201: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of characterized by directness in manner or speech, emaciated, and a feeling of evil to come.",
+      "options": [
+        [
+          "forthright",
+          "obsequious",
+          "apocryphal"
+        ],
+        [
+          "contingent",
+          "impervious",
+          "cadaverous"
+        ],
+        [
+          "dispensation",
+          "indifference",
+          "presentiment"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        2
+      ],
+      "answers": [
+        0,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'forthright' means characterized by directness in manner or speech; without subtlety or evasion. Blank 2: 'cadaverous' means emaciated; gaunt. Blank 3: 'presentiment' means a feeling of evil to come."
+    },
+    {
+      "id": 202,
+      "passage": null,
+      "text": "SC Question 202: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested impossible to stop or prevent, but the conclusion displayed suggesting the horror of death and decay.",
+      "options": [
+        [
+          "inexorable",
+          "obsequious",
+          "exorbitant"
+        ],
+        [
+          "endemic",
+          "macabre",
+          "wanting"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'inexorable' means impossible to stop or prevent. Blank 2: 'macabre' means suggesting the horror of death and decay; gruesome."
+    },
+    {
+      "id": 203,
+      "passage": null,
+      "text": "SC Question 203: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of marked by or showing hopelessness and lacking energy.",
+      "options": [
+        [
+          "ascetic",
+          "forlorn",
+          "blatant"
+        ],
+        [
+          "audacious",
+          "parochial",
+          "lethargic"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'forlorn' means marked by or showing hopelessness. Blank 2: 'lethargic' means lacking energy."
+    },
+    {
+      "id": 204,
+      "passage": null,
+      "text": "SC Question 204: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of not easily understood, marked by active interest and enthusiasm, and gnaw into.",
+      "options": [
+        [
+          "overweening",
+          "inscrutable",
+          "improvident"
+        ],
+        [
+          "rash",
+          "base",
+          "avid"
+        ],
+        [
+          "rankle",
+          "tender",
+          "impugn"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        0
+      ],
+      "answers": [
+        1,
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'inscrutable' means not easily understood; unfathomable. Blank 2: 'avid' means marked by active interest and enthusiasm. Blank 3: 'rankle' means gnaw into; make resentful or angry."
+    },
+    {
+      "id": 205,
+      "passage": null,
+      "text": "SC Question 205: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested full of trivial conversation, but the conclusion displayed supply added support.",
+      "options": [
+        [
+          "incessant",
+          "garrulous",
+          "arbitrary"
+        ],
+        [
+          "appurtenant",
+          "impecunious",
+          "implausible"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'garrulous' means full of trivial conversation. Blank 2: 'appurtenant' means supply added support."
+    },
+    {
+      "id": 206,
+      "passage": null,
+      "text": "SC Question 206: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of markedly different from an accepted norm and be valid, applicable, or true.",
+      "options": [
+        [
+          "amenable",
+          "aberrant",
+          "incisive"
+        ],
+        [
+          "ribald",
+          "obtain",
+          "remiss"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'aberrant' means markedly different from an accepted norm. Blank 2: 'obtain' means be valid, applicable, or true."
+    },
+    {
+      "id": 207,
+      "passage": null,
+      "text": "SC Question 207: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of prone to unexpected and unpredictable changes in mood, without any attempt at concealment, and a strict disciplinarian.",
+      "options": [
+        [
+          "maladroit",
+          "transient",
+          "mercurial"
+        ],
+        [
+          "conspicuous",
+          "irrefutable",
+          "precipitous"
+        ],
+        [
+          "indigent",
+          "martinet",
+          "diatribe"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "answers": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'mercurial' means (of a person) prone to unexpected and unpredictable changes in mood. Blank 2: 'conspicuous' means without any attempt at concealment; completely obvious. Blank 3: 'martinet' means a strict disciplinarian."
+    },
+    {
+      "id": 208,
+      "passage": null,
+      "text": "SC Question 208: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested showing modest reserve, but the conclusion displayed inspiring fear or awe.",
+      "options": [
+        [
+          "immutable",
+          "byzantine",
+          "diffident"
+        ],
+        [
+          "redoubtable",
+          "dictatorial",
+          "impregnable"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'diffident' means showing modest reserve; lacking self-confidence. Blank 2: 'redoubtable' means inspiring fear or awe."
+    },
+    {
+      "id": 209,
+      "passage": null,
+      "text": "SC Question 209: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of mixed or conflicting emotions about something and liable to sudden unpredictable change, esp.",
+      "options": [
+        [
+          "portentous",
+          "subversive",
+          "ambivalent"
+        ],
+        [
+          "jejune",
+          "taxing",
+          "fickle"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'ambivalent' means mixed or conflicting emotions about something. Blank 2: 'fickle' means liable to sudden unpredictable change, esp."
+    },
+    {
+      "id": 210,
+      "passage": null,
+      "text": "SC Question 210: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of unbiased, similar in some respects but otherwise different, and recognize or perceive the difference.",
+      "options": [
+        [
+          "disinterested",
+          "unprecedented",
+          "demonstrative"
+        ],
+        [
+          "transient",
+          "analogous",
+          "innocuous"
+        ],
+        [
+          "misattribute",
+          "discriminate",
+          "circumscribe"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        1
+      ],
+      "answers": [
+        0,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'disinterested' means unbiased; neutral. Blank 2: 'analogous' means similar in some respects but otherwise different. Blank 3: 'discriminate' means recognize or perceive the difference."
+    },
+    {
+      "id": 211,
+      "passage": null,
+      "text": "SC Question 211: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested acutely insightful and wise, but the conclusion displayed involving intelligence rather than emotions or instinct.",
+      "options": [
+        [
+          "disinterested",
+          "perspicacious",
+          "unimpeachable"
+        ],
+        [
+          "specious",
+          "cerebral",
+          "puissant"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'perspicacious' means acutely insightful and wise. Blank 2: 'cerebral' means involving intelligence rather than emotions or instinct."
+    },
+    {
+      "id": 212,
+      "passage": null,
+      "text": "SC Question 212: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of wildly idealistic and clever in a cunning way.",
+      "options": [
+        [
+          "pedantic",
+          "indigent",
+          "quixotic"
+        ],
+        [
+          "unruly",
+          "artful",
+          "jejune"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'quixotic' means wildly idealistic; impractical. Blank 2: 'artful' means clever in a cunning way."
+    },
+    {
+      "id": 213,
+      "passage": null,
+      "text": "SC Question 213: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of restless, showing little emotion, and audacious  behavior that you have no right to.",
+      "options": [
+        [
+          "humdrum",
+          "illicit",
+          "restive"
+        ],
+        [
+          "phlegmatic",
+          "precarious",
+          "malevolent"
+        ],
+        [
+          "constituent",
+          "constituent",
+          "presumption"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'restive' means restless. Blank 2: 'phlegmatic' means showing little emotion. Blank 3: 'presumption' means audacious (even arrogant) behavior that you have no right to."
+    },
+    {
+      "id": 214,
+      "passage": null,
+      "text": "SC Question 214: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested describing a lively atmosphere, but the conclusion displayed sharply contrasted in character or purpose.",
+      "options": [
+        [
+          "veritable",
+          "convivial",
+          "officious"
+        ],
+        [
+          "intermittent",
+          "antithetical",
+          "unpropitious"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'convivial' means describing a lively atmosphere. Blank 2: 'antithetical' means sharply contrasted in character or purpose."
+    },
+    {
+      "id": 215,
+      "passage": null,
+      "text": "SC Question 215: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of marked by active interest and enthusiasm and characteristic of rural life.",
+      "options": [
+        [
+          "avid",
+          "base",
+          "moot"
+        ],
+        [
+          "rustic",
+          "extant",
+          "artful"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'avid' means marked by active interest and enthusiasm. Blank 2: 'rustic' means characteristic of rural life; awkwardly simple and provincial."
+    },
+    {
+      "id": 216,
+      "passage": null,
+      "text": "SC Question 216: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of stubbornly persistent in changing an opinion or action, guided by practical experience and observation rather than theory, and make more attractive by adding ornament, colour, etc.",
+      "options": [
+        [
+          "prodigal",
+          "obdurate",
+          "sardonic"
+        ],
+        [
+          "quotidian",
+          "eccentric",
+          "pragmatic"
+        ],
+        [
+          "exemplify",
+          "reconcile",
+          "embellish"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'obdurate' means stubbornly persistent in changing an opinion or action. Blank 2: 'pragmatic' means guided by practical experience and observation rather than theory. Blank 3: 'embellish' means make more attractive by adding ornament, colour, etc."
+    },
+    {
+      "id": 217,
+      "passage": null,
+      "text": "SC Question 217: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested not inclined towards physical exertion or effort, but the conclusion displayed effusively or insincerely emotional, especially in art, music, and literature.",
+      "options": [
+        [
+          "eminent",
+          "languid",
+          "evasive"
+        ],
+        [
+          "sentimental",
+          "incongruous",
+          "punctilious"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'languid' means not inclined towards physical exertion or effort; slow and relaxed. Blank 2: 'sentimental' means effusively or insincerely emotional, especially in art, music, and literature."
+    },
+    {
+      "id": 218,
+      "passage": null,
+      "text": "SC Question 218: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of determined by impulse or whim rather than by necessity or reason and young and inexperienced.",
+      "options": [
+        [
+          "saturnine",
+          "impetuous",
+          "whimsical"
+        ],
+        [
+          "benign",
+          "callow",
+          "opaque"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'whimsical' means determined by impulse or whim rather than by necessity or reason. Blank 2: 'callow' means young and inexperienced."
+    },
+    {
+      "id": 219,
+      "passage": null,
+      "text": "SC Question 219: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of dependable, characterized by hard work and perseverance, and a lack of something.",
+      "options": [
+        [
+          "obliging",
+          "stalwart",
+          "edifying"
+        ],
+        [
+          "industrious",
+          "impecunious",
+          "treacherous"
+        ],
+        [
+          "inkling",
+          "paucity",
+          "primacy"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'stalwart' means dependable; inured to fatigue or hardships. Blank 2: 'industrious' means characterized by hard work and perseverance. Blank 3: 'paucity' means a lack of something."
+    },
+    {
+      "id": 220,
+      "passage": null,
+      "text": "SC Question 220: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested having or showing arrogant superiority to and disdain of those one views as unworthy, but the conclusion displayed constituting a separate entity or part.",
+      "options": [
+        [
+          "haughty",
+          "restive",
+          "telling"
+        ],
+        [
+          "becoming",
+          "discrete",
+          "meteoric"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'haughty' means having or showing arrogant superiority to and disdain of those one views as unworthy. Blank 2: 'discrete' means constituting a separate entity or part."
+    },
+    {
+      "id": 221,
+      "passage": null,
+      "text": "SC Question 221: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to be deliberately teasing and enhancing each other's qualities.",
+      "options": [
+        [
+          "arch",
+          "fell",
+          "rash"
+        ],
+        [
+          "demonstrative",
+          "dispassionate",
+          "complementary"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'arch' means to be deliberately teasing. Blank 2: 'complementary' means enhancing each other's qualities (for two things or more)."
+    },
+    {
+      "id": 222,
+      "passage": null,
+      "text": "SC Question 222: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of unreasonable, very thorough, and interpret in the wrong way.",
+      "options": [
+        [
+          "unconscionable",
+          "uncompromising",
+          "sanctimonious"
+        ],
+        [
+          "unforthcoming",
+          "unimpeachable",
+          "thoroughgoing"
+        ],
+        [
+          "appropriate",
+          "misconstrue",
+          "appropriate"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        1
+      ],
+      "answers": [
+        0,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'unconscionable' means unreasonable; unscrupulous; excessive. Blank 2: 'thoroughgoing' means very thorough; complete. Blank 3: 'misconstrue' means interpret in the wrong way."
+    },
+    {
+      "id": 223,
+      "passage": null,
+      "text": "SC Question 223: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested irritable and is likely to cause disruption, but the conclusion displayed having good judgement and acute insight.",
+      "options": [
+        [
+          "invidious",
+          "guileless",
+          "fractious"
+        ],
+        [
+          "equitable",
+          "obstinate",
+          "sagacious"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'fractious' means irritable and is likely to cause disruption. Blank 2: 'sagacious' means having good judgement and acute insight."
+    },
+    {
+      "id": 224,
+      "passage": null,
+      "text": "SC Question 224: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of extremely optimistic and confusing or ambiguous.",
+      "options": [
+        [
+          "pollyannaish",
+          "inarticulate",
+          "iconoclastic"
+        ],
+        [
+          "inclement",
+          "apathetic",
+          "equivocal"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'pollyannaish' means extremely optimistic. Blank 2: 'equivocal' means confusing or ambiguous."
+    },
+    {
+      "id": 225,
+      "passage": null,
+      "text": "SC Question 225: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of feeling or showing profound respect or veneration, difficult to understand, and an outward or token appearance or form that is deliberately misleading.",
+      "options": [
+        [
+          "esoteric",
+          "reverent",
+          "quixotic"
+        ],
+        [
+          "jubilant",
+          "abstruse",
+          "exacting"
+        ],
+        [
+          "ingenuity",
+          "mendacity",
+          "semblance"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'reverent' means feeling or showing profound respect or veneration. Blank 2: 'abstruse' means difficult to understand; incomprehensible. Blank 3: 'semblance' means an outward or token appearance or form that is deliberately misleading."
+    },
+    {
+      "id": 226,
+      "passage": null,
+      "text": "SC Question 226: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested standing above others in quality or position, but the conclusion displayed with little chance of success.",
+      "options": [
+        [
+          "haughty",
+          "insipid",
+          "eminent"
+        ],
+        [
+          "imponderable",
+          "unpropitious",
+          "infelicitous"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'eminent' means standing above others in quality or position. Blank 2: 'unpropitious' means (of a circumstance) with little chance of success."
+    },
+    {
+      "id": 227,
+      "passage": null,
+      "text": "SC Question 227: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lacking manners or refinement and immune to attack.",
+      "options": [
+        [
+          "edifying",
+          "churlish",
+          "jubilant"
+        ],
+        [
+          "unassailable",
+          "inarticulate",
+          "infelicitous"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'churlish' means lacking manners or refinement. Blank 2: 'unassailable' means immune to attack; without flaws."
+    },
+    {
+      "id": 228,
+      "passage": null,
+      "text": "SC Question 228: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of showing inappropriate levity, feeling or showing profound respect or veneration, and to deceive or trick someone.",
+      "options": [
+        [
+          "aberrant",
+          "flippant",
+          "timorous"
+        ],
+        [
+          "cohesive",
+          "reverent",
+          "abstruse"
+        ],
+        [
+          "champion",
+          "hoodwink",
+          "dovetail"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'flippant' means showing inappropriate levity. Blank 2: 'reverent' means feeling or showing profound respect or veneration. Blank 3: 'hoodwink' means to deceive or trick someone."
+    },
+    {
+      "id": 229,
+      "passage": null,
+      "text": "SC Question 229: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested to be deliberately teasing, but the conclusion displayed wildly idealistic.",
+      "options": [
+        [
+          "arch",
+          "avid",
+          "smug"
+        ],
+        [
+          "quixotic",
+          "cohesive",
+          "untoward"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'arch' means to be deliberately teasing. Blank 2: 'quixotic' means wildly idealistic; impractical."
+    },
+    {
+      "id": 230,
+      "passage": null,
+      "text": "SC Question 230: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of habitual and open to more than one interpretation.",
+      "options": [
+        [
+          "subversive",
+          "inveterate",
+          "phlegmatic"
+        ],
+        [
+          "ambiguous",
+          "complicit",
+          "incumbent"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'inveterate' means habitual. Blank 2: 'ambiguous' means open to more than one interpretation."
+    },
+    {
+      "id": 231,
+      "passage": null,
+      "text": "SC Question 231: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of suggesting the horror of death and decay, of primary importance, and an angry speech.",
+      "options": [
+        [
+          "blatant",
+          "affable",
+          "macabre"
+        ],
+        [
+          "plodding",
+          "cardinal",
+          "aberrant"
+        ],
+        [
+          "gambit",
+          "tirade",
+          "nuance"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        1
+      ],
+      "answers": [
+        2,
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'macabre' means suggesting the horror of death and decay; gruesome. Blank 2: 'cardinal' means of primary importance; fundamental. Blank 3: 'tirade' means an angry speech."
+    },
+    {
+      "id": 232,
+      "passage": null,
+      "text": "SC Question 232: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested highly complex or intricate, but the conclusion displayed expressive of contempt.",
+      "options": [
+        [
+          "lachrymose",
+          "convoluted",
+          "auspicious"
+        ],
+        [
+          "snide",
+          "savvy",
+          "lucid"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'convoluted' means highly complex or intricate. Blank 2: 'snide' means expressive of contempt; derogatory or mocking in an indirect way."
+    },
+    {
+      "id": 233,
+      "passage": null,
+      "text": "SC Question 233: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to have a very strong desire for revenge and not confined or limited.",
+      "options": [
+        [
+          "vindictive",
+          "autocratic",
+          "forthright"
+        ],
+        [
+          "provisional",
+          "untrammeled",
+          "redoubtable"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'vindictive' means to have a very strong desire for revenge. Blank 2: 'untrammeled' means not confined or limited."
+    },
+    {
+      "id": 234,
+      "passage": null,
+      "text": "SC Question 234: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of relating to or involving money, reluctant to draw attention to yourself, and made ineffective or powerless.",
+      "options": [
+        [
+          "pecuniary",
+          "convivial",
+          "pragmatic"
+        ],
+        [
+          "effacing",
+          "gossamer",
+          "incisive"
+        ],
+        [
+          "hamstrung",
+          "exonerate",
+          "juxtapose"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'pecuniary' means relating to or involving money. Blank 2: 'effacing' means reluctant to draw attention to yourself. Blank 3: 'hamstrung' means made ineffective or powerless."
+    },
+    {
+      "id": 235,
+      "passage": null,
+      "text": "SC Question 235: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested having a fierce, savage nature, but the conclusion displayed appropriate, and matches nicely.",
+      "options": [
+        [
+          "impending",
+          "truculent",
+          "immutable"
+        ],
+        [
+          "involved",
+          "becoming",
+          "contrite"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'truculent' means having a fierce, savage nature. Blank 2: 'becoming' means appropriate, and matches nicely."
+    },
+    {
+      "id": 236,
+      "passage": null,
+      "text": "SC Question 236: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of being of equal extent or scope or duration and troubled persistently especially with petty annoyances.",
+      "options": [
+        [
+          "coterminous",
+          "perfunctory",
+          "illustrious"
+        ],
+        [
+          "harried",
+          "evasive",
+          "laconic"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'coterminous' means being of equal extent or scope or duration. Blank 2: 'harried' means troubled persistently especially with petty annoyances."
+    },
+    {
+      "id": 237,
+      "passage": null,
+      "text": "SC Question 237: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of acceptable to the taste or mind, to be overly theatrical, and someone who exhibits great independence in thought and action.",
+      "options": [
+        [
+          "anomalous",
+          "palatable",
+          "stringent"
+        ],
+        [
+          "histrionic",
+          "autocratic",
+          "vociferous"
+        ],
+        [
+          "cupidity",
+          "inequity",
+          "maverick"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        2
+      ],
+      "answers": [
+        1,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'palatable' means acceptable to the taste or mind. Blank 2: 'histrionic' means to be overly theatrical. Blank 3: 'maverick' means someone who exhibits great independence in thought and action."
+    },
+    {
+      "id": 238,
+      "passage": null,
+      "text": "SC Question 238: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested repeated too often, but the conclusion displayed expressive of contempt.",
+      "options": [
+        [
+          "pithy",
+          "lucid",
+          "banal"
+        ],
+        [
+          "snide",
+          "bleak",
+          "hoary"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'banal' means repeated too often; overfamiliar through overuse. Blank 2: 'snide' means expressive of contempt; derogatory or mocking in an indirect way."
+    },
+    {
+      "id": 239,
+      "passage": null,
+      "text": "SC Question 239: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of traveling by foot and worthy of high praise.",
+      "options": [
+        [
+          "peripatetic",
+          "provisional",
+          "inadvertent"
+        ],
+        [
+          "industrious",
+          "commendable",
+          "mellifluous"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'peripatetic' means traveling by foot. Blank 2: 'commendable' means worthy of high praise."
+    },
+    {
+      "id": 240,
+      "passage": null,
+      "text": "SC Question 240: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of overly emotional and sad, openly distrustful and unwilling to confide, and gnaw into.",
+      "options": [
+        [
+          "maudlin",
+          "baleful",
+          "ignoble"
+        ],
+        [
+          "surly",
+          "leery",
+          "muted"
+        ],
+        [
+          "rankle",
+          "guffaw",
+          "rebuke"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        0
+      ],
+      "answers": [
+        0,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'maudlin' means overly emotional and sad. Blank 2: 'leery' means openly distrustful and unwilling to confide. Blank 3: 'rankle' means gnaw into; make resentful or angry."
+    },
+    {
+      "id": 241,
+      "passage": null,
+      "text": "SC Question 241: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested being of questionable authenticity, but the conclusion displayed offensively self-assured or given to exercising unwarranted power.",
+      "options": [
+        [
+          "apocryphal",
+          "cadaverous",
+          "meticulous"
+        ],
+        [
+          "commendable",
+          "impecunious",
+          "magisterial"
+        ]
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'apocryphal' means being of questionable authenticity. Blank 2: 'magisterial' means offensively self-assured or given to exercising unwarranted power."
+    },
+    {
+      "id": 242,
+      "passage": null,
+      "text": "SC Question 242: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of defying imitation and fair to all parties as dictated by reason and conscience.",
+      "options": [
+        [
+          "inimitable",
+          "empathetic",
+          "impervious"
+        ],
+        [
+          "equitable",
+          "veracious",
+          "ambiguous"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'inimitable' means defying imitation; matchless. Blank 2: 'equitable' means fair to all parties as dictated by reason and conscience."
+    },
+    {
+      "id": 243,
+      "passage": null,
+      "text": "SC Question 243: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of without partiality, worthy of high praise, and something that is inappropriate for the given time period.",
+      "options": [
+        [
+          "evenhanded",
+          "preemptive",
+          "capricious"
+        ],
+        [
+          "commendable",
+          "sentimental",
+          "treacherous"
+        ],
+        [
+          "serendipity",
+          "anachronism",
+          "presumption"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'evenhanded' means without partiality. Blank 2: 'commendable' means worthy of high praise. Blank 3: 'anachronism' means something that is inappropriate for the given time period (usually something old)."
+    },
+    {
+      "id": 244,
+      "passage": null,
+      "text": "SC Question 244: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested easily influenced, but the conclusion displayed acceptable to the taste or mind.",
+      "options": [
+        [
+          "trenchant",
+          "ineffable",
+          "malleable"
+        ],
+        [
+          "complicit",
+          "disparate",
+          "palatable"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'malleable' means easily influenced. Blank 2: 'palatable' means acceptable to the taste or mind."
+    },
+    {
+      "id": 245,
+      "passage": null,
+      "text": "SC Question 245: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of plausible but false and so great in size or force or extent as to elicit awe.",
+      "options": [
+        [
+          "gossamer",
+          "spurious",
+          "obliging"
+        ],
+        [
+          "prodigious",
+          "preemptive",
+          "indecorous"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'spurious' means plausible but false. Blank 2: 'prodigious' means so great in size or force or extent as to elicit awe."
+    },
+    {
+      "id": 246,
+      "passage": null,
+      "text": "SC Question 246: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of showing a high degree of refinement and the assurance that comes from wide social experience, determined by impulse or whim rather than by necessity or reason, and speak, plead, or argue in favor of.",
+      "options": [
+        [
+          "patent",
+          "opaque",
+          "urbane"
+        ],
+        [
+          "whimsical",
+          "veracious",
+          "itinerant"
+        ],
+        [
+          "reproach",
+          "advocate",
+          "maintain"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "answers": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'urbane' means showing a high degree of refinement and the assurance that comes from wide social experience. Blank 2: 'whimsical' means determined by impulse or whim rather than by necessity or reason. Blank 3: 'advocate' means speak, plead, or argue in favor of."
+    },
+    {
+      "id": 247,
+      "passage": null,
+      "text": "SC Question 247: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested making a show of being pious, but the conclusion displayed showing understanding and ready comprehension of other peoples' states and emotions.",
+      "options": [
+        [
+          "sanctimonious",
+          "complementary",
+          "surreptitious"
+        ],
+        [
+          "empathetic",
+          "entrenched",
+          "malevolent"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'sanctimonious' means making a show of being pious; holier-than-thou. Blank 2: 'empathetic' means showing understanding and ready comprehension of other peoples' states and emotions."
+    },
+    {
+      "id": 248,
+      "passage": null,
+      "text": "SC Question 248: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to be deliberately teasing and causing irritation or annoyance.",
+      "options": [
+        [
+          "rash",
+          "boon",
+          "arch"
+        ],
+        [
+          "mettlesome",
+          "nettlesome",
+          "inimitable"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'arch' means to be deliberately teasing. Blank 2: 'nettlesome' means causing irritation or annoyance."
+    },
+    {
+      "id": 249,
+      "passage": null,
+      "text": "SC Question 249: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of biting and caustic in thought, manner, or style, found in the ordinary course of events, and a slight suggestion or vague understanding.",
+      "options": [
+        [
+          "carping",
+          "obscure",
+          "mordant"
+        ],
+        [
+          "steadfast",
+          "quotidian",
+          "querulous"
+        ],
+        [
+          "inkling",
+          "paucity",
+          "calumny"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        0
+      ],
+      "answers": [
+        2,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'mordant' means biting and caustic in thought, manner, or style. Blank 2: 'quotidian' means found in the ordinary course of events. Blank 3: 'inkling' means a slight suggestion or vague understanding."
+    },
+    {
+      "id": 250,
+      "passage": null,
+      "text": "SC Question 250: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested intrusive in a meddling or offensive manner, but the conclusion displayed habitually reserved and uncommunicative.",
+      "options": [
+        [
+          "whimsical",
+          "transient",
+          "officious"
+        ],
+        [
+          "taciturn",
+          "petulant",
+          "contrite"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'officious' means intrusive in a meddling or offensive manner. Blank 2: 'taciturn' means habitually reserved and uncommunicative."
+    },
+    {
+      "id": 251,
+      "passage": null,
+      "text": "SC Question 251: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of inoffensive and worthy of high praise.",
+      "options": [
+        [
+          "martial",
+          "adamant",
+          "anodyne"
+        ],
+        [
+          "churlish",
+          "dogmatic",
+          "laudable"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'anodyne' means inoffensive. Blank 2: 'laudable' means worthy of high praise."
+    },
+    {
+      "id": 252,
+      "passage": null,
+      "text": "SC Question 252: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of necessary  as a duty or responsibility, attentive in an ingratiating or servile manner, and speak  rapidly and incessantly.",
+      "options": [
+        [
+          "incumbent",
+          "byzantine",
+          "guileless"
+        ],
+        [
+          "nettlesome",
+          "obsequious",
+          "immaterial"
+        ],
+        [
+          "abstain",
+          "ascribe",
+          "maunder"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'incumbent' means necessary (for someone) as a duty or responsibility. Blank 2: 'obsequious' means attentive in an ingratiating or servile manner; attempting to win favor from influential people by flattery. Blank 3: 'maunder' means speak (about unimportant matters) rapidly and incessantly."
+    },
+    {
+      "id": 253,
+      "passage": null,
+      "text": "SC Question 253: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested difficult to capture or difficult to remember, but the conclusion displayed appropriate, and matches nicely.",
+      "options": [
+        [
+          "qualify",
+          "elusive",
+          "elegiac"
+        ],
+        [
+          "becoming",
+          "spurious",
+          "incisive"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'elusive' means difficult to capture or difficult to remember. Blank 2: 'becoming' means appropriate, and matches nicely."
+    },
+    {
+      "id": 254,
+      "passage": null,
+      "text": "SC Question 254: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of powerful and marked by repeated turns and bends.",
+      "options": [
+        [
+          "bumbling",
+          "puissant",
+          "ethereal"
+        ],
+        [
+          "meteoric",
+          "colossal",
+          "tortuous"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'puissant' means powerful. Blank 2: 'tortuous' means marked by repeated turns and bends; not straightforward."
+    },
+    {
+      "id": 255,
+      "passage": null,
+      "text": "SC Question 255: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of a straightforward and honest look at something, improperly forward or bold, and depravity.",
+      "options": [
+        [
+          "remiss",
+          "tawdry",
+          "candid"
+        ],
+        [
+          "intrepid",
+          "telltale",
+          "impudent"
+        ],
+        [
+          "panegyric",
+          "turpitude",
+          "imbroglio"
+        ]
+      ],
+      "answer": [
+        2,
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'candid' means a straightforward and honest look at something. Blank 2: 'impudent' means improperly forward or bold. Blank 3: 'turpitude' means depravity; a depraved act."
+    },
+    {
+      "id": 256,
+      "passage": null,
+      "text": "SC Question 256: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested dull, but the conclusion displayed having an agreeably pungent taste.",
+      "options": [
+        [
+          "jejune",
+          "stolid",
+          "taxing"
+        ],
+        [
+          "piquant",
+          "pyrrhic",
+          "forlorn"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'jejune' means dull; lacking flavor. Blank 2: 'piquant' means having an agreeably pungent taste."
+    },
+    {
+      "id": 257,
+      "passage": null,
+      "text": "SC Question 257: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of not dangerous to health and must be kept sacred.",
+      "options": [
+        [
+          "jejune",
+          "benign",
+          "artful"
+        ],
+        [
+          "inviolate",
+          "penurious",
+          "truculent"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'benign' means (medicine) not dangerous to health; not recurrent or progressive. Blank 2: 'inviolate' means must be kept sacred."
+    },
+    {
+      "id": 258,
+      "passage": null,
+      "text": "SC Question 258: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of smooth and sweet-sounding, having or showing profound knowledge, and to placate or appease.",
+      "options": [
+        [
+          "mellifluous",
+          "impertinent",
+          "deleterious"
+        ],
+        [
+          "erudite",
+          "mawkish",
+          "cryptic"
+        ],
+        [
+          "propitiate",
+          "exasperate",
+          "underwrite"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'mellifluous' means smooth and sweet-sounding. Blank 2: 'erudite' means having or showing profound knowledge. Blank 3: 'propitiate' means to placate or appease."
+    },
+    {
+      "id": 259,
+      "passage": null,
+      "text": "SC Question 259: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested characteristic of one eager to fight, but the conclusion displayed liable to sudden unpredictable change, esp.",
+      "options": [
+        [
+          "unequivocal",
+          "belligerent",
+          "magisterial"
+        ],
+        [
+          "fickle",
+          "robust",
+          "rustic"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'belligerent' means characteristic of one eager to fight. Blank 2: 'fickle' means liable to sudden unpredictable change, esp."
+    },
+    {
+      "id": 260,
+      "passage": null,
+      "text": "SC Question 260: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of reluctant to draw attention to yourself and artificial.",
+      "options": [
+        [
+          "churlish",
+          "effacing",
+          "abstruse"
+        ],
+        [
+          "factitious",
+          "diabolical",
+          "malodorous"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'effacing' means reluctant to draw attention to yourself. Blank 2: 'factitious' means artificial; not natural."
+    },
+    {
+      "id": 261,
+      "passage": null,
+      "text": "SC Question 261: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of timid by nature or revealing fear and nervousness, cleverly amusing in tone, and fearful expectation.",
+      "options": [
+        [
+          "catholic",
+          "timorous",
+          "insolent"
+        ],
+        [
+          "facetious",
+          "provident",
+          "irascible"
+        ],
+        [
+          "presentiment",
+          "dispensation",
+          "apprehension"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        2
+      ],
+      "answers": [
+        1,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'timorous' means timid by nature or revealing fear and nervousness. Blank 2: 'facetious' means cleverly amusing in tone. Blank 3: 'apprehension' means fearful expectation."
+    },
+    {
+      "id": 262,
+      "passage": null,
+      "text": "SC Question 262: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested habitually complaining, but the conclusion displayed characterized by jokes and good humor.",
+      "options": [
+        [
+          "querulous",
+          "ebullient",
+          "insolvent"
+        ],
+        [
+          "jocular",
+          "telling",
+          "uncanny"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'querulous' means habitually complaining. Blank 2: 'jocular' means characterized by jokes and good humor."
+    },
+    {
+      "id": 263,
+      "passage": null,
+      "text": "SC Question 263: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of relating to or involving money and prone to unexpected and unpredictable changes in mood.",
+      "options": [
+        [
+          "apathetic",
+          "sagacious",
+          "pecuniary"
+        ],
+        [
+          "mercurial",
+          "ebullient",
+          "indignant"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'pecuniary' means relating to or involving money. Blank 2: 'mercurial' means (of a person) prone to unexpected and unpredictable changes in mood."
+    },
+    {
+      "id": 264,
+      "passage": null,
+      "text": "SC Question 264: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of having an unpleasant smell, dull and lacking imagination, and achieve something by means of trickery or devious methods.",
+      "options": [
+        [
+          "malodorous",
+          "portentous",
+          "unstinting"
+        ],
+        [
+          "prosaic",
+          "halcyon",
+          "artless"
+        ],
+        [
+          "finagle",
+          "bolster",
+          "espouse"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'malodorous' means having an unpleasant smell. Blank 2: 'prosaic' means dull and lacking imagination. Blank 3: 'finagle' means achieve something by means of trickery or devious methods."
+    },
+    {
+      "id": 265,
+      "passage": null,
+      "text": "SC Question 265: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested joyously unrestrained, but the conclusion displayed dangerously unstable and unpredictable.",
+      "options": [
+        [
+          "estimable",
+          "benighted",
+          "ebullient"
+        ],
+        [
+          "treacherous",
+          "concomitant",
+          "superfluous"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'ebullient' means joyously unrestrained. Blank 2: 'treacherous' means dangerously unstable and unpredictable."
+    },
+    {
+      "id": 266,
+      "passage": null,
+      "text": "SC Question 266: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of very thorough and attentive in an ingratiating or servile manner.",
+      "options": [
+        [
+          "perspicacious",
+          "thoroughgoing",
+          "demonstrative"
+        ],
+        [
+          "immaterial",
+          "chivalrous",
+          "obsequious"
+        ]
+      ],
+      "answer": [
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'thoroughgoing' means very thorough; complete. Blank 2: 'obsequious' means attentive in an ingratiating or servile manner; attempting to win favor from influential people by flattery."
+    },
+    {
+      "id": 267,
+      "passage": null,
+      "text": "SC Question 267: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of without partiality, tastelessly showy, and a slight suggestion or vague understanding.",
+      "options": [
+        [
+          "vituperate",
+          "evenhanded",
+          "complacent"
+        ],
+        [
+          "wanton",
+          "obtain",
+          "tawdry"
+        ],
+        [
+          "bromide",
+          "chagrin",
+          "inkling"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'evenhanded' means without partiality. Blank 2: 'tawdry' means tastelessly showy; cheap and shoddy. Blank 3: 'inkling' means a slight suggestion or vague understanding."
+    },
+    {
+      "id": 268,
+      "passage": null,
+      "text": "SC Question 268: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested characterized by good taste in manners and conduct, but the conclusion displayed showing little emotion.",
+      "options": [
+        [
+          "edifying",
+          "dilatory",
+          "decorous"
+        ],
+        [
+          "negligible",
+          "phlegmatic",
+          "pugnacious"
+        ]
+      ],
+      "answer": [
+        2,
+        1
+      ],
+      "answers": [
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'decorous' means characterized by good taste in manners and conduct. Blank 2: 'phlegmatic' means showing little emotion."
+    },
+    {
+      "id": 269,
+      "passage": null,
+      "text": "SC Question 269: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of artificial and inappropriate.",
+      "options": [
+        [
+          "impervious",
+          "factitious",
+          "profligate"
+        ],
+        [
+          "obstreperous",
+          "infelicitous",
+          "effervescent"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'factitious' means artificial; not natural. Blank 2: 'infelicitous' means inappropriate."
+    },
+    {
+      "id": 270,
+      "passage": null,
+      "text": "SC Question 270: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of happening by chance or unexpectedly or unintentionally, characterized by directness in manner or speech, and lessen the importance, dignity, or reputation of.",
+      "options": [
+        [
+          "peripatetic",
+          "approbatory",
+          "inadvertent"
+        ],
+        [
+          "impeccable",
+          "forthright",
+          "mettlesome"
+        ],
+        [
+          "belittle",
+          "squander",
+          "besmirch"
+        ]
+      ],
+      "answer": [
+        2,
+        1,
+        0
+      ],
+      "answers": [
+        2,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'inadvertent' means happening by chance or unexpectedly or unintentionally. Blank 2: 'forthright' means characterized by directness in manner or speech; without subtlety or evasion. Blank 3: 'belittle' means lessen the importance, dignity, or reputation of."
+    },
+    {
+      "id": 271,
+      "passage": null,
+      "text": "SC Question 271: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested sorrowful through loss or deprivation, but the conclusion displayed immune to attack.",
+      "options": [
+        [
+          "bereft",
+          "frugal",
+          "benign"
+        ],
+        [
+          "presumptuous",
+          "unassailable",
+          "infelicitous"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'bereft' means sorrowful through loss or deprivation. Blank 2: 'unassailable' means immune to attack; without flaws."
+    },
+    {
+      "id": 272,
+      "passage": null,
+      "text": "SC Question 272: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of extremely painful and emaciated.",
+      "options": [
+        [
+          "parsimonious",
+          "excruciating",
+          "imponderable"
+        ],
+        [
+          "phlegmatic",
+          "cadaverous",
+          "consummate"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'excruciating' means extremely painful. Blank 2: 'cadaverous' means emaciated; gaunt."
+    },
+    {
+      "id": 273,
+      "passage": null,
+      "text": "SC Question 273: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of to be in abundance, clumsy, and the acceptance of something unpleasant that can't be avoided.",
+      "options": [
+        [
+          "surly",
+          "flush",
+          "lucid"
+        ],
+        [
+          "frivolous",
+          "maladroit",
+          "embroiled"
+        ],
+        [
+          "desideratum",
+          "spendthrift",
+          "resignation"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        2
+      ],
+      "answers": [
+        1,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'flush' means to be in abundance. Blank 2: 'maladroit' means clumsy. Blank 3: 'resignation' means the acceptance of something unpleasant that can't be avoided."
+    },
+    {
+      "id": 274,
+      "passage": null,
+      "text": "SC Question 274: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested free of deceit, but the conclusion displayed never to be broken, infringed, or dishonored.",
+      "options": [
+        [
+          "guileless",
+          "impending",
+          "checkered"
+        ],
+        [
+          "inviolable",
+          "provincial",
+          "negligible"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'guileless' means free of deceit. Blank 2: 'inviolable' means never to be broken, infringed, or dishonored."
+    },
+    {
+      "id": 275,
+      "passage": null,
+      "text": "SC Question 275: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of dishonorable and one who says very few words.",
+      "options": [
+        [
+          "ignoble",
+          "endemic",
+          "thrifty"
+        ],
+        [
+          "mundane",
+          "laconic",
+          "erratic"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'ignoble' means dishonorable. Blank 2: 'laconic' means one who says very few words."
+    },
+    {
+      "id": 276,
+      "passage": null,
+      "text": "SC Question 276: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of marked by extreme intensity of emotions or convictions, easily irritated or annoyed, and think about carefully.",
+      "options": [
+        [
+          "decorous",
+          "vehement",
+          "impudent"
+        ],
+        [
+          "reverent",
+          "hegemony",
+          "petulant"
+        ],
+        [
+          "promulgate",
+          "deliberate",
+          "ameliorate"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        1
+      ],
+      "answers": [
+        1,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'vehement' means marked by extreme intensity of emotions or convictions. Blank 2: 'petulant' means easily irritated or annoyed. Blank 3: 'deliberate' means think about carefully; weigh the pros and cons of an issue."
+    },
+    {
+      "id": 277,
+      "passage": null,
+      "text": "SC Question 277: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested habitually reserved and uncommunicative, but the conclusion displayed unaffected by strong emotion or prejudice.",
+      "options": [
+        [
+          "reverent",
+          "exacting",
+          "taciturn"
+        ],
+        [
+          "scintillating",
+          "disinterested",
+          "dispassionate"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'taciturn' means habitually reserved and uncommunicative. Blank 2: 'dispassionate' means unaffected by strong emotion or prejudice."
+    },
+    {
+      "id": 278,
+      "passage": null,
+      "text": "SC Question 278: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of to be in abundance and relating to the countryside in a pleasant sense.",
+      "options": [
+        [
+          "loath",
+          "flush",
+          "chary"
+        ],
+        [
+          "decorous",
+          "pastoral",
+          "abstruse"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'flush' means to be in abundance. Blank 2: 'pastoral' means relating to the countryside in a pleasant sense."
+    },
+    {
+      "id": 279,
+      "passage": null,
+      "text": "SC Question 279: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of showing sorrow, narrowly restricted in scope or outlook, and a state of guilt.",
+      "options": [
+        [
+          "lachrymose",
+          "convoluted",
+          "auspicious"
+        ],
+        [
+          "parochial",
+          "foolhardy",
+          "bellicose"
+        ],
+        [
+          "dissolution",
+          "culpability",
+          "resignation"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'lachrymose' means showing sorrow. Blank 2: 'parochial' means narrowly restricted in scope or outlook. Blank 3: 'culpability' means a state of guilt."
+    },
+    {
+      "id": 280,
+      "passage": null,
+      "text": "SC Question 280: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested lacking imagination, but the conclusion displayed marked by extreme intensity of emotions or convictions.",
+      "options": [
+        [
+          "chivalrous",
+          "pedestrian",
+          "peremptory"
+        ],
+        [
+          "vehement",
+          "poignant",
+          "insolent"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'pedestrian' means lacking imagination. Blank 2: 'vehement' means marked by extreme intensity of emotions or convictions."
+    },
+    {
+      "id": 281,
+      "passage": null,
+      "text": "SC Question 281: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of cheerful and not relevant.",
+      "options": [
+        [
+          "sardonic",
+          "laudable",
+          "sanguine"
+        ],
+        [
+          "irresolute",
+          "forthright",
+          "immaterial"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'sanguine' means cheerful; optimistic. Blank 2: 'immaterial' means not relevant."
+    },
+    {
+      "id": 282,
+      "passage": null,
+      "text": "SC Question 282: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of humorously vulgar, made less hopeful or enthusiastic, and to reprimand harshly.",
+      "options": [
+        [
+          "bereft",
+          "ribald",
+          "ornate"
+        ],
+        [
+          "disheartened",
+          "iconoclastic",
+          "obstreperous"
+        ],
+        [
+          "exonerate",
+          "castigate",
+          "transmute"
+        ]
+      ],
+      "answer": [
+        1,
+        0,
+        1
+      ],
+      "answers": [
+        1,
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'ribald' means humorously vulgar. Blank 2: 'disheartened' means made less hopeful or enthusiastic. Blank 3: 'castigate' means to reprimand harshly."
+    },
+    {
+      "id": 283,
+      "passage": null,
+      "text": "SC Question 283: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested easily irritated or annoyed, but the conclusion displayed lasting a very short time.",
+      "options": [
+        [
+          "timorous",
+          "petulant",
+          "moribund"
+        ],
+        [
+          "transient",
+          "destitute",
+          "impartial"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'petulant' means easily irritated or annoyed. Blank 2: 'transient' means lasting a very short time."
+    },
+    {
+      "id": 284,
+      "passage": null,
+      "text": "SC Question 284: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of joyously unrestrained and extremely hungry.",
+      "options": [
+        [
+          "anomalous",
+          "resurgent",
+          "ebullient"
+        ],
+        [
+          "ravenous",
+          "gossamer",
+          "reverent"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'ebullient' means joyously unrestrained. Blank 2: 'ravenous' means extremely hungry; devouring or craving food in great quantities."
+    },
+    {
+      "id": 285,
+      "passage": null,
+      "text": "SC Question 285: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of to be naÃ ̄ve and innocent, harmless and doesn\"t produce any ill effects, and an exemption from a rule or obligation.",
+      "options": [
+        [
+          "ingenuous",
+          "ephemeral",
+          "audacious"
+        ],
+        [
+          "whimsical",
+          "innocuous",
+          "lethargic"
+        ],
+        [
+          "indifference",
+          "presentiment",
+          "dispensation"
+        ]
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": "Blank 1: 'ingenuous' means to be naÃ ̄ve and innocent. Blank 2: 'innocuous' means harmless and doesn\"t produce any ill effects. Blank 3: 'dispensation' means an exemption from a rule or obligation."
+    },
+    {
+      "id": 286,
+      "passage": null,
+      "text": "SC Question 286: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested not easily perturbed or excited or upset, but the conclusion displayed deliberately vague or ambiguous.",
+      "options": [
+        [
+          "unflappable",
+          "provisional",
+          "commendable"
+        ],
+        [
+          "carping",
+          "evasive",
+          "ascetic"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'unflappable' means not easily perturbed or excited or upset; marked by extreme calm and composure. Blank 2: 'evasive' means deliberately vague or ambiguous."
+    },
+    {
+      "id": 287,
+      "passage": null,
+      "text": "SC Question 287: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lacking in harmony or compatibility or appropriateness and stubbornly resistant to authority or control.",
+      "options": [
+        [
+          "complaisant",
+          "unequivocal",
+          "incongruous"
+        ],
+        [
+          "portentous",
+          "fastidious",
+          "refractory"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'incongruous' means lacking in harmony or compatibility or appropriateness. Blank 2: 'refractory' means stubbornly resistant to authority or control."
+    },
+    {
+      "id": 288,
+      "passage": null,
+      "text": "SC Question 288: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of prone to outbursts of temper, marked by elaborate rhetoric and elaborated with decorative details, and gnaw into.",
+      "options": [
+        [
+          "inimical",
+          "inchoate",
+          "choleric"
+        ],
+        [
+          "ornate",
+          "tawdry",
+          "errant"
+        ],
+        [
+          "impede",
+          "betray",
+          "rankle"
+        ]
+      ],
+      "answer": [
+        2,
+        0,
+        2
+      ],
+      "answers": [
+        2,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'choleric' means prone to outbursts of temper; easily angered. Blank 2: 'ornate' means marked by elaborate rhetoric and elaborated with decorative details. Blank 3: 'rankle' means gnaw into; make resentful or angry."
+    },
+    {
+      "id": 289,
+      "passage": null,
+      "text": "SC Question 289: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested well-informed or perceptive, but the conclusion displayed devoid of intelligence, matter, or significance.",
+      "options": [
+        [
+          "savvy",
+          "lucid",
+          "chary"
+        ],
+        [
+          "oblique",
+          "vacuous",
+          "doughty"
+        ]
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "answers": [
+        0,
+        1
+      ],
+      "explanation": "Blank 1: 'savvy' means well-informed or perceptive. Blank 2: 'vacuous' means devoid of intelligence, matter, or significance."
+    },
+    {
+      "id": 290,
+      "passage": null,
+      "text": "SC Question 290: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of showing a brooding ill humor and requiring secret or mysterious knowledge.",
+      "options": [
+        [
+          "ersatz",
+          "sullen",
+          "morose"
+        ],
+        [
+          "wanton",
+          "arcane",
+          "obtain"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'sullen' means showing a brooding ill humor. Blank 2: 'arcane' means requiring secret or mysterious knowledge."
+    },
+    {
+      "id": 291,
+      "passage": null,
+      "text": "SC Question 291: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of capable of being shaped or bent or drawn out, expressive of contempt, and the most essential part of something.",
+      "options": [
+        [
+          "ambiguous",
+          "malleable",
+          "facetious"
+        ],
+        [
+          "muted",
+          "snide",
+          "antic"
+        ],
+        [
+          "pith",
+          "acme",
+          "tyro"
+        ]
+      ],
+      "answer": [
+        1,
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'malleable' means capable of being shaped or bent or drawn out. Blank 2: 'snide' means expressive of contempt; derogatory or mocking in an indirect way. Blank 3: 'pith' means the most essential part of something."
+    },
+    {
+      "id": 292,
+      "passage": null,
+      "text": "SC Question 292: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested unbiased, but the conclusion displayed Immaculately clean and unused.",
+      "options": [
+        [
+          "disinterested",
+          "surreptitious",
+          "demonstrative"
+        ],
+        [
+          "pristine",
+          "sedulous",
+          "ravenous"
+        ]
+      ],
+      "answer": [
+        0,
+        0
+      ],
+      "answers": [
+        0,
+        0
+      ],
+      "explanation": "Blank 1: 'disinterested' means unbiased; neutral. Blank 2: 'pristine' means Immaculately clean and unused."
+    },
+    {
+      "id": 293,
+      "passage": null,
+      "text": "SC Question 293: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of lecherous and tending to vanish like vapor.",
+      "options": [
+        [
+          "derivative",
+          "cumbersome",
+          "lascivious"
+        ],
+        [
+          "apocryphal",
+          "ambivalent",
+          "evanescent"
+        ]
+      ],
+      "answer": [
+        2,
+        2
+      ],
+      "answers": [
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'lascivious' means lecherous; sexually perverted. Blank 2: 'evanescent' means tending to vanish like vapor."
+    },
+    {
+      "id": 294,
+      "passage": null,
+      "text": "SC Question 294: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of so old as to appear to belong to a different period, not serious in content or attitude or behavior, and to reproach.",
+      "options": [
+        [
+          "elusive",
+          "archaic",
+          "copious"
+        ],
+        [
+          "quotidian",
+          "aesthetic",
+          "frivolous"
+        ],
+        [
+          "maunder",
+          "rescind",
+          "upbraid"
+        ]
+      ],
+      "answer": [
+        1,
+        2,
+        2
+      ],
+      "answers": [
+        1,
+        2,
+        2
+      ],
+      "explanation": "Blank 1: 'archaic' means so old as to appear to belong to a different period. Blank 2: 'frivolous' means not serious in content or attitude or behavior. Blank 3: 'upbraid' means to reproach; to scold."
+    },
+    {
+      "id": 295,
+      "passage": null,
+      "text": "SC Question 295: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested reluctant to draw attention to yourself, but the conclusion displayed poor enough to need help from others.",
+      "options": [
+        [
+          "aberrant",
+          "effacing",
+          "plodding"
+        ],
+        [
+          "amorphous",
+          "destitute",
+          "palatable"
+        ]
+      ],
+      "answer": [
+        1,
+        1
+      ],
+      "answers": [
+        1,
+        1
+      ],
+      "explanation": "Blank 1: 'effacing' means reluctant to draw attention to yourself. Blank 2: 'destitute' means poor enough to need help from others."
+    },
+    {
+      "id": 296,
+      "passage": null,
+      "text": "SC Question 296: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of having good judgement and acute insight and to be naÃ ̄ve and innocent.",
+      "options": [
+        [
+          "trenchant",
+          "arbitrary",
+          "sagacious"
+        ],
+        [
+          "ingenuous",
+          "ineffable",
+          "apathetic"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'sagacious' means having good judgement and acute insight. Blank 2: 'ingenuous' means to be naÃ ̄ve and innocent."
+    },
+    {
+      "id": 297,
+      "passage": null,
+      "text": "SC Question 297: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally treated the supporting claim as a form of (3) ________; in context, the blanks require ideas of unaffected by strong emotion or prejudice, produced by, or characterized by internal dissension, and a strong liking.",
+      "options": [
+        [
+          "dispassionate",
+          "demonstrative",
+          "unforthcoming"
+        ],
+        [
+          "cohesive",
+          "timorous",
+          "factious"
+        ],
+        [
+          "indifference",
+          "predilection",
+          "apprehension"
+        ]
+      ],
+      "answer": [
+        0,
+        2,
+        1
+      ],
+      "answers": [
+        0,
+        2,
+        1
+      ],
+      "explanation": "Blank 1: 'dispassionate' means unaffected by strong emotion or prejudice. Blank 2: 'factious' means produced by, or characterized by internal dissension. Blank 3: 'predilection' means a strong liking."
+    },
+    {
+      "id": 298,
+      "passage": null,
+      "text": "SC Question 298: The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested ancient, but the conclusion displayed significant and revealing of another factor.",
+      "options": [
+        [
+          "banal",
+          "hoary",
+          "snide"
+        ],
+        [
+          "telling",
+          "insipid",
+          "replete"
+        ]
+      ],
+      "answer": [
+        1,
+        0
+      ],
+      "answers": [
+        1,
+        0
+      ],
+      "explanation": "Blank 1: 'hoary' means ancient. Blank 2: 'telling' means significant and revealing of another factor."
+    },
+    {
+      "id": 299,
+      "passage": null,
+      "text": "SC Question 299: The policy was praised as (1) ________, yet its implementation became (2) ________, a contrast captured by the ideas of making a show of being pious and habitual.",
+      "options": [
+        [
+          "unforthcoming",
+          "thoroughgoing",
+          "sanctimonious"
+        ],
+        [
+          "inveterate",
+          "prodigious",
+          "lugubrious"
+        ]
+      ],
+      "answer": [
+        2,
+        0
+      ],
+      "answers": [
+        2,
+        0
+      ],
+      "explanation": "Blank 1: 'sanctimonious' means making a show of being pious; holier-than-thou. Blank 2: 'inveterate' means habitual."
+    },
+    {
+      "id": 300,
+      "passage": null,
+      "text": "SC Question 300: The committee described the proposal as (1) ________, the opposition called it (2) ________, and the auditors finally chose to (3) ________ the central claim; in context, the blanks require ideas of emotionally touching, lacking energy, and To live off meager resources, to scrape by.",
+      "options": [
+        [
+          "poignant",
+          "pastoral",
+          "amenable"
+        ],
+        [
+          "lethargic",
+          "impartial",
+          "vitriolic"
+        ],
+        [
+          "cow",
+          "wax",
+          "eke"
+        ]
+      ],
+      "answer": [
+        0,
+        0,
+        2
+      ],
+      "answers": [
+        0,
+        0,
+        2
+      ],
+      "explanation": "Blank 1: 'poignant' means emotionally touching. Blank 2: 'lethargic' means lacking energy. Blank 3: 'eke' means To live off meager resources, to scrape by."
     }
   ]
 };
