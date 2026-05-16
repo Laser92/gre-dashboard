@@ -150,6 +150,14 @@
                     </div>
                 </div>
 
+                <div class="quiz-controls" style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 15px;">
+                    <label style="color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <input type="checkbox" id="enable-countdown" style="cursor: pointer;"> Question Countdown
+                    </label>
+                    <input type="number" id="countdown-time" value="60" style="width: 60px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); color: var(--text-primary); outline: none;" min="5" max="600">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">sec</span>
+                </div>
+
                 <div class="quiz-card glass">
                     <div class="quiz-card-topline">
                         <div class="quiz-question-number" id="quiz-question-number">Question 1</div>

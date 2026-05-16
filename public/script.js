@@ -60,8 +60,25 @@ function startTimer() {
     
     timerInterval = setInterval(() => {
         if (chapterStartTime) {
-            const elapsed = Math.floor((Date.now() - chapterStartTime) / 1000);
-            updateTimerDisplay(elapsed);
+            chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
+            
+            const enableCountdown = document.getElementById('enable-countdown');
+            if (enableCountdown && enableCountdown.checked) {
+                const limit = parseInt(document.getElementById('countdown-time').value, 10) || 60;
+                const elapsedForQuestion = Math.floor((Date.now() - questionStartTime) / 1000);
+                let remaining = limit - elapsedForQuestion;
+                if (remaining < 0) remaining = 0;
+                updateTimerDisplay(remaining);
+                
+                const timerText = document.getElementById('quiz-timer-text');
+                if (timerText) {
+                    timerText.style.color = remaining === 0 ? 'var(--accent-error)' : '';
+                }
+            } else {
+                const timerText = document.getElementById('quiz-timer-text');
+                if (timerText) timerText.style.color = '';
+                updateTimerDisplay(chapterElapsedSeconds);
+            }
         }
     }, 1000);
 }
@@ -211,6 +228,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const overviewName = document.querySelector('.user-profile .user-name');
         if (overviewAvatar) overviewAvatar.innerText = data.username.charAt(0).toUpperCase();
         if (overviewName) overviewName.innerText = data.username;
+        
+        // Keep session alive to prevent progress loss
+        setInterval(() => {
+            fetch('/api/me').catch(() => {});
+        }, 15 * 60 * 1000);
         
     } catch (e) {
         console.error("Auth check failed", e);
@@ -928,7 +950,8 @@ async function handleAnswer(selectedIndexes, optElement = null) {
     
     if (isCorrect) {
         selected.forEach(index => options[index]?.classList.add('correct'));
-        fText.innerText = "Correct! Well done.";
+        const successMessages = ["Correct! Well done.", "Nice one!", "Great job!", "Spot on!", "Excellent work!", "Awesome!"];
+        fText.innerText = successMessages[Math.floor(Math.random() * successMessages.length)];
         fText.className = "success";
         state.correctAnswers++;
         currentQuizCorrect++;
@@ -980,6 +1003,11 @@ async function handleAnswer(selectedIndexes, optElement = null) {
                 isCorrect
             })
         });
+        if (resp.status === 401) {
+            alert("Your session has expired. Please log in again to save progress.");
+            window.location.href = '/login';
+            return;
+        }
         const data = await resp.json();
         // Update local progress cache
         if (!userProgress[state.currentChapterId]) userProgress[state.currentChapterId] = {};
@@ -1263,6 +1291,11 @@ window.handleFlashcardAnswer = async function(isCorrect) {
                     isCorrect
                 })
             });
+            if (resp.status === 401) {
+                alert("Your session has expired. Please log in again to save progress.");
+                window.location.href = '/login';
+                return;
+            }
             const data = await resp.json();
             if (!userProgress) userProgress = {};
             if (!userProgress['flashcards']) userProgress['flashcards'] = {};
