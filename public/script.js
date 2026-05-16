@@ -85,28 +85,12 @@ function startTimer() {
     
     // Clear any existing interval
     if (timerInterval) clearInterval(timerInterval);
+    updateTimerModeDisplay();
     
     timerInterval = setInterval(() => {
         if (chapterStartTime) {
             chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
-            
-            const enableCountdown = document.getElementById('enable-countdown');
-            if (enableCountdown && enableCountdown.checked) {
-                const limit = parseInt(document.getElementById('countdown-time').value, 10) || 60;
-                const elapsedForQuestion = Math.floor((Date.now() - questionStartTime) / 1000);
-                let remaining = limit - elapsedForQuestion;
-                if (remaining < 0) remaining = 0;
-                updateTimerDisplay(remaining);
-                
-                const timerText = document.getElementById('quiz-timer-text');
-                if (timerText) {
-                    timerText.style.color = remaining === 0 ? 'var(--accent-error)' : '';
-                }
-            } else {
-                const timerText = document.getElementById('quiz-timer-text');
-                if (timerText) timerText.style.color = '';
-                updateTimerDisplay(chapterElapsedSeconds);
-            }
+            updateTimerModeDisplay();
         }
     }, 1000);
 }
@@ -143,6 +127,26 @@ function updateTimerDisplay(seconds) {
     const timerText = document.getElementById('quiz-timer-text');
     if (timerText) {
         timerText.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+}
+
+function updateTimerModeDisplay() {
+    const enableCountdown = document.getElementById('enable-countdown');
+    const timerEl = document.getElementById('quiz-timer');
+    const timerText = document.getElementById('quiz-timer-text');
+    const countdownEnabled = Boolean(enableCountdown && enableCountdown.checked);
+
+    if (timerEl) timerEl.classList.toggle('countdown-active', countdownEnabled);
+
+    if (countdownEnabled) {
+        const limit = parseInt(document.getElementById('countdown-time')?.value, 10) || 60;
+        const elapsedForQuestion = questionStartTime ? Math.floor((Date.now() - questionStartTime) / 1000) : 0;
+        const remaining = Math.max(0, limit - elapsedForQuestion);
+        updateTimerDisplay(remaining);
+        if (timerText) timerText.style.color = remaining === 0 ? 'var(--accent-error)' : '';
+    } else {
+        if (timerText) timerText.style.color = '';
+        updateTimerDisplay(chapterElapsedSeconds);
     }
 }
 
@@ -263,7 +267,7 @@ function syncChaptersFromQuestionBank() {
 }
 
 function splitQuestionLabel(text, fallbackNumber) {
-    const match = String(text || '').match(/^((?:SE|TC|RC)?\s*Question\s*\d+):\s*(.*)$/i);
+    const match = String(text || '').match(/^((?:SE|TC|RC|SC)?\s*Question\s*\d+):\s*(.*)$/i);
     if (!match) {
         return { label: `Question ${fallbackNumber}`, body: text || '' };
     }
@@ -512,17 +516,28 @@ function setupEventListeners() {
     const timerAddBtn = document.getElementById('timer-add-btn');
     const timerSubBtn = document.getElementById('timer-sub-btn');
     const countdownInput = document.getElementById('countdown-time');
+    const enableCountdown = document.getElementById('enable-countdown');
     
     if (timerAddBtn && timerSubBtn && countdownInput) {
         timerAddBtn.addEventListener('click', () => {
             let val = parseInt(countdownInput.value, 10) || 60;
             countdownInput.value = val + 15;
+            questionStartTime = Date.now();
+            updateTimerModeDisplay();
         });
         timerSubBtn.addEventListener('click', () => {
             let val = parseInt(countdownInput.value, 10) || 60;
             if (val > 15) {
                 countdownInput.value = val - 15;
             }
+            questionStartTime = Date.now();
+            updateTimerModeDisplay();
+        });
+    }
+    if (enableCountdown) {
+        enableCountdown.addEventListener('change', () => {
+            questionStartTime = Date.now();
+            updateTimerModeDisplay();
         });
     }
 }
@@ -994,6 +1009,7 @@ function renderQuestion() {
     
     // Reset question timer
     questionStartTime = Date.now();
+    updateTimerModeDisplay();
 
     const questionParts = splitQuestionLabel(q.text, state.currentQuestionIndex + 1);
     document.getElementById('quiz-question-number').innerText = questionParts.label;

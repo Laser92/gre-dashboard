@@ -129,6 +129,73 @@ HARD_RC_PASSAGES = [
     }
 ]
 
+MULTI_BLANK_TEMPLATES = [
+    {
+        "text": "Although the mayor insisted that the contract was (1) ________, auditors later discovered a pattern of (2) ________ that made the deal impossible to defend.",
+        "answers": ["aboveboard", "subterfuge"]
+    },
+    {
+        "text": "The professor's explanation was intended to be (1) ________, but its jargon made the lecture almost (2) ________ to first-year students.",
+        "answers": ["pellucid", "abstruse"]
+    },
+    {
+        "text": "The candidate tried to (1) ________ the controversy, but his evasive answers only served to (2) ________ public suspicion.",
+        "answers": ["appease", "exacerbate"]
+    },
+    {
+        "text": "Because the witness had been so (1) ________ in earlier testimony, the jury doubted that his latest account was (2) ________.",
+        "answers": ["equivocal", "veracious"]
+    },
+    {
+        "text": "The committee first praised the proposal as (1) ________, then rejected it as (2) ________ once its hidden costs became clear.",
+        "answers": ["creditable", "deleterious"]
+    },
+    {
+        "text": "Rather than offer a (1) ________ critique, the reviewer wrote a (2) ________ attack that ignored the book's real argument.",
+        "answers": ["dispassionate", "vitriolic"]
+    },
+    {
+        "text": "Her apology sounded (1) ________, but the documents revealed the (2) ________ behind her effort to mislead the board.",
+        "answers": ["contrite", "mendacity"]
+    },
+    {
+        "text": "The artist's early work was dismissed as (1) ________, yet later critics found its symbolism surprisingly (2) ________.",
+        "answers": ["prosaic", "recondite"]
+    },
+    {
+        "text": "Although the CEO presented herself as (1) ________, former employees described a manager who was (2) ________ and unwilling to compromise.",
+        "answers": ["amenable", "intransigent"]
+    },
+    {
+        "text": "The historian's style is (1) ________ rather than ornate, but the argument is anything but (2) ________.",
+        "answers": ["laconic", "banal"]
+    },
+    {
+        "text": "The senator tried to (1) ________ the report's conclusions, but the new evidence seemed to (2) ________ them.",
+        "answers": ["undermine", "vindicate"]
+    },
+    {
+        "text": "The negotiations began in a (1) ________ spirit, grew (2) ________ after the first insult, and finally ended in open (3) ________.",
+        "answers": ["conciliate", "truculent", "animosity"]
+    },
+    {
+        "text": "The editor found the manuscript (1) ________ in style, (2) ________ in argument, and marred by a final chapter full of (3) ________.",
+        "answers": ["lucid", "cogent", "prolixity"]
+    },
+    {
+        "text": "Although the experiment looked (1) ________, its methods were (2) ________, and the resulting claims were therefore (3) ________.",
+        "answers": ["auspicious", "imprudent", "spurious"]
+    },
+    {
+        "text": "The director was neither (1) ________ nor reckless: she was (2) ________ with funds and never (3) ________ in her long-term planning.",
+        "answers": ["prodigal", "parsimonious", "imprudent"]
+    },
+    {
+        "text": "His public manner was (1) ________, his private emails were (2) ________, and the contrast exposed the (3) ________ of his persona.",
+        "answers": ["affable", "vitriolic", "duplicity"]
+    }
+]
+
 
 def read_xlsx_rows(path):
     with ZipFile(path) as archive:
@@ -285,71 +352,10 @@ def make_se_question(q_id, pair, lookup, grouped):
     }
 
 
-def make_multi_blank_question(q_id, entries, grouped):
-    blanks = 2 + (q_id % 3 == 0)
-    adjective_pool = [entry for entry in entries if entry["pos"] == "adjective"]
-    noun_pool = [entry for entry in entries if entry["pos"] == "noun"]
-    verb_pool = [entry for entry in entries if entry["pos"] == "verb"]
-    selected = random.sample(adjective_pool, 2)
-    if blanks == 3:
-        selected.append(random.choice(noun_pool if q_id % 2 else verb_pool))
-
-    definitions = [clue_text(entry["definition"]) for entry in selected]
-    if blanks == 2:
-        frames = [
-            (
-                "Although the report appeared (1) ________ at first glance, its central argument proved "
-                "(2) ________ once the committee noticed that the evidence suggested {d1}, while the "
-                "reasoning was {d2}."
-            ),
-            (
-                "The speaker's tone shifted from (1) ________ to (2) ________: the opening remarks suggested "
-                "{d1}, but the conclusion displayed {d2}."
-            ),
-            (
-                "The policy was praised as (1) ________, yet its implementation became (2) ________, "
-                "a contrast captured by the ideas of {d1} and {d2}."
-            )
-        ]
-    else:
-        if selected[2]["pos"] == "noun":
-            frames = [
-                (
-                    "The committee described the proposal as (1) ________, the opposition called it "
-                    "(2) ________, and the auditors finally treated the supporting claim as a form of "
-                    "(3) ________; in context, the blanks require ideas of {d1}, {d2}, and {d3}."
-                ),
-                (
-                    "What began as a (1) ________ exchange became (2) ________ after the witness's testimony "
-                    "introduced an element of (3) ________, matching the senses {d1}, {d2}, and {d3}."
-                ),
-                (
-                    "The novelist's style is at once (1) ________ and (2) ________, but the plot depends on "
-                    "a surprising degree of (3) ________, requiring words associated with {d1}, {d2}, and {d3}."
-                )
-            ]
-        else:
-            frames = [
-                (
-                    "The committee described the proposal as (1) ________, the opposition called it "
-                    "(2) ________, and the auditors finally chose to (3) ________ the central claim; in context, "
-                    "the blanks require ideas of {d1}, {d2}, and {d3}."
-                ),
-                (
-                    "What began as a (1) ________ exchange became (2) ________ after the witness tried to "
-                    "(3) ________ the record, matching the senses {d1}, {d2}, and {d3}."
-                ),
-                (
-                    "The novelist's style is at once (1) ________ and (2) ________, yet the narrator repeatedly "
-                    "tries to (3) ________ the reader's expectations, requiring words associated with {d1}, {d2}, and {d3}."
-                )
-            ]
-    template = frames[q_id % len(frames)]
-    text = f"SC Question {q_id}: " + template.format(
-        d1=definitions[0],
-        d2=definitions[1],
-        d3=definitions[2] if blanks == 3 else ""
-    )
+def make_multi_blank_question(q_id, lookup, grouped):
+    template = MULTI_BLANK_TEMPLATES[(q_id - 1) % len(MULTI_BLANK_TEMPLATES)]
+    selected = [lookup[word] for word in template["answers"]]
+    text = f"SC Question {q_id}: {template['text']}"
 
     option_groups = []
     answers = []
@@ -418,7 +424,7 @@ def build_bank(entries):
         for i in range(300)
     ]
     mb_list = [
-        make_multi_blank_question(i + 1, blankable, grouped)
+        make_multi_blank_question(i + 1, lookup, grouped)
         for i in range(300)
     ]
     rc_list = make_rc_questions()
