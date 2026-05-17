@@ -39,6 +39,9 @@
                 <a href="#" class="nav-item" id="nav-flashcards">
                     <i class="fas fa-clone"></i> Flashcards
                 </a>
+                <a href="#" class="nav-item" id="nav-vocab">
+                    <i class="fas fa-book"></i> Vocabulary Lists
+                </a>
             </nav>
             <div class="book-info-card">
                 <div class="book-info-header">Book Stats</div>
@@ -151,9 +154,9 @@
                 </div>
 
                 <div class="timer-settings" style="position: relative; margin-bottom: 15px; display: flex; justify-content: flex-end; align-items: center;">
-                    <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 100%; margin-right: 15px; top: 50%; transform: translateY(-50%); padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceHorizontal 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
+                    <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
                         <span style="color: #fff; font-weight: 500; font-size: 0.95rem;">Ready for a challenge? Turn on the timer.</span>
-                        <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%) rotate(45deg); width: 10px; height: 10px; background: var(--card-bg); border-top: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
+                        <div style="position: absolute; right: 20px; top: -6px; transform: rotate(-45deg); width: 10px; height: 10px; background: var(--card-bg); border-top: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
                     </div>
                     <button id="timer-settings-btn" class="timer-settings-btn">
                         <i class="fas fa-cog"></i> Timer Settings
@@ -178,9 +181,9 @@
                                 -webkit-appearance: none; 
                                 margin: 0; 
                             }
-                            @keyframes bounceHorizontal {
-                                0%, 100% { transform: translateY(-50%) translateX(0); }
-                                50% { transform: translateY(-50%) translateX(-6px); }
+                            @keyframes bounceVertical {
+                                0%, 100% { transform: translateY(0); }
+                                50% { transform: translateY(-6px); }
                             }
                         </style>
                     </div>
@@ -248,7 +251,8 @@
                             <p id="fc-pos" style="color: var(--text-secondary); font-style: italic;"></p>
                             <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">Tap to flip</p>
                         </div>
-                        <div class="flashcard-back glass">
+                        <div class="flashcard-back glass" style="position: relative;">
+                            <button id="fc-star-btn" onclick="event.stopPropagation(); toggleStarWord();" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; color: var(--text-secondary); cursor: pointer; z-index: 10;"><i class="far fa-star"></i></button>
                             <h4 style="font-size: 1.25rem; margin-bottom: 1rem;">Definition</h4>
                             <p id="fc-def" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 1.5rem;"></p>
                             <p id="fc-example" style="font-style: italic; color: var(--text-secondary); margin-bottom: 1rem;"></p>
@@ -260,6 +264,21 @@
                 <div id="fc-actions" style="display: none; justify-content: space-between; margin-top: 2rem; gap: 1rem;">
                     <button class="primary-btn" onclick="handleFlashcardAnswer(false)" style="flex: 1; background: rgba(239, 68, 68, 0.15); color: var(--accent-error); border: 1px solid var(--accent-error);"><i class="fas fa-times"></i> Didn't know this</button>
                     <button class="primary-btn" onclick="handleFlashcardAnswer(true)" style="flex: 1; background: rgba(16, 185, 129, 0.15); color: var(--accent-success); border: 1px solid var(--accent-success);"><i class="fas fa-check"></i> Knew it</button>
+                </div>
+            </div>
+
+            <!-- VOCAB VIEW -->
+            <div id="vocab-view" style="display: none; padding-top: 2rem; max-width: 800px; margin: 0 auto;">
+                <h2>Vocabulary Lists</h2>
+                <div class="modal-tabs" style="margin: 2rem 0;">
+                    <button class="modal-tab active" id="tab-missed-words" onclick="showVocabTab('missed')">Missed Words</button>
+                    <button class="modal-tab" id="tab-starred-words" onclick="showVocabTab('starred')">Starred Words</button>
+                </div>
+                <div id="vocab-missed-content" class="vocab-content-section active">
+                    <ul class="vocab-list" id="missed-words-list"></ul>
+                </div>
+                <div id="vocab-starred-content" class="vocab-content-section" style="display:none;">
+                    <ul class="vocab-list" id="starred-words-list"></ul>
                 </div>
             </div>
 

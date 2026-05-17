@@ -1538,3 +1538,65 @@ body {
     80% { opacity: 1; transform: translate(-50%, -80px) scale(1) rotate(0deg); }
     100% { opacity: 0; transform: translate(-50%, -100px) scale(0.9) rotate(0deg); }
 }
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    padding: 12px 24px;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    z-index: 9999;
+    animation: toastSlideUp 0.3s ease forwards;
+}
+
+.toast.hide {
+    animation: toastSlideDown 0.3s ease forwards;
+}
+
+.toast-warning {
+    border-color: var(--accent-warning);
+    color: var(--accent-warning);
+}
+
+@keyframes toastSlideUp {
+    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes toastSlideDown {
+    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+    to { transform: translateX(-50%) translateY(100px); opacity: 0; }
+}
+
+/* Vocab Lists */
+.vocab-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vocab-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+}
+
+.vocab-list li:hover {
+    background: rgba(255, 255, 255, 0.08);
+}

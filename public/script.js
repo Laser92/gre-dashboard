@@ -53,6 +53,19 @@ let questionStartTime = null;     // When current question started
 let timerInterval = null;         // Interval for live timer
 let passiveStudyStartTime = null; // Non-quiz study time, such as flashcards
 let currentViewName = 'overview';
+let questionPausedRemaining = null;
+let tenSecondsToastShown = false;
+let timerPaused = false;
+let questionTimeExpired = false;
+
+function showToast(message, type = 'warning') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('hide'), 2500);
+    setTimeout(() => toast.remove(), 3000);
+}
 
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
@@ -88,9 +101,11 @@ function startTimer() {
     updateTimerModeDisplay();
     
     timerInterval = setInterval(() => {
-        if (chapterStartTime) {
+        if (chapterStartTime && !timerPaused) {
             chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
             updateTimerModeDisplay();
+        } else if (timerPaused && chapterStartTime) {
+            chapterStartTime += 1000;
         }
     }, 1000);
 }
@@ -141,9 +156,30 @@ function updateTimerModeDisplay() {
     if (countdownEnabled) {
         const limit = parseInt(document.getElementById('countdown-time')?.value, 10) || 60;
         const elapsedForQuestion = questionStartTime ? Math.floor((Date.now() - questionStartTime) / 1000) : 0;
-        const remaining = Math.max(0, limit - elapsedForQuestion);
+        let remaining = Math.max(0, limit - elapsedForQuestion);
+        
+        if (timerPaused) {
+            if (questionPausedRemaining === null) questionPausedRemaining = remaining;
+            remaining = questionPausedRemaining;
+        } else {
+            questionPausedRemaining = null;
+        }
+
         updateTimerDisplay(remaining);
-        if (timerText) timerText.style.color = remaining === 0 ? 'var(--accent-error)' : '';
+        if (timerText) timerText.style.color = remaining <= 10 && remaining > 0 ? 'var(--accent-warning)' : (remaining === 0 ? 'var(--accent-error)' : '');
+        
+        if (remaining === 10 && !timerPaused && !tenSecondsToastShown) {
+            tenSecondsToastShown = true;
+            showToast("10 seconds left!", "warning");
+        }
+        
+        if (remaining === 0 && !questionTimeExpired && !timerPaused) {
+            questionTimeExpired = true;
+            timerPaused = true;
+            const q = quizQueue[state.currentQuestionIndex];
+            const isMultiBlank = Array.isArray(q.options[0]);
+            handleAnswer([], null, isMultiBlank);
+        }
     } else {
         if (timerText) timerText.style.color = '';
         updateTimerDisplay(chapterElapsedSeconds);
@@ -306,7 +342,8 @@ function refreshStatsFromProgress() {
     state.questionsAttempted = overall.attempted;
     state.correctAnswers = overall.correct;
     state.questionsCompleted = overall.correct;
-    state.diagnosticScore = overall.attempted > 0 ? Math.round(130 + (overall.correct / overall.attempted) * 40) : 0;
+    const acc = overall.attempted > 0 ? (overall.correct / overall.attempted) : 0;
+    state.diagnosticScore = overall.attempted > 0 ? Math.round(130 + Math.max(0, (acc - 0.2) / 0.8) * 40) : 0;
 }
 
 // Current user info (populated on load)
@@ -453,6 +490,7 @@ function setupEventListeners() {
     document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '.table-section'); });
     document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-diagnostics', '.charts-grid'); });
     document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
+    document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
         switchView('overview');
@@ -678,6 +716,7 @@ function switchView(viewName) {
     document.getElementById('quiz-view').style.display = viewName === 'quiz' ? 'block' : 'none';
     document.getElementById('results-view').style.display = viewName === 'results' ? 'block' : 'none';
     document.getElementById('flashcards-view').style.display = viewName === 'flashcards' ? 'block' : 'none';
+    document.getElementById('vocab-view').style.display = viewName === 'vocab' ? 'block' : 'none';
 
     if (viewName === 'overview') {
         renderDashboard(); // Refresh stats when coming back
@@ -824,10 +863,10 @@ function getWeeklyScoreProgression() {
     const data = [];
     [...weekly.keys()].sort((a, b) => a - b).forEach(weekIndex => {
         const bucket = weekly.get(weekIndex);
-        cumulativeAttempted += bucket.attempted;
-        cumulativeCorrect += bucket.correct;
+        const acc = bucket.attempted > 0 ? (bucket.correct / bucket.attempted) : 0;
+        const weekScore = Math.round(130 + Math.max(0, (acc - 0.2) / 0.8) * 40);
         labels.push(`Week ${weekIndex + 1}`);
-        data.push(Math.round(130 + (cumulativeCorrect / cumulativeAttempted) * 40));
+        data.push(weekScore);
     });
 
     return { labels, data };
@@ -1009,9 +1048,15 @@ function renderQuestion() {
     
     // Reset question timer
     questionStartTime = Date.now();
+    timerPaused = false;
+    questionTimeExpired = false;
+    tenSecondsToastShown = false;
+    questionPausedRemaining = null;
     updateTimerModeDisplay();
 
     const questionParts = splitQuestionLabel(q.text, state.currentQuestionIndex + 1);
+    let body = questionParts.body;
+    body = body.replace(/\b(?:a|an)\s+(_+)/gi, "a/an $1");
     document.getElementById('quiz-question-number').innerText = questionParts.label;
     const tagEl = document.getElementById('quiz-question-tag');
 
@@ -1041,7 +1086,7 @@ function renderQuestion() {
     const correctAnswers = getCorrectAnswers(q);
     const isMultiBlank = Array.isArray(q.options[0]);
     const isMultiAnswer = !isMultiBlank && correctAnswers.length > 1;
-    document.getElementById('quiz-question-text').innerText = questionParts.body;
+    document.getElementById('quiz-question-text').innerText = body;
 
     const instructionEl = document.getElementById('quiz-question-instruction');
     if (isMultiBlank) {
@@ -1074,6 +1119,9 @@ function renderQuestion() {
         optsContainer.style.flexWrap = 'wrap';
 
         q.options.forEach((blankOptions, blankIndex) => {
+            let indices = blankOptions.map((_, i) => i);
+            shuffleArray(indices);
+            
             const groupDiv = document.createElement('div');
             groupDiv.className = 'quiz-blank-group';
             groupDiv.style.flex = '1';
@@ -1085,12 +1133,13 @@ function renderQuestion() {
             groupTitle.style.color = 'var(--text-secondary)';
             groupDiv.appendChild(groupTitle);
             
-            blankOptions.forEach((optText, optIndex) => {
+            indices.forEach((optIndex, loopIndex) => {
+                const optText = blankOptions[optIndex];
                 const div = document.createElement('div');
                 div.className = 'quiz-option';
                 div.dataset.blank = blankIndex;
                 div.dataset.option = optIndex;
-                div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + optIndex)}.</span> <span>${optText}</span>`;
+                div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + loopIndex)}.</span> <span>${optText}</span>`;
                 
                 div.addEventListener('click', () => {
                     const groupOptions = document.querySelectorAll(`.quiz-option[data-blank="${blankIndex}"]`);
@@ -1115,16 +1164,19 @@ function renderQuestion() {
         optsContainer.style.display = 'flex';
         optsContainer.style.flexDirection = 'column';
         optsContainer.style.gap = '1rem';
-        q.options.forEach((optText, index) => {
+        let indices = q.options.map((_, i) => i);
+        shuffleArray(indices);
+        indices.forEach((optIndex, loopIndex) => {
+            const optText = q.options[optIndex];
             const div = document.createElement('div');
             div.className = 'quiz-option';
-            div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + index)}.</span> <span>${optText}</span>`;
+            div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + loopIndex)}.</span> <span>${optText}</span>`;
             
             div.addEventListener('click', () => {
                 if (isMultiAnswer) {
-                    toggleMultiAnswer(index, div, correctAnswers.length);
+                    toggleMultiAnswer(optIndex, div, correctAnswers.length);
                 } else {
-                    handleAnswer([index], div);
+                    handleAnswer([optIndex], div);
                 }
             });
             optsContainer.appendChild(div);
@@ -1152,6 +1204,7 @@ function toggleMultiAnswer(selectedIndex, optElement, requiredCount) {
 }
 
 async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = false) {
+    timerPaused = true;
     const q = quizQueue[state.currentQuestionIndex];
     
     const options = document.querySelectorAll('.quiz-option');
@@ -1236,6 +1289,22 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
 
     fExp.innerText = "Explanation: " + q.explanation;
     feedback.style.display = 'flex';
+
+    // Vocab logic
+    const isVocabQuestion = state.currentChapterId === '3' || state.currentChapterId === '4' || state.currentChapterId === '6';
+    if (isVocabQuestion) {
+        let options = [];
+        if (isMultiBlank) {
+            q.options.forEach(opts => options.push(...opts));
+        } else {
+            options.push(...q.options);
+        }
+        options.forEach(opt => {
+            let word = opt.replace(/[^a-zA-Z\s\-]/g, '').trim().toLowerCase();
+            if (isCorrect) incrementMissedWordCorrectCount(word);
+            else addMissedWord(word);
+        });
+    }
 
     // Save progress to server
     try {
@@ -1521,6 +1590,9 @@ function showFlashcard() {
 window.handleFlashcardAnswer = async function(isCorrect) {
     if (!flashcardQueue || flashcardQueue.length === 0) return;
     const card = flashcardQueue[currentFlashcardIndex];
+    let word = card.word.toLowerCase().trim();
+    if (isCorrect) incrementMissedWordCorrectCount(word);
+    else addMissedWord(word);
     
     // Save progress in background for a snappy UI
     (async () => {
@@ -1589,3 +1661,92 @@ window.flipFlashcard = function() {
         }
     }
 };
+
+// === VOCAB LISTS ENGINE ===
+
+function getStarredWords() {
+    try { return JSON.parse(localStorage.getItem('starredWords')) || []; } catch(e) { return []; }
+}
+
+function saveStarredWords(arr) {
+    localStorage.setItem('starredWords', JSON.stringify(arr));
+}
+
+function getMissedWords() {
+    try { return JSON.parse(localStorage.getItem('missedWords')) || {}; } catch(e) { return {}; }
+}
+
+function saveMissedWords(obj) {
+    localStorage.setItem('missedWords', JSON.stringify(obj));
+}
+
+function addMissedWord(word) {
+    if (!word) return;
+    const missed = getMissedWords();
+    if (!missed[word]) missed[word] = { correctCount: 0 };
+    saveMissedWords(missed);
+}
+
+function incrementMissedWordCorrectCount(word) {
+    if (!word) return;
+    const missed = getMissedWords();
+    if (missed[word]) {
+        missed[word].correctCount = (missed[word].correctCount || 0) + 1;
+        if (missed[word].correctCount >= 4) {
+            delete missed[word];
+        }
+        saveMissedWords(missed);
+    }
+}
+
+window.toggleStarWord = function() {
+    const card = flashcardQueue[currentFlashcardIndex];
+    if (!card) return;
+    const word = card.word.toLowerCase().trim();
+    let starred = getStarredWords();
+    if (starred.includes(word)) {
+        starred = starred.filter(w => w !== word);
+    } else {
+        starred.push(word);
+    }
+    saveStarredWords(starred);
+    
+    const btn = document.getElementById('fc-star-btn');
+    if (btn) {
+        if (starred.includes(word)) {
+            btn.innerHTML = '<i class="fas fa-star"></i>';
+            btn.style.color = '#fbbf24';
+        } else {
+            btn.innerHTML = '<i class="far fa-star"></i>';
+            btn.style.color = 'var(--text-secondary)';
+        }
+    }
+}
+
+window.showVocabTab = function(tabName) {
+    document.querySelectorAll('#vocab-view .modal-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.vocab-content-section').forEach(c => c.style.display = 'none');
+    
+    const targetTab = document.getElementById(`tab-${tabName}-words`);
+    if(targetTab) targetTab.classList.add('active');
+    const targetContent = document.getElementById(`vocab-${tabName}-content`);
+    if(targetContent) targetContent.style.display = 'block';
+    
+    if (tabName === 'missed') {
+        const list = document.getElementById('missed-words-list');
+        const missed = getMissedWords();
+        list.innerHTML = '';
+        Object.keys(missed).forEach(word => {
+            list.innerHTML += `<li><span style="font-weight:600; text-transform:capitalize;">${word}</span> <span style="color:var(--text-secondary); font-size:0.85rem; background:rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 12px;">Progress: ${missed[word].correctCount}/4</span></li>`;
+        });
+        if(Object.keys(missed).length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No missed words yet!</li>';
+    } else {
+        const list = document.getElementById('starred-words-list');
+        const starred = getStarredWords();
+        list.innerHTML = '';
+        starred.forEach(word => {
+            list.innerHTML += `<li><span style="font-weight:600; text-transform:capitalize;">${word}</span></li>`;
+        });
+        if(starred.length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No starred words yet!</li>';
+    }
+}
