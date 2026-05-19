@@ -154,13 +154,15 @@
                 </div>
 
                 <div class="timer-settings" style="position: relative; margin-bottom: 15px; display: flex; justify-content: flex-end; align-items: center;">
-                    <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
-                        <span style="color: #fff; font-weight: 500; font-size: 0.95rem;">Ready for a challenge? Turn on the timer.</span>
-                        <div style="position: absolute; right: 20px; top: -6px; transform: rotate(-45deg); width: 10px; height: 10px; background: var(--card-bg); border-top: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
+                    <div style="position: relative;">
+                        <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; bottom: calc(100% + 15px); padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
+                            <span style="color: #fff; font-weight: 500; font-size: 0.95rem;">Ready for a challenge? Turn on the timer.</span>
+                            <div style="position: absolute; right: 20px; bottom: -6px; transform: rotate(45deg); width: 10px; height: 10px; background: var(--card-bg); border-bottom: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
+                        </div>
+                        <button id="timer-settings-btn" class="timer-settings-btn">
+                            <i class="fas fa-cog"></i> Timer Settings
+                        </button>
                     </div>
-                    <button id="timer-settings-btn" class="timer-settings-btn">
-                        <i class="fas fa-cog"></i> Timer Settings
-                    </button>
                     <div id="timer-settings-dropdown" class="timer-settings-dropdown glass" style="display: none;">
                         <label class="timer-toggle-row">
                             <span>Question Countdown</span>

@@ -67,6 +67,36 @@ function showToast(message, type = 'warning') {
     setTimeout(() => toast.remove(), 3000);
 }
 
+function showTimerToast(message) {
+    const timerEl = document.getElementById('quiz-timer');
+    if (!timerEl) return;
+    timerEl.style.position = 'relative';
+    const toast = document.createElement('div');
+    toast.className = 'timer-toast';
+    toast.innerHTML = message;
+    Object.assign(toast.style, {
+        position: 'absolute',
+        top: '-40px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        background: 'var(--accent-warning)',
+        color: '#000',
+        padding: '4px 10px',
+        borderRadius: '8px',
+        fontWeight: 'bold',
+        fontSize: '0.85rem',
+        whiteSpace: 'nowrap',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+        zIndex: '100',
+        opacity: '0',
+        transition: 'opacity 0.3s ease-in-out'
+    });
+    timerEl.appendChild(toast);
+    setTimeout(() => toast.style.opacity = '1', 10);
+    setTimeout(() => toast.style.opacity = '0', 2000);
+    setTimeout(() => toast.remove(), 2500);
+}
+
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
 }
@@ -170,7 +200,7 @@ function updateTimerModeDisplay() {
         
         if (remaining === 10 && !timerPaused && !tenSecondsToastShown) {
             tenSecondsToastShown = true;
-            showToast("10 seconds left!", "warning");
+            showTimerToast("10 seconds left!");
         }
         
         if (remaining === 0 && !questionTimeExpired && !timerPaused) {
@@ -842,14 +872,15 @@ function getWeeklyScoreProgression() {
         });
     });
 
-    records.sort((a, b) => new Date(a.lastAttemptedAt) - new Date(b.lastAttemptedAt));
-    if (records.length === 0) {
+    const validRecords = records.filter(item => item.lastAttemptedAt && !isNaN(new Date(item.lastAttemptedAt).getTime()));
+    validRecords.sort((a, b) => new Date(a.lastAttemptedAt) - new Date(b.lastAttemptedAt));
+    if (validRecords.length === 0) {
         return { labels: ['Week 1'], data: [130] };
     }
 
-    const firstDate = new Date(records[0].lastAttemptedAt);
+    const firstDate = new Date(validRecords[0].lastAttemptedAt);
     const weekly = new Map();
-    records.forEach(item => {
+    validRecords.forEach(item => {
         const weekIndex = Math.floor((new Date(item.lastAttemptedAt) - firstDate) / (7 * 24 * 60 * 60 * 1000));
         if (!weekly.has(weekIndex)) weekly.set(weekIndex, { attempted: 0, correct: 0 });
         const bucket = weekly.get(weekIndex);
@@ -863,7 +894,9 @@ function getWeeklyScoreProgression() {
     const data = [];
     [...weekly.keys()].sort((a, b) => a - b).forEach(weekIndex => {
         const bucket = weekly.get(weekIndex);
-        const acc = bucket.attempted > 0 ? (bucket.correct / bucket.attempted) : 0;
+        cumulativeAttempted += bucket.attempted;
+        cumulativeCorrect += bucket.correct;
+        const acc = cumulativeAttempted > 0 ? (cumulativeCorrect / cumulativeAttempted) : 0;
         const weekScore = Math.round(130 + Math.max(0, (acc - 0.2) / 0.8) * 40);
         labels.push(`Week ${weekIndex + 1}`);
         data.push(weekScore);
@@ -1056,7 +1089,7 @@ function renderQuestion() {
 
     const questionParts = splitQuestionLabel(q.text, state.currentQuestionIndex + 1);
     let body = questionParts.body;
-    body = body.replace(/\b(?:a|an)\s+(_+)/gi, "a/an $1");
+    body = body.replace(/\b(?:a\/an|a|an)\s+(_+)/gi, "a/an $1");
     document.getElementById('quiz-question-number').innerText = questionParts.label;
     const tagEl = document.getElementById('quiz-question-tag');
 
@@ -1170,6 +1203,7 @@ function renderQuestion() {
             const optText = q.options[optIndex];
             const div = document.createElement('div');
             div.className = 'quiz-option';
+            div.dataset.option = optIndex;
             div.innerHTML = `<span style="font-weight:600;color:var(--text-secondary);min-width:24px;">${String.fromCharCode(65 + loopIndex)}.</span> <span>${optText}</span>`;
             
             div.addEventListener('click', () => {
@@ -1236,7 +1270,10 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
                 if (el) el.classList.add('correct');
             });
         } else {
-            selectedIndexes.forEach(index => options[index]?.classList.add('correct'));
+            selectedIndexes.forEach(index => {
+                const el = document.querySelector(`.quiz-option[data-option="${index}"]`);
+                if (el) el.classList.add('correct');
+            });
         }
         const successMessages = ["Correct! Well done.", "Nice one!", "Great job!", "Spot on!", "Excellent work!", "Awesome!"];
         fText.innerText = successMessages[Math.floor(Math.random() * successMessages.length)];
@@ -1268,11 +1305,21 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
             });
         } else {
             selectedIndexes.forEach(index => {
-                if (!expected.includes(index)) options[index]?.classList.add('incorrect');
+                if (!expected.includes(index)) {
+                    const el = document.querySelector(`.quiz-option[data-option="${index}"]`);
+                    if (el) el.classList.add('incorrect');
+                }
             });
-            expected.forEach(index => options[index]?.classList.add('correct'));
+            expected.forEach(index => {
+                const el = document.querySelector(`.quiz-option[data-option="${index}"]`);
+                if (el) el.classList.add('correct');
+            });
         }
-        fText.innerText = "Incorrect.";
+        if (questionTimeExpired) {
+            fText.innerText = "Time's up! Incorrect.";
+        } else {
+            fText.innerText = "Incorrect.";
+        }
         fText.className = "error";
         
         // Shake and Haptics
@@ -1293,16 +1340,28 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     // Vocab logic
     const isVocabQuestion = state.currentChapterId === '3' || state.currentChapterId === '4' || state.currentChapterId === '6';
     if (isVocabQuestion) {
-        let options = [];
+        let targetOptions = [];
         if (isMultiBlank) {
-            q.options.forEach(opts => options.push(...opts));
+            expected.forEach((optIdx, blankIdx) => {
+                targetOptions.push(q.options[blankIdx][optIdx]);
+            });
+            if (!isCorrect) {
+                selectedIndexes.forEach((optIdx, blankIdx) => {
+                    if (optIdx !== undefined) targetOptions.push(q.options[blankIdx][optIdx]);
+                });
+            }
         } else {
-            options.push(...q.options);
+            expected.forEach(idx => targetOptions.push(q.options[idx]));
+            if (!isCorrect) {
+                selectedIndexes.forEach(idx => targetOptions.push(q.options[idx]));
+            }
         }
-        options.forEach(opt => {
+        targetOptions.forEach(opt => {
             let word = opt.replace(/[^a-zA-Z\s\-]/g, '').trim().toLowerCase();
-            if (isCorrect) incrementMissedWordCorrectCount(word);
-            else addMissedWord(word);
+            if (word) {
+                if (isCorrect) incrementMissedWordCorrectCount(word);
+                else addMissedWord(word);
+            }
         });
     }
 
@@ -1564,6 +1623,19 @@ function showFlashcard() {
     document.getElementById('fc-example').innerText = card.example ? `"${card.example}"` : '';
     document.getElementById('fc-root').innerText = card.root ? `Root: ${card.root}` : '';
     
+    const btn = document.getElementById('fc-star-btn');
+    if (btn) {
+        const starred = getStarredWords();
+        const word = (card.word || '').toLowerCase().trim();
+        if (starred.includes(word)) {
+            btn.innerHTML = '<i class="fas fa-star"></i>';
+            btn.style.color = '#fbbf24';
+        } else {
+            btn.innerHTML = '<i class="far fa-star"></i>';
+            btn.style.color = 'var(--text-secondary)';
+        }
+    }
+
     const tagEl = document.getElementById('fc-tag');
     if (tagEl) {
         const statusTag = {
