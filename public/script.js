@@ -773,7 +773,8 @@ function renderDashboard() {
         document.getElementById('kpi-score-trend').className = 'kpi-trend positive';
     }
 
-    document.getElementById('kpi-attempted').innerText = state.questionsAttempted;
+    const totalQuestions = getTotalQuestionCount();
+    document.getElementById('kpi-attempted').innerHTML = `${state.questionsAttempted}<span class="kpi-sub">/${totalQuestions}</span>`;
     const accEl = document.getElementById('kpi-accuracy');
     accEl.innerText = `Accuracy: ${state.questionsAttempted > 0 ? acc + '%' : '--'}`;
     // Dynamic accuracy color
@@ -785,9 +786,10 @@ function renderDashboard() {
         accEl.className = 'kpi-trend neutral';
     }
     
-    const totalQuestions = getTotalQuestionCount();
-    document.getElementById('kpi-chapters').innerHTML = `${state.questionsCompleted}<span class="kpi-sub">/${totalQuestions}</span>`;
-    document.getElementById('kpi-chapters-bar').style.width = `${totalQuestions > 0 ? (state.questionsCompleted / totalQuestions) * 100 : 0}%`;
+    const attemptedBar = document.getElementById('kpi-attempted-bar');
+    if (attemptedBar) {
+        attemptedBar.style.width = `${totalQuestions > 0 ? (state.questionsAttempted / totalQuestions) * 100 : 0}%`;
+    }
 
     // Update time KPI
     updateTimeKPI();
@@ -1252,11 +1254,11 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     if (isMultiBlank) {
         const selected = [...selectedIndexes];
         expected = [...correctAnswers];
-        isCorrect = selected.length === expected.length && selected.every((val, i) => val === expected[i]);
+        isCorrect = selected.length === expected.length && selected.every((val, i) => Number(val) === Number(expected[i]));
     } else {
         const selected = [...selectedIndexes].sort((a, b) => a - b);
         expected = [...correctAnswers].sort((a, b) => a - b);
-        isCorrect = selected.length === expected.length && selected.every((index, i) => index === expected[i]);
+        isCorrect = selected.length === expected.length && selected.every((index, i) => Number(index) === Number(expected[i]));
     }
     
     const feedback = document.getElementById('quiz-feedback');
@@ -1297,7 +1299,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         if (isMultiBlank) {
             selectedIndexes.forEach((optIdx, blankIdx) => {
                 const el = document.querySelector(`.quiz-option[data-blank="${blankIdx}"][data-option="${optIdx}"]`);
-                if (el && expected[blankIdx] !== optIdx) el.classList.add('incorrect');
+                if (el && Number(expected[blankIdx]) !== Number(optIdx)) el.classList.add('incorrect');
             });
             expected.forEach((optIdx, blankIdx) => {
                 const el = document.querySelector(`.quiz-option[data-blank="${blankIdx}"][data-option="${optIdx}"]`);
@@ -1305,7 +1307,8 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
             });
         } else {
             selectedIndexes.forEach(index => {
-                if (!expected.includes(index)) {
+                const isExpected = expected.some(exp => Number(exp) === Number(index));
+                if (!isExpected) {
                     const el = document.querySelector(`.quiz-option[data-option="${index}"]`);
                     if (el) el.classList.add('incorrect');
                 }
