@@ -1825,3 +1825,27 @@ window.showVocabTab = function(tabName) {
         if(starred.length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No starred words yet!</li>';
     }
 }
+
+// Keyboard shortcut: Alt+Left Arrow to return to overview
+document.addEventListener('keydown', (e) => {
+    if (e.altKey && e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const viewsToClose = ['flashcards-view', 'vocab-view', 'results-view', 'quiz-view'];
+        let needsSwitch = false;
+        for (const view of viewsToClose) {
+            const el = document.getElementById(view);
+            if (el && el.style.display !== 'none') {
+                needsSwitch = true;
+                break;
+            }
+        }
+        if (needsSwitch || state.currentChapterId !== null) {
+            if (timerInterval) clearInterval(timerInterval);
+            for (const view of viewsToClose) {
+                const el = document.getElementById(view);
+                if (el) el.style.display = 'none';
+            }
+            switchView('overview');
+        }
+    }
+});
