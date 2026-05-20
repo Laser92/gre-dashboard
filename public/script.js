@@ -198,7 +198,7 @@ function updateTimerModeDisplay() {
         updateTimerDisplay(remaining);
         if (timerText) timerText.style.color = remaining <= 10 && remaining > 0 ? 'var(--accent-warning)' : (remaining === 0 ? 'var(--accent-error)' : '');
         
-        if (remaining === 10 && !timerPaused && !tenSecondsToastShown) {
+        if (remaining <= 10 && remaining > 0 && !timerPaused && !tenSecondsToastShown) {
             tenSecondsToastShown = true;
             showTimerToast("10 seconds left!");
         }
@@ -344,7 +344,8 @@ function splitQuestionLabel(text, fallbackNumber) {
 }
 
 function getStatusCredit(status) {
-    if (status === 'correct' || status === 'revision') return 1;
+    if (status === 'correct') return 1;
+    if (status === 'revision') return 0.5; // partial credit: they missed it first
     return 0;
 }
 
@@ -371,9 +372,22 @@ function refreshStatsFromProgress() {
     const overall = getProgressAccuracy();
     state.questionsAttempted = overall.attempted;
     state.correctAnswers = overall.correct;
-    state.questionsCompleted = overall.correct;
-    const acc = overall.attempted > 0 ? (overall.correct / overall.attempted) : 0;
-    state.diagnosticScore = overall.attempted > 0 ? Math.round(130 + Math.max(0, (acc - 0.2) / 0.8) * 40) : 0;
+    state.questionsCompleted = Math.round(overall.correct);
+    state.diagnosticScore = computeVerbalScore(overall.correct, overall.attempted);
+}
+
+function computeVerbalScore(correct, attempted) {
+    if (attempted === 0) return 0;
+    const acc = correct / attempted;
+    // Confidence ramp: score becomes more reliable as more questions are attempted
+    // At 10 questions we only have ~30% confidence, at 50 we're at ~80%, at 100+ we're near full
+    const confidence = Math.min(1, attempted / 120);
+    // Raw score: map accuracy to 130-170 range with a slight curve
+    // 0% accuracy = 130, 50% = ~148, 75% = ~158, 90% = ~165, 100% = 170
+    const rawScore = 130 + Math.pow(acc, 1.3) * 40;
+    // Blend raw score with baseline (130) based on confidence
+    const blendedScore = 130 + (rawScore - 130) * confidence;
+    return Math.round(Math.min(170, Math.max(130, blendedScore)));
 }
 
 // Current user info (populated on load)
@@ -518,7 +532,6 @@ function setupEventListeners() {
 
     document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '.topbar'); });
     document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '.table-section'); });
-    document.getElementById('nav-diagnostics').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-diagnostics', '.charts-grid'); });
     document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
     document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
@@ -769,8 +782,14 @@ function renderDashboard() {
     document.getElementById('top-target-score').innerText = `Current: ${state.diagnosticScore > 0 ? state.diagnosticScore : '--'} / 170`;
     
     if (state.diagnosticScore > 0) {
-        document.getElementById('kpi-score-trend').innerText = `Based on Diagnostic`;
-        document.getElementById('kpi-score-trend').className = 'kpi-trend positive';
+        const minQForReliable = 50;
+        if (state.questionsAttempted < minQForReliable) {
+            document.getElementById('kpi-score-trend').innerText = `Estimated (${state.questionsAttempted}/${minQForReliable} Qs for reliable score)`;
+            document.getElementById('kpi-score-trend').className = 'kpi-trend neutral';
+        } else {
+            document.getElementById('kpi-score-trend').innerText = `Based on ${state.questionsAttempted} questions`;
+            document.getElementById('kpi-score-trend').className = 'kpi-trend positive';
+        }
     }
 
     const totalQuestions = getTotalQuestionCount();
@@ -898,8 +917,7 @@ function getWeeklyScoreProgression() {
         const bucket = weekly.get(weekIndex);
         cumulativeAttempted += bucket.attempted;
         cumulativeCorrect += bucket.correct;
-        const acc = cumulativeAttempted > 0 ? (cumulativeCorrect / cumulativeAttempted) : 0;
-        const weekScore = Math.round(130 + Math.max(0, (acc - 0.2) / 0.8) * 40);
+        const weekScore = computeVerbalScore(cumulativeCorrect, cumulativeAttempted);
         labels.push(`Week ${weekIndex + 1}`);
         data.push(weekScore);
     });
@@ -931,8 +949,26 @@ let currentQuizAttempted = 0;
 
 // Build the quiz queue using user-defined probabilities:
 // 60% unseen, 20% missed, 10% revision, 10% correct
+function deduplicateQuestions(questions) {
+    const seen = new Map();
+    const unique = [];
+    questions.forEach(q => {
+        const key = (q.text || '').replace(/^SC Question\s*\d+:\s*/i, 'SC: ')
+            .replace(/^SE Question\s*\d+:\s*/i, 'SE: ')
+            .replace(/^TC Question\s*\d+:\s*/i, 'TC: ')
+            .replace(/^RC Question\s*\d+:\s*/i, 'RC: ')
+            .replace(/^Question\s*\d+:\s*/i, 'Q: ')
+            .replace(/\s+/g, ' ').trim().toLowerCase();
+        if (!seen.has(key)) {
+            seen.set(key, q);
+            unique.push(q);
+        }
+    });
+    return unique;
+}
+
 function buildQuizQueue(chapterId) {
-    const allQuestions = state.questions[chapterId] || [];
+    const allQuestions = deduplicateQuestions(state.questions[chapterId] || []);
     const chProgress = userProgress[chapterId] || {};
 
     const unseen = [], missed = [], revision = [], correct = [];
@@ -1283,12 +1319,18 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         currentQuizCorrect++;
         rememberCorrectQuestion(q);
         
-        // GREAT floating animation
+        // Floating encouragement animation
         const quizCard = document.querySelector('.quiz-card');
         if (quizCard) {
+            const encouragements = [
+                'GREAT!', 'NICE!', 'AWESOME!', 'BRILLIANT!', 'PERFECT!',
+                'SUPERB!', 'NAILED IT!', 'STELLAR!', 'CRUSHED IT!', 'WELL DONE!',
+                'BRAVO!', 'FANTASTIC!', 'ON FIRE!', 'IMPRESSIVE!', 'SHARP!',
+                'EXCELLENT!', 'GENIUS!', 'UNSTOPPABLE!', 'FLAWLESS!', 'LEGEND!'
+            ];
             const greatEl = document.createElement('div');
             greatEl.className = 'floating-great';
-            greatEl.innerText = 'GREAT!';
+            greatEl.innerText = encouragements[Math.floor(Math.random() * encouragements.length)];
             greatEl.style.left = '50%';
             greatEl.style.top = '40%';
             quizCard.style.position = 'relative';
