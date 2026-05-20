@@ -444,6 +444,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupEventListeners();
     setupProfileModal();
     window.addEventListener('beforeunload', persistActiveStudyTime);
+
+    // Scroll-based shine animation logic
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+        const updateScrollShine = () => {
+            const scrollTop = mainContent.scrollTop;
+            const scrollHeight = mainContent.scrollHeight - mainContent.clientHeight;
+            const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+            document.documentElement.style.setProperty('--scroll-percent', scrollPercent);
+        };
+        mainContent.addEventListener('scroll', updateScrollShine, { passive: true });
+        updateScrollShine();
+    }
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) : 0;
+        document.documentElement.style.setProperty('--scroll-percent', scrollPercent);
+    }, { passive: true });
     
     try {
         initCharts();

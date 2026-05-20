@@ -41,6 +41,50 @@ body {
     border: 1px solid var(--card-border);
     border-radius: 16px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Scroll-based diagonal shine for glass cards */
+.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-75% + (var(--scroll-percent, 0) * 200%));
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.035) 45%,
+        rgba(255, 255, 255, 0.07) 50%,
+        rgba(255, 255, 255, 0.035) 55%,
+        transparent 60%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 0;
+    transition: left 0.15s ease-out;
+}
+
+/* Subtle top-edge light refraction */
+.glass::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(139, 92, 246, 0.2) 50%,
+        rgba(255, 255, 255, 0.15) 80%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .dashboard-container {
@@ -566,60 +610,12 @@ body {
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-/* Diagonal shine highlight */
-.quiz-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.03) 45%,
-        rgba(255, 255, 255, 0.06) 50%,
-        rgba(255, 255, 255, 0.03) 55%,
-        transparent 60%
-    );
-    transform: skewX(-20deg);
-    pointer-events: none;
-    z-index: 0;
-    animation: cardShine 6s ease-in-out infinite;
-}
-
-/* Subtle top-edge light refraction */
-.quiz-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.15) 20%,
-        rgba(139, 92, 246, 0.2) 50%,
-        rgba(255, 255, 255, 0.15) 80%,
-        transparent 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
 .quiz-card:hover {
     border-color: rgba(255, 255, 255, 0.18);
     box-shadow:
         0 12px 48px rgba(0, 0, 0, 0.4),
         0 0 100px rgba(59, 130, 246, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-@keyframes cardShine {
-    0% { left: -75%; }
-    50% { left: 125%; }
-    100% { left: 125%; }
 }
 
 .quiz-card > * {
