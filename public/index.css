@@ -546,6 +546,85 @@ body {
     padding: 3rem;
     max-width: 900px;
     margin: 0 auto;
+    /* Premium frosted glass */
+    background: linear-gradient(
+        135deg,
+        rgba(30, 41, 59, 0.7) 0%,
+        rgba(22, 30, 43, 0.55) 50%,
+        rgba(30, 41, 59, 0.65) 100%
+    );
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.35),
+        0 0 80px rgba(59, 130, 246, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Diagonal shine highlight */
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.03) 45%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(255, 255, 255, 0.03) 55%,
+        transparent 60%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 0;
+    animation: cardShine 6s ease-in-out infinite;
+}
+
+/* Subtle top-edge light refraction */
+.quiz-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(139, 92, 246, 0.2) 50%,
+        rgba(255, 255, 255, 0.15) 80%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.quiz-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(59, 130, 246, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes cardShine {
+    0% { left: -75%; }
+    50% { left: 125%; }
+    100% { left: 125%; }
+}
+
+.quiz-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .quiz-card-topline {
@@ -565,14 +644,19 @@ body {
 }
 
 .quiz-passage {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 14px;
     border-left: 4px solid var(--accent-secondary);
     margin-bottom: 2rem;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text-secondary);
     font-size: 1.05rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    border-left: 4px solid var(--accent-secondary);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .quiz-question {
@@ -600,35 +684,43 @@ body {
 
 .quiz-option {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--card-border);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     padding: 1.25rem 1.5rem;
-    border-radius: 12px;
+    border-radius: 14px;
     font-size: 1.05rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 1rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: relative;
 }
 
 .quiz-option:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
 }
 
 .quiz-option.selected {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: var(--accent-primary);
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(59, 130, 246, 0.1);
 }
 
 .quiz-option.correct {
-    background: rgba(16, 185, 129, 0.15);
-    border-color: var(--accent-success);
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1), inset 0 1px 0 rgba(16, 185, 129, 0.1);
 }
 
 .quiz-option.incorrect {
-    background: rgba(239, 68, 68, 0.15);
-    border-color: var(--accent-error);
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.5);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.08), inset 0 1px 0 rgba(239, 68, 68, 0.08);
 }
 
 .quiz-feedback {

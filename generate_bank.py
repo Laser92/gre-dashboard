@@ -196,6 +196,13 @@ MULTI_BLANK_TEMPLATES = [
     }
 ]
 
+# Import additional templates and filter to only those with words in the vocab
+try:
+    from new_templates import NEW_TEMPLATES
+    MULTI_BLANK_TEMPLATES.extend(NEW_TEMPLATES)
+except ImportError:
+    pass
+
 
 def read_xlsx_rows(path):
     with ZipFile(path) as archive:
@@ -354,6 +361,16 @@ def make_se_question(q_id, pair, lookup, grouped):
 
 def make_multi_blank_question(q_id, lookup, grouped):
     template = MULTI_BLANK_TEMPLATES[(q_id - 1) % len(MULTI_BLANK_TEMPLATES)]
+    # Skip templates with words not in the vocab lookup
+    if not all(word in lookup for word in template["answers"]):
+        # Find a valid template by scanning forward
+        for offset in range(len(MULTI_BLANK_TEMPLATES)):
+            candidate = MULTI_BLANK_TEMPLATES[(q_id - 1 + offset) % len(MULTI_BLANK_TEMPLATES)]
+            if all(word in lookup for word in candidate["answers"]):
+                template = candidate
+                break
+        else:
+            return None  # No valid template found
     selected = [lookup[word] for word in template["answers"]]
     text = f"SC Question {q_id}: {template['text']}"
 
@@ -423,10 +440,11 @@ def build_bank(entries):
         make_se_question(i + 1, pair_words[i % len(pair_words)], lookup, grouped)
         for i in range(300)
     ]
-    mb_list = [
-        make_multi_blank_question(i + 1, lookup, grouped)
-        for i in range(300)
-    ]
+    mb_list = []
+    for i in range(300):
+        q = make_multi_blank_question(i + 1, lookup, grouped)
+        if q is not None:
+            mb_list.append(q)
     rc_list = make_rc_questions()
 
     diagnostic = []
