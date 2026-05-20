@@ -79,8 +79,8 @@
                         <div class="kpi-trend" id="kpi-score-trend">Needs more data</div>
                         <div class="kpi-icon">V</div>
                     </div>
-                    <div class="kpi-card glass">
-                        <div class="kpi-title">Questions Attempted</div>
+                    <div class="kpi-card glass" id="kpi-completed-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" title="Click to view breakdown by chapter">
+                        <div class="kpi-title" style="display: flex; align-items: center; justify-content: space-between;">Questions Completed <i class="fas fa-chart-pie" style="font-size: 0.85rem; opacity: 0.6;"></i></div>
                         <div class="kpi-value" id="kpi-attempted">0<span class="kpi-sub"></span></div>
                         <div class="progress-bar-container">
                             <div class="progress-bar" id="kpi-attempted-bar" style="width: 0%;"></div>
@@ -278,6 +278,21 @@
 
         </main>
     </div>
+    <!-- Chapter Completion Breakdown Modal -->
+    <div class="modal-overlay" id="chapters-modal-overlay">
+        <div class="modal-card glass" style="max-width: 600px; width: 95%;">
+            <div class="modal-header">
+                <h2>Completed Questions by Chapter</h2>
+                <button class="modal-close" id="chapters-modal-close">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 1rem 1.5rem 2rem;">
+                <div class="chart-container" style="min-height: 380px; position: relative;">
+                    <canvas id="chaptersBreakdownChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Profile Modal -->
     <div class="modal-overlay" id="profile-modal-overlay">
         <div class="modal-card glass">

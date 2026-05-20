@@ -24,6 +24,7 @@ let quizQueue = [];
 
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
+let chaptersBreakdownChartInstance = null;
 let selectedAnswerIndexes = [];
 let multiBlankSelections = {};
 
@@ -621,6 +622,31 @@ function setupEventListeners() {
             updateTimerModeDisplay();
         });
     }
+
+    // Chapters breakdown modal events
+    const completedCard = document.getElementById('kpi-completed-card');
+    const chaptersModalOverlay = document.getElementById('chapters-modal-overlay');
+    const chaptersModalClose = document.getElementById('chapters-modal-close');
+    
+    if (completedCard) {
+        completedCard.addEventListener('click', () => {
+            openChaptersBreakdownModal();
+        });
+    }
+    
+    if (chaptersModalClose) {
+        chaptersModalClose.addEventListener('click', () => {
+            chaptersModalOverlay.classList.remove('open');
+        });
+    }
+    
+    if (chaptersModalOverlay) {
+        chaptersModalOverlay.addEventListener('click', (e) => {
+            if (e.target === chaptersModalOverlay) {
+                chaptersModalOverlay.classList.remove('open');
+            }
+        });
+    }
 }
 
 // === PROFILE MODAL ===
@@ -793,7 +819,7 @@ function renderDashboard() {
     }
 
     const totalQuestions = getTotalQuestionCount();
-    document.getElementById('kpi-attempted').innerHTML = `${state.questionsAttempted}<span class="kpi-sub">/${totalQuestions}</span>`;
+    document.getElementById('kpi-attempted').innerHTML = `${state.questionsCompleted}<span class="kpi-sub">/${totalQuestions}</span>`;
     const accEl = document.getElementById('kpi-accuracy');
     accEl.innerText = `Accuracy: ${state.questionsAttempted > 0 ? acc + '%' : '--'}`;
     // Dynamic accuracy color
@@ -807,7 +833,7 @@ function renderDashboard() {
     
     const attemptedBar = document.getElementById('kpi-attempted-bar');
     if (attemptedBar) {
-        attemptedBar.style.width = `${totalQuestions > 0 ? (state.questionsAttempted / totalQuestions) * 100 : 0}%`;
+        attemptedBar.style.width = `${totalQuestions > 0 ? (state.questionsCompleted / totalQuestions) * 100 : 0}%`;
     }
 
     // Update time KPI
@@ -1481,6 +1507,105 @@ function finishChapter() {
     switchView('results');
 }
 
+// === CHAPTERS BREAKDOWN MODAL ===
+function openChaptersBreakdownModal() {
+    const chaptersModalOverlay = document.getElementById('chapters-modal-overlay');
+    if (!chaptersModalOverlay) return;
+    
+    chaptersModalOverlay.classList.add('open');
+    
+    const chIds = ['1', '3', '4', '5', '6'];
+    const labels = [
+        'Verbal Diagnostic',
+        'Text Completions',
+        'Sentence Equivalence',
+        'Reading Comprehension',
+        'Sentence Comp. (Multi-Blank)'
+    ];
+    
+    const totals = chIds.map(chId => state.questions[chId]?.length || 0);
+    const completed = chIds.map(chId => {
+        const chProgress = userProgress[chId] || {};
+        return Object.values(chProgress).filter(item => item.status === 'correct').length;
+    });
+    const completionPercentages = completed.map((comp, idx) => {
+        const total = totals[idx];
+        return total > 0 ? Math.round((comp / total) * 100) : 0;
+    });
+    
+    const canvas = document.getElementById('chaptersBreakdownChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    if (chaptersBreakdownChartInstance) {
+        chaptersBreakdownChartInstance.data.datasets[0].data = completionPercentages;
+        chaptersBreakdownChartInstance.data.datasets[0].totals = totals;
+        chaptersBreakdownChartInstance.data.datasets[0].completed = completed;
+        chaptersBreakdownChartInstance.update();
+    } else {
+        chaptersBreakdownChartInstance = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Completion %',
+                    data: completionPercentages,
+                    totals: totals,
+                    completed: completed,
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderColor: 'rgba(139, 92, 246, 0.8)',
+                    pointBackgroundColor: 'rgba(59, 130, 246, 0.8)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(59, 130, 246, 0.8)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const idx = context.dataIndex;
+                                const ds = context.dataset;
+                                const comp = ds.completed[idx];
+                                const tot = ds.totals[idx];
+                                const pct = context.raw;
+                                return `Completed: ${pct}% (${comp}/${tot} Qs)`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            display: true,
+                            stepSize: 20,
+                            backdropColor: 'transparent',
+                            color: '#94a3b8',
+                            font: { size: 9, weight: 'bold' },
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: {
+                            color: '#94a3b8',
+                            font: { family: "'Inter', sans-serif", size: 10, weight: '600' }
+                        },
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                }
+            }
+        });
+    }
+}
+
 // === CHART INIT ===
 
 function initCharts() {
@@ -1523,16 +1648,46 @@ function initCharts() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const val = Math.round(context.raw);
+                            let grade = 'F';
+                            if (val >= 90) grade = 'S';
+                            else if (val >= 75) grade = 'A';
+                            else if (val >= 60) grade = 'B';
+                            else if (val >= 45) grade = 'C';
+                            else if (val >= 30) grade = 'D';
+                            return `Accuracy: ${val}% (Grade ${grade})`;
+                        }
+                    }
+                }
+            },
             scales: {
                 r: {
                     beginAtZero: true,
                     max: 100,
-                    ticks: { display: false, stepSize: 20 },
+                    ticks: {
+                        display: true,
+                        stepSize: 20,
+                        backdropColor: 'transparent',
+                        color: '#94a3b8',
+                        font: { size: 10, weight: 'bold' },
+                        callback: function(value) {
+                            if (value === 100) return 'S';
+                            if (value === 80) return 'A';
+                            if (value === 60) return 'B';
+                            if (value === 40) return 'C';
+                            if (value === 20) return 'D';
+                            return '';
+                        }
+                    },
                     grid: { color: 'rgba(255, 255, 255, 0.1)' },
                     pointLabels: {
                         color: '#94a3b8',
-                        font: { family: "'Inter', sans-serif", size: 12 }
+                        font: { family: "'Inter', sans-serif", size: 12, weight: '600' }
                     },
                     angleLines: { color: 'rgba(255, 255, 255, 0.1)' }
                 }
