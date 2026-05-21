@@ -312,16 +312,53 @@ body {
 
 /* Orange/Yellow flame for days studied */
 .streak-badge-days.active {
-    background: rgba(249, 115, 22, 0.15);
-    border: 1px solid rgba(249, 115, 22, 0.4);
-    color: #ff9f43; /* bright orange-yellow */
-    text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
-    box-shadow: 0 0 12px rgba(249, 115, 22, 0.25);
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary, #ffffff);
+    animation: fire-pulse 6s infinite ease-in-out;
 }
+
+.streak-badge-days.active i {
+    color: #ff9f43; /* bright orange-yellow */
+    filter: drop-shadow(0 0 3px rgba(249, 115, 22, 0.7));
+    display: inline-block;
+    animation: flame-flicker 1.5s infinite alternate;
+}
+
 .streak-badge-days.inactive {
     background: rgba(148, 163, 184, 0.08);
     border: 1px solid rgba(148, 163, 184, 0.2);
     color: #94a3b8; /* gray */
+}
+
+@keyframes fire-pulse {
+    0%, 40%, 100% {
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+    60% {
+        box-shadow: 0 0 14px rgba(249, 115, 22, 0.5), 0 0 6px rgba(239, 68, 68, 0.2);
+        border-color: rgba(249, 115, 22, 0.35);
+    }
+    70% {
+        box-shadow: 0 0 10px rgba(249, 115, 22, 0.3), 0 0 4px rgba(239, 68, 68, 0.1);
+        border-color: rgba(249, 115, 22, 0.25);
+    }
+    80% {
+        box-shadow: 0 0 16px rgba(251, 146, 60, 0.6), 0 0 8px rgba(239, 68, 68, 0.3);
+        border-color: rgba(251, 146, 60, 0.45);
+    }
+}
+
+@keyframes flame-flicker {
+    0% {
+        transform: scale(1) rotate(-2deg);
+        filter: drop-shadow(0 0 2px rgba(249, 115, 22, 0.5));
+    }
+    100% {
+        transform: scale(1.12) rotate(3deg);
+        filter: drop-shadow(0 0 6px rgba(251, 146, 60, 0.9));
+    }
 }
 
 /* Purple/Violet bolt for questions correct streak */
@@ -1296,7 +1333,20 @@ body {
 
     .profile-widget {
         width: 100%;
-        justify-content: flex-end;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .streak-badge-days, .streak-badge-correct, .score-badge {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
     }
 
     .welcome-text h1 {

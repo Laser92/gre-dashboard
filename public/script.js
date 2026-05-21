@@ -541,6 +541,14 @@ let currentUsername = '';
 document.addEventListener('DOMContentLoaded', async () => {
     console.log("DOMContentLoaded started");
     syncChaptersFromQuestionBank();
+
+    // Preload flashcards in background
+    fetch('/flashcards.json')
+        .then(r => r.ok ? r.json() : [])
+        .then(raw => {
+            flashcardsData = raw.map((fc, i) => ({ ...fc, id: i }));
+        })
+        .catch(err => console.error("Failed to preload flashcards", err));
     
     // Auth Check
     try {
@@ -789,8 +797,22 @@ function setupEventListeners() {
     }
     if (enableCountdown) {
         enableCountdown.addEventListener('change', () => {
+            const prompt = document.getElementById('timer-challenge-prompt');
+            if (prompt && enableCountdown.checked) {
+                prompt.style.display = 'none';
+            }
             questionStartTime = Date.now();
             updateTimerModeDisplay();
+        });
+    }
+
+    // Close button for challenge prompt
+    const closeTimerPrompt = document.getElementById('close-timer-prompt');
+    if (closeTimerPrompt) {
+        closeTimerPrompt.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const prompt = document.getElementById('timer-challenge-prompt');
+            if (prompt) prompt.style.display = 'none';
         });
     }
 
@@ -1388,10 +1410,14 @@ function renderQuestion() {
     const enableCountdown = document.getElementById('enable-countdown');
     const challengePrompt = document.getElementById('timer-challenge-prompt');
     if (enableCountdown && !enableCountdown.checked && challengePrompt) {
-        if (Math.random() < 0.15 && currentQuizAttempted >= 2) {
+        if (state.currentQuestionIndex === 0) {
             challengePrompt.style.display = 'block';
-        } else {
-            challengePrompt.style.display = 'none';
+            // Auto hide after 6 seconds
+            setTimeout(() => {
+                if (challengePrompt.style.display === 'block') {
+                    challengePrompt.style.display = 'none';
+                }
+            }, 6000);
         }
     } else if (challengePrompt) {
         challengePrompt.style.display = 'none';
@@ -1704,16 +1730,35 @@ function openChaptersBreakdownModal() {
     
     chaptersModalOverlay.classList.add('open');
     
-    const chIds = ['1', '3', '4', '5', '6'];
+    // Check if flashcard data is loaded. If not, load it in the background and re-run.
+    if (typeof flashcardsData === 'undefined' || flashcardsData.length === 0) {
+        fetch('/flashcards.json')
+            .then(r => r.ok ? r.json() : [])
+            .then(raw => {
+                flashcardsData = raw.map((fc, i) => ({ ...fc, id: i }));
+                if (chaptersModalOverlay.classList.contains('open')) {
+                    openChaptersBreakdownModal();
+                }
+            })
+            .catch(err => console.error("Failed to lazy-load flashcards for radar chart", err));
+    }
+    
+    const chIds = ['1', '3', '4', '5', '6', 'flashcards'];
     const labels = [
         'Verbal Diagnostic',
         'Text Completions',
         'Sentence Equivalence',
         'Reading Comprehension',
-        'Sentence Comp. (Multi-Blank)'
+        'Sentence Comp. (Multi-Blank)',
+        'Flashcards'
     ];
     
-    const totals = chIds.map(chId => state.questions[chId]?.length || 0);
+    const totals = chIds.map(chId => {
+        if (chId === 'flashcards') {
+            return typeof flashcardsData !== 'undefined' ? flashcardsData.length : 0;
+        }
+        return state.questions[chId]?.length || 0;
+    });
     const completed = chIds.map(chId => {
         const chProgress = userProgress[chId] || {};
         return Object.values(chProgress).filter(item => item.status === 'correct').length;
@@ -1728,6 +1773,7 @@ function openChaptersBreakdownModal() {
     const ctx = canvas.getContext('2d');
     
     if (chaptersBreakdownChartInstance) {
+        chaptersBreakdownChartInstance.data.labels = labels;
         chaptersBreakdownChartInstance.data.datasets[0].data = completionPercentages;
         chaptersBreakdownChartInstance.data.datasets[0].totals = totals;
         chaptersBreakdownChartInstance.data.datasets[0].completed = completed;
@@ -2285,3 +2331,26 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// === AUTOMATIC INACTIVITY RELOADER ===
+(function() {
+    let inactivityTimeout;
+    const INACTIVITY_TIME = 10 * 60 * 1000; // 10 minutes
+
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimeout);
+        inactivityTimeout = setTimeout(reloadPage, INACTIVITY_TIME);
+    }
+
+    function reloadPage() {
+        console.log("Inactive for 10 minutes, reloading...");
+        window.location.reload();
+    }
+
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+    events.forEach(name => {
+        document.addEventListener(name, resetInactivityTimer, { passive: true });
+    });
+
+    resetInactivityTimer();
+})();

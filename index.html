@@ -6,7 +6,7 @@
     <title>GRE Prep Dashboard | 5 lb. Book</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css?v=8">
+    <link rel="stylesheet" href="index.css?v=9">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -158,9 +158,10 @@
 
                 <div class="timer-settings" style="position: relative; margin-bottom: 15px; display: flex; justify-content: flex-end; align-items: center;">
                     <div style="position: relative;">
-                        <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; bottom: calc(100% + 15px); padding: 10px 15px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary);">
-                            <span style="color: #fff; font-weight: 500; font-size: 0.95rem;">Ready for a challenge? Turn on the timer.</span>
-                            <div style="position: absolute; right: 20px; bottom: -6px; transform: rotate(45deg); width: 10px; height: 10px; background: var(--card-bg); border-bottom: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
+                        <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; bottom: calc(100% + 15px); padding: 8px 32px 8px 12px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px);">
+                            <span style="color: #fff; font-weight: 500; font-size: 0.9rem;">Ready for a challenge? Turn on the timer.</span>
+                            <span id="close-timer-prompt" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #94a3b8; font-size: 1.1rem; font-weight: bold; line-height: 1; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">&times;</span>
+                            <div style="position: absolute; right: 20px; bottom: -6px; transform: rotate(45deg); width: 10px; height: 10px; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid var(--accent-primary); border-right: 1px solid var(--accent-primary);"></div>
                         </div>
                         <button id="timer-settings-btn" class="timer-settings-btn">
                             <i class="fas fa-cog"></i> Timer Settings
@@ -351,6 +352,6 @@
     </div>
 
     <script src="questions_bank.js"></script>
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=10"></script>
 </body>
 </html>
