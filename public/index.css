@@ -45,26 +45,32 @@ body {
     overflow: hidden;
 }
 
-/* Scroll-based diagonal shine for glass cards */
-.glass::before {
+/* iOS-style edge glow for quiz & flashcard glass cards */
+.quiz-card::before,
+.flashcard-front::before,
+.flashcard-back::before {
     content: '';
     position: absolute;
     top: 0;
-    left: calc(-75% + (var(--scroll-percent, 0) * 200%));
-    width: 50%;
-    height: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
     background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.035) 45%,
-        rgba(255, 255, 255, 0.07) 50%,
-        rgba(255, 255, 255, 0.035) 55%,
-        transparent 60%
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.06) 25%,
+        transparent 50%,
+        transparent 100%
     );
-    transform: skewX(-20deg);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
-    z-index: 0;
-    transition: left 0.15s ease-out;
+    z-index: 1;
 }
 
 /* Subtle top-edge light refraction */
@@ -290,6 +296,41 @@ body {
     font-size: 0.9rem;
     border: 1px solid rgba(16, 185, 129, 0.3);
     white-space: nowrap;
+}
+
+.streak-badge-days, .streak-badge-correct {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Orange/Yellow flame for days studied */
+.streak-badge-days.active {
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    color: #ff9f43; /* bright orange-yellow */
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.25);
+}
+.streak-badge-days.inactive {
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    color: #94a3b8; /* gray */
+}
+
+/* Purple/Violet bolt for questions correct streak */
+.streak-badge-correct {
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: #a78bfa;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
 }
 
 .avatar {
@@ -1687,4 +1728,66 @@ body {
 
 .vocab-list li:hover {
     background: rgba(255, 255, 255, 0.08);
+}
+
+/* Starred word clickable items */
+.vocab-list li.starred-word-item {
+    cursor: pointer;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Inline flashcard detail for starred words */
+.starred-word-detail {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+    animation: detailSlideIn 0.3s ease-out;
+}
+
+.starred-word-detail h4 {
+    color: var(--accent-primary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+    opacity: 0.8;
+}
+
+.starred-word-detail .detail-definition {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.starred-word-detail .detail-example {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.75rem 1rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.starred-word-detail .detail-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.starred-word-detail .detail-meta span {
+    background: rgba(255,255,255,0.05);
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+@keyframes detailSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
 }

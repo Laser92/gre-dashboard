@@ -47,7 +47,8 @@ const SE_SYNONYM_PAIRS = {
 };
 
 // === TIME TRACKING ===
-let totalStudyTimeSeconds = 0;    // Total across all chapters this session
+let totalStudyTimeSeconds = 0;    // All-time accumulated study time
+let todayStudyTimeSeconds = 0;    // Today's accumulated study time
 let chapterStartTime = null;      // When current chapter started
 let chapterElapsedSeconds = 0;    // Time for current chapter
 let questionStartTime = null;     // When current question started
@@ -58,6 +59,174 @@ let questionPausedRemaining = null;
 let tenSecondsToastShown = false;
 let timerPaused = false;
 let questionTimeExpired = false;
+let globalStudyInterval = null;   // Global 1s activity tracker
+let lastActivityTime = Date.now();
+
+function getStudyTimeStorageKey() {
+    return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
+}
+
+function getTodayStudyTimeStorageKey() {
+    return `greTodayStudyTimeSeconds:${currentUsername || 'guest'}`;
+}
+
+function getTodayDateStorageKey() {
+    return `greTodayDate:${currentUsername || 'guest'}`;
+}
+
+function getTodayDateString() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+}
+
+function loadStoredStudyTime() {
+    const savedTotal = Number(localStorage.getItem(getStudyTimeStorageKey()) || 0);
+    totalStudyTimeSeconds = Number.isFinite(savedTotal) ? savedTotal : 0;
+    
+    // Check if today's date matches stored date; if not, reset today counter
+    const storedDate = localStorage.getItem(getTodayDateStorageKey());
+    const today = getTodayDateString();
+    if (storedDate === today) {
+        const savedToday = Number(localStorage.getItem(getTodayStudyTimeStorageKey()) || 0);
+        todayStudyTimeSeconds = Number.isFinite(savedToday) ? savedToday : 0;
+    } else {
+        todayStudyTimeSeconds = 0;
+        localStorage.setItem(getTodayStudyTimeStorageKey(), '0');
+        localStorage.setItem(getTodayDateStorageKey(), today);
+    }
+}
+
+function persistStudyTime() {
+    localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
+    localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
+    localStorage.setItem(getTodayDateStorageKey(), getTodayDateString());
+}
+
+// === STREAK HELPERS ===
+
+function getDaysStreakKey() { return `greDaysStreak:${currentUsername || 'guest'}`; }
+function getLastStudyDateKey() { return `greLastStudyDate:${currentUsername || 'guest'}`; }
+function getCorrectStreakKey() { return `greCorrectStreak:${currentUsername || 'guest'}`; }
+function getMaxCorrectStreakKey() { return `greMaxCorrectStreak:${currentUsername || 'guest'}`; }
+
+function getGradeFromAccuracy(val) {
+    if (val >= 90) return 'S';
+    if (val >= 75) return 'A';
+    if (val >= 60) return 'B';
+    if (val >= 45) return 'C';
+    if (val >= 30) return 'D';
+    return 'F';
+}
+
+function updateDaysStreak() {
+    if (!currentUsername) return;
+    const today = getTodayDateString();
+    const storedStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
+    const lastStudyDate = localStorage.getItem(getLastStudyDateKey()) || '';
+    
+    const el = document.getElementById('streak-days');
+    const countEl = document.getElementById('streak-days-count');
+    if (!el || !countEl) return;
+    
+    if (lastStudyDate === today) {
+        // Already counted today — just show current streak
+        countEl.textContent = storedStreak;
+        el.classList.remove('inactive');
+        el.classList.add('active');
+        el.setAttribute('title', `🔥 ${storedStreak} day streak! Keep it up!`);
+        return;
+    }
+    
+    // Check if studied today (todayStudyTimeSeconds > 0)
+    if (todayStudyTimeSeconds > 0) {
+        // Calculate new streak
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth()+1).padStart(2,'0')}-${String(yesterday.getDate()).padStart(2,'0')}`;
+        
+        let newStreak;
+        if (lastStudyDate === yesterdayStr) {
+            newStreak = storedStreak + 1; // Consecutive!
+        } else {
+            newStreak = 1; // Streak broken, restart
+        }
+        
+        localStorage.setItem(getDaysStreakKey(), String(newStreak));
+        localStorage.setItem(getLastStudyDateKey(), today);
+        countEl.textContent = newStreak;
+        el.classList.remove('inactive');
+        el.classList.add('active');
+        el.setAttribute('title', `🔥 ${newStreak} day streak! Keep it up!`);
+    } else {
+        // Haven't studied today yet
+        countEl.textContent = storedStreak;
+        el.classList.remove('active');
+        el.classList.add('inactive');
+        el.setAttribute('title', `Start studying to build your ${storedStreak > 0 ? storedStreak + ' day' : ''} streak!`);
+    }
+}
+
+function updateCorrectStreak(isCorrect) {
+    if (!currentUsername) return;
+    
+    let currentStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+    let maxStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+    
+    if (isCorrect) {
+        currentStreak++;
+        if (currentStreak > maxStreak) {
+            maxStreak = currentStreak;
+            localStorage.setItem(getMaxCorrectStreakKey(), String(maxStreak));
+        }
+    } else {
+        currentStreak = 0;
+    }
+    
+    localStorage.setItem(getCorrectStreakKey(), String(currentStreak));
+    
+    const el = document.getElementById('streak-correct');
+    const countEl = document.getElementById('streak-correct-count');
+    if (el && countEl) {
+        countEl.textContent = currentStreak;
+        el.setAttribute('title', `⚡ ${currentStreak} correct in a row! (Best: ${maxStreak})`);
+    }
+}
+
+function loadStoredStreaks() {
+    if (!currentUsername) return;
+    
+    updateDaysStreak();
+    
+    const currentStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+    const maxStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+    
+    const el = document.getElementById('streak-correct');
+    const countEl = document.getElementById('streak-correct-count');
+    if (el && countEl) {
+        countEl.textContent = currentStreak;
+        el.setAttribute('title', `⚡ ${currentStreak} correct in a row! (Best: ${maxStreak})`);
+    }
+}
+
+function startGlobalStudyTimer() {
+    // Track user activity
+    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+        document.addEventListener(evt, () => { lastActivityTime = Date.now(); }, { passive: true });
+    });
+    
+    if (globalStudyInterval) clearInterval(globalStudyInterval);
+    globalStudyInterval = setInterval(() => {
+        // Only count time if user was active in the last 2 minutes and window is focused
+        const isActive = (Date.now() - lastActivityTime) < 120000;
+        if (isActive && document.hasFocus()) {
+            totalStudyTimeSeconds++;
+            todayStudyTimeSeconds++;
+            persistStudyTime();
+            updateTimeKPI();
+            updateDaysStreak();
+        }
+    }, 1000);
+}
 
 function showToast(message, type = 'warning') {
     const toast = document.createElement('div');
@@ -98,28 +267,12 @@ function showTimerToast(message) {
     setTimeout(() => toast.remove(), 2500);
 }
 
-function getStudyTimeStorageKey() {
-    return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
-}
-
-function loadStoredStudyTime() {
-    const saved = Number(localStorage.getItem(getStudyTimeStorageKey()) || 0);
-    totalStudyTimeSeconds = Number.isFinite(saved) ? saved : 0;
-}
-
-function persistStudyTime() {
-    localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
-}
-
 function startPassiveStudyTimer() {
-    if (!passiveStudyStartTime) passiveStudyStartTime = Date.now();
+    // No-op: global study timer handles all time tracking
 }
 
 function stopPassiveStudyTimer() {
-    if (!passiveStudyStartTime) return;
-    totalStudyTimeSeconds += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
-    passiveStudyStartTime = null;
-    persistStudyTime();
+    // No-op: global study timer handles all time tracking
 }
 
 function startTimer() {
@@ -144,8 +297,7 @@ function startTimer() {
 function stopTimer() {
     if (chapterStartTime) {
         chapterElapsedSeconds = Math.floor((Date.now() - chapterStartTime) / 1000);
-        totalStudyTimeSeconds += chapterElapsedSeconds;
-        persistStudyTime();
+        // Note: global study timer handles total/today time accumulation
     }
     if (timerInterval) {
         clearInterval(timerInterval);
@@ -155,16 +307,8 @@ function stopTimer() {
 }
 
 function persistActiveStudyTime() {
-    let pendingSeconds = 0;
-    if (chapterStartTime) {
-        pendingSeconds += Math.floor((Date.now() - chapterStartTime) / 1000);
-    }
-    if (passiveStudyStartTime) {
-        pendingSeconds += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
-    }
-    if (pendingSeconds > 0) {
-        localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds + pendingSeconds));
-    }
+    // Global study timer persists automatically every second
+    persistStudyTime();
 }
 
 function updateTimerDisplay(seconds) {
@@ -409,10 +553,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         currentUsername = data.username;
         loadStoredStudyTime();
+        loadStoredStreaks();
+        startGlobalStudyTimer();
         
         // Update UI with user info
+        const capitalizedName = data.username.charAt(0).toUpperCase() + data.username.slice(1);
         document.getElementById('nav-avatar').innerText = data.username.charAt(0).toUpperCase();
         document.getElementById('dropdown-username').innerText = data.username;
+        
+        // Personalize welcome message
+        const welcomeH1 = document.querySelector('.welcome-text h1');
+        if (welcomeH1) welcomeH1.textContent = `Welcome back, ${capitalizedName}`;
+        
         const overviewAvatar = document.querySelector('.user-profile .avatar');
         const overviewName = document.querySelector('.user-profile .user-name');
         if (overviewAvatar) overviewAvatar.innerText = data.username.charAt(0).toUpperCase();
@@ -898,17 +1050,11 @@ function renderDashboard() {
 function updateTimeKPI() {
     const timeEl = document.getElementById('kpi-time');
     const trendEl = document.getElementById('kpi-time-trend');
+    const todayEl = document.getElementById('kpi-time-today');
     if (!timeEl) return;
 
-    // Include currently running timer if active
-    let displayTime = totalStudyTimeSeconds;
-    if (chapterStartTime) {
-        displayTime += Math.floor((Date.now() - chapterStartTime) / 1000);
-    }
-    if (passiveStudyStartTime) {
-        displayTime += Math.floor((Date.now() - passiveStudyStartTime) / 1000);
-    }
-
+    // All-time display
+    const displayTime = totalStudyTimeSeconds;
     const hrs = Math.floor(displayTime / 3600);
     const mins = Math.floor((displayTime % 3600) / 60);
 
@@ -923,6 +1069,20 @@ function updateTimeKPI() {
         const avgSecs = Math.round(displayTime / state.questionsAttempted);
         trendEl.innerText = `~${avgSecs}s per question`;
         trendEl.className = 'kpi-trend neutral';
+    } else {
+        trendEl.innerText = 'All time';
+        trendEl.className = 'kpi-trend neutral';
+    }
+
+    // Today's time display
+    if (todayEl) {
+        const todayHrs = Math.floor(todayStudyTimeSeconds / 3600);
+        const todayMins = Math.floor((todayStudyTimeSeconds % 3600) / 60);
+        if (todayHrs > 0) {
+            todayEl.textContent = `${todayHrs}h ${todayMins}m`;
+        } else {
+            todayEl.textContent = `${todayMins}m`;
+        }
     }
 }
 
@@ -971,11 +1131,20 @@ function getWeeklyScoreProgression() {
 }
 
 function updateCharts() {
+    const baseLabels = ['Diagnostic', 'Text Comp.', 'Sentence Eq.', 'Reading Comp.', 'Multi-Blank', 'Flashcards'];
+    
     if (accuracyChartInstance) {
-        accuracyChartInstance.data.datasets[0].data = [
+        const data = [
             ...state.chapters.map(chapter => getChapterAccuracy(chapter.id)),
             getChapterAccuracy('flashcards')
         ];
+        accuracyChartInstance.data.datasets[0].data = data;
+        
+        // Multi-line labels with grade at the vertex
+        accuracyChartInstance.data.labels = baseLabels.map((label, i) => {
+            const grade = getGradeFromAccuracy(data[i]);
+            return [label, `Grade: ${grade}`];
+        });
         accuracyChartInstance.update();
     }
 
@@ -1363,6 +1532,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         fText.className = "success";
         currentQuizCorrect++;
         rememberCorrectQuestion(q);
+        updateCorrectStreak(true);
         
         // Floating encouragement animation
         const quizCard = document.querySelector('.quiz-card');
@@ -1411,6 +1581,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
             fText.innerText = "Incorrect.";
         }
         fText.className = "error";
+        updateCorrectStreak(false);
         
         // Shake and Haptics
         const quizCard = document.querySelector('.quiz-card');
@@ -2032,11 +2203,60 @@ window.showVocabTab = function(tabName) {
         });
         if(Object.keys(missed).length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No missed words yet!</li>';
     } else {
+        // Ensure flashcard data is loaded for word definitions
+        if (flashcardsData.length === 0) {
+            fetch('/flashcards.json').then(r => r.ok ? r.json() : []).then(raw => {
+                flashcardsData = raw.map((fc, i) => ({ ...fc, id: i }));
+                showVocabTab('starred'); // Re-render with data
+            }).catch(() => {});
+        }
         const list = document.getElementById('starred-words-list');
         const starred = getStarredWords();
         list.innerHTML = '';
         starred.forEach(word => {
-            list.innerHTML += `<li><span style="font-weight:600; text-transform:capitalize;">${word}</span></li>`;
+            // Look up flashcard data for this word
+            const fc = flashcardsData.find(f => f.word.toLowerCase() === word.toLowerCase());
+            const li = document.createElement('li');
+            li.className = 'starred-word-item';
+            
+            const headerRow = document.createElement('div');
+            headerRow.style.cssText = 'display:flex; justify-content:space-between; align-items:center; width:100%;';
+            headerRow.innerHTML = `
+                <span style="font-weight:600; text-transform:capitalize; font-size: 1.1rem;">${word}</span>
+                <i class="fas fa-chevron-down" style="color:var(--text-secondary); font-size:0.75rem; transition: transform 0.3s;"></i>
+            `;
+            li.appendChild(headerRow);
+            
+            li.addEventListener('click', () => {
+                const existing = li.querySelector('.starred-word-detail');
+                const chevron = li.querySelector('.fa-chevron-down, .fa-chevron-up');
+                if (existing) {
+                    existing.remove();
+                    if (chevron) { chevron.classList.replace('fa-chevron-up', 'fa-chevron-down'); }
+                    return;
+                }
+                if (chevron) { chevron.classList.replace('fa-chevron-down', 'fa-chevron-up'); }
+                
+                const detail = document.createElement('div');
+                detail.className = 'starred-word-detail';
+                
+                if (fc) {
+                    detail.innerHTML = `
+                        <h4>Definition</h4>
+                        <p class="detail-definition">${fc.definition}</p>
+                        ${fc.example ? `<h4>Example</h4><p class="detail-example">"${fc.example}"</p>` : ''}
+                        <div class="detail-meta">
+                            ${fc['part of speech'] ? `<span>${fc['part of speech']}</span>` : ''}
+                            ${fc.root ? `<span>Root: ${fc.root}</span>` : ''}
+                        </div>
+                    `;
+                } else {
+                    detail.innerHTML = '<p class="detail-definition" style="color:var(--text-secondary);">Definition not found in flashcard database.</p>';
+                }
+                li.appendChild(detail);
+            });
+            
+            list.appendChild(li);
         });
         if(starred.length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No starred words yet!</li>';
     }
