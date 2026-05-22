@@ -69,6 +69,12 @@ const userStatsSchema = new mongoose.Schema({
     correctStreak: { type: Number, default: 0 },
     maxCorrectStreak: { type: Number, default: 0 },
     loginHistory: { type: [String], default: [] }, // Array of YYYY-MM-DD strings
+    dailyActivity: { type: Map, of: Number, default: {} }, // YYYY-MM-DD -> study time in seconds
+    sumOfCorrectStreaks: { type: Number, default: 0 },
+    totalStreaksCompleted: { type: Number, default: 0 },
+    maxCorrectStreakDate: { type: String, default: '' },
+    starredWords: { type: [String], default: [] },
+    missedWords: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} }
 }, { timestamps: true });
 
 const UserStats = mongoose.model('UserStats', userStatsSchema);
@@ -378,7 +384,9 @@ app.put('/api/stats', async (req, res) => {
         totalStudyTimeSeconds, todayStudyTimeSeconds, todayDate,
         daysStreak, lastStudyDate,
         correctStreak, maxCorrectStreak,
-        loginHistory
+        loginHistory, dailyActivity,
+        sumOfCorrectStreaks, totalStreaksCompleted, maxCorrectStreakDate,
+        starredWords, missedWords
     } = req.body;
     try {
         const update = {};
@@ -390,6 +398,13 @@ app.put('/api/stats', async (req, res) => {
         if (correctStreak !== undefined) update.correctStreak = Number(correctStreak);
         if (maxCorrectStreak !== undefined) update.maxCorrectStreak = Number(maxCorrectStreak);
         if (loginHistory !== undefined) update.loginHistory = loginHistory;
+        
+        if (dailyActivity !== undefined) update.dailyActivity = dailyActivity;
+        if (sumOfCorrectStreaks !== undefined) update.sumOfCorrectStreaks = Number(sumOfCorrectStreaks);
+        if (totalStreaksCompleted !== undefined) update.totalStreaksCompleted = Number(totalStreaksCompleted);
+        if (maxCorrectStreakDate !== undefined) update.maxCorrectStreakDate = String(maxCorrectStreakDate);
+        if (starredWords !== undefined) update.starredWords = starredWords;
+        if (missedWords !== undefined) update.missedWords = missedWords;
 
         await UserStats.findOneAndUpdate(
             { userId: req.session.userId },

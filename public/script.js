@@ -64,6 +64,12 @@ let lastActivityTime = Date.now();
 let _statsSyncTimer = null;       // Debounced server sync timer
 let _serverStats = null;          // Cached server stats to avoid redundant saves
 
+// Additional tracked stats
+let dailyActivity = {};           // Map of YYYY-MM-DD -> seconds
+let sumOfCorrectStreaks = 0;
+let totalStreaksCompleted = 0;
+let maxCorrectStreakDate = '';
+
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
 }
@@ -126,9 +132,11 @@ async function loadStoredStudyTime() {
 }
 
 function persistStudyTime() {
+    const today = getTodayDateString();
     localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
     localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
-    localStorage.setItem(getTodayDateStorageKey(), getTodayDateString());
+    localStorage.setItem(getTodayDateStorageKey(), today);
+    dailyActivity[today] = todayStudyTimeSeconds;
     // Debounced server sync (every 30 seconds)
     _debouncedSyncStats();
 }
@@ -151,6 +159,12 @@ function _syncStatsToServer() {
         lastStudyDate: localStorage.getItem(getLastStudyDateKey()) || '',
         correctStreak: Number(localStorage.getItem(getCorrectStreakKey()) || 0),
         maxCorrectStreak: Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0),
+        dailyActivity,
+        sumOfCorrectStreaks,
+        totalStreaksCompleted,
+        maxCorrectStreakDate,
+        starredWords: getStarredWords(),
+        missedWords: getMissedWords()
     };
     fetch('/api/stats', {
         method: 'PUT',
@@ -171,6 +185,12 @@ function _forceStatsSync() {
         lastStudyDate: localStorage.getItem(getLastStudyDateKey()) || '',
         correctStreak: Number(localStorage.getItem(getCorrectStreakKey()) || 0),
         maxCorrectStreak: Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0),
+        dailyActivity,
+        sumOfCorrectStreaks,
+        totalStreaksCompleted,
+        maxCorrectStreakDate,
+        starredWords: getStarredWords(),
+        missedWords: getMissedWords()
     };
     try {
         fetch('/api/stats', {
@@ -312,9 +332,14 @@ function updateCorrectStreak(isCorrect) {
         currentStreak++;
         if (currentStreak > maxStreak) {
             maxStreak = currentStreak;
+            maxCorrectStreakDate = getTodayDateString();
             localStorage.setItem(getMaxCorrectStreakKey(), String(maxStreak));
         }
     } else {
+        if (currentStreak > 0) {
+            sumOfCorrectStreaks += currentStreak;
+            totalStreaksCompleted++;
+        }
         currentStreak = 0;
     }
     
@@ -362,6 +387,18 @@ async function loadStoredStreaks() {
             }
             if (s.maxCorrectStreak > localMaxCorrectStreak) {
                 localStorage.setItem(getMaxCorrectStreakKey(), String(s.maxCorrectStreak));
+            }
+            if (s.dailyActivity) dailyActivity = s.dailyActivity;
+            if (s.sumOfCorrectStreaks) sumOfCorrectStreaks = s.sumOfCorrectStreaks;
+            if (s.totalStreaksCompleted) totalStreaksCompleted = s.totalStreaksCompleted;
+            if (s.maxCorrectStreakDate) maxCorrectStreakDate = s.maxCorrectStreakDate;
+            
+            // Sync vocab lists from server to localStorage if they exist on server
+            if (s.starredWords && s.starredWords.length > 0) {
+                saveStarredWords(s.starredWords);
+            }
+            if (s.missedWords && Object.keys(s.missedWords).length > 0) {
+                saveMissedWords(s.missedWords);
             }
         }
     } catch (e) {
@@ -784,6 +821,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     setupEventListeners();
     setupProfileModal();
+    setupCalendarAndStatsModals();
     window.addEventListener('beforeunload', persistActiveStudyTime);
 
     // Scroll-based shine animation logic
@@ -1149,8 +1187,165 @@ function setupProfileModal() {
         }
     });
 }
+// === CALENDAR & STATS MODALS ===
+let currentCalendarYear = new Date().getFullYear();
+let currentCalendarMonth = new Date().getMonth();
 
-function switchView(viewName) {
+function setupCalendarAndStatsModals() {
+    // Days Streak -> Calendar Modal
+    const daysStreakBadge = document.getElementById('streak-days');
+    const calendarModalOverlay = document.getElementById('calendar-modal-overlay');
+    const calendarModalClose = document.getElementById('calendar-modal-close');
+    const prevMonthBtn = document.getElementById('calendar-prev-month');
+    const nextMonthBtn = document.getElementById('calendar-next-month');
+
+    if (daysStreakBadge) {
+        daysStreakBadge.addEventListener('click', () => {
+            currentCalendarYear = new Date().getFullYear();
+            currentCalendarMonth = new Date().getMonth();
+            renderCalendar();
+            calendarModalOverlay.classList.add('open');
+        });
+    }
+
+    if (calendarModalClose) {
+        calendarModalClose.addEventListener('click', () => calendarModalOverlay.classList.remove('open'));
+    }
+
+    if (calendarModalOverlay) {
+        calendarModalOverlay.addEventListener('click', (e) => {
+            if (e.target === calendarModalOverlay) calendarModalOverlay.classList.remove('open');
+        });
+    }
+
+    if (prevMonthBtn) {
+        prevMonthBtn.addEventListener('click', () => {
+            currentCalendarMonth--;
+            if (currentCalendarMonth < 0) {
+                currentCalendarMonth = 11;
+                currentCalendarYear--;
+            }
+            renderCalendar();
+        });
+    }
+
+    if (nextMonthBtn) {
+        nextMonthBtn.addEventListener('click', () => {
+            currentCalendarMonth++;
+            if (currentCalendarMonth > 11) {
+                currentCalendarMonth = 0;
+                currentCalendarYear++;
+            }
+            renderCalendar();
+        });
+    }
+
+    // Correct Streak -> Stats Modal
+    const correctStreakBadge = document.getElementById('streak-correct');
+    const statsModalOverlay = document.getElementById('streak-stats-modal-overlay');
+    const statsModalClose = document.getElementById('streak-stats-modal-close');
+
+    if (correctStreakBadge) {
+        correctStreakBadge.addEventListener('click', () => {
+            const avgEl = document.getElementById('stat-avg-streak');
+            const maxEl = document.getElementById('stat-max-streak');
+            const maxDateEl = document.getElementById('stat-max-streak-date');
+            
+            const currentStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+            const totalC = sumOfCorrectStreaks + currentStreak;
+            const completedC = totalStreaksCompleted + (currentStreak > 0 ? 1 : 0);
+            
+            let avg = 0;
+            if (completedC > 0) {
+                avg = Math.round((totalC / completedC) * 10) / 10;
+            }
+            
+            avgEl.textContent = avg;
+            maxEl.textContent = localStorage.getItem(getMaxCorrectStreakKey()) || 0;
+            maxDateEl.textContent = maxCorrectStreakDate || '-';
+            
+            statsModalOverlay.classList.add('open');
+        });
+    }
+
+    if (statsModalClose) {
+        statsModalClose.addEventListener('click', () => statsModalOverlay.classList.remove('open'));
+    }
+
+    if (statsModalOverlay) {
+        statsModalOverlay.addEventListener('click', (e) => {
+            if (e.target === statsModalOverlay) statsModalOverlay.classList.remove('open');
+        });
+    }
+}
+
+function renderCalendar() {
+    const monthYearEl = document.getElementById('calendar-month-year');
+    const gridEl = document.getElementById('calendar-grid');
+    const currentStreakEl = document.getElementById('calendar-current-streak');
+    
+    if (!monthYearEl || !gridEl) return;
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    monthYearEl.textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
+
+    gridEl.innerHTML = '';
+
+    const firstDay = new Date(currentCalendarYear, currentCalendarMonth, 1).getDay();
+    const daysInMonth = new Date(currentCalendarYear, currentCalendarMonth + 1, 0).getDate();
+    const today = new Date();
+    
+    // Fill empty cells before the 1st
+    for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'calendar-day-cell empty';
+        gridEl.appendChild(emptyCell);
+    }
+
+    // Determine max study time in the month for scaling
+    let maxStudyTimeInMonth = 1; // avoid div by 0
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dStr = `${currentCalendarYear}-${String(currentCalendarMonth+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+        if (dailyActivity[dStr] && dailyActivity[dStr] > maxStudyTimeInMonth) {
+            maxStudyTimeInMonth = dailyActivity[dStr];
+        }
+    }
+    
+    // Cap the goal scale at 1 hour (3600 seconds) so studying an hour gives a full circle
+    const MAX_SCALE_SECONDS = 3600;
+
+    for (let i = 1; i <= daysInMonth; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-day-cell';
+        cell.textContent = i;
+        
+        const dStr = `${currentCalendarYear}-${String(currentCalendarMonth+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+        
+        // Highlight today
+        if (today.getFullYear() === currentCalendarYear && today.getMonth() === currentCalendarMonth && today.getDate() === i) {
+            cell.classList.add('today');
+        }
+
+        // Highlight active days
+        if (dailyActivity[dStr] > 0) {
+            cell.classList.add('active-day');
+            
+            // Calculate scale: min 0.3, max 1.1 depending on study time
+            let ratio = dailyActivity[dStr] / MAX_SCALE_SECONDS;
+            if (ratio > 1) ratio = 1;
+            const scale = 0.3 + (ratio * 0.8); 
+            cell.style.setProperty('--activity-scale', scale);
+            cell.title = `Studied for ${Math.round(dailyActivity[dStr] / 60)} mins`;
+        }
+
+        gridEl.appendChild(cell);
+    }
+    
+    if (currentStreakEl) {
+        currentStreakEl.textContent = localStorage.getItem(getDaysStreakKey()) || 0;
+    }
+}
+
     if (currentViewName === 'flashcards' && viewName !== 'flashcards') {
         stopPassiveStudyTimer();
     }

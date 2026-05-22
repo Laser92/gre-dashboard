@@ -305,6 +305,62 @@
         </div>
     </div>
 
+    <!-- Days Streak Calendar Modal -->
+    <div class="modal-overlay" id="calendar-modal-overlay">
+        <div class="modal-card glass calendar-modal-card">
+            <div class="modal-header">
+                <h2>Study Activity Calendar</h2>
+                <button class="modal-close" id="calendar-modal-close">&times;</button>
+            </div>
+            <div class="calendar-controls">
+                <button id="calendar-prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                <span id="calendar-month-year" class="calendar-month-year"></span>
+                <button id="calendar-next-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-weekdays">
+                    <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                </div>
+                <div class="calendar-days" id="calendar-grid">
+                    <!-- Days will be populated by JS -->
+                </div>
+            </div>
+            <div class="calendar-summary">
+                <div class="calendar-stat">
+                    <span class="calendar-stat-label">Current Streak</span>
+                    <span class="calendar-stat-val" id="calendar-current-streak">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Streak Stats Modal -->
+    <div class="modal-overlay" id="streak-stats-modal-overlay">
+        <div class="modal-card glass">
+            <div class="modal-header">
+                <h2>Question Streak Stats</h2>
+                <button class="modal-close" id="streak-stats-modal-close">&times;</button>
+            </div>
+            <div class="streak-stats-grid">
+                <div class="streak-stat-item">
+                    <div class="streak-stat-icon" style="color: #a855f7;"><i class="fas fa-bolt"></i></div>
+                    <div class="streak-stat-value" id="stat-avg-streak">0</div>
+                    <div class="streak-stat-label">Avg Streak Length</div>
+                </div>
+                <div class="streak-stat-item">
+                    <div class="streak-stat-icon" style="color: #ef4444;"><i class="fas fa-fire"></i></div>
+                    <div class="streak-stat-value" id="stat-max-streak">0</div>
+                    <div class="streak-stat-label">Max Streak Length</div>
+                </div>
+                <div class="streak-stat-item">
+                    <div class="streak-stat-icon" style="color: #10b981;"><i class="fas fa-calendar-check"></i></div>
+                    <div class="streak-stat-value" id="stat-max-streak-date" style="font-size: 1.2rem;">-</div>
+                    <div class="streak-stat-label">Max Streak Date</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Profile Modal -->
     <div class="modal-overlay" id="profile-modal-overlay">
         <div class="modal-card glass">
