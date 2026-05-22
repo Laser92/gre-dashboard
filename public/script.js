@@ -1346,6 +1346,7 @@ function renderCalendar() {
     }
 }
 
+function switchView(viewName) {
     if (currentViewName === 'flashcards' && viewName !== 'flashcards') {
         stopPassiveStudyTimer();
     }
