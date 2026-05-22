@@ -61,6 +61,8 @@ let timerPaused = false;
 let questionTimeExpired = false;
 let globalStudyInterval = null;   // Global 1s activity tracker
 let lastActivityTime = Date.now();
+let _statsSyncTimer = null;       // Debounced server sync timer
+let _serverStats = null;          // Cached server stats to avoid redundant saves
 
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
@@ -79,11 +81,12 @@ function getTodayDateString() {
     return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
 }
 
-function loadStoredStudyTime() {
+// Load study time: prefer server, fallback to localStorage
+async function loadStoredStudyTime() {
+    // First load from localStorage as immediate fallback
     const savedTotal = Number(localStorage.getItem(getStudyTimeStorageKey()) || 0);
     totalStudyTimeSeconds = Number.isFinite(savedTotal) ? savedTotal : 0;
     
-    // Check if today's date matches stored date; if not, reset today counter
     const storedDate = localStorage.getItem(getTodayDateStorageKey());
     const today = getTodayDateString();
     if (storedDate === today) {
@@ -91,8 +94,34 @@ function loadStoredStudyTime() {
         todayStudyTimeSeconds = Number.isFinite(savedToday) ? savedToday : 0;
     } else {
         todayStudyTimeSeconds = 0;
-        localStorage.setItem(getTodayStudyTimeStorageKey(), '0');
-        localStorage.setItem(getTodayDateStorageKey(), today);
+    }
+    
+    // Then try to load from server (authoritative source)
+    try {
+        const res = await fetch('/api/stats');
+        if (res.ok) {
+            const data = await res.json();
+            const s = data.stats;
+            _serverStats = s;
+            // Server has the authoritative total — use whichever is larger
+            if (s.totalStudyTimeSeconds > totalStudyTimeSeconds) {
+                totalStudyTimeSeconds = s.totalStudyTimeSeconds;
+            }
+            // Handle today's time from server
+            if (s.todayDate === today) {
+                if (s.todayStudyTimeSeconds > todayStudyTimeSeconds) {
+                    todayStudyTimeSeconds = s.todayStudyTimeSeconds;
+                }
+            } else {
+                todayStudyTimeSeconds = 0;
+            }
+            // Sync localStorage with authoritative values
+            localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
+            localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
+            localStorage.setItem(getTodayDateStorageKey(), today);
+        }
+    } catch (e) {
+        console.warn('Could not load stats from server, using localStorage:', e.message);
     }
 }
 
@@ -100,6 +129,57 @@ function persistStudyTime() {
     localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
     localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
     localStorage.setItem(getTodayDateStorageKey(), getTodayDateString());
+    // Debounced server sync (every 30 seconds)
+    _debouncedSyncStats();
+}
+
+function _debouncedSyncStats() {
+    if (_statsSyncTimer) return; // already scheduled
+    _statsSyncTimer = setTimeout(() => {
+        _statsSyncTimer = null;
+        _syncStatsToServer();
+    }, 30000);
+}
+
+function _syncStatsToServer() {
+    if (!currentUsername) return;
+    const payload = {
+        totalStudyTimeSeconds,
+        todayStudyTimeSeconds,
+        todayDate: getTodayDateString(),
+        daysStreak: Number(localStorage.getItem(getDaysStreakKey()) || 0),
+        lastStudyDate: localStorage.getItem(getLastStudyDateKey()) || '',
+        correctStreak: Number(localStorage.getItem(getCorrectStreakKey()) || 0),
+        maxCorrectStreak: Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0),
+    };
+    fetch('/api/stats', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    }).catch(err => console.warn('Stats sync failed:', err.message));
+}
+
+// Force immediate sync (used before page unload)
+function _forceStatsSync() {
+    if (_statsSyncTimer) { clearTimeout(_statsSyncTimer); _statsSyncTimer = null; }
+    if (!currentUsername) return;
+    const payload = {
+        totalStudyTimeSeconds,
+        todayStudyTimeSeconds,
+        todayDate: getTodayDateString(),
+        daysStreak: Number(localStorage.getItem(getDaysStreakKey()) || 0),
+        lastStudyDate: localStorage.getItem(getLastStudyDateKey()) || '',
+        correctStreak: Number(localStorage.getItem(getCorrectStreakKey()) || 0),
+        maxCorrectStreak: Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0),
+    };
+    try {
+        fetch('/api/stats', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            keepalive: true
+        }).catch(() => {});
+    } catch (e) { /* ignore */ }
 }
 
 // === STREAK HELPERS ===
@@ -116,6 +196,62 @@ function getGradeFromAccuracy(val) {
     if (val >= 45) return 'C';
     if (val >= 30) return 'D';
     return 'F';
+}
+
+// === STREAK COLOR TIERS ===
+function getStreakColorTier(streak) {
+    if (streak >= 25) return { rgb: '239, 68, 68',   name: 'inferno' };   // Red/hot
+    if (streak >= 20) return { rgb: '245, 158, 11',  name: 'gold' };      // Gold
+    if (streak >= 15) return { rgb: '16, 185, 129',  name: 'emerald' };   // Green
+    if (streak >= 10) return { rgb: '59, 130, 246',  name: 'sapphire' };  // Blue
+    if (streak >= 5)  return { rgb: '168, 85, 247',  name: 'amethyst' };  // Brighter purple
+    return              { rgb: '139, 92, 246',  name: 'default' };   // Default purple
+}
+
+function applyStreakVisuals(streak) {
+    const el = document.getElementById('streak-correct');
+    if (!el) return;
+    const tier = getStreakColorTier(streak);
+    el.style.setProperty('--streak-color', tier.rgb);
+    // Apply glow at 5+
+    if (streak >= 5) {
+        el.classList.add('streak-glow');
+    } else {
+        el.classList.remove('streak-glow');
+    }
+}
+
+function triggerStreakBump() {
+    const el = document.getElementById('streak-correct');
+    if (!el) return;
+    el.classList.remove('streak-bump');
+    // Force reflow to restart animation
+    void el.offsetWidth;
+    el.classList.add('streak-bump');
+    setTimeout(() => el.classList.remove('streak-bump'), 600);
+}
+
+function showStreakMilestoneToast(streak) {
+    // Only show for multiples of 5
+    if (streak <= 0 || streak % 5 !== 0) return;
+    const tier = getStreakColorTier(streak);
+    const emojis = ['⚡', '🔥', '💥', '🌟', '👑', '🚀'];
+    const emoji = emojis[Math.min(Math.floor(streak / 5) - 1, emojis.length - 1)];
+    
+    const toast = document.createElement('div');
+    toast.className = 'streak-toast';
+    toast.style.setProperty('--streak-color', tier.rgb);
+    toast.innerHTML = `
+        <div class="streak-toast-number">${streak}</div>
+        <div class="streak-toast-label">IN A ROW!!</div>
+        <div class="streak-toast-emoji">${emoji}</div>
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 500);
+    }, 2000);
 }
 
 function updateDaysStreak() {
@@ -190,10 +326,47 @@ function updateCorrectStreak(isCorrect) {
         countEl.textContent = currentStreak;
         el.setAttribute('title', `⚡ ${currentStreak} correct in a row! (Best: ${maxStreak})`);
     }
+    
+    // Apply visual effects
+    applyStreakVisuals(currentStreak);
+    if (isCorrect && currentStreak > 0) {
+        triggerStreakBump();
+        showStreakMilestoneToast(currentStreak);
+    }
+    
+    // Sync to server
+    _debouncedSyncStats();
 }
 
-function loadStoredStreaks() {
+async function loadStoredStreaks() {
     if (!currentUsername) return;
+    
+    // Try to restore from server first
+    try {
+        if (_serverStats) {
+            const s = _serverStats;
+            const today = getTodayDateString();
+            // Merge: take the larger of server vs localStorage
+            const localDaysStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
+            const localCorrectStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+            const localMaxCorrectStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+            
+            if (s.daysStreak > localDaysStreak) {
+                localStorage.setItem(getDaysStreakKey(), String(s.daysStreak));
+            }
+            if (s.lastStudyDate && !localStorage.getItem(getLastStudyDateKey())) {
+                localStorage.setItem(getLastStudyDateKey(), s.lastStudyDate);
+            }
+            if (s.correctStreak > localCorrectStreak) {
+                localStorage.setItem(getCorrectStreakKey(), String(s.correctStreak));
+            }
+            if (s.maxCorrectStreak > localMaxCorrectStreak) {
+                localStorage.setItem(getMaxCorrectStreakKey(), String(s.maxCorrectStreak));
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to restore streaks from server:', e.message);
+    }
     
     updateDaysStreak();
     
@@ -206,6 +379,9 @@ function loadStoredStreaks() {
         countEl.textContent = currentStreak;
         el.setAttribute('title', `⚡ ${currentStreak} correct in a row! (Best: ${maxStreak})`);
     }
+    
+    // Apply color tier visuals on load
+    applyStreakVisuals(currentStreak);
 }
 
 function startGlobalStudyTimer() {
@@ -560,9 +736,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         currentUsername = data.username;
-        loadStoredStudyTime();
-        loadStoredStreaks();
+        await loadStoredStudyTime();
+        await loadStoredStreaks();
         startGlobalStudyTimer();
+        
+        // Sync stats to server on page unload
+        window.addEventListener('beforeunload', _forceStatsSync);
+        // Also periodic sync every 60 seconds as a safety net
+        setInterval(_syncStatsToServer, 60000);
         
         // Update UI with user info
         const capitalizedName = data.username.charAt(0).toUpperCase() + data.username.slice(1);
@@ -982,8 +1163,13 @@ function switchView(viewName) {
 
     if (viewName === 'overview') {
         renderDashboard(); // Refresh stats when coming back
-    } else if (viewName === 'flashcards' && typeof flashcardsData !== 'undefined' && flashcardsData.length === 0) {
-        loadFlashcards();
+    } else if (viewName === 'flashcards') {
+        if (typeof flashcardsData === 'undefined' || flashcardsData.length === 0) {
+            loadFlashcards();
+        } else if (flashcardQueue.length === 0) {
+            // Data was preloaded but queue wasn't built yet — build and show
+            loadFlashcards();
+        }
     }
 
     if (viewName === 'flashcards') {

@@ -57,6 +57,22 @@ progressSchema.index({ userId: 1, chapterId: 1, status: 1 });
 
 const Progress = mongoose.model('Progress', progressSchema);
 
+// === USER STATS SCHEMA ===
+// Stores study time, streaks, and login history per user (server-side persistence)
+const userStatsSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, unique: true },
+    totalStudyTimeSeconds: { type: Number, default: 0 },
+    todayStudyTimeSeconds: { type: Number, default: 0 },
+    todayDate: { type: String, default: '' }, // YYYY-MM-DD
+    daysStreak: { type: Number, default: 0 },
+    lastStudyDate: { type: String, default: '' },
+    correctStreak: { type: Number, default: 0 },
+    maxCorrectStreak: { type: Number, default: 0 },
+    loginHistory: { type: [String], default: [] }, // Array of YYYY-MM-DD strings
+}, { timestamps: true });
+
+const UserStats = mongoose.model('UserStats', userStatsSchema);
+
 // Build session config — only use MongoStore if URI looks valid
 let sessionStore;
 try {
@@ -326,6 +342,63 @@ app.post('/api/progress', async (req, res) => {
         res.json({ success: true, status: doc.status });
     } catch (err) {
         console.error('Progress save error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+// === USER STATS API ENDPOINTS ===
+
+// GET /api/stats — load user stats (study time, streaks, login history)
+app.get('/api/stats', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    try {
+        let stats = await UserStats.findOne({ userId: req.session.userId }).lean();
+        if (!stats) {
+            stats = {
+                totalStudyTimeSeconds: 0,
+                todayStudyTimeSeconds: 0,
+                todayDate: '',
+                daysStreak: 0,
+                lastStudyDate: '',
+                correctStreak: 0,
+                maxCorrectStreak: 0,
+                loginHistory: [],
+            };
+        }
+        res.json({ stats });
+    } catch (err) {
+        console.error('Stats load error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// PUT /api/stats — save user stats (study time, streaks, login history)
+app.put('/api/stats', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    const {
+        totalStudyTimeSeconds, todayStudyTimeSeconds, todayDate,
+        daysStreak, lastStudyDate,
+        correctStreak, maxCorrectStreak,
+        loginHistory
+    } = req.body;
+    try {
+        const update = {};
+        if (totalStudyTimeSeconds !== undefined) update.totalStudyTimeSeconds = Number(totalStudyTimeSeconds);
+        if (todayStudyTimeSeconds !== undefined) update.todayStudyTimeSeconds = Number(todayStudyTimeSeconds);
+        if (todayDate !== undefined) update.todayDate = String(todayDate);
+        if (daysStreak !== undefined) update.daysStreak = Number(daysStreak);
+        if (lastStudyDate !== undefined) update.lastStudyDate = String(lastStudyDate);
+        if (correctStreak !== undefined) update.correctStreak = Number(correctStreak);
+        if (maxCorrectStreak !== undefined) update.maxCorrectStreak = Number(maxCorrectStreak);
+        if (loginHistory !== undefined) update.loginHistory = loginHistory;
+
+        await UserStats.findOneAndUpdate(
+            { userId: req.session.userId },
+            { $set: update },
+            { upsert: true, new: true }
+        );
+        res.json({ success: true });
+    } catch (err) {
+        console.error('Stats save error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
 });

@@ -361,13 +361,114 @@ body {
     }
 }
 
-/* Purple/Violet bolt for questions correct streak */
+/* Purple/Violet bolt for questions correct streak — dynamic tiers set by JS via CSS vars */
 .streak-badge-correct {
-    background: rgba(139, 92, 246, 0.15);
-    border: 1px solid rgba(139, 92, 246, 0.4);
-    color: #a78bfa;
-    text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
-    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+    --streak-color: 139, 92, 246; /* default purple */
+    background: rgba(var(--streak-color), 0.15);
+    border: 1px solid rgba(var(--streak-color), 0.4);
+    color: rgb(var(--streak-color));
+    text-shadow: 0 0 8px rgba(var(--streak-color), 0.4);
+    box-shadow: 0 0 12px rgba(var(--streak-color), 0.25);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.streak-badge-correct.streak-glow {
+    animation: streak-glow-pulse 1.8s ease-in-out infinite;
+}
+
+.streak-badge-correct i {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.streak-badge-correct.streak-bump {
+    animation: streak-bounce 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.streak-badge-correct.streak-bump i {
+    animation: bolt-zap 0.5s ease-out;
+}
+
+@keyframes streak-bounce {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bolt-zap {
+    0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+    30% { transform: scale(1.4) rotate(-8deg); filter: brightness(1.8) drop-shadow(0 0 8px rgba(var(--streak-color), 0.9)); }
+    60% { transform: scale(0.9) rotate(4deg); filter: brightness(1.2); }
+    100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+}
+
+@keyframes streak-glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(var(--streak-color), 0.2);
+        border-color: rgba(var(--streak-color), 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(var(--streak-color), 0.5), 0 0 8px rgba(var(--streak-color), 0.3);
+        border-color: rgba(var(--streak-color), 0.6);
+    }
+}
+
+/* Streak milestone popup toast */
+.streak-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+    border: 2px solid rgba(var(--streak-color, 139, 92, 246), 0.6);
+    border-radius: 20px;
+    padding: 1.5rem 2.5rem;
+    z-index: 9999;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(var(--streak-color, 139, 92, 246), 0.4), 0 20px 60px rgba(0, 0, 0, 0.6);
+    animation: streak-toast-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    pointer-events: none;
+}
+
+.streak-toast.fade-out {
+    animation: streak-toast-out 0.4s ease-in forwards;
+}
+
+.streak-toast .streak-toast-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, rgb(var(--streak-color, 139, 92, 246)), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.streak-toast .streak-toast-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.25rem;
+    letter-spacing: 0.5px;
+}
+
+.streak-toast .streak-toast-emoji {
+    font-size: 2rem;
+    display: block;
+    margin-top: 0.3rem;
+}
+
+@keyframes streak-toast-in {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
+    60% { transform: translate(-50%, -50%) scale(1.1) rotate(2deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes streak-toast-out {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -60%) scale(0.8); opacity: 0; }
 }
 
 .avatar {
