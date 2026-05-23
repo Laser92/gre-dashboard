@@ -394,10 +394,10 @@ async function loadStoredStreaks() {
             if (s.maxCorrectStreakDate) maxCorrectStreakDate = s.maxCorrectStreakDate;
             
             // Sync vocab lists from server to localStorage if they exist on server
-            if (s.starredWords && s.starredWords.length > 0) {
+            if (s.starredWords) {
                 saveStarredWords(s.starredWords);
             }
-            if (s.missedWords && Object.keys(s.missedWords).length > 0) {
+            if (s.missedWords) {
                 saveMissedWords(s.missedWords);
             }
         }
@@ -2560,6 +2560,7 @@ function getStarredWords() {
 
 function saveStarredWords(arr) {
     localStorage.setItem('starredWords', JSON.stringify(arr));
+    if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
 function getMissedWords() {
@@ -2568,6 +2569,7 @@ function getMissedWords() {
 
 function saveMissedWords(obj) {
     localStorage.setItem('missedWords', JSON.stringify(obj));
+    if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
 function addMissedWord(word) {
