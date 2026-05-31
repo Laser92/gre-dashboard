@@ -277,12 +277,23 @@ function showStreakMilestoneToast(streak) {
 function updateDaysStreak() {
     if (!currentUsername) return;
     const today = getTodayDateString();
-    const storedStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
-    const lastStudyDate = localStorage.getItem(getLastStudyDateKey()) || '';
+    
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth()+1).padStart(2,'0')}-${String(yesterday.getDate()).padStart(2,'0')}`;
+
+    let storedStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
+    let lastStudyDate = localStorage.getItem(getLastStudyDateKey()) || '';
     
     const el = document.getElementById('streak-days');
     const countEl = document.getElementById('streak-days-count');
     if (!el || !countEl) return;
+
+    // Check if streak is broken (last study was before yesterday)
+    if (lastStudyDate !== '' && lastStudyDate !== today && lastStudyDate !== yesterdayStr) {
+        storedStreak = 0;
+        localStorage.setItem(getDaysStreakKey(), "0");
+    }
     
     if (lastStudyDate === today) {
         // Already counted today — just show current streak
@@ -296,10 +307,6 @@ function updateDaysStreak() {
     // Check if studied today (todayStudyTimeSeconds > 0)
     if (todayStudyTimeSeconds > 0) {
         // Calculate new streak
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth()+1).padStart(2,'0')}-${String(yesterday.getDate()).padStart(2,'0')}`;
-        
         let newStreak;
         if (lastStudyDate === yesterdayStr) {
             newStreak = storedStreak + 1; // Consecutive!
@@ -2554,21 +2561,24 @@ window.flipFlashcard = function() {
 
 // === VOCAB LISTS ENGINE ===
 
+function getStarredWordsKey() { return `greStarredWords:${currentUsername || 'guest'}`; }
+function getMissedWordsKey() { return `greMissedWords:${currentUsername || 'guest'}`; }
+
 function getStarredWords() {
-    try { return JSON.parse(localStorage.getItem('starredWords')) || []; } catch(e) { return []; }
+    try { return JSON.parse(localStorage.getItem(getStarredWordsKey())) || []; } catch(e) { return []; }
 }
 
 function saveStarredWords(arr) {
-    localStorage.setItem('starredWords', JSON.stringify(arr));
+    localStorage.setItem(getStarredWordsKey(), JSON.stringify(arr));
     if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
 function getMissedWords() {
-    try { return JSON.parse(localStorage.getItem('missedWords')) || {}; } catch(e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(getMissedWordsKey())) || {}; } catch(e) { return {}; }
 }
 
 function saveMissedWords(obj) {
-    localStorage.setItem('missedWords', JSON.stringify(obj));
+    localStorage.setItem(getMissedWordsKey(), JSON.stringify(obj));
     if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
