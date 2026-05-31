@@ -69,6 +69,7 @@ let dailyActivity = {};           // Map of YYYY-MM-DD -> seconds
 let sumOfCorrectStreaks = 0;
 let totalStreaksCompleted = 0;
 let maxCorrectStreakDate = '';
+let userBadges = [];
 
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
@@ -164,7 +165,8 @@ function _syncStatsToServer() {
         totalStreaksCompleted,
         maxCorrectStreakDate,
         starredWords: getStarredWords(),
-        missedWords: getMissedWords()
+        missedWords: getMissedWords(),
+        badges: userBadges
     };
     fetch('/api/stats', {
         method: 'PUT',
@@ -190,7 +192,8 @@ function _forceStatsSync() {
         totalStreaksCompleted,
         maxCorrectStreakDate,
         starredWords: getStarredWords(),
-        missedWords: getMissedWords()
+        missedWords: getMissedWords(),
+        badges: userBadges
     };
     try {
         fetch('/api/stats', {
@@ -406,6 +409,9 @@ async function loadStoredStreaks() {
             }
             if (s.missedWords) {
                 saveMissedWords(s.missedWords);
+            }
+            if (s.badges) {
+                userBadges = s.badges;
             }
         }
     } catch (e) {
@@ -1420,6 +1426,9 @@ function renderDashboard() {
 
     // Update time KPI
     updateTimeKPI();
+    
+    // Evaluate and Render Achievements
+    checkAndRenderAchievements();
 
     // Render Table
     const tbody = document.getElementById('chapter-table-body');
@@ -2639,7 +2648,13 @@ window.showVocabTab = function(tabName) {
         const missed = getMissedWords();
         list.innerHTML = '';
         Object.keys(missed).forEach(word => {
-            list.innerHTML += `<li><span style="font-weight:600; text-transform:capitalize;">${word}</span> <span style="color:var(--text-secondary); font-size:0.85rem; background:rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 12px;">Progress: ${missed[word].correctCount}/4</span></li>`;
+            list.innerHTML += `<li style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span style="font-weight:600; text-transform:capitalize;">${word}</span>
+                    <button onclick="playAudio('${word.replace(/'/g, "\\'")}')" style="background:none; border:none; color:var(--accent-primary); cursor:pointer; font-size:1.1rem; opacity:0.7;" title="Listen" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><i class="fas fa-volume-up"></i></button>
+                </div>
+                <span style="color:var(--text-secondary); font-size:0.85rem; background:rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 12px;">Progress: ${missed[word].correctCount}/4</span>
+            </li>`;
         });
         if(Object.keys(missed).length === 0) list.innerHTML = '<li style="color:var(--text-secondary); border: none; padding: 2rem 1rem; text-align: center;">No missed words yet!</li>';
     } else {
@@ -2662,7 +2677,10 @@ window.showVocabTab = function(tabName) {
             const headerRow = document.createElement('div');
             headerRow.style.cssText = 'display:flex; justify-content:space-between; align-items:center; width:100%;';
             headerRow.innerHTML = `
-                <span style="font-weight:600; text-transform:capitalize; font-size: 1.1rem;">${word}</span>
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <span style="font-weight:600; text-transform:capitalize; font-size: 1.1rem;">${word}</span>
+                    <button onclick="event.stopPropagation(); playAudio('${word.replace(/'/g, "\\'")}')" style="background:none; border:none; color:var(--accent-primary); cursor:pointer; font-size:1.1rem; opacity:0.7;" title="Listen" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><i class="fas fa-volume-up"></i></button>
+                </div>
                 <i class="fas fa-chevron-down" style="color:var(--text-secondary); font-size:0.75rem; transition: transform 0.3s;"></i>
             `;
             li.appendChild(headerRow);
@@ -2748,3 +2766,94 @@ document.addEventListener('keydown', (e) => {
 
     resetInactivityTimer();
 })();
+
+// === AUDIO HELPERS ===
+
+window.playAudio = function(text) {
+    if (!('speechSynthesis' in window)) {
+        showToast('Text-to-speech is not supported in this browser.', 'error');
+        return;
+    }
+    
+    // Stop any currently playing audio
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    // Use US English voice if available, otherwise default
+    const voices = window.speechSynthesis.getVoices();
+    const usVoice = voices.find(v => v.lang === 'en-US' && v.name.includes('Google'));
+    if (usVoice) {
+        utterance.voice = usVoice;
+    } else {
+        const enVoice = voices.find(v => v.lang.startsWith('en'));
+        if (enVoice) utterance.voice = enVoice;
+    }
+    
+    utterance.rate = 0.9; // slightly slower for clarity
+    window.speechSynthesis.speak(utterance);
+};
+
+// === ACHIEVEMENTS HELPERS ===
+function checkAndRenderAchievements() {
+    const BADGES = {
+        'night_owl': { id: 'night_owl', name: 'Night Owl', icon: 'fa-moon', color: '#6366f1', desc: 'Studied after 10 PM' },
+        '7_day_streak': { id: '7_day_streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Reached a 7-day streak' },
+        'sharpshooter': { id: 'sharpshooter', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: '10 correct in a row' },
+        '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions' }
+    };
+    
+    let newBadge = false;
+    
+    // Check Night Owl
+    const hour = new Date().getHours();
+    if (todayStudyTimeSeconds > 0 && (hour >= 22 || hour < 4) && !userBadges.includes('night_owl')) {
+        userBadges.push('night_owl'); newBadge = true;
+    }
+    
+    // Check 7 Day Streak
+    const daysStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
+    if (daysStreak >= 7 && !userBadges.includes('7_day_streak')) {
+        userBadges.push('7_day_streak'); newBadge = true;
+    }
+    
+    // Check Sharpshooter
+    const correctStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+    if (correctStreak >= 10 && !userBadges.includes('sharpshooter')) {
+        userBadges.push('sharpshooter'); newBadge = true;
+    }
+    
+    // Check 100 Questions
+    if (state.questionsAttempted >= 100 && !userBadges.includes('100_qs')) {
+        userBadges.push('100_qs'); newBadge = true;
+    }
+    
+    if (newBadge) {
+        showToast('🏆 New Achievement Unlocked!', 'success');
+        _forceStatsSync();
+    }
+    
+    // Render
+    const container = document.getElementById('achievements-container');
+    if (container) {
+        if (userBadges.length === 0) {
+            container.innerHTML = '<div style="color: var(--text-secondary); font-size: 0.9rem;">Keep studying to unlock achievements!</div>';
+            return;
+        }
+        
+        container.innerHTML = userBadges.map(bId => {
+            const b = BADGES[bId];
+            if (!b) return '';
+            return `
+                <div class="badge-card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.75rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 200px;">
+                    <div style="background: ${b.color}20; color: ${b.color}; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                        <i class="fas ${b.icon}"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">${b.name}</div>
+                        <div style="color: var(--text-secondary); font-size: 0.8rem;">${b.desc}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+}

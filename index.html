@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRE Prep Dashboard | 5 lb. Book</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css?v=10">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -104,6 +106,16 @@
                         <div class="kpi-trend neutral" id="kpi-time-trend">All time</div>
                         <div style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary);">Today: <span id="kpi-time-today" style="font-weight: 600; color: var(--accent-primary);">0m</span></div>
                         <div class="kpi-icon">⏱</div>
+                    </div>
+                </section>
+
+                <!-- Achievements -->
+                <section class="achievements-section glass" style="margin-bottom: 2rem;">
+                    <div class="section-header" style="margin-bottom: 1rem;">
+                        <h3><i class="fas fa-medal" style="color: #fbbf24;"></i> Achievements</h3>
+                    </div>
+                    <div class="achievements-grid" id="achievements-container" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Keep studying to unlock achievements!</div>
                     </div>
                 </section>
 
@@ -253,7 +265,10 @@
                 <div class="flashcard-container" onclick="flipFlashcard()">
                     <div class="flashcard-inner">
                         <div class="flashcard-front glass">
-                            <h3 id="fc-word" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 0.5rem; text-transform: capitalize;"></h3>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <h3 id="fc-word" style="font-size: 2.5rem; color: var(--accent-primary); margin: 0; text-transform: capitalize;"></h3>
+                                <button id="fc-audio-btn" onclick="event.stopPropagation(); if(typeof playAudio === 'function') playAudio(document.getElementById('fc-word').innerText);" style="background: none; border: none; font-size: 1.5rem; color: var(--accent-primary); cursor: pointer; opacity: 0.7; transition: opacity 0.2s; padding: 0.5rem;" title="Listen to pronunciation" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><i class="fas fa-volume-up"></i></button>
+                            </div>
                             <p id="fc-pos" style="color: var(--text-secondary); font-style: italic;"></p>
                             <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-secondary);">Tap to flip</p>
                         </div>
@@ -409,5 +424,16 @@
 
     <script src="questions_bank.js"></script>
     <script src="script.js?v=11"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }).catch((err) => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
