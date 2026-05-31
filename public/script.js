@@ -2024,6 +2024,75 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
 
     // Vocab logic
     const isVocabQuestion = state.currentChapterId === '3' || state.currentChapterId === '4' || state.currentChapterId === '6';
+
+    // Show meanings of options
+    const meaningsContainer = document.getElementById('feedback-meanings');
+    if (meaningsContainer) {
+        if (isVocabQuestion && typeof flashcardsData !== 'undefined' && flashcardsData.length > 0) {
+            meaningsContainer.innerHTML = '<h4 style="margin-top: 0.5rem; margin-bottom: 0.25rem; color: var(--text-primary);">Option Meanings</h4>';
+            meaningsContainer.style.display = 'flex';
+            
+            let allOptions = [];
+            if (isMultiBlank) {
+                q.options.forEach((blankOpts, blankIdx) => {
+                    blankOpts.forEach((optText, optIdx) => {
+                        allOptions.push({ text: optText, blankIdx, optIdx });
+                    });
+                });
+            } else {
+                q.options.forEach((optText, optIdx) => {
+                    allOptions.push({ text: optText, blankIdx: null, optIdx });
+                });
+            }
+
+            allOptions.forEach(opt => {
+                let word = opt.text.replace(/[^a-zA-Z\s\-]/g, '').trim().toLowerCase();
+                let definition = 'Definition not found.';
+                const fc = flashcardsData.find(f => f.word.toLowerCase() === word);
+                if (fc) definition = fc.definition;
+
+                let isCorrectOpt = false;
+                let isSelectedOpt = false;
+
+                if (isMultiBlank) {
+                    isCorrectOpt = Number(expected[opt.blankIdx]) === opt.optIdx;
+                    isSelectedOpt = Number(selectedIndexes[opt.blankIdx]) === opt.optIdx;
+                } else {
+                    isCorrectOpt = expected.some(exp => Number(exp) === opt.optIdx);
+                    isSelectedOpt = selectedIndexes.some(sel => Number(sel) === opt.optIdx);
+                }
+
+                let colorStyle = 'var(--text-secondary)';
+                let bgStyle = 'rgba(255,255,255,0.02)';
+                let borderStyle = '1px solid var(--glass-border)';
+                let iconHtml = '';
+                
+                if (isCorrectOpt) {
+                    colorStyle = 'var(--accent-success)';
+                    bgStyle = 'rgba(16, 185, 129, 0.1)';
+                    borderStyle = '1px solid var(--accent-success)';
+                    iconHtml = '<i class="fas fa-check-circle" style="color: var(--accent-success); margin-right: 6px;"></i>';
+                } else if (isSelectedOpt && !isCorrectOpt) {
+                    colorStyle = 'var(--accent-error)';
+                    bgStyle = 'rgba(239, 68, 68, 0.1)';
+                    borderStyle = '1px solid var(--accent-error)';
+                    iconHtml = '<i class="fas fa-times-circle" style="color: var(--accent-error); margin-right: 6px;"></i>';
+                }
+
+                meaningsContainer.innerHTML += `
+                    <div style="background: ${bgStyle}; border: ${borderStyle}; padding: 0.75rem; border-radius: 8px; font-size: 0.95rem; display: flex; align-items: flex-start;">
+                        <div style="margin-top: 2px; min-width: 24px;">${iconHtml}</div>
+                        <div>
+                            <span style="font-weight: 600; color: ${colorStyle}; text-transform: capitalize;">${opt.text}</span>: 
+                            <span style="color: var(--text-secondary);">${definition}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        } else {
+            meaningsContainer.style.display = 'none';
+        }
+    }
     if (isVocabQuestion) {
         let targetOptions = [];
         if (isMultiBlank) {
