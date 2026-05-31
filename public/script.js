@@ -2502,11 +2502,11 @@ function buildFlashcardQueue() {
     currentFlashcardIndex = 0;
 
     if (flashcardQueue.length > 0) {
-        document.getElementById('flashcard-container').style.display = 'block';
+        document.querySelector('.flashcard-container').style.display = 'block';
         document.getElementById('fc-completed').style.display = 'none';
         renderFlashcard();
     } else {
-        document.getElementById('flashcard-container').style.display = 'none';
+        document.querySelector('.flashcard-container').style.display = 'none';
         document.getElementById('fc-completed').style.display = 'block';
         document.getElementById('fc-completed').innerHTML = `
             <h3>All caught up! 🎉</h3>
@@ -2635,31 +2635,45 @@ window.handleFlashcardAnswer = async function(rating) {
         const actions = document.getElementById('fc-actions');
         if (actions) actions.style.display = 'none';
         
-        container.classList.add(rating === 'again' || rating === 'hard' ? 'swipe-left' : 'swipe-right');
+        // Clone the container to animate it swiping away while the new card appears underneath
+        const clone = container.cloneNode(true);
+        const rect = container.getBoundingClientRect();
         
-        setTimeout(() => {
-            container.classList.remove('swipe-right', 'swipe-left');
-            container.classList.add('card-enter');
-            
-            currentFlashcardIndex++;
-            
-            if (currentFlashcardIndex >= flashcardQueue.length) {
-                document.getElementById('flashcard-container').style.display = 'none';
-                document.getElementById('fc-completed').style.display = 'block';
-                document.getElementById('fc-completed').innerHTML = `
-                    <h3>Session Complete! 🎉</h3>
+        clone.classList.add(rating === 'again' || rating === 'hard' ? 'swipe-left' : 'swipe-right');
+        
+        // Position the clone exactly where the original container is
+        clone.style.position = 'fixed';
+        clone.style.top = rect.top + 'px';
+        clone.style.left = rect.left + 'px';
+        clone.style.width = rect.width + 'px';
+        clone.style.height = rect.height + 'px';
+        clone.style.zIndex = '100';
+        clone.style.pointerEvents = 'none';
+        clone.style.margin = '0'; // prevent auto margins from shifting it
+        document.body.appendChild(clone);
+        
+        setTimeout(() => clone.remove(), 400);
+
+        // Immediately prepare the new card
+        container.classList.add('card-enter');
+        setTimeout(() => container.classList.remove('card-enter'), 300);
+        
+        currentFlashcardIndex++;
+        
+        if (currentFlashcardIndex >= flashcardQueue.length) {
+            document.querySelector('.flashcard-container').style.display = 'none';
+            document.getElementById('fc-completed').style.display = 'block';
+            document.getElementById('fc-completed').innerHTML = `
+                <h3>Session Complete! 🎉</h3>
                     <p>You have reviewed all scheduled flashcards for this session.</p>
                     <div style="display:flex; gap: 1rem; justify-content:center; margin-top:2rem;">
                         <button class="primary-btn" onclick="buildFlashcardQueue()">Review More</button>
                         <button class="secondary-btn" onclick="switchView('overview')">Dashboard</button>
                     </div>
                 `;
-            } else {
-                renderFlashcard();
-            }
-            
-            setTimeout(() => container.classList.remove('card-enter'), 300);
-        }, 350);
+        } else {
+            renderFlashcard();
+        }
     }
 };
 
