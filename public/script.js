@@ -166,6 +166,7 @@ function _syncStatsToServer() {
         maxCorrectStreakDate,
         starredWords: getStarredWords(),
         missedWords: getMissedWords(),
+        srsData: typeof getSrsData === 'function' ? getSrsData() : {},
         badges: userBadges
     };
     fetch('/api/stats', {
@@ -193,6 +194,7 @@ function _forceStatsSync() {
         maxCorrectStreakDate,
         starredWords: getStarredWords(),
         missedWords: getMissedWords(),
+        srsData: typeof getSrsData === 'function' ? getSrsData() : {},
         badges: userBadges
     };
     try {
@@ -409,6 +411,9 @@ async function loadStoredStreaks() {
             }
             if (s.missedWords) {
                 saveMissedWords(s.missedWords);
+            }
+            if (s.srsData && typeof saveSrsData === 'function') {
+                saveSrsData(s.srsData);
             }
             if (s.badges) {
                 userBadges = s.badges;
@@ -942,10 +947,11 @@ function setupEventListeners() {
         });
     }
 
-    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '.topbar'); });
-    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '.table-section'); });
+    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '#overview-view'); switchView('overview'); });
+    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '#overview-view'); switchView('overview'); });
     document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
     document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); });
+    document.getElementById('nav-achievements').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-achievements', '#achievements-view'); switchView('achievements'); checkAndRenderAchievements(); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
         switchView('overview');
@@ -1360,22 +1366,25 @@ function renderCalendar() {
 }
 
 function switchView(viewName) {
-    if (currentViewName === 'flashcards' && viewName !== 'flashcards') {
-        stopPassiveStudyTimer();
-    }
-
-    document.getElementById('overview-view').style.display = viewName === 'overview' ? 'block' : 'none';
-    document.getElementById('quiz-view').style.display = viewName === 'quiz' ? 'block' : 'none';
-    document.getElementById('results-view').style.display = viewName === 'results' ? 'block' : 'none';
-    document.getElementById('flashcards-view').style.display = viewName === 'flashcards' ? 'block' : 'none';
-    document.getElementById('vocab-view').style.display = viewName === 'vocab' ? 'block' : 'none';
+    document.getElementById('overview-view').style.display = 'none';
+    document.getElementById('quiz-view').style.display = 'none';
+    document.getElementById('results-view').style.display = 'none';
+    document.getElementById('flashcards-view').style.display = 'none';
+    document.getElementById('vocab-view').style.display = 'none';
+    document.getElementById('achievements-view').style.display = 'none';
 
     if (viewName === 'overview') {
+        document.getElementById('overview-view').style.display = 'block';
+        if (state.currentChapterId === null) {
+            document.querySelector('.kpi-grid').style.display = 'grid';
+            document.querySelector('.charts-grid').style.display = 'grid';
+        }
         renderDashboard(); // Refresh stats when coming back
+    } else if (viewName === 'quiz') {
+        document.getElementById('quiz-view').style.display = 'block';
+    } else if (viewName === 'results') {
+        document.getElementById('results-view').style.display = 'block';
     } else if (viewName === 'flashcards') {
-        if (typeof flashcardsData === 'undefined' || flashcardsData.length === 0) {
-            loadFlashcards();
-        } else if (flashcardQueue.length === 0) {
             // Data was preloaded but queue wasn't built yet — build and show
             loadFlashcards();
         }
@@ -1441,7 +1450,7 @@ function renderDashboard() {
         
         if (ch.status === 'completed') {
             statusHtml = `<span class="status completed">Completed</span>`;
-            actionHtml = `<span class="action-link" style="color:var(--text-secondary)">Review</span>`;
+            actionHtml = `<button class="action-link" onclick="startChapter('${ch.id}')" style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--text-secondary)">Review</button>`;
         } else if (ch.status === 'in-progress') {
             statusHtml = `<span class="status in-progress">In Progress</span>`;
             actionHtml = `<button class="action-link" onclick="startChapter('${ch.id}')" style="background:none;border:none;cursor:pointer;font-size:1rem;">Continue</button>`;
@@ -2456,7 +2465,6 @@ async function loadFlashcards() {
             
             buildFlashcardQueue();
             currentFlashcardIndex = 0;
-            showFlashcard();
         }
     } catch (e) {
         console.error('Failed to load flashcards:', e);
@@ -2464,165 +2472,180 @@ async function loadFlashcards() {
 }
 
 function buildFlashcardQueue() {
-    const chProgress = userProgress['flashcards'] || {};
-    const unseen = [], missed = [], revision = [], correct = [];
+    const srsData = getSrsData();
+    const now = new Date();
     
-    flashcardsData.forEach(q => {
-        const p = chProgress[q.id];
-        if (!p) { unseen.push(q); }
-        else if (p.status === 'missed') { missed.push(q); }
-        else if (p.status === 'revision') { revision.push(q); }
-        else if (p.status === 'correct') { correct.push(q); }
-        else { unseen.push(q); }
-    });
-
-    shuffleArray(unseen);
-    shuffleArray(missed);
-    shuffleArray(revision);
-    shuffleArray(correct);
-
-    const pools = [
-        { arr: unseen, weight: 5, tag: 'new' },
-        { arr: missed, weight: 2, tag: 'missed' },
-        { arr: revision, weight: 2, tag: 'revision' },
-        { arr: correct, weight: 1, tag: 'correct_review' }
-    ];
-
-    flashcardQueue = [];
-    const totalFlashcards = flashcardsData.length;
-
-    for (let i = 0; i < totalFlashcards; i++) {
-        let availablePools = pools.filter(p => p.arr.length > 0);
-        if (availablePools.length === 0) break;
-
-        let totalWeight = availablePools.reduce((sum, p) => sum + p.weight, 0);
-        let rand = Math.random() * totalWeight;
-        let cumulative = 0;
-
-        for (let p of availablePools) {
-            cumulative += p.weight;
-            if (rand <= cumulative) {
-                const q = p.arr.pop();
-                q._tag = p.tag;
-                flashcardQueue.push(q);
-                break;
+    let dueCards = [];
+    let unseenCards = [];
+    
+    flashcardsData.forEach(fc => {
+        let word = fc.word.toLowerCase();
+        let srs = srsData[word];
+        if (!srs) {
+            unseenCards.push(fc);
+        } else {
+            let nextReview = new Date(srs.nextReviewDate);
+            if (nextReview <= now) {
+                dueCards.push(fc);
             }
         }
+    });
+    
+    shuffleArray(dueCards);
+    shuffleArray(unseenCards);
+    
+    // Mix due cards and unseen cards. Prioritize due cards.
+    flashcardQueue = [...dueCards, ...unseenCards].slice(0, 20);
+    currentFlashcardIndex = 0;
+
+    if (flashcardQueue.length > 0) {
+        document.getElementById('flashcard-container').style.display = 'block';
+        document.getElementById('fc-completed').style.display = 'none';
+        renderFlashcard();
+    } else {
+        document.getElementById('flashcard-container').style.display = 'none';
+        document.getElementById('fc-completed').style.display = 'block';
+        document.getElementById('fc-completed').innerHTML = `
+            <h3>All caught up! 🎉</h3>
+            <p>You have reviewed all due flashcards. Check back later!</p>
+            <button class="primary-btn" onclick="switchView('overview')">Back to Dashboard</button>
+        `;
     }
 }
 
-function showFlashcard() {
+function renderFlashcard() {
     if (!flashcardQueue || flashcardQueue.length === 0) return;
-    if (currentFlashcardIndex >= flashcardQueue.length) {
-        buildFlashcardQueue();
-        currentFlashcardIndex = 0;
-        if (flashcardQueue.length === 0) return;
-    }
     
-    const card = flashcardQueue[currentFlashcardIndex];
-    document.getElementById('fc-word').innerText = card.word || '';
-    document.getElementById('fc-pos').innerText = card['part of speech'] ? `(${card['part of speech']})` : '';
-    document.getElementById('fc-def').innerText = card.definition || '';
-    document.getElementById('fc-example').innerText = card.example ? `"${card.example}"` : '';
-    document.getElementById('fc-root').innerText = card.root ? `Root: ${card.root}` : '';
+    const q = flashcardQueue[currentFlashcardIndex];
+    document.getElementById('fc-word').innerText = q.word || '';
+    document.getElementById('fc-pos').innerText = q['part of speech'] ? `(${q['part of speech']})` : '';
+    document.getElementById('fc-def').innerText = q.definition || '';
+    document.getElementById('fc-example').innerText = q.example ? `"${q.example}"` : '';
+    document.getElementById('fc-root').innerText = q.root ? `Root: ${q.root}` : '';
     
-    const btn = document.getElementById('fc-star-btn');
-    if (btn) {
-        const starred = getStarredWords();
-        const word = (card.word || '').toLowerCase().trim();
-        if (starred.includes(word)) {
-            btn.innerHTML = '<i class="fas fa-star"></i>';
-            btn.style.color = '#fbbf24';
-        } else {
-            btn.innerHTML = '<i class="far fa-star"></i>';
-            btn.style.color = 'var(--text-secondary)';
-        }
-    }
+    document.getElementById('fc-inner').classList.remove('is-flipped');
+    document.getElementById('fc-actions').style.display = 'none';
+    
+    // Calculate and display SRS times
+    const srsData = getSrsData();
+    const currentState = srsData[q.word.toLowerCase()] || { interval: 0, repetition: 0, easeFactor: 2.5 };
+    const nextStates = getSRSNextStates(currentState);
+    
+    const formatSrsTime = (days) => {
+        if (days === 0) return '&lt; 10m';
+        if (days < 1) return '&lt; 1d';
+        return days + 'd';
+    };
+    
+    const elAgain = document.getElementById('srs-again-time');
+    const elHard = document.getElementById('srs-hard-time');
+    const elGood = document.getElementById('srs-good-time');
+    const elEasy = document.getElementById('srs-easy-time');
+    
+    if (elAgain) elAgain.innerHTML = '&lt; 1m';
+    if (elHard) elHard.innerHTML = currentState.repetition === 0 ? '10m' : formatSrsTime(nextStates.hard.interval);
+    if (elGood) elGood.innerHTML = formatSrsTime(nextStates.good.interval);
+    if (elEasy) elEasy.innerHTML = formatSrsTime(nextStates.easy.interval);
 
-    const tagEl = document.getElementById('fc-tag');
-    if (tagEl) {
-        const statusTag = {
-            new: { className: 'question-tag new', text: 'New' },
-            correct_review: { className: 'question-tag correct-review', text: 'Correct last time' },
-            revision: { className: 'question-tag revision', text: 'Revision' },
-            missed: { className: 'question-tag missed', text: 'Missed last time' }
-        }[card._tag] || { className: 'question-tag new', text: 'New' };
-        tagEl.className = statusTag.className;
-        tagEl.innerText = statusTag.text;
-    }
-    
-    const cardInner = document.querySelector('.flashcard-inner');
-    if (cardInner) {
-        cardInner.classList.remove('is-flipped');
-    }
-    const actions = document.getElementById('fc-actions');
-    if (actions) {
-        actions.style.display = 'none';
-    }
+    // Update progress bar
+    document.getElementById('fc-progress').style.width = ((currentFlashcardIndex) / flashcardQueue.length * 100) + '%';
     document.getElementById('fc-counter').innerText = `${currentFlashcardIndex + 1} / ${flashcardQueue.length}`;
 }
 
-window.handleFlashcardAnswer = async function(isCorrect) {
-    if (!flashcardQueue || flashcardQueue.length === 0) return;
-    const card = flashcardQueue[currentFlashcardIndex];
-    let word = card.word.toLowerCase().trim();
-    if (isCorrect) incrementMissedWordCorrectCount(word);
-    else addMissedWord(word);
+// SM-2 logic
+function getSRSNextStates(srsState) {
+    const { interval = 0, repetition = 0, easeFactor = 2.5 } = srsState || {};
     
-    // Save progress in background for a snappy UI
-    (async () => {
-        try {
-            const resp = await fetch('/api/progress', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chapterId: 'flashcards',
-                    questionId: card.id,
-                    isCorrect
-                })
-            });
-            if (resp.status === 401) {
-                alert("Your session has expired. Please log in again to save progress.");
-                window.location.href = '/login';
-                return;
+    const states = {};
+    ['again', 'hard', 'good', 'easy'].forEach((rating) => {
+        let newRep = repetition;
+        let newInt = interval;
+        let newEase = easeFactor;
+        
+        let grade = rating === 'again' ? 0 : rating === 'hard' ? 1 : rating === 'good' ? 2 : 3;
+
+        if (grade === 0) {
+            newRep = 0;
+            newInt = 0; 
+        } else {
+            if (newRep === 0) {
+                newInt = grade === 1 ? 0 : grade === 2 ? 1 : 4;
+            } else if (newRep === 1) {
+                newInt = 6;
+            } else {
+                newInt = Math.round(newInt * newEase);
             }
-            const data = await resp.json();
-            if (!userProgress) userProgress = {};
-            if (!userProgress['flashcards']) userProgress['flashcards'] = {};
-            const prev = userProgress['flashcards'][card.id];
-            userProgress['flashcards'][card.id] = {
-                status: data.status || (isCorrect ? 'correct' : 'missed'),
-                attempts: (prev ? prev.attempts + 1 : 1),
-                lastAttemptedAt: new Date().toISOString()
-            };
-            refreshStatsFromProgress();
-            renderDashboard();
-        } catch (e) {
-            console.error('Failed to save flashcard progress:', e);
+            newRep += 1;
         }
-    })();
+
+        newEase = newEase + (0.1 - (3 - grade) * (0.08 + (3 - grade) * 0.02));
+        if (newEase < 1.3) newEase = 1.3;
+        
+        states[rating] = { interval: newInt, repetition: newRep, easeFactor: newEase };
+    });
+    return states;
+}
+
+window.handleFlashcardAnswer = async function(rating) {
+    const q = flashcardQueue[currentFlashcardIndex];
+    if (!q) return;
     
+    let word = q.word.toLowerCase();
+    
+    // Update srsData
+    const srsData = getSrsData();
+    const currentState = srsData[word] || { interval: 0, repetition: 0, easeFactor: 2.5 };
+    const nextStates = getSRSNextStates(currentState);
+    const chosenState = nextStates[rating] || nextStates.again;
+    
+    const now = new Date();
+    if (chosenState.interval === 0) {
+        now.setMinutes(now.getMinutes() + (rating === 'again' ? 1 : 10));
+    } else {
+        now.setDate(now.getDate() + chosenState.interval);
+    }
+    chosenState.nextReviewDate = now.toISOString();
+    
+    srsData[word] = chosenState;
+    saveSrsData(srsData);
+
+    // Keep legacy logic for vocab UI compatibility
+    if (rating === 'again' || rating === 'hard') {
+        addMissedWord(word);
+    } else if (rating === 'good' || rating === 'easy') {
+        incrementMissedWordCorrectCount(word);
+    }
+
     const container = document.querySelector('.flashcard-container');
     if (container) {
-        // Hide buttons immediately
         const actions = document.getElementById('fc-actions');
         if (actions) actions.style.display = 'none';
         
-        // Apply swipe animation
-        container.classList.add(isCorrect ? 'swipe-right' : 'swipe-left');
+        container.classList.add(rating === 'again' || rating === 'hard' ? 'swipe-left' : 'swipe-right');
         
         setTimeout(() => {
             container.classList.remove('swipe-right', 'swipe-left');
             container.classList.add('card-enter');
             
             currentFlashcardIndex++;
-            showFlashcard();
+            
+            if (currentFlashcardIndex >= flashcardQueue.length) {
+                document.getElementById('flashcard-container').style.display = 'none';
+                document.getElementById('fc-completed').style.display = 'block';
+                document.getElementById('fc-completed').innerHTML = `
+                    <h3>Session Complete! 🎉</h3>
+                    <p>You have reviewed all scheduled flashcards for this session.</p>
+                    <div style="display:flex; gap: 1rem; justify-content:center; margin-top:2rem;">
+                        <button class="primary-btn" onclick="buildFlashcardQueue()">Review More</button>
+                        <button class="secondary-btn" onclick="switchView('overview')">Dashboard</button>
+                    </div>
+                `;
+            } else {
+                renderFlashcard();
+            }
             
             setTimeout(() => container.classList.remove('card-enter'), 300);
         }, 350);
-    } else {
-        currentFlashcardIndex++;
-        showFlashcard();
     }
 };
 
@@ -2653,6 +2676,17 @@ function saveStarredWords(arr) {
 
 function getMissedWords() {
     try { return JSON.parse(localStorage.getItem(getMissedWordsKey())) || {}; } catch(e) { return {}; }
+}
+
+function getSrsDataKey() { return `greSrsData:${currentUsername || 'guest'}`; }
+
+function getSrsData() {
+    try { return JSON.parse(localStorage.getItem(getSrsDataKey())) || {}; } catch(e) { return {}; }
+}
+
+function saveSrsData(obj) {
+    localStorage.setItem(getSrsDataKey(), JSON.stringify(obj));
+    if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
 function saveMissedWords(obj) {
@@ -2865,10 +2899,13 @@ window.playAudio = function(text) {
 // === ACHIEVEMENTS HELPERS ===
 function checkAndRenderAchievements() {
     const BADGES = {
-        'night_owl': { id: 'night_owl', name: 'Night Owl', icon: 'fa-moon', color: '#6366f1', desc: 'Studied after 10 PM' },
-        '7_day_streak': { id: '7_day_streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Reached a 7-day streak' },
-        'sharpshooter': { id: 'sharpshooter', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: '10 correct in a row' },
-        '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions' }
+        'night_owl': { id: 'night_owl', name: 'Night Owl', icon: 'fa-moon', color: '#6366f1', desc: 'Studied after 10 PM', secret: false },
+        '7_day_streak': { id: '7_day_streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Reached a 7-day streak', secret: false },
+        'sharpshooter': { id: 'sharpshooter', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: '10 correct in a row', secret: false },
+        '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions', secret: false },
+        'early_bird': { id: 'early_bird', name: 'Early Bird', icon: 'fa-sun', color: '#eab308', desc: 'Studied before 6 AM', secret: true },
+        'unstoppable': { id: 'unstoppable', name: 'Unstoppable', icon: 'fa-infinity', color: '#a855f7', desc: 'Answered 500 questions', secret: true },
+        'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true }
     };
     
     let newBadge = false;
@@ -2896,33 +2933,137 @@ function checkAndRenderAchievements() {
         userBadges.push('100_qs'); newBadge = true;
     }
     
+    // Check Early Bird
+    if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4 && !userBadges.includes('early_bird')) {
+        userBadges.push('early_bird'); newBadge = true;
+    }
+    
+    // Check Unstoppable
+    if (state.questionsAttempted >= 500 && !userBadges.includes('unstoppable')) {
+        userBadges.push('unstoppable'); newBadge = true;
+    }
+    
+    // Vocab Master could be checked during vocab answering, but we'll add it to the list of logic
+    const missed = getMissedWords();
+    const masteredCount = Object.values(missed).filter(m => m.correctCount >= 4).length;
+    if (masteredCount >= 50 && !userBadges.includes('vocab_master')) {
+        userBadges.push('vocab_master'); newBadge = true;
+    }
+    
     if (newBadge) {
         showToast('🏆 New Achievement Unlocked!', 'success');
         _forceStatsSync();
     }
     
-    // Render
+    // Render Dashboard Widget (Only unlocked badges, up to 4)
     const container = document.getElementById('achievements-container');
     if (container) {
         if (userBadges.length === 0) {
             container.innerHTML = '<div style="color: var(--text-secondary); font-size: 0.9rem;">Keep studying to unlock achievements!</div>';
-            return;
+        } else {
+            const displayBadges = userBadges.slice(0, 4);
+            container.innerHTML = displayBadges.map(bId => {
+                const b = BADGES[bId];
+                if (!b) return '';
+                return `
+                    <div class="badge-card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.5rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; width: fit-content;">
+                        <div style="background: ${b.color}20; color: ${b.color}; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+                            <i class="fas ${b.icon}"></i>
+                        </div>
+                        <div style="font-weight: 600; font-size: 0.9rem;">${b.name}</div>
+                    </div>
+                `;
+            }).join('');
+            if (userBadges.length > 4) {
+                container.innerHTML += `<div style="display:flex; align-items:center; color: var(--text-secondary); font-size: 0.9rem; padding: 0 0.5rem;">+${userBadges.length - 4} more</div>`;
+            }
         }
-        
-        container.innerHTML = userBadges.map(bId => {
+    }
+    
+    // Render Full Page View
+    const fullContainer = document.getElementById('full-achievements-container');
+    if (fullContainer) {
+        fullContainer.innerHTML = Object.keys(BADGES).map(bId => {
             const b = BADGES[bId];
-            if (!b) return '';
+            const unlocked = userBadges.includes(bId);
+            
+            if (!unlocked && b.secret) {
+                return `
+                    <div class="badge-card locked" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; opacity: 0.6;">
+                        <div style="background: rgba(255,255,255,0.1); color: var(--text-secondary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-secondary);">Mystery Achievement</div>
+                            <div style="color: var(--text-secondary); font-size: 0.85rem;">Keep playing to discover this secret!</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            const opacity = unlocked ? '1' : '0.4';
+            const filter = unlocked ? 'none' : 'grayscale(100%)';
             return `
-                <div class="badge-card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.75rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; flex: 1; min-width: 200px;">
-                    <div style="background: ${b.color}20; color: ${b.color}; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
+                <div class="badge-card ${unlocked ? 'unlocked' : 'locked'}" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; opacity: ${opacity}; filter: ${filter};">
+                    <div style="background: ${b.color}20; color: ${b.color}; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                         <i class="fas ${b.icon}"></i>
                     </div>
                     <div>
-                        <div style="font-weight: 600; font-size: 0.95rem;">${b.name}</div>
-                        <div style="color: var(--text-secondary); font-size: 0.8rem;">${b.desc}</div>
+                        <div style="font-weight: 600; font-size: 1.05rem;">${b.name}</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">${b.desc}</div>
                     </div>
                 </div>
             `;
         }).join('');
     }
 }
+
+// === KEYBOARD SHORTCUTS ===
+document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    // Flashcards View
+    const fcView = document.getElementById('flashcards-view');
+    if (fcView && fcView.style.display !== 'none') {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            if (typeof flipFlashcard === 'function') flipFlashcard();
+        } else if (e.key === '1') {
+            const btn = document.querySelector('button[onclick="handleFlashcardAnswer(\'again\')"]');
+            if (btn) btn.click();
+        } else if (e.key === '2') {
+            const btn = document.querySelector('button[onclick="handleFlashcardAnswer(\'hard\')"]');
+            if (btn) btn.click();
+        } else if (e.key === '3') {
+            const btn = document.querySelector('button[onclick="handleFlashcardAnswer(\'good\')"]');
+            if (btn) btn.click();
+        } else if (e.key === '4') {
+            const btn = document.querySelector('button[onclick="handleFlashcardAnswer(\'easy\')"]');
+            if (btn) btn.click();
+        }
+    }
+
+    // Quiz View
+    const quizView = document.getElementById('quiz-view');
+    if (quizView && quizView.style.display !== 'none') {
+        const nextBtn = document.getElementById('next-question-btn');
+        const isNextBtnVisible = nextBtn && document.getElementById('quiz-feedback').style.display !== 'none';
+        
+        if (e.code === 'Enter' && isNextBtnVisible) {
+            e.preventDefault();
+            nextBtn.click();
+        } else if (e.key >= '1' && e.key <= '9' && !isNextBtnVisible) {
+            const index = parseInt(e.key) - 1;
+            const options = document.querySelectorAll('.quiz-option');
+            if (options[index] && options[index].style.pointerEvents !== 'none') {
+                options[index].click();
+            }
+        } else if (/^[a-zA-Z]$/.test(e.key) && !isNextBtnVisible) {
+            const index = e.key.toLowerCase().charCodeAt(0) - 97;
+            const options = document.querySelectorAll('.quiz-option');
+            if (options[index] && options[index].style.pointerEvents !== 'none') {
+                options[index].click();
+            }
+        }
+    }
+});

@@ -41,6 +41,9 @@
                 <a href="#" class="nav-item" id="nav-vocab">
                     <i class="fas fa-book"></i> Vocabulary Lists
                 </a>
+                <a href="#" class="nav-item" id="nav-achievements">
+                    <i class="fas fa-medal"></i> Achievements
+                </a>
             </nav>
             <div class="book-info-card">
                 <div class="book-info-header">Book Stats</div>
@@ -110,9 +113,10 @@
                 </section>
 
                 <!-- Achievements -->
-                <section class="achievements-section glass" style="margin-bottom: 2rem;">
+                <section class="achievements-section glass" style="margin-bottom: 2rem; cursor: pointer;" onclick="document.getElementById('nav-achievements').click()">
                     <div class="section-header" style="margin-bottom: 1rem;">
                         <h3><i class="fas fa-medal" style="color: #fbbf24;"></i> Achievements</h3>
+                        <i class="fas fa-chevron-right" style="color: var(--text-secondary); opacity: 0.5;"></i>
                     </div>
                     <div class="achievements-grid" id="achievements-container" style="display: flex; gap: 1rem; flex-wrap: wrap;">
                         <div style="color: var(--text-secondary); font-size: 0.9rem;">Keep studying to unlock achievements!</div>
@@ -284,8 +288,10 @@
                 </div>
 
                 <div id="fc-actions" style="display: none; justify-content: space-between; margin-top: 2rem; gap: 1rem;">
-                    <button class="primary-btn" onclick="handleFlashcardAnswer(false)" style="flex: 1; background: rgba(239, 68, 68, 0.15); color: var(--accent-error); border: 1px solid var(--accent-error);"><i class="fas fa-times"></i> Didn't know this</button>
-                    <button class="primary-btn" onclick="handleFlashcardAnswer(true)" style="flex: 1; background: rgba(16, 185, 129, 0.15); color: var(--accent-success); border: 1px solid var(--accent-success);"><i class="fas fa-check"></i> Knew it</button>
+                    <button class="primary-btn srs-btn" onclick="handleFlashcardAnswer('again')" style="flex: 1; background: rgba(239, 68, 68, 0.15); color: var(--accent-error); border: 1px solid var(--accent-error); padding: 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.25rem;"><span style="font-size: 0.8rem; opacity: 0.8;" id="srs-again-time">&lt; 1m</span><span style="font-size: 1rem;">Again (1)</span></button>
+                    <button class="primary-btn srs-btn" onclick="handleFlashcardAnswer('hard')" style="flex: 1; background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid #f97316; padding: 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.25rem;"><span style="font-size: 0.8rem; opacity: 0.8;" id="srs-hard-time">10m</span><span style="font-size: 1rem;">Hard (2)</span></button>
+                    <button class="primary-btn srs-btn" onclick="handleFlashcardAnswer('good')" style="flex: 1; background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid #3b82f6; padding: 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.25rem;"><span style="font-size: 0.8rem; opacity: 0.8;" id="srs-good-time">1d</span><span style="font-size: 1rem;">Good (3)</span></button>
+                    <button class="primary-btn srs-btn" onclick="handleFlashcardAnswer('easy')" style="flex: 1; background: rgba(16, 185, 129, 0.15); color: var(--accent-success); border: 1px solid var(--accent-success); padding: 0.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.25rem;"><span style="font-size: 0.8rem; opacity: 0.8;" id="srs-easy-time">4d</span><span style="font-size: 1rem;">Easy (4)</span></button>
                 </div>
             </div>
 
@@ -301,6 +307,14 @@
                 </div>
                 <div id="vocab-starred-content" class="vocab-content-section" style="display:none;">
                     <ul class="vocab-list" id="starred-words-list"></ul>
+                </div>
+            </div>
+
+            <!-- ACHIEVEMENTS VIEW -->
+            <div id="achievements-view" style="display: none; padding-top: 2rem; max-width: 800px; margin: 0 auto;">
+                <h2>Your Achievements</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Track your progress and unlock special badges as you study.</p>
+                <div id="full-achievements-container" class="achievements-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
                 </div>
             </div>
 

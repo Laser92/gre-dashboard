@@ -75,6 +75,7 @@ const userStatsSchema = new mongoose.Schema({
     maxCorrectStreakDate: { type: String, default: '' },
     starredWords: { type: [String], default: [] },
     missedWords: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
+    srsData: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
     badges: { type: [String], default: [] }
 }, { timestamps: true });
 
@@ -388,7 +389,7 @@ app.put('/api/stats', async (req, res) => {
         correctStreak, maxCorrectStreak,
         loginHistory, dailyActivity,
         sumOfCorrectStreaks, totalStreaksCompleted, maxCorrectStreakDate,
-        starredWords, missedWords, badges
+        starredWords, missedWords, srsData, badges
     } = req.body;
     try {
         const update = {};
@@ -407,6 +408,7 @@ app.put('/api/stats', async (req, res) => {
         if (maxCorrectStreakDate !== undefined) update.maxCorrectStreakDate = String(maxCorrectStreakDate);
         if (starredWords !== undefined) update.starredWords = starredWords;
         if (missedWords !== undefined) update.missedWords = missedWords;
+        if (srsData !== undefined) update.srsData = srsData;
         if (badges !== undefined) update.badges = badges;
 
         await UserStats.findOneAndUpdate(
