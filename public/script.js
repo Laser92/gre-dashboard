@@ -1385,9 +1385,12 @@ function switchView(viewName) {
     } else if (viewName === 'results') {
         document.getElementById('results-view').style.display = 'block';
     } else if (viewName === 'flashcards') {
-            // Data was preloaded but queue wasn't built yet — build and show
-            loadFlashcards();
-        }
+        document.getElementById('flashcards-view').style.display = 'block';
+        loadFlashcards();
+    } else if (viewName === 'vocab') {
+        document.getElementById('vocab-view').style.display = 'block';
+    } else if (viewName === 'achievements') {
+        document.getElementById('achievements-view').style.display = 'block';
     }
 
     if (viewName === 'flashcards') {
