@@ -2114,3 +2114,69 @@ body {
     from { opacity: 0; transform: translateY(-8px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- SWIPE GESTURES & NEW UI --- */
+
+/* Swipe overlays */
+.swipe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+    border-radius: 20px;
+    transition: opacity 0.1s;
+}
+
+.swipe-left-overlay {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    text-shadow: 0 2px 10px rgba(239, 68, 68, 0.8);
+    border: 3px solid rgba(239, 68, 68, 0.5);
+}
+
+.swipe-right-overlay {
+    background: rgba(16, 185, 129, 0.2);
+    color: #6ee7b7;
+    text-shadow: 0 2px 10px rgba(16, 185, 129, 0.8);
+    border: 3px solid rgba(16, 185, 129, 0.5);
+}
+
+.flashcard-inner.is-dragging {
+    transition: none !important;
+    cursor: grabbing !important;
+}
+
+/* Achievement Tiers */
+.tier-bronze { color: #cd7f32 !important; }
+.tier-silver { color: #c0c0c0 !important; }
+.tier-gold { color: #ffd700 !important; }
+.tier-platinum { color: #a1a1aa !important; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+
+.badge-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    transition: all 0.2s ease;
+}
+
+.badge-card:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+}

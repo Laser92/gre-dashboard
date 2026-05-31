@@ -2526,9 +2526,20 @@ function renderFlashcard() {
     document.getElementById('fc-example').innerText = q.example ? `"${q.example}"` : '';
     document.getElementById('fc-root').innerText = q.root ? `Root: ${q.root}` : '';
     
-    document.getElementById('fc-inner').classList.remove('is-flipped');
-    document.getElementById('fc-actions').style.display = 'none';
+    const inner = document.querySelector('.flashcard-inner');
+    if (inner) {
+        inner.classList.remove('is-flipped');
+        inner.style.transform = '';
+    }
     
+    document.getElementById('fc-actions').style.display = 'none';
+    const initActions = document.getElementById('fc-actions-initial');
+    const diffActions = document.getElementById('fc-actions-difficulty');
+    if (initActions) initActions.style.display = 'flex';
+    if (diffActions) diffActions.style.display = 'none';
+    
+    // Hide swipe overlays
+    document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
     // Calculate and display SRS times
     const srsData = getSrsData();
     const currentState = srsData[q.word.toLowerCase()] || { interval: 0, repetition: 0, easeFactor: 2.5 };
@@ -2902,56 +2913,73 @@ window.playAudio = function(text) {
 // === ACHIEVEMENTS HELPERS ===
 function checkAndRenderAchievements() {
     const BADGES = {
-        'night_owl': { id: 'night_owl', name: 'Night Owl', icon: 'fa-moon', color: '#6366f1', desc: 'Studied after 10 PM', secret: false },
-        '7_day_streak': { id: '7_day_streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Reached a 7-day streak', secret: false },
-        'sharpshooter': { id: 'sharpshooter', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: '10 correct in a row', secret: false },
-        '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions', secret: false },
-        'early_bird': { id: 'early_bird', name: 'Early Bird', icon: 'fa-sun', color: '#eab308', desc: 'Studied before 6 AM', secret: true },
-        'unstoppable': { id: 'unstoppable', name: 'Unstoppable', icon: 'fa-infinity', color: '#a855f7', desc: 'Answered 500 questions', secret: true },
-        'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true }
+        'streak_bronze': { id: 'streak_bronze', name: 'Dedicated (Bronze)', icon: 'fa-fire', color: '#cd7f32', desc: '3-day streak', secret: false, tierClass: 'tier-bronze' },
+        'streak_silver': { id: 'streak_silver', name: 'Dedicated (Silver)', icon: 'fa-fire', color: '#c0c0c0', desc: '7-day streak', secret: false, tierClass: 'tier-silver' },
+        'streak_gold': { id: 'streak_gold', name: 'Dedicated (Gold)', icon: 'fa-fire', color: '#ffd700', desc: '14-day streak', secret: false, tierClass: 'tier-gold' },
+        'streak_platinum': { id: 'streak_platinum', name: 'Dedicated (Platinum)', icon: 'fa-fire', color: '#a1a1aa', desc: '30-day streak', secret: false, tierClass: 'tier-platinum' },
+
+        'qs_bronze': { id: 'qs_bronze', name: 'Scholar (Bronze)', icon: 'fa-check-double', color: '#cd7f32', desc: 'Answered 50 questions', secret: false, tierClass: 'tier-bronze' },
+        'qs_silver': { id: 'qs_silver', name: 'Scholar (Silver)', icon: 'fa-check-double', color: '#c0c0c0', desc: 'Answered 150 questions', secret: false, tierClass: 'tier-silver' },
+        'qs_gold': { id: 'qs_gold', name: 'Scholar (Gold)', icon: 'fa-check-double', color: '#ffd700', desc: 'Answered 500 questions', secret: false, tierClass: 'tier-gold' },
+        'qs_platinum': { id: 'qs_platinum', name: 'Scholar (Platinum)', icon: 'fa-check-double', color: '#a1a1aa', desc: 'Answered 1000 questions', secret: false, tierClass: 'tier-platinum' },
+
+        'sharp_bronze': { id: 'sharp_bronze', name: 'Sharpshooter (Bronze)', icon: 'fa-bullseye', color: '#cd7f32', desc: '5 correct in a row', secret: false, tierClass: 'tier-bronze' },
+        'sharp_silver': { id: 'sharp_silver', name: 'Sharpshooter (Silver)', icon: 'fa-bullseye', color: '#c0c0c0', desc: '10 correct in a row', secret: false, tierClass: 'tier-silver' },
+        'sharp_gold': { id: 'sharp_gold', name: 'Sharpshooter (Gold)', icon: 'fa-bullseye', color: '#ffd700', desc: '25 correct in a row', secret: false, tierClass: 'tier-gold' },
+
+        'vocab_bronze': { id: 'vocab_bronze', name: 'Vocab Master (Bronze)', icon: 'fa-brain', color: '#cd7f32', desc: 'Mastered 10 words', secret: true, tierClass: 'tier-bronze' },
+        'vocab_silver': { id: 'vocab_silver', name: 'Vocab Master (Silver)', icon: 'fa-brain', color: '#c0c0c0', desc: 'Mastered 50 words', secret: true, tierClass: 'tier-silver' },
+        'vocab_gold': { id: 'vocab_gold', name: 'Vocab Master (Gold)', icon: 'fa-brain', color: '#ffd700', desc: 'Mastered 150 words', secret: true, tierClass: 'tier-gold' },
+
+        // Old standalone ones (keep for backward compatibility)
+        'night_owl': { id: 'night_owl', name: 'Night Owl', icon: 'fa-moon', color: '#6366f1', desc: 'Studied after 10 PM', secret: false, tierClass: '' },
+        '7_day_streak': { id: '7_day_streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Reached a 7-day streak', secret: false, tierClass: '' },
+        'sharpshooter': { id: 'sharpshooter', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: '10 correct in a row', secret: false, tierClass: '' },
+        '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions', secret: false, tierClass: '' },
+        'early_bird': { id: 'early_bird', name: 'Early Bird', icon: 'fa-sun', color: '#eab308', desc: 'Studied before 6 AM', secret: true, tierClass: '' },
+        'unstoppable': { id: 'unstoppable', name: 'Unstoppable', icon: 'fa-infinity', color: '#a855f7', desc: 'Answered 500 questions', secret: true, tierClass: '' },
+        'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true, tierClass: '' }
     };
     
     let newBadge = false;
     
-    // Check Night Owl
-    const hour = new Date().getHours();
-    if (todayStudyTimeSeconds > 0 && (hour >= 22 || hour < 4) && !userBadges.includes('night_owl')) {
-        userBadges.push('night_owl'); newBadge = true;
-    }
+    const awardBadge = (bId) => {
+        if (!userBadges.includes(bId)) {
+            userBadges.push(bId);
+            newBadge = true;
+        }
+    };
     
-    // Check 7 Day Streak
+    // Streaks
     const daysStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
-    if (daysStreak >= 7 && !userBadges.includes('7_day_streak')) {
-        userBadges.push('7_day_streak'); newBadge = true;
-    }
+    if (daysStreak >= 3) awardBadge('streak_bronze');
+    if (daysStreak >= 7) awardBadge('streak_silver');
+    if (daysStreak >= 14) awardBadge('streak_gold');
+    if (daysStreak >= 30) awardBadge('streak_platinum');
     
-    // Check Sharpshooter
+    // Questions
+    if (state.questionsAttempted >= 50) awardBadge('qs_bronze');
+    if (state.questionsAttempted >= 150) awardBadge('qs_silver');
+    if (state.questionsAttempted >= 500) awardBadge('qs_gold');
+    if (state.questionsAttempted >= 1000) awardBadge('qs_platinum');
+    
+    // Accuracy
     const correctStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
-    if (correctStreak >= 10 && !userBadges.includes('sharpshooter')) {
-        userBadges.push('sharpshooter'); newBadge = true;
-    }
+    if (correctStreak >= 5) awardBadge('sharp_bronze');
+    if (correctStreak >= 10) awardBadge('sharp_silver');
+    if (correctStreak >= 25) awardBadge('sharp_gold');
     
-    // Check 100 Questions
-    if (state.questionsAttempted >= 100 && !userBadges.includes('100_qs')) {
-        userBadges.push('100_qs'); newBadge = true;
-    }
-    
-    // Check Early Bird
-    if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4 && !userBadges.includes('early_bird')) {
-        userBadges.push('early_bird'); newBadge = true;
-    }
-    
-    // Check Unstoppable
-    if (state.questionsAttempted >= 500 && !userBadges.includes('unstoppable')) {
-        userBadges.push('unstoppable'); newBadge = true;
-    }
-    
-    // Vocab Master could be checked during vocab answering, but we'll add it to the list of logic
+    // Vocab Master
     const missed = getMissedWords();
     const masteredCount = Object.values(missed).filter(m => m.correctCount >= 4).length;
-    if (masteredCount >= 50 && !userBadges.includes('vocab_master')) {
-        userBadges.push('vocab_master'); newBadge = true;
-    }
+    if (masteredCount >= 10) awardBadge('vocab_bronze');
+    if (masteredCount >= 50) awardBadge('vocab_silver');
+    if (masteredCount >= 150) awardBadge('vocab_gold');
+
+    // Standalone
+    const hour = new Date().getHours();
+    if (todayStudyTimeSeconds > 0 && (hour >= 22 || hour < 4)) awardBadge('night_owl');
+    if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4) awardBadge('early_bird');
     
     if (newBadge) {
         showToast('🏆 New Achievement Unlocked!', 'success');
@@ -2964,16 +2992,17 @@ function checkAndRenderAchievements() {
         if (userBadges.length === 0) {
             container.innerHTML = '<div style="color: var(--text-secondary); font-size: 0.9rem;">Keep studying to unlock achievements!</div>';
         } else {
-            const displayBadges = userBadges.slice(0, 4);
+            // Sort badges logically, prioritizing highest tiers if preferred
+            const displayBadges = [...userBadges].reverse().slice(0, 4);
             container.innerHTML = displayBadges.map(bId => {
                 const b = BADGES[bId];
                 if (!b) return '';
                 return `
-                    <div class="badge-card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.5rem 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; width: fit-content;">
-                        <div style="background: ${b.color}20; color: ${b.color}; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+                    <div class="badge-card">
+                        <div class="${b.tierClass}" style="background: ${b.color}20; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: ${b.color};">
                             <i class="fas ${b.icon}"></i>
                         </div>
-                        <div style="font-weight: 600; font-size: 0.9rem;">${b.name}</div>
+                        <div class="${b.tierClass}" style="font-weight: 600; font-size: 0.9rem;">${b.name}</div>
                     </div>
                 `;
             }).join('');
@@ -3070,3 +3099,88 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// --- NEW SWIPE GESTURES ---
+window.showDifficultyButtons = function() {
+    const initActions = document.getElementById('fc-actions-initial');
+    const diffActions = document.getElementById('fc-actions-difficulty');
+    if (initActions) initActions.style.display = 'none';
+    if (diffActions) diffActions.style.display = 'flex';
+};
+
+function initFlashcardSwipe() {
+    const container = document.querySelector('.flashcard-container');
+    if (!container) return;
+
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let fcInner = null;
+    let isFlipped = false;
+
+    const handleStart = (e) => {
+        fcInner = document.querySelector('.flashcard-inner');
+        if (!fcInner || !fcInner.classList.contains('is-flipped')) return;
+        isFlipped = true;
+        isDragging = true;
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        fcInner.classList.add('is-dragging');
+    };
+
+    const handleMove = (e) => {
+        if (!isDragging || !isFlipped || !fcInner) return;
+        
+        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        currentX = x - startX;
+        
+        // Add resistance and rotation
+        const rotate = currentX * 0.05;
+        fcInner.style.transform = `translateX(${currentX}px) rotateY(180deg) rotateZ(${rotate}deg)`;
+
+        // Opacity hints
+        const leftOverlay = document.querySelector('.swipe-left-overlay');
+        const rightOverlay = document.querySelector('.swipe-right-overlay');
+        
+        if (currentX < 0) {
+            if(leftOverlay) leftOverlay.style.opacity = Math.min(Math.abs(currentX) / 100, 1);
+            if(rightOverlay) rightOverlay.style.opacity = 0;
+        } else {
+            if(rightOverlay) rightOverlay.style.opacity = Math.min(currentX / 100, 1);
+            if(leftOverlay) leftOverlay.style.opacity = 0;
+        }
+    };
+
+    const handleEnd = () => {
+        if (!isDragging || !fcInner) return;
+        isDragging = false;
+        fcInner.classList.remove('is-dragging');
+
+        const threshold = 100;
+        if (currentX < -threshold) {
+            // Swiped left
+            handleFlashcardAnswer('again');
+        } else if (currentX > threshold) {
+            // Swiped right - show difficulty buttons, snap card back
+            showDifficultyButtons();
+            fcInner.style.transform = 'rotateY(180deg)';
+            document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
+        } else {
+            // Snap back
+            fcInner.style.transform = 'rotateY(180deg)';
+            document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
+        }
+        currentX = 0;
+    };
+
+    // Touch
+    container.addEventListener('touchstart', handleStart, {passive: true});
+    container.addEventListener('touchmove', handleMove, {passive: true});
+    container.addEventListener('touchend', handleEnd);
+
+    // Mouse
+    container.addEventListener('mousedown', handleStart);
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', handleEnd);
+}
+
+document.addEventListener('DOMContentLoaded', initFlashcardSwipe);
