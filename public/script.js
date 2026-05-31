@@ -3101,13 +3101,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 // --- NEW SWIPE GESTURES ---
-window.showDifficultyButtons = function() {
-    const initActions = document.getElementById('fc-actions-initial');
-    const diffActions = document.getElementById('fc-actions-difficulty');
-    if (initActions) initActions.style.display = 'none';
-    if (diffActions) diffActions.style.display = 'flex';
-};
-
 function initFlashcardSwipe() {
     const container = document.querySelector('.flashcard-container');
     if (!container) return;
@@ -3159,14 +3152,15 @@ function initFlashcardSwipe() {
         if (currentX < -threshold) {
             // Swiped left
             handleFlashcardAnswer('again');
+            fcInner.style.transform = '';
         } else if (currentX > threshold) {
-            // Swiped right - show difficulty buttons, snap card back
-            showDifficultyButtons();
-            fcInner.style.transform = 'rotateY(180deg)';
+            // Swiped right - "Knew It"
+            handleFlashcardAnswer('good');
+            fcInner.style.transform = '';
             document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
         } else {
             // Snap back
-            fcInner.style.transform = 'rotateY(180deg)';
+            fcInner.style.transform = '';
             document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
         }
         currentX = 0;

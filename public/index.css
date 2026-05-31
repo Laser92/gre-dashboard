@@ -2137,6 +2137,7 @@ body {
     pointer-events: none;
     border-radius: 20px;
     transition: opacity 0.1s;
+    transform: rotateY(180deg);
 }
 
 .swipe-left-overlay {
