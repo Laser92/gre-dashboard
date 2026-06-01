@@ -1942,13 +1942,13 @@ body {
 }
 
 @keyframes swipeLeftAnim {
-    0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateX(-150%) rotate(-15deg); opacity: 0; }
+    0% { transform: translateX(0) rotate(0deg) rotateY(var(--card-rotation, 0deg)); opacity: 1; }
+    100% { transform: translateX(-150%) rotate(-15deg) rotateY(var(--card-rotation, 0deg)); opacity: 0; }
 }
 
 @keyframes swipeRightAnim {
-    0% { transform: translateX(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateX(150%) rotate(15deg); opacity: 0; }
+    0% { transform: translateX(0) rotate(0deg) rotateY(var(--card-rotation, 0deg)); opacity: 1; }
+    100% { transform: translateX(150%) rotate(15deg) rotateY(var(--card-rotation, 0deg)); opacity: 0; }
 }
 
 @keyframes cardEnterAnim {

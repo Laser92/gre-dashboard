@@ -2658,7 +2658,7 @@ function renderFlashcard() {
         // Temporarily disable transition to reset instantly
         inner.style.transition = 'none';
         inner.classList.remove('is-flipped');
-        inner.style.transform = 'rotateY(0deg)';
+        inner.style.transform = ''; // clear inline transform so CSS rule takes effect
         
         // Force reflow
         void inner.offsetWidth;
@@ -2776,6 +2776,12 @@ window.handleFlashcardAnswer = async function(rating) {
         // Clone the container to animate it swiping away while the new card appears underneath
         const clone = container.cloneNode(true);
         const rect = container.getBoundingClientRect();
+        
+        // Preserve flip state during animation
+        const cloneInner = clone.querySelector('.flashcard-inner');
+        if (cloneInner && cloneInner.classList.contains('is-flipped')) {
+            clone.style.setProperty('--card-rotation', '180deg');
+        }
         
         clone.classList.add(rating === 'again' || rating === 'hard' ? 'swipe-left' : 'swipe-right');
         
