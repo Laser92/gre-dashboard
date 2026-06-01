@@ -2584,51 +2584,60 @@ async function loadFlashcards() {
             
             buildFlashcardQueue();
             currentFlashcardIndex = 0;
+        } else {
+            document.querySelector('.flashcard-container').innerHTML = `<h3 style="color:red">Failed to load flashcards JSON. HTTP ${res.status}</h3>`;
         }
     } catch (e) {
         console.error('Failed to load flashcards:', e);
+        document.querySelector('.flashcard-container').innerHTML = `<h3 style="color:red">Error loading flashcards: ${e.message}</h3><p>${e.stack}</p>`;
     }
 }
 
 function buildFlashcardQueue() {
-    const srsData = getSrsData();
-    const now = new Date();
-    
-    let dueCards = [];
-    let unseenCards = [];
-    
-    flashcardsData.forEach(fc => {
-        let word = fc.word.toLowerCase();
-        let srs = srsData[word];
-        if (!srs) {
-            unseenCards.push(fc);
-        } else {
-            let nextReview = new Date(srs.nextReviewDate);
-            if (nextReview <= now) {
-                dueCards.push(fc);
+    try {
+        const srsData = getSrsData();
+        const now = new Date();
+        
+        let dueCards = [];
+        let unseenCards = [];
+        
+        flashcardsData.forEach(fc => {
+            let word = fc.word.toLowerCase();
+            let srs = srsData[word];
+            if (!srs) {
+                unseenCards.push(fc);
+            } else {
+                let nextReview = new Date(srs.nextReviewDate);
+                if (nextReview <= now) {
+                    dueCards.push(fc);
+                }
             }
-        }
-    });
-    
-    shuffleArray(dueCards);
-    shuffleArray(unseenCards);
-    
-    // Mix due cards and unseen cards. Prioritize due cards.
-    flashcardQueue = [...dueCards, ...unseenCards].slice(0, 20);
-    currentFlashcardIndex = 0;
+        });
+        
+        shuffleArray(dueCards);
+        shuffleArray(unseenCards);
+        
+        // Mix due cards and unseen cards. Prioritize due cards.
+        flashcardQueue = [...dueCards, ...unseenCards].slice(0, 20);
+        currentFlashcardIndex = 0;
 
-    if (flashcardQueue.length > 0) {
+        if (flashcardQueue.length > 0) {
+            document.querySelector('.flashcard-container').style.display = 'block';
+            document.getElementById('fc-completed').style.display = 'none';
+            renderFlashcard();
+        } else {
+            document.querySelector('.flashcard-container').style.display = 'none';
+            document.getElementById('fc-completed').style.display = 'block';
+            document.getElementById('fc-completed').innerHTML = `
+                <h3>All caught up! 🎉</h3>
+                <p>You have reviewed all due flashcards. Check back later!</p>
+                <button class="primary-btn" onclick="switchView('overview')">Back to Dashboard</button>
+            `;
+        }
+    } catch (e) {
+        console.error('Error building flashcard queue:', e);
+        document.querySelector('.flashcard-container').innerHTML = `<h3 style="color:red">Error building queue: ${e.message}</h3><p>${e.stack}</p>`;
         document.querySelector('.flashcard-container').style.display = 'block';
-        document.getElementById('fc-completed').style.display = 'none';
-        renderFlashcard();
-    } else {
-        document.querySelector('.flashcard-container').style.display = 'none';
-        document.getElementById('fc-completed').style.display = 'block';
-        document.getElementById('fc-completed').innerHTML = `
-            <h3>All caught up! 🎉</h3>
-            <p>You have reviewed all due flashcards. Check back later!</p>
-            <button class="primary-btn" onclick="switchView('overview')">Back to Dashboard</button>
-        `;
     }
 }
 
