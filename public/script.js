@@ -2052,6 +2052,9 @@ function toggleMultiAnswer(selectedIndex, optElement, requiredCount) {
 }
 
 async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = false) {
+    // Save window scroll position before any updates occur to prevent jumpy auto-scrolling
+    const savedScrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+    
     timerPaused = true;
     const q = quizQueue[state.currentQuestionIndex];
     
@@ -2162,14 +2165,10 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
 
     fExp.innerText = "Explanation: " + q.explanation;
     
-    // Remember scroll position before showing feedback to prevent auto-scroll
-    const scrollContainer = document.querySelector('.main-content') || document.documentElement;
-    const savedScroll = scrollContainer.scrollTop;
-    
     feedback.style.display = 'flex';
     
-    // Restore scroll position to prevent browser from jumping to the meanings list
-    scrollContainer.scrollTop = savedScroll;
+    // Restore scroll position to prevent browser from jumping
+    window.scrollTo(0, savedScrollY);
 
     // Vocab logic
     const isVocabQuestion = state.currentChapterId === '3' || state.currentChapterId === '4' || state.currentChapterId === '6';
@@ -2305,6 +2304,15 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     } catch (e) {
         console.error('Failed to save progress:', e);
     }
+    
+    // Restore scroll position repeatedly (and with timeout) to override any browser layout-based scrolling
+    window.scrollTo(0, savedScrollY);
+    setTimeout(() => {
+        window.scrollTo(0, savedScrollY);
+    }, 30);
+    setTimeout(() => {
+        window.scrollTo(0, savedScrollY);
+    }, 150);
 }
 
 function nextQuestion() {

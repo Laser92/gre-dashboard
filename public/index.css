@@ -868,8 +868,6 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     position: relative;
 }
 
