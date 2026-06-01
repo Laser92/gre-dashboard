@@ -95,6 +95,23 @@
 
             <!-- OVERVIEW VIEW -->
             <div id="overview-view">
+                <!-- Daily Quest Progress Bar -->
+                <div class="daily-quest-bar-card glass" style="margin-bottom: 2rem; padding: 1.25rem 1.5rem; border-radius: 16px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem;">
+                        <span style="font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-fire" style="color: #fbbf24; filter: drop-shadow(0 0 6px rgba(251,191,36,0.5));"></i>
+                            <span>Daily Quest Progress</span>
+                        </span>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span id="dashboard-daily-quest-text" style="font-weight: 700; color: var(--accent-primary);">0 / 100 XP</span>
+                            <i class="fas fa-cog" id="edit-goal-btn" style="cursor: pointer; opacity: 0.6; font-size: 0.9rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'" title="Edit Daily Goal"></i>
+                        </div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); height: 10px; border-radius: 99px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.05);">
+                        <div id="dashboard-daily-quest-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 99px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 8px var(--accent-primary);"></div>
+                    </div>
+                </div>
+
                 <!-- KPIs -->
                 <section class="kpi-grid">
                     <div class="kpi-card glass">
@@ -118,18 +135,6 @@
                         <div class="kpi-trend neutral" id="kpi-time-trend">All time</div>
                         <div style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary);">Today: <span id="kpi-time-today" style="font-weight: 600; color: var(--accent-primary);">0m</span></div>
                         <div class="kpi-icon">⏱</div>
-                    <div class="kpi-card glass">
-                        <div class="kpi-title" style="display: flex; justify-content: space-between;">Daily XP Goal <i class="fas fa-cog" id="edit-goal-btn" style="cursor: pointer; opacity: 0.6;" title="Edit Goal"></i></div>
-                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 0.5rem; position: relative;">
-                            <svg width="80" height="80" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"></circle>
-                                <circle id="goal-ring" cx="50" cy="50" r="40" fill="none" stroke="var(--accent-primary)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" style="transition: stroke-dashoffset 1s ease-out; transform: rotate(-90deg); transform-origin: center;"></circle>
-                            </svg>
-                            <div style="position: absolute; text-align: center; font-weight: 700; font-size: 1.1rem; line-height: 1;">
-                                <span id="goal-xp-current">0</span><br>
-                                <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 500;">/ <span id="goal-xp-target">100</span> XP</span>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -150,12 +155,6 @@
                         <h3>Accuracy by Subject</h3>
                         <div class="chart-container">
                             <canvas id="accuracyChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card glass">
-                        <h3>Skill Radar</h3>
-                        <div class="chart-container">
-                            <canvas id="radarChart"></canvas>
                         </div>
                     </div>
                     <div class="chart-card glass">

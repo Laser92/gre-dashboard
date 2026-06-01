@@ -259,11 +259,14 @@ app.put('/api/profile/password', async (req, res) => {
 
 // === PROGRESS API ENDPOINTS ===
 
-// GET /api/progress/missed — load all missed questions for Review Mode
+// GET /api/progress/missed — load all missed and revision questions for Review Mode
 app.get('/api/progress/missed', async (req, res) => {
     if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
     try {
-        const missed = await Progress.find({ userId: req.session.userId, status: 'missed' });
+        const missed = await Progress.find({ 
+            userId: req.session.userId, 
+            status: { $in: ['missed', 'revision'] }
+        });
         res.json({ missed });
     } catch (err) {
         console.error('Missed progress fetch error:', err.message);

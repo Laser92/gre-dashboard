@@ -189,9 +189,9 @@ async function loadStoredStudyTime() {
             } else {
                 todayStudyTimeSeconds = 0;
             }
-            if (data.badges) userBadges = data.badges;
-            if (data.dailyXp) dailyXp = data.dailyXp;
-            if (data.dailyGoalXp) dailyGoalXp = data.dailyGoalXp;
+            if (s.badges) userBadges = s.badges;
+            if (s.dailyXp) dailyXp = s.dailyXp;
+            if (s.dailyGoalXp) dailyGoalXp = s.dailyGoalXp;
             
             checkAndRenderAchievements();
             // Sync localStorage with authoritative values
@@ -2101,6 +2101,16 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         addXp(5);
         SoundManager.ding();
         
+        // Speed Demon: Answered correctly in less than 5 seconds
+        if (questionStartTime) {
+            const duration = (Date.now() - questionStartTime) / 1000;
+            if (duration > 0 && duration <= 5) {
+                if (!userBadges.includes('speed_demon')) {
+                    userBadges.push('speed_demon');
+                }
+            }
+        }
+        
         // Floating encouragement animation
         const quizCard = document.querySelector('.quiz-card');
         if (quizCard) {
@@ -2339,6 +2349,13 @@ function finishChapter() {
     }
     
     refreshStatsFromProgress();
+    
+    // Perfect Score: Finished a chapter with 100% accuracy (minimum 5 questions)
+    if (currentQuizAttempted >= 5 && currentQuizCorrect === currentQuizAttempted) {
+        if (!userBadges.includes('perfect_score')) {
+            userBadges.push('perfect_score');
+        }
+    }
 
     document.getElementById('results-chapter-name').innerText = chapter.title;
     document.getElementById('result-correct').innerText = `${currentQuizCorrect} / ${currentQuizAttempted}`;
@@ -2634,9 +2651,8 @@ function buildFlashcardQueue() {
         flashcardsData.forEach(fc => {
             let word = fc.word.toLowerCase();
             let srs = srsData[word];
-            if (!srs) {
-                unseenCards.push(fc);
-            } else {
+            // Only include missed/revision cards (which exist in srsData)
+            if (srs) {
                 let nextReview = new Date(srs.nextReviewDate);
                 if (nextReview <= now) {
                     dueCards.push(fc);
@@ -2645,10 +2661,9 @@ function buildFlashcardQueue() {
         });
         
         shuffleArray(dueCards);
-        shuffleArray(unseenCards);
         
-        // Mix due cards and unseen cards. Prioritize due cards.
-        flashcardQueue = [...dueCards, ...unseenCards].slice(0, 20);
+        // Only review due cards (which represent missed/revision flashcards)
+        flashcardQueue = dueCards.slice(0, 20);
         currentFlashcardIndex = 0;
 
         if (flashcardQueue.length > 0) {
@@ -3152,7 +3167,10 @@ function checkAndRenderAchievements() {
         '100_qs': { id: '100_qs', name: 'Centurion', icon: 'fa-check-double', color: '#10b981', desc: 'Answered 100 questions', secret: false, tierClass: '' },
         'early_bird': { id: 'early_bird', name: 'Early Bird', icon: 'fa-sun', color: '#eab308', desc: 'Studied before 6 AM', secret: true, tierClass: '' },
         'unstoppable': { id: 'unstoppable', name: 'Unstoppable', icon: 'fa-infinity', color: '#a855f7', desc: 'Answered 500 questions', secret: true, tierClass: '' },
-        'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true, tierClass: '' }
+        'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true, tierClass: '' },
+        'speed_demon': { id: 'speed_demon', name: 'Speed Demon', icon: 'fa-bolt', color: '#fb7185', desc: 'Answered a question correctly in less than 5 seconds', secret: true, tierClass: '' },
+        'perfect_score': { id: 'perfect_score', name: 'GRE Perfectionist', icon: 'fa-trophy', color: '#f59e0b', desc: 'Finished a chapter with 100% accuracy (min. 5 questions)', secret: true, tierClass: '' },
+        'relentless': { id: 'relentless', name: 'Relentless', icon: 'fa-hourglass-half', color: '#3b82f6', desc: 'Studied for more than 45 minutes in a single day', secret: true, tierClass: '' }
     };
     
     let newlyUnlockedBadges = [];
@@ -3196,6 +3214,11 @@ function checkAndRenderAchievements() {
     const hour = new Date().getHours();
     if (todayStudyTimeSeconds > 0 && (hour >= 22 || hour < 4)) awardBadge('night_owl');
     if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4) awardBadge('early_bird');
+    
+    // Check other standalone/secret badges
+    if (state.questionsAttempted >= 500) awardBadge('unstoppable');
+    if (masteredCount >= 50) awardBadge('vocab_master');
+    if (todayStudyTimeSeconds >= 2700) awardBadge('relentless');
     
     // Prevent toast on initial data load
     if (newlyUnlockedBadges.length > 0 && !window.hasCompletedInitialLoad) {
@@ -3282,10 +3305,21 @@ function checkAndRenderAchievements() {
         {
             id: 'misc', name: 'Extras', icon: 'fa-star', color: '#8b5cf6', desc: 'Special situational badges',
             tiers: [
-                { id: 'night_owl', label: 'Night', threshold: 1, color: '#6366f1' },
-                { id: 'early_bird', label: 'Early', threshold: 1, color: '#eab308' }
+                { id: 'night_owl', label: 'Night Owl', threshold: 1, color: '#6366f1' },
+                { id: 'early_bird', label: 'Early Bird', threshold: 1, color: '#eab308' },
+                { id: 'unstoppable', label: 'Unstoppable', threshold: 1, color: '#a855f7' },
+                { id: 'vocab_master', label: 'Vocab Master', threshold: 1, color: '#ec4899' },
+                { id: 'speed_demon', label: 'Speed Demon', threshold: 1, color: '#fb7185' },
+                { id: 'perfect_score', label: 'Perfectionist', threshold: 1, color: '#f59e0b' },
+                { id: 'relentless', label: 'Relentless', threshold: 1, color: '#3b82f6' }
             ],
-            currentValue: (userBadges.includes('night_owl') ? 1 : 0) + (userBadges.includes('early_bird') ? 1 : 0),
+            currentValue: (userBadges.includes('night_owl') ? 1 : 0) + 
+                          (userBadges.includes('early_bird') ? 1 : 0) + 
+                          (userBadges.includes('unstoppable') ? 1 : 0) + 
+                          (userBadges.includes('vocab_master') ? 1 : 0) + 
+                          (userBadges.includes('speed_demon') ? 1 : 0) + 
+                          (userBadges.includes('perfect_score') ? 1 : 0) + 
+                          (userBadges.includes('relentless') ? 1 : 0),
             unit: 'unlocked',
             customRender: true
         }
@@ -3314,9 +3348,22 @@ function checkAndRenderAchievements() {
 
             let tiersHtml = cat.tiers.map(t => {
                 const unlocked = userBadges.includes(t.id);
+                const badge = BADGES[t.id];
+                const isSecret = badge && badge.secret;
+                
+                let titleText = `${t.threshold} ${cat.unit}`;
+                let labelText = t.label;
+                
+                if (isSecret && !unlocked) {
+                    titleText = "Mystery Achievement - Keep studying to unlock!";
+                    labelText = "?";
+                } else if (badge && unlocked) {
+                    titleText = `${badge.name}: ${badge.desc}`;
+                }
+                
                 return `
-                    <div class="tier-icon ${unlocked ? 'unlocked' : 'locked'}" title="${t.threshold} ${cat.unit}" style="background: ${unlocked ? t.color + '20' : 'rgba(255,255,255,0.05)'}; color: ${unlocked ? t.color : 'var(--text-secondary)'};">
-                        <span class="tier-label">${t.label}</span>
+                    <div class="tier-icon ${unlocked ? 'unlocked' : 'locked'}" title="${titleText}" style="background: ${unlocked ? t.color + '20' : 'rgba(255,255,255,0.05)'}; color: ${unlocked ? t.color : 'var(--text-secondary)'};">
+                        <span class="tier-label">${labelText}</span>
                     </div>
                 `;
             }).join('');
@@ -3860,6 +3907,24 @@ function updateGoalRing() {
             ring.style.stroke = '#fbbf24'; // Gold when complete
         } else {
             ring.style.stroke = 'var(--accent-primary)';
+        }
+    }
+
+    // Update daily quest progress bar in overview dashboard
+    const dashTextEl = document.getElementById('dashboard-daily-quest-text');
+    const dashFillEl = document.getElementById('dashboard-daily-quest-fill');
+    if (dashTextEl) {
+        dashTextEl.innerText = `${currentXp} / ${dailyGoalXp} XP`;
+    }
+    if (dashFillEl) {
+        const percent = Math.min((currentXp / dailyGoalXp) * 100, 100);
+        dashFillEl.style.width = `${percent}%`;
+        if (percent >= 100) {
+            dashFillEl.style.background = 'linear-gradient(90deg, #fbbf24, #f59e0b)';
+            dashFillEl.style.boxShadow = '0 0 8px rgba(251, 191, 36, 0.6)';
+        } else {
+            dashFillEl.style.background = 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
+            dashFillEl.style.boxShadow = '0 0 8px var(--accent-primary)';
         }
     }
 
