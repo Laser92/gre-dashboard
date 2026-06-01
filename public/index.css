@@ -2201,3 +2201,112 @@ body {
     background: rgba(255,255,255,0.06);
     transform: translateY(-2px);
 }
+
+/* --- ACHIEVEMENTS OVERHAUL CSS --- */
+.achievement-tab-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.ach-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ach-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.ach-title-area h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.2rem;
+}
+
+.ach-title-area p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.ach-progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ach-progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.ach-current-val {
+    color: var(--text-primary);
+}
+
+.ach-target-val {
+    color: var(--text-secondary);
+}
+
+.ach-progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.ach-progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.ach-tiers-row {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.tier-icon {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.tier-icon.locked {
+    filter: grayscale(100%);
+    opacity: 0.4;
+    background: rgba(255,255,255,0.03) !important;
+    border-color: rgba(255,255,255,0.05);
+}
+
+.tier-icon.unlocked {
+    border-color: currentColor;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

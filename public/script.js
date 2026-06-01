@@ -3027,36 +3027,118 @@ function checkAndRenderAchievements() {
     }
     
     // Render Full Page View
+    // Prepare Categories for grouped rendering
+    const CATEGORIES = [
+        {
+            id: 'streak', name: 'Dedicated', icon: 'fa-fire', color: '#f97316', desc: 'Maintain a daily study streak',
+            tiers: [
+                { id: 'streak_bronze', label: 'B', threshold: 3, color: '#cd7f32' },
+                { id: 'streak_silver', label: 'S', threshold: 7, color: '#c0c0c0' },
+                { id: 'streak_gold', label: 'G', threshold: 14, color: '#ffd700' },
+                { id: 'streak_platinum', label: 'P', threshold: 30, color: '#a1a1aa' }
+            ],
+            currentValue: daysStreak,
+            unit: 'days'
+        },
+        {
+            id: 'qs', name: 'Scholar', icon: 'fa-check-double', color: '#10b981', desc: 'Answer total questions',
+            tiers: [
+                { id: 'qs_bronze', label: 'B', threshold: 50, color: '#cd7f32' },
+                { id: 'qs_silver', label: 'S', threshold: 150, color: '#c0c0c0' },
+                { id: 'qs_gold', label: 'G', threshold: 500, color: '#ffd700' },
+                { id: 'qs_platinum', label: 'P', threshold: 1000, color: '#a1a1aa' }
+            ],
+            currentValue: state.questionsAttempted,
+            unit: 'questions'
+        },
+        {
+            id: 'sharp', name: 'Sharpshooter', icon: 'fa-bullseye', color: '#ef4444', desc: 'Answer correctly in a row',
+            tiers: [
+                { id: 'sharp_bronze', label: 'B', threshold: 5, color: '#cd7f32' },
+                { id: 'sharp_silver', label: 'S', threshold: 10, color: '#c0c0c0' },
+                { id: 'sharp_gold', label: 'G', threshold: 25, color: '#ffd700' },
+                { id: 'sharp_platinum', label: 'P', threshold: 50, color: '#a1a1aa' }
+            ],
+            currentValue: correctStreak,
+            unit: 'streak'
+        },
+        {
+            id: 'vocab', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Master missed flashcards',
+            tiers: [
+                { id: 'vocab_bronze', label: 'B', threshold: 10, color: '#cd7f32' },
+                { id: 'vocab_silver', label: 'S', threshold: 50, color: '#c0c0c0' },
+                { id: 'vocab_gold', label: 'G', threshold: 150, color: '#ffd700' },
+                { id: 'vocab_platinum', label: 'P', threshold: 300, color: '#a1a1aa' }
+            ],
+            currentValue: masteredCount,
+            unit: 'words'
+        },
+        {
+            id: 'misc', name: 'Extras', icon: 'fa-star', color: '#8b5cf6', desc: 'Special situational badges',
+            tiers: [
+                { id: 'night_owl', label: 'Night', threshold: 1, color: '#6366f1' },
+                { id: 'early_bird', label: 'Early', threshold: 1, color: '#eab308' }
+            ],
+            currentValue: (userBadges.includes('night_owl') ? 1 : 0) + (userBadges.includes('early_bird') ? 1 : 0),
+            unit: 'unlocked',
+            customRender: true
+        }
+    ];
+
     const fullContainer = document.getElementById('full-achievements-container');
     if (fullContainer) {
-        fullContainer.innerHTML = Object.keys(BADGES).map(bId => {
-            const b = BADGES[bId];
-            const unlocked = userBadges.includes(bId);
+        fullContainer.innerHTML = CATEGORIES.map(cat => {
+            // Find next threshold
+            let nextTier = cat.tiers.find(t => cat.currentValue < t.threshold);
+            let prevTier = [...cat.tiers].reverse().find(t => cat.currentValue >= t.threshold);
             
-            if (!unlocked && b.secret) {
+            let maxThreshold = cat.tiers[cat.tiers.length - 1].threshold;
+            let progressPercent = Math.min((cat.currentValue / maxThreshold) * 100, 100);
+            
+            // For custom render (Misc/Extras) we just show total out of length
+            if (cat.customRender) {
+                progressPercent = (cat.currentValue / cat.tiers.length) * 100;
+            } else if (nextTier) {
+                // If we want progress specifically toward the next tier, we could do that,
+                // but absolute progress toward Platinum is usually more stable to display.
+                progressPercent = Math.min((cat.currentValue / nextTier.threshold) * 100, 100);
+            }
+
+            const isMaxed = !nextTier && !cat.customRender;
+
+            let tiersHtml = cat.tiers.map(t => {
+                const unlocked = userBadges.includes(t.id);
                 return `
-                    <div class="badge-card locked" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; opacity: 0.6;">
-                        <div style="background: rgba(255,255,255,0.1); color: var(--text-secondary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            <i class="fas fa-question"></i>
-                        </div>
-                        <div>
-                            <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-secondary);">Mystery Achievement</div>
-                            <div style="color: var(--text-secondary); font-size: 0.85rem;">Keep playing to discover this secret!</div>
-                        </div>
+                    <div class="tier-icon ${unlocked ? 'unlocked' : 'locked'}" title="${t.threshold} ${cat.unit}" style="background: ${unlocked ? t.color + '20' : 'rgba(255,255,255,0.05)'}; color: ${unlocked ? t.color : 'var(--text-secondary)'};">
+                        <span class="tier-label">${t.label}</span>
                     </div>
                 `;
-            }
-            
-            const opacity = unlocked ? '1' : '0.4';
-            const filter = unlocked ? 'none' : 'grayscale(100%)';
+            }).join('');
+
             return `
-                <div class="badge-card ${unlocked ? 'unlocked' : 'locked'}" style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; opacity: ${opacity}; filter: ${filter};">
-                    <div style="background: ${b.color}20; color: ${b.color}; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                        <i class="fas ${b.icon}"></i>
+                <div class="achievement-tab-card glass">
+                    <div class="ach-header">
+                        <div class="ach-icon-wrapper" style="color: ${cat.color}; background: ${cat.color}15;">
+                            <i class="fas ${cat.icon}"></i>
+                        </div>
+                        <div class="ach-title-area">
+                            <h3>${cat.name}</h3>
+                            <p>${cat.desc}</p>
+                        </div>
                     </div>
-                    <div>
-                        <div style="font-weight: 600; font-size: 1.05rem;">${b.name}</div>
-                        <div style="color: var(--text-secondary); font-size: 0.85rem;">${b.desc}</div>
+                    
+                    <div class="ach-progress-section">
+                        <div class="ach-progress-labels">
+                            <span class="ach-current-val">${cat.currentValue} <span style="font-size: 0.8rem; opacity: 0.7;">${cat.unit}</span></span>
+                            <span class="ach-target-val">${isMaxed ? 'MAX' : (cat.customRender ? cat.tiers.length + ' total' : 'Next: ' + nextTier.threshold)}</span>
+                        </div>
+                        <div class="ach-progress-bar-bg">
+                            <div class="ach-progress-bar-fill" style="width: ${progressPercent}%; background: ${cat.color}; box-shadow: 0 0 10px ${cat.color}80;"></div>
+                        </div>
+                    </div>
+
+                    <div class="ach-tiers-row">
+                        ${tiersHtml}
                     </div>
                 </div>
             `;
