@@ -2248,12 +2248,13 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     }
 
     // Save progress to server
+    const actualChapterId = q._originalChapterId || state.currentChapterId;
     try {
         const resp = await fetch('/api/progress', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                chapterId: state.currentChapterId,
+                chapterId: actualChapterId,
                 questionId: q.id,
                 isCorrect
             })
@@ -2265,14 +2266,14 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         }
         const data = await resp.json();
         // Update local progress cache
-        if (!userProgress[state.currentChapterId]) userProgress[state.currentChapterId] = {};
-        const prev = userProgress[state.currentChapterId][q.id];
-        userProgress[state.currentChapterId][q.id] = {
+        if (!userProgress[actualChapterId]) userProgress[actualChapterId] = {};
+        const prev = userProgress[actualChapterId][q.id];
+        userProgress[actualChapterId][q.id] = {
             status: data.status || (isCorrect ? 'correct' : 'missed'),
             attempts: (prev ? prev.attempts + 1 : 1),
             lastAttemptedAt: new Date().toISOString()
         };
-        const nextStatus = userProgress[state.currentChapterId][q.id].status;
+        const nextStatus = userProgress[actualChapterId][q.id].status;
         if (prev?.status !== 'correct' && nextStatus === 'correct') {
             state.questionsCompleted++;
         } else if (prev?.status === 'correct' && nextStatus !== 'correct') {
@@ -3518,14 +3519,13 @@ window.startReviewMode = async function() {
         quizQueue = [];
         data.missed.forEach(m => {
             const chId = m.chapterId;
-            const qIdParts = m.questionId.split('_');
-            const qIndex = parseInt(qIdParts[1], 10);
-            if (state.questions[chId] && state.questions[chId][qIndex]) {
-                quizQueue.push({
-                    chapterId: chId,
-                    qIndex: qIndex,
-                    questionData: state.questions[chId][qIndex]
-                });
+            const qId = m.questionId;
+            if (state.questions[chId]) {
+                const originalQ = state.questions[chId].find(q => String(q.id) === String(qId));
+                if (originalQ) {
+                    const clonedQ = { ...originalQ, _originalChapterId: chId };
+                    quizQueue.push(clonedQ);
+                }
             }
         });
         
@@ -3557,12 +3557,8 @@ window.startReviewMode = async function() {
 window.startMockTest = function() {
     let allQuestions = [];
     Object.keys(state.questions).forEach(chId => {
-        state.questions[chId].forEach((q, idx) => {
-            allQuestions.push({
-                chapterId: chId,
-                qIndex: idx,
-                questionData: q
-            });
+        state.questions[chId].forEach(q => {
+            allQuestions.push({ ...q, _originalChapterId: chId });
         });
     });
     
@@ -3601,8 +3597,8 @@ window.startMockTest = function() {
             
             if (mockTestSeconds <= 0) {
                 clearInterval(mockTestInterval);
-                alert("Time's up!");
-                showResults();
+                alert("Time's up! Submitting your Mock Test.");
+                switchView('overview');
             }
         }
     }, 1000);
