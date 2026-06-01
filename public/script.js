@@ -2646,8 +2646,16 @@ function renderFlashcard() {
     
     const inner = document.querySelector('.flashcard-inner');
     if (inner) {
+        // Temporarily disable transition to reset instantly
+        inner.style.transition = 'none';
         inner.classList.remove('is-flipped');
-        inner.style.transform = '';
+        inner.style.transform = 'rotateY(0deg)';
+        
+        // Force reflow
+        void inner.offsetWidth;
+        
+        // Restore transition
+        inner.style.transition = '';
     }
     
     document.getElementById('fc-actions').style.display = 'none';
