@@ -2649,6 +2649,8 @@ function buildFlashcardQueue() {
         
         let dueCards = [];
         let newReviewCards = []; // missed/starred words without srsData
+        let unseenCards = [];
+        let learnedCards = [];
         
         flashcardsData.forEach(fc => {
             const word = fc.word.toLowerCase().trim();
@@ -2658,6 +2660,8 @@ function buildFlashcardQueue() {
                 const nextReview = new Date(srs.nextReviewDate);
                 if (nextReview <= now) {
                     dueCards.push(fc);
+                } else {
+                    learnedCards.push(fc);
                 }
             } else {
                 // If it is missed or starred, and has no SRS entry yet, include it as a new review card
@@ -2665,15 +2669,19 @@ function buildFlashcardQueue() {
                 const isStarred = starredWords.includes(word);
                 if (isMissed || isStarred) {
                     newReviewCards.push(fc);
+                } else {
+                    unseenCards.push(fc);
                 }
             }
         });
         
         shuffleArray(dueCards);
         shuffleArray(newReviewCards);
+        shuffleArray(unseenCards);
+        shuffleArray(learnedCards);
         
-        // Prioritize due cards, fill up to 20 with new review cards
-        flashcardQueue = [...dueCards, ...newReviewCards].slice(0, 20);
+        // Prioritize due cards, then new review cards, then unseen, then learned to keep reviews unlimited
+        flashcardQueue = [...dueCards, ...newReviewCards, ...unseenCards, ...learnedCards].slice(0, 20);
         currentFlashcardIndex = 0;
 
         if (flashcardQueue.length > 0) {
