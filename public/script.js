@@ -2653,6 +2653,14 @@ function renderFlashcard() {
     document.getElementById('fc-example').textContent = q.example ? `"${q.example}"` : '';
     document.getElementById('fc-root').textContent = q.root ? `Root: ${q.root}` : '';
     
+    // Reset star button to reflect current word's actual starred state
+    const starBtn = document.getElementById('fc-star-btn');
+    if (starBtn) {
+        const isStarred = getStarredWords().includes(q.word.toLowerCase().trim());
+        starBtn.innerHTML = isStarred ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+        starBtn.style.color = isStarred ? '#fbbf24' : 'var(--text-secondary)';
+    }
+    
     const inner = document.querySelector('.flashcard-inner');
     if (inner) {
         // Temporarily disable transition to reset instantly
@@ -2917,6 +2925,13 @@ window.toggleStarWord = function() {
     }
 }
 
+window.unstarWord = function(word) {
+    let starred = getStarredWords();
+    starred = starred.filter(w => w !== word.toLowerCase().trim());
+    saveStarredWords(starred);
+    showVocabTab('starred');
+}
+
 window.showVocabTab = function(tabName) {
     document.querySelectorAll('#vocab-view .modal-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.vocab-content-section').forEach(c => c.style.display = 'none');
@@ -2964,7 +2979,10 @@ window.showVocabTab = function(tabName) {
                     <span style="font-weight:600; text-transform:capitalize; font-size: 1.1rem;">${word}</span>
                     <button onclick="event.stopPropagation(); playAudio('${word.replace(/'/g, "\\'")}')" style="background:none; border:none; color:var(--accent-primary); cursor:pointer; font-size:1.1rem; opacity:0.7;" title="Listen" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"><i class="fas fa-volume-up"></i></button>
                 </div>
-                <i class="fas fa-chevron-down" style="color:var(--text-secondary); font-size:0.75rem; transition: transform 0.3s;"></i>
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <button onclick="event.stopPropagation(); unstarWord('${word.replace(/'/g, "\\'")}')" style="background:none; border:none; color:#fbbf24; cursor:pointer; font-size:1.1rem; opacity:0.8; transition: opacity 0.2s;" title="Remove from starred" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'"><i class="fas fa-star"></i></button>
+                    <i class="fas fa-chevron-down" style="color:var(--text-secondary); font-size:0.75rem; transition: transform 0.3s;"></i>
+                </div>
             `;
             li.appendChild(headerRow);
             
