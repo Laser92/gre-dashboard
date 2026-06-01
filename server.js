@@ -119,6 +119,12 @@ app.get('/questions_bank.js', (req, res, next) => {
     res.sendFile(gzPath);
 });
 
+// NEVER cache the service worker!
+app.get('/sw.js', (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+    res.sendFile(path.join(__dirname, 'public', 'sw.js'));
+});
+
 app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: '1h',
     etag: true
