@@ -80,7 +80,8 @@ const userStatsSchema = new mongoose.Schema({
     missedWords: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
     srsData: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
     badges: { type: [String], default: [] },
-    dailyXp: { type: Map, of: Number, default: {} }
+    dailyXp: { type: Map, of: Number, default: {} },
+    dailyGoalXp: { type: Number, default: 100 }
 }, { timestamps: true });
 
 const UserStats = mongoose.model('UserStats', userStatsSchema);
@@ -251,6 +252,18 @@ app.put('/api/profile/password', async (req, res) => {
 
 // === PROGRESS API ENDPOINTS ===
 
+// GET /api/progress/missed — load all missed questions for Review Mode
+app.get('/api/progress/missed', async (req, res) => {
+    if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
+    try {
+        const missed = await Progress.find({ userId: req.session.userId, status: 'missed' });
+        res.json({ missed });
+    } catch (err) {
+        console.error('Missed progress fetch error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
 // GET /api/progress/:chapterId — load all progress for a chapter
 app.get('/api/progress/:chapterId', async (req, res) => {
     if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
@@ -393,7 +406,7 @@ app.put('/api/stats', async (req, res) => {
         correctStreak, maxCorrectStreak,
         loginHistory, dailyActivity,
         sumOfCorrectStreaks, totalStreaksCompleted, maxCorrectStreakDate,
-        starredWords, missedWords, srsData, badges, dailyXp
+        starredWords, missedWords, srsData, badges, dailyXp, dailyGoalXp
     } = req.body;
     try {
         const update = {};
@@ -415,6 +428,7 @@ app.put('/api/stats', async (req, res) => {
         if (srsData !== undefined) update.srsData = srsData;
         if (badges !== undefined) update.badges = badges;
         if (dailyXp !== undefined) update.dailyXp = dailyXp;
+        if (dailyGoalXp !== undefined) update.dailyGoalXp = Number(dailyGoalXp);
 
         await UserStats.findOneAndUpdate(
             { userId: req.session.userId },
@@ -433,14 +447,18 @@ app.get('/api/leaderboard', async (req, res) => {
     try {
         const stats = await UserStats.find({}).populate('userId', 'username');
         
-        // Calculate current week boundaries (Monday 00:00 UTC to Sunday 23:59 UTC)
+        // Calculate current week boundaries (Monday 00:00 IST)
         const now = new Date();
-        const dayOfWeek = now.getUTCDay();
-        const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-        const startOfWeek = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - daysSinceMonday));
+        const istOffset = 5.5 * 60 * 60 * 1000;
+        const nowIst = new Date(now.getTime() + istOffset);
         
-        // Calculate current month boundaries
-        const startOfMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+        const dayOfWeek = nowIst.getUTCDay();
+        const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+        
+        const startOfWeek = new Date(Date.UTC(nowIst.getUTCFullYear(), nowIst.getUTCMonth(), nowIst.getUTCDate() - daysSinceMonday) - istOffset);
+        
+        // Calculate current month boundaries (1st day 00:00 IST)
+        const startOfMonth = new Date(Date.UTC(nowIst.getUTCFullYear(), nowIst.getUTCMonth(), 1) - istOffset);
         
         const leaderboard = stats.map(s => {
             let weeklyXp = 0;
@@ -448,7 +466,7 @@ app.get('/api/leaderboard', async (req, res) => {
             
             if (s.dailyXp) {
                 for (const [dateStr, xp] of s.dailyXp.entries()) {
-                    const date = new Date(dateStr + "T00:00:00Z");
+                    const date = new Date(dateStr + "T00:00:00+05:30");
                     if (date >= startOfWeek) {
                         weeklyXp += xp;
                     }

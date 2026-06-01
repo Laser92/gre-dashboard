@@ -25,6 +25,7 @@ let quizQueue = [];
 let accuracyChartInstance = null;
 let progressionChartInstance = null;
 let chaptersBreakdownChartInstance = null;
+let radarChartInstance = null;
 let selectedAnswerIndexes = [];
 let multiBlankSelections = {};
 
@@ -71,7 +72,68 @@ let sumOfCorrectStreaks = 0;
 let totalStreaksCompleted = 0;
 let maxCorrectStreakDate = '';
 let userBadges = [];
+let dailyGoalXp = 100; // Default goal
+let isMockTest = false;
+let mockTestInterval = null;
+let mockTestSeconds = 35 * 60;
 
+// === SOUND MANAGER ===
+const SoundManager = {
+    ctx: null,
+    muted: false,
+    init() {
+        if (!this.ctx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) this.ctx = new AudioContext();
+        }
+    },
+    playTone(freq, type, duration, vol) {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+        gain.gain.setValueAtTime(vol, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + duration);
+    },
+    ding() {
+        this.playTone(800, 'sine', 0.1, 0.1);
+        setTimeout(() => this.playTone(1200, 'sine', 0.2, 0.1), 100);
+    },
+    swoosh() {
+        if (this.muted) return;
+        this.init();
+        if (!this.ctx) return;
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        const bufferSize = this.ctx.sampleRate * 0.2; 
+        const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+        const noise = this.ctx.createBufferSource();
+        noise.buffer = buffer;
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(500, this.ctx.currentTime);
+        filter.frequency.exponentialRampToValueAtTime(50, this.ctx.currentTime + 0.2);
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+        noise.start();
+    },
+    pop() {
+        this.playTone(300, 'sine', 0.05, 0.1);
+    }
+};
 function getStudyTimeStorageKey() {
     return `greStudyTimeSeconds:${currentUsername || 'guest'}`;
 }
@@ -123,9 +185,11 @@ async function loadStoredStudyTime() {
             } else {
                 todayStudyTimeSeconds = 0;
             }
-            if (s.dailyXp) {
-                dailyXp = s.dailyXp;
-            }
+            if (data.badges) userBadges = data.badges;
+            if (data.dailyXp) dailyXp = data.dailyXp;
+            if (data.dailyGoalXp) dailyGoalXp = data.dailyGoalXp;
+            
+            checkAndRenderAchievements();
             // Sync localStorage with authoritative values
             localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
             localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
@@ -148,7 +212,9 @@ function addXp(amount) {
     const today = getTodayDateString();
     if (!dailyXp[today]) dailyXp[today] = 0;
     dailyXp[today] += amount;
+    SoundManager.ding();
     _forceStatsSync();
+    updateGoalRing(); // Dynamically update ring
 }
 
 function startStudyTimer() {
@@ -181,7 +247,8 @@ function _syncStatsToServer() {
         missedWords: getMissedWords(),
         srsData: typeof getSrsData === 'function' ? getSrsData() : {},
         badges: userBadges,
-        dailyXp
+        dailyXp,
+        dailyGoalXp
     };
     fetch('/api/stats', {
         method: 'PUT',
@@ -210,7 +277,8 @@ function _forceStatsSync() {
         missedWords: getMissedWords(),
         srsData: typeof getSrsData === 'function' ? getSrsData() : {},
         badges: userBadges,
-        dailyXp
+        dailyXp,
+        dailyGoalXp
     };
     try {
         fetch('/api/stats', {
@@ -567,6 +635,7 @@ function updateTimerDisplay(seconds) {
 }
 
 function updateTimerModeDisplay() {
+    if (isMockTest) return; // Mock test handles its own timer UI
     const enableCountdown = document.getElementById('enable-countdown');
     const timerEl = document.getElementById('quiz-timer');
     const timerText = document.getElementById('quiz-timer-text');
@@ -962,20 +1031,39 @@ function setupEventListeners() {
         });
     }
 
-    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '#overview-view'); switchView('overview'); });
-    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '#overview-view'); switchView('overview'); });
-    document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
-    document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); });
-    document.getElementById('nav-achievements').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-achievements', '#achievements-view'); switchView('achievements'); checkAndRenderAchievements(); });
-    document.getElementById('nav-leaderboard').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-leaderboard', '#leaderboard-view'); switchView('leaderboard'); fetchLeaderboard(); });
+    document.getElementById('nav-overview').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-overview', '#overview-view'); switchView('overview'); SoundManager.pop(); });
+    document.getElementById('nav-chapters').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-chapters', '#overview-view'); switchView('overview'); SoundManager.pop(); });
+    document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); SoundManager.pop(); });
+    document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); SoundManager.pop(); });
+    document.getElementById('nav-review').addEventListener('click', (e) => { e.preventDefault(); setActiveNav('nav-review'); startReviewMode(); SoundManager.pop(); });
+    document.getElementById('nav-mock').addEventListener('click', (e) => { e.preventDefault(); setActiveNav('nav-mock'); startMockTest(); SoundManager.pop(); });
+    document.getElementById('nav-achievements').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-achievements', '#achievements-view'); switchView('achievements'); checkAndRenderAchievements(); SoundManager.pop(); });
+    document.getElementById('nav-leaderboard').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-leaderboard', '#leaderboard-view'); switchView('leaderboard'); fetchLeaderboard(); SoundManager.pop(); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
+        if (mockTestInterval) { clearInterval(mockTestInterval); mockTestInterval = null; }
         switchView('overview');
     });
-    document.getElementById('results-home-btn').addEventListener('click', () => switchView('overview'));
+    document.getElementById('results-home-btn').addEventListener('click', () => {
+        if (mockTestInterval) { clearInterval(mockTestInterval); mockTestInterval = null; }
+        switchView('overview');
+    });
     document.getElementById('start-diagnostic-btn').addEventListener('click', () => {
         startChapter('1');
     });
+    
+    const editGoalBtn = document.getElementById('edit-goal-btn');
+    if (editGoalBtn) {
+        editGoalBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const newGoal = prompt("Enter your new daily XP goal:", dailyGoalXp);
+            if (newGoal && !isNaN(newGoal)) {
+                dailyGoalXp = Number(newGoal);
+                updateGoalRing();
+                _forceStatsSync();
+            }
+        });
+    }
     
     // Quiz Actions
     document.getElementById('next-question-btn').addEventListener('click', nextQuestion);
@@ -1458,8 +1546,16 @@ function renderDashboard() {
     // Update time KPI
     updateTimeKPI();
     
+    // Update Daily Goals Ring
+    updateGoalRing();
+    
     // Evaluate and Render Achievements
     checkAndRenderAchievements();
+    
+    // Render Charts
+    renderAccuracyChart();
+    renderProgressionChart();
+    renderRadarChart();
 
     // Render Table
     const tbody = document.getElementById('chapter-table-body');
@@ -2621,6 +2717,7 @@ function getSRSNextStates(srsState) {
 }
 
 window.handleFlashcardAnswer = async function(rating) {
+    SoundManager.swoosh();
     const q = flashcardQueue[currentFlashcardIndex];
     if (!q) return;
     
@@ -3406,3 +3503,113 @@ window.performUpdateRefresh = function() {
     // Hard refresh bypassing cache
     window.location.reload(true);
 };
+
+// === MOCK TEST & REVIEW MODE ===
+window.startReviewMode = async function() {
+    try {
+        const res = await fetch('/api/progress/missed');
+        const data = await res.json();
+        if (!data.missed || data.missed.length === 0) {
+            alert('No missed questions found! Great job!');
+            switchView('overview');
+            return;
+        }
+        
+        quizQueue = [];
+        data.missed.forEach(m => {
+            const chId = m.chapterId;
+            const qIdParts = m.questionId.split('_');
+            const qIndex = parseInt(qIdParts[1], 10);
+            if (state.questions[chId] && state.questions[chId][qIndex]) {
+                quizQueue.push({
+                    chapterId: chId,
+                    qIndex: qIndex,
+                    questionData: state.questions[chId][qIndex]
+                });
+            }
+        });
+        
+        if (quizQueue.length === 0) {
+            alert('No valid missed questions found!');
+            switchView('overview');
+            return;
+        }
+        
+        state.currentChapterId = 'review';
+        state.currentQuestionIndex = 0;
+        currentQuizCorrect = 0;
+        currentQuizAttempted = 0;
+        isMockTest = false;
+        
+        document.getElementById('quiz-chapter-title').innerText = 'Review Mode: Error Log';
+        document.getElementById('total-q-num').innerText = quizQueue.length;
+        document.querySelector('.timer-settings').style.display = 'flex';
+        
+        startTimer();
+        renderQuestion();
+        switchView('quiz');
+    } catch (err) {
+        console.error('Failed to load review mode', err);
+        alert('Could not load Review Mode.');
+    }
+}
+
+window.startMockTest = function() {
+    let allQuestions = [];
+    Object.keys(state.questions).forEach(chId => {
+        state.questions[chId].forEach((q, idx) => {
+            allQuestions.push({
+                chapterId: chId,
+                qIndex: idx,
+                questionData: q
+            });
+        });
+    });
+    
+    // Shuffle and pick 20
+    allQuestions.sort(() => Math.random() - 0.5);
+    quizQueue = allQuestions.slice(0, 20);
+    
+    if (quizQueue.length === 0) {
+        alert("No questions available for mock test.");
+        switchView('overview');
+        return;
+    }
+    
+    state.currentChapterId = 'mock';
+    state.currentQuestionIndex = 0;
+    currentQuizCorrect = 0;
+    currentQuizAttempted = 0;
+    isMockTest = true;
+    mockTestSeconds = 35 * 60; // 35 minutes
+    
+    document.getElementById('quiz-chapter-title').innerText = 'Mock Test (20 Questions)';
+    document.getElementById('total-q-num').innerText = quizQueue.length;
+    document.querySelector('.timer-settings').style.display = 'none'; // Hide individual timer
+    
+    const timerText = document.getElementById('quiz-timer-text');
+    timerText.innerText = formatTimeShort(mockTestSeconds);
+    timerText.style.color = '';
+    
+    if (mockTestInterval) clearInterval(mockTestInterval);
+    mockTestInterval = setInterval(() => {
+        if (!timerPaused) {
+            mockTestSeconds--;
+            timerText.innerText = formatTimeShort(mockTestSeconds);
+            if (mockTestSeconds <= 60) timerText.style.color = 'var(--accent-warning)';
+            if (mockTestSeconds <= 10) timerText.style.color = 'var(--accent-error)';
+            
+            if (mockTestSeconds <= 0) {
+                clearInterval(mockTestInterval);
+                alert("Time's up!");
+                showResults();
+            }
+        }
+    }, 1000);
+    
+    // Stop normal timer
+    stopTimer();
+    
+    renderQuestion();
+    switchView('quiz');
+}

@@ -41,6 +41,12 @@
                 <a href="#" class="nav-item" id="nav-vocab">
                     <i class="fas fa-book"></i> Vocabulary Lists
                 </a>
+                <a href="#" class="nav-item" id="nav-review">
+                    <i class="fas fa-history"></i> Review Mode
+                </a>
+                <a href="#" class="nav-item" id="nav-mock">
+                    <i class="fas fa-stopwatch"></i> Mock Test
+                </a>
                 <a href="#" class="nav-item" id="nav-achievements">
                     <i class="fas fa-trophy"></i> Achievements
                 </a>
@@ -112,6 +118,18 @@
                         <div class="kpi-trend neutral" id="kpi-time-trend">All time</div>
                         <div style="margin-top: 0.4rem; font-size: 0.85rem; color: var(--text-secondary);">Today: <span id="kpi-time-today" style="font-weight: 600; color: var(--accent-primary);">0m</span></div>
                         <div class="kpi-icon">⏱</div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-title" style="display: flex; justify-content: space-between;">Daily XP Goal <i class="fas fa-cog" id="edit-goal-btn" style="cursor: pointer; opacity: 0.6;" title="Edit Goal"></i></div>
+                        <div style="display: flex; align-items: center; justify-content: center; margin-top: 0.5rem; position: relative;">
+                            <svg width="80" height="80" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"></circle>
+                                <circle id="goal-ring" cx="50" cy="50" r="40" fill="none" stroke="var(--accent-primary)" stroke-width="8" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" style="transition: stroke-dashoffset 1s ease-out; transform: rotate(-90deg); transform-origin: center;"></circle>
+                            </svg>
+                            <div style="position: absolute; text-align: center; font-weight: 700; font-size: 1.1rem; line-height: 1;">
+                                <span id="goal-xp-current">0</span><br>
+                                <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 500;">/ <span id="goal-xp-target">100</span> XP</span>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -127,11 +145,17 @@
                 </section>
 
                 <!-- Charts Section -->
-                <section class="charts-grid">
-                    <div class="chart-card glass large">
+                <section class="charts-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                    <div class="chart-card glass">
                         <h3>Accuracy by Subject</h3>
                         <div class="chart-container">
                             <canvas id="accuracyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card glass">
+                        <h3>Skill Radar</h3>
+                        <div class="chart-container">
+                            <canvas id="radarChart"></canvas>
                         </div>
                     </div>
                     <div class="chart-card glass">
