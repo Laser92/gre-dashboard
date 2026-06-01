@@ -3609,3 +3609,94 @@ window.startMockTest = function() {
     renderQuestion();
     switchView('quiz');
 }
+
+function renderRadarChart() {
+    const ctx = document.getElementById('radarChart');
+    if (!ctx) return;
+    if (radarChartInstance) {
+        radarChartInstance.destroy();
+    }
+    
+    const labels = [];
+    const dataPoints = [];
+    
+    state.chapters.forEach(ch => {
+        if (ch.id === '1') return; // Skip diagnostic
+        // Just extract the name like 'Text Completions'
+        const titleParts = ch.title.split('.');
+        labels.push(titleParts.length > 1 ? titleParts[1].trim() : ch.title);
+        
+        const prog = userProgress[ch.id];
+        if (!prog) {
+            dataPoints.push(0);
+            return;
+        }
+        let totalAttempts = 0;
+        let correctAttempts = 0;
+        Object.values(prog).forEach(q => {
+            if (q.status === 'correct' || q.status === 'missed') {
+                totalAttempts++;
+                if (q.status === 'correct') correctAttempts++;
+            }
+        });
+        const acc = totalAttempts > 0 ? (correctAttempts / totalAttempts) * 100 : 0;
+        dataPoints.push(Math.round(acc));
+    });
+    
+    radarChartInstance = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Skill Accuracy (%)',
+                data: dataPoints,
+                backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                borderColor: '#10b981',
+                pointBackgroundColor: '#10b981',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#10b981'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255,255,255,0.1)' },
+                    grid: { color: 'rgba(255,255,255,0.1)' },
+                    pointLabels: { color: 'rgba(255,255,255,0.8)', font: { size: 10 } },
+                    ticks: { display: false, min: 0, max: 100 }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+}
+
+function updateGoalRing() {
+    const today = getTodayDateString();
+    const currentXp = dailyXp[today] || 0;
+    
+    const xpCurrentEl = document.getElementById('goal-xp-current');
+    const xpTargetEl = document.getElementById('goal-xp-target');
+    
+    if (xpCurrentEl) xpCurrentEl.innerText = currentXp;
+    if (xpTargetEl) xpTargetEl.innerText = dailyGoalXp;
+    
+    const ring = document.getElementById('goal-ring');
+    if (ring) {
+        const circumference = 2 * Math.PI * 40; // 251.2
+        const percent = Math.min(currentXp / dailyGoalXp, 1);
+        const offset = circumference - (percent * circumference);
+        ring.style.strokeDashoffset = offset;
+        
+        if (percent >= 1) {
+            ring.style.stroke = '#fbbf24'; // Gold when complete
+        } else {
+            ring.style.stroke = 'var(--accent-primary)';
+        }
+    }
+}
