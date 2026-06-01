@@ -132,6 +132,10 @@ const SoundManager = {
     },
     pop() {
         this.playTone(300, 'sine', 0.05, 0.1);
+    },
+    buzz() {
+        this.playTone(150, 'square', 0.15, 0.08);
+        setTimeout(() => this.playTone(120, 'square', 0.2, 0.06), 100);
     }
 };
 function getStudyTimeStorageKey() {
@@ -2084,6 +2088,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         rememberCorrectQuestion(q);
         updateCorrectStreak(true);
         addXp(5);
+        SoundManager.ding();
         
         // Floating encouragement animation
         const quizCard = document.querySelector('.quiz-card');
@@ -2144,10 +2149,19 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         if (navigator.vibrate) {
             navigator.vibrate([100, 50, 100]); // Short vibration pattern
         }
+        SoundManager.buzz();
     }
 
     fExp.innerText = "Explanation: " + q.explanation;
+    
+    // Remember scroll position before showing feedback to prevent auto-scroll
+    const scrollContainer = document.querySelector('.main-content') || document.documentElement;
+    const savedScroll = scrollContainer.scrollTop;
+    
     feedback.style.display = 'flex';
+    
+    // Restore scroll position to prevent browser from jumping to the meanings list
+    scrollContainer.scrollTop = savedScroll;
 
     // Vocab logic
     const isVocabQuestion = state.currentChapterId === '3' || state.currentChapterId === '4' || state.currentChapterId === '6';
