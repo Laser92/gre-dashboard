@@ -2667,7 +2667,8 @@ function renderFlashcard() {
         inner.style.transition = '';
     }
     
-    document.getElementById('fc-actions').style.display = 'none';
+    const fcActions = document.getElementById('fc-actions');
+    if (fcActions) fcActions.style.display = 'none';
     const initActions = document.getElementById('fc-actions-initial');
     const diffActions = document.getElementById('fc-actions-difficulty');
     if (initActions) initActions.style.display = 'flex';
@@ -2697,8 +2698,10 @@ function renderFlashcard() {
     if (elEasy) elEasy.innerHTML = formatSrsTime(nextStates.easy.interval);
 
     // Update progress bar
-    document.getElementById('fc-progress').style.width = ((currentFlashcardIndex) / flashcardQueue.length * 100) + '%';
-    document.getElementById('fc-counter').innerText = `${currentFlashcardIndex + 1} / ${flashcardQueue.length}`;
+    const fcProgress = document.getElementById('fc-progress');
+    if (fcProgress) fcProgress.style.width = ((currentFlashcardIndex) / flashcardQueue.length * 100) + '%';
+    const fcCounter = document.getElementById('fc-counter');
+    if (fcCounter) fcCounter.innerText = `${currentFlashcardIndex + 1} / ${flashcardQueue.length}`;
 }
 
 // SM-2 logic
