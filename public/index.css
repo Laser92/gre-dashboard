@@ -252,8 +252,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
 }
 
 .topbar {
@@ -1592,10 +1591,7 @@ body {
 
     /* Main content adjustments */
     .main-content {
-        padding: 1.5rem;
-        padding-top: 4.5rem; /* Space for hamburger */
-        height: auto;
-        min-height: 100vh;
+        padding: 6rem 1.5rem 2rem 1.5rem;
     }
 
     /* Topbar stacks vertically */
@@ -1782,8 +1778,7 @@ body {
    ============================ */
 @media (max-width: 480px) {
     .main-content {
-        padding: 1rem;
-        padding-top: 4rem;
+        padding: 6rem 1rem 2rem 1rem;
         gap: 1.5rem;
     }
 

@@ -2636,6 +2636,8 @@ function renderFlashcard() {
     if (!flashcardQueue || flashcardQueue.length === 0) return;
     
     const q = flashcardQueue[currentFlashcardIndex];
+    console.log("DEBUG FLASHCARD:", q);
+    
     document.getElementById('fc-word').textContent = q.word || '';
     document.getElementById('fc-pos').textContent = q['part of speech'] ? `(${q['part of speech']})` : '';
     document.getElementById('fc-def').textContent = q.definition || '';
