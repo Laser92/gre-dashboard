@@ -492,15 +492,23 @@ async function loadStoredStreaks() {
             if (s.totalStreaksCompleted) totalStreaksCompleted = s.totalStreaksCompleted;
             if (s.maxCorrectStreakDate) maxCorrectStreakDate = s.maxCorrectStreakDate;
             
-            // Sync vocab lists from server to localStorage if they exist on server
-            if (s.starredWords) {
-                saveStarredWords(s.starredWords);
+            // Sync vocab lists: MERGE server + local (union), don't overwrite
+            if (s.starredWords && Array.isArray(s.starredWords)) {
+                const localStarred = getStarredWords();
+                const merged = [...new Set([...s.starredWords, ...localStarred])];
+                // Write directly to localStorage without triggering _forceStatsSync
+                localStorage.setItem(getStarredWordsKey(), JSON.stringify(merged));
             }
-            if (s.missedWords) {
-                saveMissedWords(s.missedWords);
+            if (s.missedWords && typeof s.missedWords === 'object') {
+                const localMissed = getMissedWords();
+                // Server takes priority, local fills gaps
+                const merged = { ...localMissed, ...s.missedWords };
+                localStorage.setItem(getMissedWordsKey(), JSON.stringify(merged));
             }
-            if (s.srsData && typeof saveSrsData === 'function') {
-                saveSrsData(s.srsData);
+            if (s.srsData && typeof s.srsData === 'object' && typeof saveSrsData === 'function') {
+                const localSrs = getSrsData();
+                const merged = { ...localSrs, ...s.srsData };
+                localStorage.setItem(getSrsDataKey(), JSON.stringify(merged));
             }
             if (s.badges) {
                 userBadges = s.badges;
