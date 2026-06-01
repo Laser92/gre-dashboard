@@ -877,6 +877,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         currentUsername = data.username;
         await loadStoredStudyTime();
         await loadStoredStreaks();
+        window.hasCompletedInitialLoad = true; // Mark initial load complete
         startGlobalStudyTimer();
         
         // Sync stats to server on page unload
@@ -2635,11 +2636,11 @@ function renderFlashcard() {
     if (!flashcardQueue || flashcardQueue.length === 0) return;
     
     const q = flashcardQueue[currentFlashcardIndex];
-    document.getElementById('fc-word').innerText = q.word || '';
-    document.getElementById('fc-pos').innerText = q['part of speech'] ? `(${q['part of speech']})` : '';
-    document.getElementById('fc-def').innerText = q.definition || '';
-    document.getElementById('fc-example').innerText = q.example ? `"${q.example}"` : '';
-    document.getElementById('fc-root').innerText = q.root ? `Root: ${q.root}` : '';
+    document.getElementById('fc-word').textContent = q.word || '';
+    document.getElementById('fc-pos').textContent = q['part of speech'] ? `(${q['part of speech']})` : '';
+    document.getElementById('fc-def').textContent = q.definition || '';
+    document.getElementById('fc-example').textContent = q.example ? `"${q.example}"` : '';
+    document.getElementById('fc-root').textContent = q.root ? `Root: ${q.root}` : '';
     
     const inner = document.querySelector('.flashcard-inner');
     if (inner) {
@@ -3113,7 +3114,11 @@ function checkAndRenderAchievements() {
     if (todayStudyTimeSeconds > 0 && (hour >= 22 || hour < 4)) awardBadge('night_owl');
     if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4) awardBadge('early_bird');
     
-    if (newBadge) {
+    // Prevent toast on initial data load
+    if (newBadge && !window.hasCompletedInitialLoad) {
+        _forceStatsSync(); // Still sync it
+        window.hasCompletedInitialLoad = true;
+    } else if (newBadge) {
         showToast('🏆 New Achievement Unlocked!', 'success');
         _forceStatsSync();
     }

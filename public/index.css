@@ -43,6 +43,9 @@ body {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* Edge glow for all glass cards that shines dynamically when scrolling */
@@ -782,6 +785,9 @@ body {
     position: relative;
     overflow: hidden;
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .quiz-card:hover {
