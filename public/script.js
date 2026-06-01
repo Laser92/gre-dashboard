@@ -3155,12 +3155,14 @@ function checkAndRenderAchievements() {
         'vocab_master': { id: 'vocab_master', name: 'Vocab Master', icon: 'fa-brain', color: '#ec4899', desc: 'Mastered 50 missed words', secret: true, tierClass: '' }
     };
     
-    let newBadge = false;
+    let newlyUnlockedBadges = [];
     
     const awardBadge = (bId) => {
         if (!userBadges.includes(bId)) {
             userBadges.push(bId);
-            newBadge = true;
+            if (BADGES[bId]) {
+                newlyUnlockedBadges.push(BADGES[bId]);
+            }
         }
     };
     
@@ -3196,11 +3198,11 @@ function checkAndRenderAchievements() {
     if (todayStudyTimeSeconds > 0 && hour < 6 && hour >= 4) awardBadge('early_bird');
     
     // Prevent toast on initial data load
-    if (newBadge && !window.hasCompletedInitialLoad) {
+    if (newlyUnlockedBadges.length > 0 && !window.hasCompletedInitialLoad) {
         _forceStatsSync(); // Still sync it
         window.hasCompletedInitialLoad = true;
-    } else if (newBadge) {
-        showToast('🏆 New Achievement Unlocked!', 'success');
+    } else if (newlyUnlockedBadges.length > 0) {
+        showAchievementPopup(newlyUnlockedBadges);
         _forceStatsSync();
     }
     
@@ -3348,6 +3350,78 @@ function checkAndRenderAchievements() {
             `;
         }).join('');
     }
+}
+
+function showAchievementPopup(badges) {
+    if (!badges || badges.length === 0) return;
+    
+    // Play a rewarding sound!
+    SoundManager.ding();
+    
+    // Create popup element if it doesn't exist
+    let popup = document.getElementById('achievement-popup');
+    if (!popup) {
+        popup = document.createElement('div');
+        popup.id = 'achievement-popup';
+        popup.className = 'achievement-popup glass';
+        popup.innerHTML = `<div class="achievement-popup-content"></div>`;
+        document.body.appendChild(popup);
+    }
+    
+    const content = popup.querySelector('.achievement-popup-content');
+    
+    let currentIndex = 0;
+    
+    function renderBadgeContent(badge) {
+        const glowColor = badge.color || '#fff';
+        content.style.setProperty('--glow-color', glowColor);
+        
+        content.innerHTML = `
+            <div class="achievement-popup-icon-container" style="border-color: ${badge.color}40;">
+                <i class="fas ${badge.icon}" style="color: ${badge.color};"></i>
+            </div>
+            <div class="achievement-popup-details">
+                <div class="achievement-popup-subtitle">Achievement Unlocked</div>
+                <div class="achievement-popup-title">${badge.name}</div>
+                <div class="achievement-popup-desc">${badge.desc}</div>
+            </div>
+        `;
+    }
+    
+    // Render first badge
+    renderBadgeContent(badges[currentIndex]);
+    
+    function showNext() {
+        currentIndex++;
+        if (currentIndex < badges.length) {
+            // Transition out
+            content.classList.add('fade-exit');
+            setTimeout(() => {
+                // Update content
+                renderBadgeContent(badges[currentIndex]);
+                content.classList.remove('fade-exit');
+                content.classList.add('fade-enter');
+                // Trigger reflow
+                void content.offsetWidth;
+                content.classList.remove('fade-enter');
+                
+                // Play subtle chime for next achievement
+                SoundManager.pop();
+                
+                // Schedule next
+                setTimeout(showNext, 4000);
+            }, 350); // Match CSS transition duration
+        } else {
+            // No more badges, close popup
+            popup.classList.add('hide');
+            setTimeout(() => {
+                popup.remove();
+            }, 450); // Match CSS transition duration
+        }
+    }
+    
+    // Schedule the first transition or removal
+    setTimeout(showNext, 4000);
 }
 
 // === KEYBOARD SHORTCUTS ===
@@ -3786,6 +3860,24 @@ function updateGoalRing() {
             ring.style.stroke = '#fbbf24'; // Gold when complete
         } else {
             ring.style.stroke = 'var(--accent-primary)';
+        }
+    }
+
+    // Update daily quest progress bar in quiz view
+    const questTextEl = document.getElementById('quiz-daily-quest-text');
+    const questFillEl = document.getElementById('quiz-daily-quest-fill');
+    if (questTextEl) {
+        questTextEl.innerText = `${currentXp} / ${dailyGoalXp} XP`;
+    }
+    if (questFillEl) {
+        const percent = Math.min((currentXp / dailyGoalXp) * 100, 100);
+        questFillEl.style.width = `${percent}%`;
+        if (percent >= 100) {
+            questFillEl.style.background = 'linear-gradient(90deg, #fbbf24, #f59e0b)';
+            questFillEl.style.boxShadow = '0 0 8px rgba(251, 191, 36, 0.6)';
+        } else {
+            questFillEl.style.background = 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
+            questFillEl.style.boxShadow = '0 0 8px var(--accent-primary)';
         }
     }
 }

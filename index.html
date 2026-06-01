@@ -199,6 +199,20 @@
                     </div>
                 </div>
 
+                <!-- Daily Quest Progress Bar -->
+                <div class="quiz-daily-quest-container" style="margin: 1rem 0 1.5rem 0; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                        <span style="font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-fire" style="color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251,191,36,0.4));"></i>
+                            <span>Daily Quest Progress</span>
+                        </span>
+                        <span id="quiz-daily-quest-text" style="font-weight: 700; color: var(--accent-primary);">0 / 100 XP</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); height: 8px; border-radius: 99px; overflow: hidden; position: relative;">
+                        <div id="quiz-daily-quest-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius: 99px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 8px var(--accent-primary);"></div>
+                    </div>
+                </div>
+
                 <div class="timer-settings" style="position: relative; margin-bottom: 15px; display: flex; justify-content: flex-end; align-items: center;">
                     <div style="position: relative;">
                         <div id="timer-challenge-prompt" class="glass" style="display: none; position: absolute; right: 0; bottom: calc(100% + 15px); padding: 8px 32px 8px 12px; border-radius: 8px; white-space: nowrap; animation: bounceVertical 2s infinite; z-index: 90; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); border: 1px solid var(--accent-primary); background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px);">
