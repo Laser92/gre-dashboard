@@ -2643,27 +2643,37 @@ async function loadFlashcards() {
 function buildFlashcardQueue() {
     try {
         const srsData = getSrsData();
+        const missedWords = getMissedWords() || {};
+        const starredWords = getStarredWords() || [];
         const now = new Date();
         
         let dueCards = [];
-        let unseenCards = [];
+        let newReviewCards = []; // missed/starred words without srsData
         
         flashcardsData.forEach(fc => {
-            let word = fc.word.toLowerCase();
-            let srs = srsData[word];
-            // Only include missed/revision cards (which exist in srsData)
+            const word = fc.word.toLowerCase().trim();
+            const srs = srsData[word];
+            
             if (srs) {
-                let nextReview = new Date(srs.nextReviewDate);
+                const nextReview = new Date(srs.nextReviewDate);
                 if (nextReview <= now) {
                     dueCards.push(fc);
+                }
+            } else {
+                // If it is missed or starred, and has no SRS entry yet, include it as a new review card
+                const isMissed = missedWords.hasOwnProperty(word);
+                const isStarred = starredWords.includes(word);
+                if (isMissed || isStarred) {
+                    newReviewCards.push(fc);
                 }
             }
         });
         
         shuffleArray(dueCards);
+        shuffleArray(newReviewCards);
         
-        // Only review due cards (which represent missed/revision flashcards)
-        flashcardQueue = dueCards.slice(0, 20);
+        // Prioritize due cards, fill up to 20 with new review cards
+        flashcardQueue = [...dueCards, ...newReviewCards].slice(0, 20);
         currentFlashcardIndex = 0;
 
         if (flashcardQueue.length > 0) {
@@ -3701,18 +3711,27 @@ document.addEventListener('visibilitychange', () => {
 });
 
 window.performUpdateRefresh = function() {
-    // User requested to clear cookies and cache
-    
-    // Clear all cookies
-    document.cookie.split(";").forEach(function(c) { 
-        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
-    });
-    
-    // Clear localStorage
-    localStorage.clear();
-    
-    // Hard refresh bypassing cache
-    window.location.reload(true);
+    // Clear service worker caches
+    if (window.caches) {
+        caches.keys().then(names => {
+            return Promise.all(names.map(name => caches.delete(name)));
+        }).then(() => {
+            // Unregister all service workers
+            if (navigator.serviceWorker) {
+                return navigator.serviceWorker.getRegistrations().then(registrations => {
+                    return Promise.all(registrations.map(r => r.unregister()));
+                });
+            }
+        }).then(() => {
+            // Force hard reload bypassing cache
+            window.location.reload(true);
+        }).catch(err => {
+            console.error('Update refresh failed, reloading:', err);
+            window.location.reload(true);
+        });
+    } else {
+        window.location.reload(true);
+    }
 };
 
 // === MOCK TEST & REVIEW MODE ===

@@ -400,7 +400,30 @@ app.get('/api/stats', async (req, res) => {
                 maxCorrectStreak: 0,
                 loginHistory: [],
                 badges: [],
+                dailyActivity: {},
+                missedWords: {},
+                srsData: {},
+                dailyXp: {},
+                dailyGoalXp: 100
             };
+        } else {
+            // Convert Map fields to plain JS objects because native Maps serialize to {} under JSON.stringify
+            const mapFields = ['dailyActivity', 'missedWords', 'srsData', 'dailyXp'];
+            mapFields.forEach(field => {
+                if (stats[field]) {
+                    if (stats[field] instanceof Map) {
+                        stats[field] = Object.fromEntries(stats[field]);
+                    } else if (typeof stats[field].entries === 'function') {
+                        stats[field] = Object.fromEntries(stats[field].entries());
+                    } else if (typeof stats[field] === 'object') {
+                        if (stats[field].toObject && typeof stats[field].toObject === 'function') {
+                            stats[field] = stats[field].toObject();
+                        }
+                    }
+                } else {
+                    stats[field] = {};
+                }
+            });
         }
         res.json({ stats });
     } catch (err) {
