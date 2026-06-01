@@ -1388,6 +1388,7 @@ function switchView(viewName) {
     document.getElementById('flashcards-view').style.display = 'none';
     document.getElementById('vocab-view').style.display = 'none';
     document.getElementById('achievements-view').style.display = 'none';
+    document.getElementById('leaderboard-view').style.display = 'none';
 
     if (viewName === 'overview') {
         document.getElementById('overview-view').style.display = 'block';
@@ -1407,6 +1408,8 @@ function switchView(viewName) {
         document.getElementById('vocab-view').style.display = 'block';
     } else if (viewName === 'achievements') {
         document.getElementById('achievements-view').style.display = 'block';
+    } else if (viewName === 'leaderboard') {
+        document.getElementById('leaderboard-view').style.display = 'block';
     }
 
     if (viewName === 'flashcards') {
@@ -3354,3 +3357,52 @@ function renderLeaderboard() {
         `;
     }).join('');
 }
+
+// === UPDATE TRACKING LOGIC ===
+let CLIENT_VERSION = null;
+
+async function checkServerVersion() {
+    try {
+        const res = await fetch('/api/version');
+        if (res.ok) {
+            const data = await res.json();
+            if (CLIENT_VERSION === null) {
+                // Initial load
+                CLIENT_VERSION = data.version;
+            } else if (CLIENT_VERSION !== data.version) {
+                // Version changed, show toast
+                document.getElementById('update-toast').style.display = 'flex';
+            }
+        }
+    } catch (e) {
+        console.warn('Could not check server version:', e);
+    }
+}
+
+// Check on initial load
+checkServerVersion();
+
+// Check periodically every 2 minutes
+setInterval(checkServerVersion, 120000);
+
+// Check immediately when user tabs back into the app
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        checkServerVersion();
+    }
+});
+
+window.performUpdateRefresh = function() {
+    // User requested to clear cookies and cache
+    
+    // Clear all cookies
+    document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+    });
+    
+    // Clear localStorage
+    localStorage.clear();
+    
+    // Hard refresh bypassing cache
+    window.location.reload(true);
+};

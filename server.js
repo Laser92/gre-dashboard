@@ -21,6 +21,9 @@ const PORT = process.env.PORT || 3000;
 // Trust Render's reverse proxy (needed for secure cookies behind HTTPS)
 app.set('trust proxy', 1);
 
+// Generate server version on startup
+const SERVER_VERSION = Date.now();
+
 // Database setup
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gre-dashboard';
 
@@ -470,6 +473,11 @@ app.get('/api/leaderboard', async (req, res) => {
         console.error('Leaderboard fetch error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
+});
+
+// GET /api/version — return server version for update checking
+app.get('/api/version', (req, res) => {
+    res.json({ version: SERVER_VERSION });
 });
 
 // Serve frontend files securely
