@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gre-dashboard-v1';
+const CACHE_NAME = 'gre-dashboard-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
