@@ -17,44 +17,238 @@ JSON_BANK_PATH = Path("questions.json")
 SHEET_NS = {"a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 
 SE_PAIR_CANDIDATES = """
-aberrant anomalous
+abjure retract
+abstruse esoteric
 abstruse recondite
-admonish rebuke
+acme apex
+acme pinnacle
+acme summit
+adamant inexorable
+adamant intransigent
 advocate proponent
 affable amiable
-ameliorate mitigate
-anodyne innocuous
+affable genial
+affluent flush
+ambiguous equivocal
+amenable tractable
+amiable genial
+antiquated archaic
 apathy indifference
+aphorism apothegm
+apotheosis paragon
+appease assuage
+appease conciliate
+appease mollify
 appease placate
+appease propitiate
+arbitrary capricious
+arbitrary whimsical
+arcane esoteric
+arrant thoroughgoing
+artful disingenuous
+artless candid
+artless guileless
 artless ingenuous
-ascetic austere
+ascribe impute
+assuage conciliate
+assuage mollify
+assuage placate
+audacious brazen
+audacious insolent
 audacious intrepid
+audacity temerity
+auspicious propitious
+austere spartan
+autocratic dictatorial
+autocratic magisterial
+autocratic peremptory
 avarice cupidity
 banal hackneyed
-belligerent truculent
-benign innocuous
-bolster buttress
-capricious fickle
+banal trite
+banality bromide
+banality platitude
+banish ostracize
+base ignoble
+becoming decorous
+belittle denigrate
+bellicose contentious
+benign genial
+besmirch denigrate
+blatant conspicuous
+blatant vociferous
+bowdlerize expurgate
+brazen insolent
+broadside tirade
+bromide platitude
+browbeat hector
+bucolic pastoral
+bucolic provincial
+bucolic rustic
+bumbling maladroit
+byzantine convoluted
+byzantine involved
+byzantine tortuous
+candid forthright
+candid ingenuous
+capricious whimsical
 castigate chastise
-censure rebuke
-deleterious pernicious
+castigate objurgate
+cede concede
+chastise objurgate
+chauvinism jingoism
+chauvinist jingoist
+choleric irascible
+circumvent elude
+coalesce conflate
+cogent telling
+colossal prodigious
+commendable laudable
+commensurate coterminous
+complaisant obliging
+conciliate mollify
+conciliate placate
+conciliate reconcile
+conspicuous ostentatious
+convoluted involved
+convoluted tortuous
+cornucopia profusion
+cosmopolitan urbane
+countermand rescind
+cryptic esoteric
+cryptic inscrutable
+crystallize elucidate
+dearth paucity
+decorous staid
+decry excoriate
+decry objurgate
+degrade demean
+diligent industrious
+diligent sedulous
+disinterested impartial
+dispassionate impartial
+docile tractable
+dolorous lachrymose
+economical frugal
+economical thrifty
+effervescent scintillating
+efficacious telling
+efficacious trenchant
+elaborate expound
+elusive evasive
+embroiled involved
+endemic indigenous
+enervate unnerve
 ephemeral transient
+ephemeral transitory
+epigram quip
+equitable evenhanded
+equivocal evasive
 equivocate prevaricate
-esoteric arcane
+erratic fickle
+erratic mercurial
+esoteric recondite
+ethereal gossamer
+exacerbate exasperate
+exacting fastidious
+exasperate incense
+excoriate objurgate
+exorbitant unconscionable
 fastidious meticulous
+fawn grovel
+fawn kowtow
+fecund prolific
+fickle mercurial
+flippant frivolous
+foible idiosyncrasy
+foolhardy rash
+fractious nettlesome
+fractious peevish
+fractious petulant
+fractious refractory
+frugal thrifty
+frustrate thwart
+furtive surreptitious
+gaffe solecism
+gambit ploy
+grandiloquent portentous
 hackneyed trite
-impetuous rash
+haphazard slapdash
+haughty supercilious
+humdrum prosaic
+illustrious redoubtable
+immaterial impertinent
+impecunious penurious
+impertinent impudent
 implacable inexorable
-intransigent uncompromising
-opaque obscure
-precipitate rash
-prosaic mundane
-rarefied esoteric
-scrupulous meticulous
-taciturn reticent
-tractable malleable
-trenchant incisive
-vindicate exonerate
+impregnable inviolable
+impregnable unassailable
+improvident imprudent
+improvident prodigal
+imprudent rash
+impudent insolent
+incontrovertible irrefutable
+indecorous unseemly
+indecorous untoward
+inexorable intransigent
+inkling intimation
+insidious pernicious
+insipid jejune
+intermittent sporadic
+invective vitriol
+inviolable inviolate
+inviolable unassailable
+involved tortuous
+itinerant peripatetic
+jejune puerile
+lambast rebuke
+lambast remonstrate
+languid lethargic
+languish pine
+limpid lucid
+limpid pellucid
+lucid pellucid
+magisterial peremptory
+malleable tractable
+malodorous noisome
+maudlin mawkish
+maudlin sentimental
+maunder palaver
+mawkish sentimental
+meticulous punctilious
+miscreant reprobate
+mollify placate
+morose saturnine
+morose sullen
+mundane quotidian
+munificent unstinting
+nettlesome peevish
+nettlesome petulant
+obdurate obstinate
+parochial provincial
+parsimonious penurious
+pastoral rustic
+pedestrian prosaic
+peevish petulant
+perspicacious sagacious
+pinnacle summit
+pithy sententious
+portentous prodigious
+prodigal unstinting
+profligate spendthrift
+provident thrifty
+provincial rustic
+raffish rakish
+ravenous voracious
+rebuke remonstrate
+reproach upbraid
+reticent taciturn
+robust stalwart
+saturnine sullen
+snide supercilious
+specious spurious
+staunch steadfast
+transient transitory
+unseemly untoward
 """.strip().splitlines()
 
 HARD_RC_PASSAGES = [
@@ -334,13 +528,16 @@ def make_tc_question(q_id, entry, grouped):
     }
 
 
-def make_se_question(q_id, pair, lookup, grouped):
+def make_se_question(q_id, pair, sentence, lookup, grouped):
     first = lookup[pair[0]]
     second = lookup[pair[1]]
-    first_sentence = blank_example(first, exact_only=True)
-    second_sentence = blank_example(second, exact_only=True)
-    sentence = first_sentence or second_sentence
-    source = first if first_sentence else second
+    
+    first_sentence = blank_example(first, exact_only=False)
+    if first_sentence and first_sentence == sentence:
+        source = first
+    else:
+        source = second
+        
     distractors = choose_distractors(source, grouped, 4, excluded={first["word"], second["word"]})
     options = [first["word"], second["word"], *distractors]
     random.shuffle(options)
@@ -425,21 +622,60 @@ def build_bank(entries):
     pair_words = []
     for row in SE_PAIR_CANDIDATES:
         first, second = row.split()
-        if (
-            first in lookup and second in lookup
-            and (blank_example(lookup[first], exact_only=True) or blank_example(lookup[second], exact_only=True))
-        ):
-            pair_words.append((first, second))
+        if first in lookup and second in lookup:
+            if blank_example(lookup[first], exact_only=False) or blank_example(lookup[second], exact_only=False):
+                pair_words.append((first, second))
     random.shuffle(pair_words)
 
     tc_list = [
         make_tc_question(i + 1, blankable[i % len(blankable)], grouped)
         for i in range(300)
     ]
-    se_list = [
-        make_se_question(i + 1, pair_words[i % len(pair_words)], lookup, grouped)
-        for i in range(300)
-    ]
+
+    se_list = []
+    unique_sentences = set()
+    
+    # First pass: try to use the first sentence for each pair
+    for pair in pair_words:
+        first = lookup[pair[0]]
+        second = lookup[pair[1]]
+        f_sent = blank_example(first, exact_only=False)
+        s_sent = blank_example(second, exact_only=False)
+        sentence = f_sent or s_sent
+        if sentence and sentence not in unique_sentences:
+            unique_sentences.add(sentence)
+            q = make_se_question(len(se_list) + 1, pair, sentence, lookup, grouped)
+            se_list.append(q)
+            if len(se_list) == 300:
+                break
+                
+    # Second pass: use the second sentence for pairs that have both
+    if len(se_list) < 300:
+        for pair in pair_words:
+            first = lookup[pair[0]]
+            second = lookup[pair[1]]
+            f_sent = blank_example(first, exact_only=False)
+            s_sent = blank_example(second, exact_only=False)
+            if f_sent and s_sent:
+                sentence = s_sent
+                if sentence not in unique_sentences:
+                    unique_sentences.add(sentence)
+                    q = make_se_question(len(se_list) + 1, pair, sentence, lookup, grouped)
+                    se_list.append(q)
+                    if len(se_list) == 300:
+                        break
+
+    # If we STILL have less than 300 (which shouldn't happen with 232 pairs),
+    # we fall back to repeating from the start
+    if len(se_list) < 300:
+        base_len = len(se_list)
+        for i in range(300 - base_len):
+            orig_q = se_list[i % base_len]
+            q = deepcopy(orig_q)
+            q["id"] = base_len + i + 1
+            # Adjust the text with the new ID
+            q["text"] = re.sub(r"^SE Question \d+:", f"SE Question {q['id']}:", q["text"])
+            se_list.append(q)
     mb_list = []
     for i in range(300):
         q = make_multi_blank_question(i + 1, lookup, grouped)
