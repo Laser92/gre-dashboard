@@ -2824,7 +2824,12 @@ window.handleFlashcardAnswer = async function(rating) {
     }
 };
 
+window._swipeCooldown = false;
+
 window.flipFlashcard = function() {
+    // Ignore clicks that fire right after a swipe gesture
+    if (window._swipeCooldown) return;
+    
     const inner = document.querySelector('.flashcard-inner');
     if (inner) {
         inner.classList.toggle('is-flipped');
@@ -3393,18 +3398,23 @@ function initFlashcardSwipe() {
     const handleEnd = () => {
         if (!isDragging || !fcInner) return;
         isDragging = false;
+        isFlipped = false;
         fcInner.classList.remove('is-dragging');
 
         const threshold = 100;
         if (currentX < -threshold) {
-            // Swiped left
+            // Swiped left — block the follow-up click from re-flipping
+            window._swipeCooldown = true;
             handleFlashcardAnswer('again');
             fcInner.style.transform = '';
+            setTimeout(() => { window._swipeCooldown = false; }, 400);
         } else if (currentX > threshold) {
-            // Swiped right - "Knew It"
+            // Swiped right — block the follow-up click from re-flipping
+            window._swipeCooldown = true;
             handleFlashcardAnswer('good');
             fcInner.style.transform = '';
             document.querySelectorAll('.swipe-overlay').forEach(el => el.style.opacity = '0');
+            setTimeout(() => { window._swipeCooldown = false; }, 400);
         } else {
             // Snap back
             fcInner.style.transform = '';
