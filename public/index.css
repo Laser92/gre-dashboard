@@ -2310,3 +2310,67 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+/* --- LEADERBOARD CSS --- */
+.toggle-switch {
+    display: flex;
+    background: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding: 4px;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.lb-row {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+    transition: background 0.2s;
+}
+
+.lb-row:last-child {
+    border-bottom: none;
+}
+
+.lb-row:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.lb-rank {
+    width: 40px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.lb-user {
+    flex: 1;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+.lb-xp {
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.lb-rank-1 { color: #ffd700; font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+.lb-rank-2 { color: #c0c0c0; font-size: 1.4rem; }
+.lb-rank-3 { color: #cd7f32; font-size: 1.3rem; }

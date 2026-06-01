@@ -42,7 +42,10 @@
                     <i class="fas fa-book"></i> Vocabulary Lists
                 </a>
                 <a href="#" class="nav-item" id="nav-achievements">
-                    <i class="fas fa-medal"></i> Achievements
+                    <i class="fas fa-trophy"></i> Achievements
+                </a>
+                <a href="#" class="nav-item" id="nav-leaderboard">
+                    <i class="fas fa-crown"></i> Leaderboard
                 </a>
             </nav>
             <div class="book-info-card">
@@ -325,6 +328,23 @@
                 <h2>Your Achievements</h2>
                 <p style="color: var(--text-secondary); margin-bottom: 2rem;">Track your progress and unlock special badges as you study.</p>
                 <div id="full-achievements-container" class="achievements-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
+                </div>
+            </div>
+
+            <!-- LEADERBOARD VIEW -->
+            <div id="leaderboard-view" class="view-section" style="display: none; padding-top: 2rem; max-width: 800px; margin: 0 auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Global Leaderboard</h2>
+                    <div class="toggle-switch">
+                        <button id="lb-btn-weekly" class="toggle-btn active" onclick="switchLeaderboard('weekly')">Weekly</button>
+                        <button id="lb-btn-monthly" class="toggle-btn" onclick="switchLeaderboard('monthly')">Monthly</button>
+                    </div>
+                </div>
+                
+                <div class="glass" style="padding: 1.5rem; border-radius: 16px;">
+                    <div id="leaderboard-container">
+                        <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">Loading leaderboard...</div>
+                    </div>
                 </div>
             </div>
 

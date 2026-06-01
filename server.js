@@ -76,7 +76,8 @@ const userStatsSchema = new mongoose.Schema({
     starredWords: { type: [String], default: [] },
     missedWords: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
     srsData: { type: Map, of: mongoose.Schema.Types.Mixed, default: {} },
-    badges: { type: [String], default: [] }
+    badges: { type: [String], default: [] },
+    dailyXp: { type: Map, of: Number, default: {} }
 }, { timestamps: true });
 
 const UserStats = mongoose.model('UserStats', userStatsSchema);
@@ -389,7 +390,7 @@ app.put('/api/stats', async (req, res) => {
         correctStreak, maxCorrectStreak,
         loginHistory, dailyActivity,
         sumOfCorrectStreaks, totalStreaksCompleted, maxCorrectStreakDate,
-        starredWords, missedWords, srsData, badges
+        starredWords, missedWords, srsData, badges, dailyXp
     } = req.body;
     try {
         const update = {};
@@ -410,6 +411,7 @@ app.put('/api/stats', async (req, res) => {
         if (missedWords !== undefined) update.missedWords = missedWords;
         if (srsData !== undefined) update.srsData = srsData;
         if (badges !== undefined) update.badges = badges;
+        if (dailyXp !== undefined) update.dailyXp = dailyXp;
 
         await UserStats.findOneAndUpdate(
             { userId: req.session.userId },
@@ -419,6 +421,53 @@ app.put('/api/stats', async (req, res) => {
         res.json({ success: true });
     } catch (err) {
         console.error('Stats save error:', err.message);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// GET /api/leaderboard — get weekly and monthly XP leaderboards
+app.get('/api/leaderboard', async (req, res) => {
+    try {
+        const stats = await UserStats.find({}).populate('userId', 'username');
+        
+        // Calculate current week boundaries (Monday 00:00 UTC to Sunday 23:59 UTC)
+        const now = new Date();
+        const dayOfWeek = now.getUTCDay();
+        const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+        const startOfWeek = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - daysSinceMonday));
+        
+        // Calculate current month boundaries
+        const startOfMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+        
+        const leaderboard = stats.map(s => {
+            let weeklyXp = 0;
+            let monthlyXp = 0;
+            
+            if (s.dailyXp) {
+                for (const [dateStr, xp] of s.dailyXp.entries()) {
+                    const date = new Date(dateStr + "T00:00:00Z");
+                    if (date >= startOfWeek) {
+                        weeklyXp += xp;
+                    }
+                    if (date >= startOfMonth) {
+                        monthlyXp += xp;
+                    }
+                }
+            }
+            
+            return {
+                username: s.userId ? s.userId.username : 'Unknown',
+                weeklyXp,
+                monthlyXp
+            };
+        });
+        
+        const weekly = [...leaderboard].sort((a, b) => b.weeklyXp - a.weeklyXp).slice(0, 50);
+        const monthly = [...leaderboard].sort((a, b) => b.monthlyXp - a.monthlyXp).slice(0, 50);
+        
+        res.json({ weekly, monthly });
+    } catch (err) {
+        console.error('Leaderboard fetch error:', err.message);
         res.status(500).json({ error: 'Server error' });
     }
 });

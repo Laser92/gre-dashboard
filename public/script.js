@@ -66,6 +66,7 @@ let _serverStats = null;          // Cached server stats to avoid redundant save
 
 // Additional tracked stats
 let dailyActivity = {};           // Map of YYYY-MM-DD -> seconds
+let dailyXp = {};                 // Map of YYYY-MM-DD -> XP earned
 let sumOfCorrectStreaks = 0;
 let totalStreaksCompleted = 0;
 let maxCorrectStreakDate = '';
@@ -122,6 +123,9 @@ async function loadStoredStudyTime() {
             } else {
                 todayStudyTimeSeconds = 0;
             }
+            if (s.dailyXp) {
+                dailyXp = s.dailyXp;
+            }
             // Sync localStorage with authoritative values
             localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
             localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
@@ -138,7 +142,16 @@ function persistStudyTime() {
     localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
     localStorage.setItem(getTodayDateStorageKey(), today);
     dailyActivity[today] = todayStudyTimeSeconds;
-    // Debounced server sync (every 30 seconds)
+}
+
+function addXp(amount) {
+    const today = getTodayDateString();
+    if (!dailyXp[today]) dailyXp[today] = 0;
+    dailyXp[today] += amount;
+    _forceStatsSync();
+}
+
+function startStudyTimer() {
     _debouncedSyncStats();
 }
 
@@ -167,7 +180,8 @@ function _syncStatsToServer() {
         starredWords: getStarredWords(),
         missedWords: getMissedWords(),
         srsData: typeof getSrsData === 'function' ? getSrsData() : {},
-        badges: userBadges
+        badges: userBadges,
+        dailyXp
     };
     fetch('/api/stats', {
         method: 'PUT',
@@ -195,7 +209,8 @@ function _forceStatsSync() {
         starredWords: getStarredWords(),
         missedWords: getMissedWords(),
         srsData: typeof getSrsData === 'function' ? getSrsData() : {},
-        badges: userBadges
+        badges: userBadges,
+        dailyXp
     };
     try {
         fetch('/api/stats', {
@@ -952,6 +967,7 @@ function setupEventListeners() {
     document.getElementById('nav-flashcards').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-flashcards', '#flashcards-view'); switchView('flashcards'); });
     document.getElementById('nav-vocab').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-vocab', '#vocab-view'); switchView('vocab'); showVocabTab('missed'); });
     document.getElementById('nav-achievements').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-achievements', '#achievements-view'); switchView('achievements'); checkAndRenderAchievements(); });
+    document.getElementById('nav-leaderboard').addEventListener('click', (e) => { e.preventDefault(); showOverviewSection('nav-leaderboard', '#leaderboard-view'); switchView('leaderboard'); fetchLeaderboard(); });
     document.getElementById('back-to-overview').addEventListener('click', () => {
         stopTimer(); // Stop timer if leaving quiz mid-way
         switchView('overview');
@@ -1969,6 +1985,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
         currentQuizCorrect++;
         rememberCorrectQuestion(q);
         updateCorrectStreak(true);
+        addXp(5);
         
         // Floating encouragement animation
         const quizCard = document.querySelector('.quiz-card');
@@ -2605,6 +2622,8 @@ window.handleFlashcardAnswer = async function(rating) {
     if (!q) return;
     
     let word = q.word.toLowerCase();
+    
+    addXp(1);
     
     // Update srsData
     const srsData = getSrsData();
@@ -3274,3 +3293,64 @@ function initFlashcardSwipe() {
 }
 
 document.addEventListener('DOMContentLoaded', initFlashcardSwipe);
+
+// === LEADERBOARD LOGIC ===
+let currentLeaderboardData = { weekly: [], monthly: [] };
+let currentLeaderboardView = 'weekly'; // 'weekly' or 'monthly'
+
+async function fetchLeaderboard() {
+    const container = document.getElementById('leaderboard-container');
+    if (!container) return;
+    container.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 2rem;"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+    
+    try {
+        const res = await fetch('/api/leaderboard');
+        if (res.ok) {
+            currentLeaderboardData = await res.json();
+            renderLeaderboard();
+        } else {
+            container.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">Failed to load leaderboard.</div>';
+        }
+    } catch (err) {
+        console.error('Leaderboard error:', err);
+        container.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">Failed to load leaderboard.</div>';
+    }
+}
+
+window.switchLeaderboard = function(type) {
+    currentLeaderboardView = type;
+    document.getElementById('lb-btn-weekly').classList.toggle('active', type === 'weekly');
+    document.getElementById('lb-btn-monthly').classList.toggle('active', type === 'monthly');
+    renderLeaderboard();
+};
+
+function renderLeaderboard() {
+    const container = document.getElementById('leaderboard-container');
+    if (!container) return;
+    
+    const data = currentLeaderboardData[currentLeaderboardView] || [];
+    
+    if (data.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 2rem;">No XP data yet for this period.</div>';
+        return;
+    }
+    
+    container.innerHTML = data.map((entry, index) => {
+        const rank = index + 1;
+        let rankHtml = `<div class="lb-rank">${rank}</div>`;
+        if (rank === 1) rankHtml = `<div class="lb-rank lb-rank-1"><i class="fas fa-medal"></i></div>`;
+        else if (rank === 2) rankHtml = `<div class="lb-rank lb-rank-2"><i class="fas fa-medal"></i></div>`;
+        else if (rank === 3) rankHtml = `<div class="lb-rank lb-rank-3"><i class="fas fa-medal"></i></div>`;
+        
+        const xp = currentLeaderboardView === 'weekly' ? entry.weeklyXp : entry.monthlyXp;
+        const isMe = entry.username === currentUsername;
+        
+        return `
+            <div class="lb-row" style="${isMe ? 'background: rgba(255,255,255,0.08);' : ''}">
+                ${rankHtml}
+                <div class="lb-user" style="${isMe ? 'color: var(--accent-primary);' : ''}">${entry.username} ${isMe ? '(You)' : ''}</div>
+                <div class="lb-xp">${xp} XP</div>
+            </div>
+        `;
+    }).join('');
+}
