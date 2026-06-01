@@ -194,8 +194,9 @@ app.post('/api/logout', (req, res) => {
     res.json({ success: true });
 });
 
-app.get('/api/me', (req, res) => {
-    if (req.session.userId) {
+app.get('/api/me', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+    if (req.session && req.session.userId) {
         res.json({ loggedIn: true, username: req.session.username });
     } else {
         res.json({ loggedIn: false });
@@ -290,6 +291,7 @@ app.get('/api/progress/:chapterId', async (req, res) => {
 
 // GET /api/progress — load ALL progress for the user (all chapters)
 app.get('/api/progress', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
     try {
         const docs = await Progress.find({
@@ -374,6 +376,7 @@ app.post('/api/progress', async (req, res) => {
 
 // GET /api/stats — load user stats (study time, streaks, login history)
 app.get('/api/stats', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
     if (!req.session.userId) return res.status(401).json({ error: 'Not authenticated' });
     try {
         let stats = await UserStats.findOne({ userId: req.session.userId }).lean();

@@ -1553,8 +1553,6 @@ function renderDashboard() {
     checkAndRenderAchievements();
     
     // Render Charts
-    renderAccuracyChart();
-    renderProgressionChart();
     renderRadarChart();
 
     // Render Table
