@@ -170,37 +170,103 @@ async function loadStoredStudyTime() {
         todayStudyTimeSeconds = 0;
     }
     
-    // Then try to load from server (authoritative source)
+    // Then pull authoritative data from the server
+    await pullStatsFromServer();
+}
+
+// Unified pull from server — called on startup, tab focus, and visibility change
+// Merges server state into local state and refreshes UI
+async function pullStatsFromServer() {
+    if (!currentUsername) return;
     try {
         const res = await fetch('/api/stats');
-        if (res.ok) {
-            const data = await res.json();
-            const s = data.stats;
-            _serverStats = s;
-            // Server has the authoritative total — use whichever is larger
-            if (s.totalStudyTimeSeconds > totalStudyTimeSeconds) {
-                totalStudyTimeSeconds = s.totalStudyTimeSeconds;
-            }
-            // Handle today's time from server
-            if (s.todayDate === today) {
-                if (s.todayStudyTimeSeconds > todayStudyTimeSeconds) {
-                    todayStudyTimeSeconds = s.todayStudyTimeSeconds;
-                }
-            } else {
-                todayStudyTimeSeconds = 0;
-            }
-            if (s.badges) userBadges = s.badges;
-            if (s.dailyXp) dailyXp = s.dailyXp;
-            if (s.dailyGoalXp) dailyGoalXp = s.dailyGoalXp;
-            
-            checkAndRenderAchievements();
-            // Sync localStorage with authoritative values
-            localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
-            localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
-            localStorage.setItem(getTodayDateStorageKey(), today);
+        if (!res.ok) return;
+        const data = await res.json();
+        const s = data.stats;
+        _serverStats = s;
+        const today = getTodayDateString();
+
+        // --- Study Time (use whichever is larger) ---
+        if (s.totalStudyTimeSeconds > totalStudyTimeSeconds) {
+            totalStudyTimeSeconds = s.totalStudyTimeSeconds;
         }
+        if (s.todayDate === today) {
+            if (s.todayStudyTimeSeconds > todayStudyTimeSeconds) {
+                todayStudyTimeSeconds = s.todayStudyTimeSeconds;
+            }
+        } else if (s.todayDate && s.todayDate !== today) {
+            // Server date is stale, keep local today value
+        }
+
+        // --- Streaks (take the larger) ---
+        const localDaysStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
+        if (s.daysStreak > localDaysStreak) {
+            localStorage.setItem(getDaysStreakKey(), String(s.daysStreak));
+        }
+        if (s.lastStudyDate) {
+            const localLast = localStorage.getItem(getLastStudyDateKey()) || '';
+            if (!localLast || s.lastStudyDate > localLast) {
+                localStorage.setItem(getLastStudyDateKey(), s.lastStudyDate);
+            }
+        }
+        const localCorrectStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+        if (s.correctStreak > localCorrectStreak) {
+            localStorage.setItem(getCorrectStreakKey(), String(s.correctStreak));
+        }
+        const localMaxCorrectStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+        if (s.maxCorrectStreak > localMaxCorrectStreak) {
+            localStorage.setItem(getMaxCorrectStreakKey(), String(s.maxCorrectStreak));
+        }
+
+        // --- Activity & streak metadata ---
+        if (s.dailyActivity) dailyActivity = s.dailyActivity;
+        if (s.sumOfCorrectStreaks) sumOfCorrectStreaks = s.sumOfCorrectStreaks;
+        if (s.totalStreaksCompleted) totalStreaksCompleted = s.totalStreaksCompleted;
+        if (s.maxCorrectStreakDate) maxCorrectStreakDate = s.maxCorrectStreakDate;
+
+        // --- Vocab Lists: MERGE server + local (union) ---
+        if (s.starredWords && Array.isArray(s.starredWords)) {
+            const localStarred = getStarredWords();
+            const merged = [...new Set([...s.starredWords, ...localStarred])];
+            localStorage.setItem(getStarredWordsKey(), JSON.stringify(merged));
+        }
+        if (s.missedWords && typeof s.missedWords === 'object') {
+            const localMissed = getMissedWords();
+            const merged = { ...localMissed, ...s.missedWords };
+            localStorage.setItem(getMissedWordsKey(), JSON.stringify(merged));
+        }
+        if (s.srsData && typeof s.srsData === 'object') {
+            const localSrs = getSrsData();
+            const merged = { ...localSrs, ...s.srsData };
+            localStorage.setItem(getSrsDataKey(), JSON.stringify(merged));
+        }
+
+        // --- Badges & XP ---
+        if (s.badges) userBadges = s.badges;
+        if (s.dailyXp) dailyXp = s.dailyXp;
+        if (s.dailyGoalXp) dailyGoalXp = s.dailyGoalXp;
+
+        // --- Persist authoritative values to localStorage ---
+        localStorage.setItem(getStudyTimeStorageKey(), String(totalStudyTimeSeconds));
+        localStorage.setItem(getTodayStudyTimeStorageKey(), String(todayStudyTimeSeconds));
+        localStorage.setItem(getTodayDateStorageKey(), today);
+
+        // --- Refresh UI ---
+        updateTimeKPI();
+        updateGoalRing();
+        updateDaysStreak();
+        const currentStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+        const maxStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+        const el = document.getElementById('streak-correct');
+        const countEl = document.getElementById('streak-correct-count');
+        if (el && countEl) {
+            countEl.textContent = currentStreak;
+            el.setAttribute('title', `⚡ ${currentStreak} correct in a row! (Best: ${maxStreak})`);
+        }
+        applyStreakVisuals(currentStreak);
+        checkAndRenderAchievements();
     } catch (e) {
-        console.warn('Could not load stats from server, using localStorage:', e.message);
+        console.warn('Could not pull stats from server:', e.message);
     }
 }
 
@@ -465,59 +531,8 @@ function updateCorrectStreak(isCorrect) {
 async function loadStoredStreaks() {
     if (!currentUsername) return;
     
-    // Try to restore from server first
-    try {
-        if (_serverStats) {
-            const s = _serverStats;
-            const today = getTodayDateString();
-            // Merge: take the larger of server vs localStorage
-            const localDaysStreak = Number(localStorage.getItem(getDaysStreakKey()) || 0);
-            const localCorrectStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
-            const localMaxCorrectStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
-            
-            if (s.daysStreak > localDaysStreak) {
-                localStorage.setItem(getDaysStreakKey(), String(s.daysStreak));
-            }
-            if (s.lastStudyDate && !localStorage.getItem(getLastStudyDateKey())) {
-                localStorage.setItem(getLastStudyDateKey(), s.lastStudyDate);
-            }
-            if (s.correctStreak > localCorrectStreak) {
-                localStorage.setItem(getCorrectStreakKey(), String(s.correctStreak));
-            }
-            if (s.maxCorrectStreak > localMaxCorrectStreak) {
-                localStorage.setItem(getMaxCorrectStreakKey(), String(s.maxCorrectStreak));
-            }
-            if (s.dailyActivity) dailyActivity = s.dailyActivity;
-            if (s.sumOfCorrectStreaks) sumOfCorrectStreaks = s.sumOfCorrectStreaks;
-            if (s.totalStreaksCompleted) totalStreaksCompleted = s.totalStreaksCompleted;
-            if (s.maxCorrectStreakDate) maxCorrectStreakDate = s.maxCorrectStreakDate;
-            
-            // Sync vocab lists: MERGE server + local (union), don't overwrite
-            if (s.starredWords && Array.isArray(s.starredWords)) {
-                const localStarred = getStarredWords();
-                const merged = [...new Set([...s.starredWords, ...localStarred])];
-                // Write directly to localStorage without triggering _forceStatsSync
-                localStorage.setItem(getStarredWordsKey(), JSON.stringify(merged));
-            }
-            if (s.missedWords && typeof s.missedWords === 'object') {
-                const localMissed = getMissedWords();
-                // Server takes priority, local fills gaps
-                const merged = { ...localMissed, ...s.missedWords };
-                localStorage.setItem(getMissedWordsKey(), JSON.stringify(merged));
-            }
-            if (s.srsData && typeof s.srsData === 'object' && typeof saveSrsData === 'function') {
-                const localSrs = getSrsData();
-                const merged = { ...localSrs, ...s.srsData };
-                localStorage.setItem(getSrsDataKey(), JSON.stringify(merged));
-            }
-            if (s.badges) {
-                userBadges = s.badges;
-            }
-        }
-    } catch (e) {
-        console.warn('Failed to restore streaks from server:', e.message);
-    }
-    
+    // pullStatsFromServer() already merged server data into localStorage,
+    // so just read localStorage and update streak UI
     updateDaysStreak();
     
     const currentStreak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
@@ -3664,6 +3679,8 @@ function renderLeaderboard() {
         return;
     }
     
+    const periodLabel = currentLeaderboardView === 'weekly' ? 'Weekly' : 'Monthly';
+    
     container.innerHTML = data.map((entry, index) => {
         const rank = index + 1;
         let rankHtml = `<div class="lb-rank">${rank}</div>`;
@@ -3671,14 +3688,18 @@ function renderLeaderboard() {
         else if (rank === 2) rankHtml = `<div class="lb-rank lb-rank-2"><i class="fas fa-medal"></i></div>`;
         else if (rank === 3) rankHtml = `<div class="lb-rank lb-rank-3"><i class="fas fa-medal"></i></div>`;
         
-        const xp = currentLeaderboardView === 'weekly' ? entry.weeklyXp : entry.monthlyXp;
+        const accumulatedXp = currentLeaderboardView === 'weekly' ? entry.weeklyXp : entry.monthlyXp;
+        const todayXp = entry.dailyXp || 0;
         const isMe = entry.username === currentUsername;
         
         return `
             <div class="lb-row" style="${isMe ? 'background: rgba(255,255,255,0.08);' : ''}">
                 ${rankHtml}
                 <div class="lb-user" style="${isMe ? 'color: var(--accent-primary);' : ''}">${entry.username} ${isMe ? '(You)' : ''}</div>
-                <div class="lb-xp">${xp} XP</div>
+                <div class="lb-xp-block">
+                    <div class="lb-xp">${accumulatedXp} <span class="lb-xp-label">${periodLabel}</span></div>
+                    <div class="lb-xp-daily">${todayXp} XP today</div>
+                </div>
             </div>
         `;
     }).join('');
@@ -3711,10 +3732,15 @@ checkServerVersion();
 // Check periodically every 2 minutes
 setInterval(checkServerVersion, 120000);
 
-// Check immediately when user tabs back into the app
+// Check immediately when user tabs back into the app, and sync stats across devices
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
         checkServerVersion();
+        // Pull fresh stats from server to sync across devices
+        pullStatsFromServer();
+    } else {
+        // Push current state before tab goes away
+        _forceStatsSync();
     }
 });
 

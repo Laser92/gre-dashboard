@@ -482,10 +482,13 @@ app.get('/api/leaderboard', async (req, res) => {
     try {
         const stats = await UserStats.find({}).populate('userId', 'username');
         
-        // Calculate current week boundaries (Monday 00:00 IST)
+        // Calculate current date/time in IST
         const now = new Date();
         const istOffset = 5.5 * 60 * 60 * 1000;
         const nowIst = new Date(now.getTime() + istOffset);
+        
+        // Today's date string in IST (YYYY-MM-DD)
+        const todayStr = `${nowIst.getUTCFullYear()}-${String(nowIst.getUTCMonth() + 1).padStart(2, '0')}-${String(nowIst.getUTCDate()).padStart(2, '0')}`;
         
         const dayOfWeek = nowIst.getUTCDay();
         const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
@@ -498,21 +501,37 @@ app.get('/api/leaderboard', async (req, res) => {
         const leaderboard = stats.map(s => {
             let weeklyXp = 0;
             let monthlyXp = 0;
+            let todayXp = 0;
             
             if (s.dailyXp) {
-                for (const [dateStr, xp] of s.dailyXp.entries()) {
+                // Safely extract entries — support both Mongoose Map (.entries()) and plain objects
+                let entries;
+                if (typeof s.dailyXp.entries === 'function') {
+                    entries = Array.from(s.dailyXp.entries());
+                } else if (typeof s.dailyXp === 'object') {
+                    entries = Object.entries(s.dailyXp);
+                } else {
+                    entries = [];
+                }
+                
+                for (const [dateStr, xp] of entries) {
+                    const xpNum = Number(xp) || 0;
+                    if (dateStr === todayStr) {
+                        todayXp = xpNum;
+                    }
                     const date = new Date(dateStr + "T00:00:00+05:30");
                     if (date >= startOfWeek) {
-                        weeklyXp += xp;
+                        weeklyXp += xpNum;
                     }
                     if (date >= startOfMonth) {
-                        monthlyXp += xp;
+                        monthlyXp += xpNum;
                     }
                 }
             }
             
             return {
                 username: s.userId ? s.userId.username : 'Unknown',
+                dailyXp: todayXp,
                 weeklyXp,
                 monthlyXp
             };
