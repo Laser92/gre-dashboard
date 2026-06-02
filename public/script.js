@@ -171,6 +171,7 @@ async function loadStoredStudyTime() {
     }
     
     // Then pull authoritative data from the server
+    loadCachedDailyXp();
     await pullStatsFromServer();
 }
 
@@ -243,7 +244,15 @@ async function pullStatsFromServer() {
 
         // --- Badges & XP ---
         if (s.badges) userBadges = s.badges;
-        if (s.dailyXp) dailyXp = s.dailyXp;
+        // Merge dailyXp: take the max per date to prevent cross-device overwrites
+        if (s.dailyXp && typeof s.dailyXp === 'object') {
+            const serverXp = s.dailyXp;
+            const allDates = new Set([...Object.keys(dailyXp), ...Object.keys(serverXp)]);
+            for (const d of allDates) {
+                dailyXp[d] = Math.max(Number(dailyXp[d] || 0), Number(serverXp[d] || 0));
+            }
+        }
+        saveDailyXpToCache();
         if (s.dailyGoalXp) dailyGoalXp = s.dailyGoalXp;
 
         // --- Persist authoritative values to localStorage ---
@@ -282,6 +291,7 @@ function addXp(amount) {
     const today = getTodayDateString();
     if (!dailyXp[today]) dailyXp[today] = 0;
     dailyXp[today] += amount;
+    saveDailyXpToCache();
     SoundManager.ding();
     _forceStatsSync();
     updateGoalRing(); // Dynamically update ring
@@ -866,14 +876,16 @@ function refreshStatsFromProgress() {
 function computeVerbalScore(correct, attempted) {
     if (attempted === 0) return 0;
     const acc = correct / attempted;
-    // Confidence ramp: score becomes more reliable as more questions are attempted
-    // At 10 questions we only have ~30% confidence, at 50 we're at ~80%, at 100+ we're near full
-    const confidence = Math.min(1, attempted / 120);
-    // Raw score: map accuracy to 130-170 range with a slight curve
-    // 0% accuracy = 130, 50% = ~148, 75% = ~158, 90% = ~165, 100% = 170
-    const rawScore = 130 + Math.pow(acc, 1.3) * 40;
-    // Blend raw score with baseline (130) based on confidence
-    const blendedScore = 130 + (rawScore - 130) * confidence;
+    // Bayesian approach: blend observed accuracy with a 150 baseline
+    // Confidence grows linearly to 1 at 40 questions (a full GRE Verbal section)
+    const confidence = Math.min(1, attempted / 40);
+    // Raw score: map accuracy to the 130-170 range
+    // 0% = 130, 50% = ~148, 75% = ~158, 90% = ~165, 100% = 170
+    const rawScore = 130 + Math.pow(acc, 1.2) * 40;
+    // Baseline: average GRE Verbal score
+    const baseline = 150;
+    // Blend: low confidence hugs the baseline, high confidence trusts accuracy
+    const blendedScore = baseline * (1 - confidence) + rawScore * confidence;
     return Math.round(Math.min(170, Math.max(130, blendedScore)));
 }
 
@@ -1543,7 +1555,7 @@ function renderDashboard() {
     document.getElementById('top-target-score').innerText = `Current: ${state.diagnosticScore > 0 ? state.diagnosticScore : '--'} / 170`;
     
     if (state.diagnosticScore > 0) {
-        const minQForReliable = 50;
+        const minQForReliable = 40;
         if (state.questionsAttempted < minQForReliable) {
             document.getElementById('kpi-score-trend').innerText = `Estimated (${state.questionsAttempted}/${minQForReliable} Qs for reliable score)`;
             document.getElementById('kpi-score-trend').className = 'kpi-trend neutral';
@@ -2953,6 +2965,27 @@ function getSrsData() {
 function saveSrsData(obj) {
     localStorage.setItem(getSrsDataKey(), JSON.stringify(obj));
     if (typeof _forceStatsSync === 'function') _forceStatsSync();
+}
+
+// DailyXp localStorage cache
+function getDailyXpKey() { return `greDailyXp:${currentUsername || 'guest'}`; }
+
+function loadCachedDailyXp() {
+    try {
+        const cached = JSON.parse(localStorage.getItem(getDailyXpKey()));
+        if (cached && typeof cached === 'object') {
+            // Merge cached into current dailyXp using max per date
+            for (const [d, xp] of Object.entries(cached)) {
+                dailyXp[d] = Math.max(Number(dailyXp[d] || 0), Number(xp || 0));
+            }
+        }
+    } catch (e) { /* ignore parse errors */ }
+}
+
+function saveDailyXpToCache() {
+    try {
+        localStorage.setItem(getDailyXpKey(), JSON.stringify(dailyXp));
+    } catch (e) { /* ignore quota errors */ }
 }
 
 function saveMissedWords(obj) {

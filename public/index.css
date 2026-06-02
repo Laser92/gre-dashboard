@@ -16,10 +16,19 @@
     --font-body: 'Inter', sans-serif;
 }
 
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+canvas {
+    max-width: 100%;
 }
 
 body {
@@ -1576,11 +1585,13 @@ body {
         bottom: 0;
         width: 280px;
         transform: translateX(-100%);
+        visibility: hidden;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .sidebar.open {
         transform: translateX(0);
+        visibility: visible;
     }
 
     .sidebar-overlay.active {
@@ -2453,8 +2464,8 @@ body {
     z-index: 10000;
     animation: achievementSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     pointer-events: auto;
-    min-width: 320px;
-    max-width: 480px;
+    min-width: min(320px, 90vw);
+    max-width: min(480px, 90vw);
 }
 
 .achievement-popup.hide {
