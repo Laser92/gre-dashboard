@@ -2549,3 +2549,290 @@ body {
     font-size: 0.85rem;
     color: var(--text-secondary);
 }
+
+/* ============================
+   FINAL MOBILE LAYOUT GUARDS
+   Keep this block last so it wins over inline-heavy sections.
+   ============================ */
+@media (max-width: 768px) {
+    html,
+    body,
+    .dashboard-container,
+    .main-content,
+    #overview-view,
+    #quiz-view,
+    #flashcards-view,
+    #vocab-view,
+    #achievements-view,
+    #leaderboard-view {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .main-content {
+        min-width: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .glass,
+    .daily-quest-bar-card,
+    .achievements-section,
+    .kpi-card,
+    .chart-card,
+    .table-section,
+    .quiz-card,
+    .results-card,
+    .flashcard-front,
+    .flashcard-back {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .daily-quest-bar-card > div:first-child,
+    .quiz-daily-quest-container > div:first-child {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    .achievements-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100%;
+    }
+
+    #overview-view .charts-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+
+    .chart-container {
+        width: 100%;
+        min-width: 0;
+        min-height: 220px;
+    }
+
+    .table-section {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .progress-table {
+        min-width: 620px;
+    }
+
+    .quiz-header {
+        align-items: stretch;
+        gap: 0.9rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .quiz-header h2 {
+        width: 100%;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .quiz-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .quiz-timer,
+    .quiz-progress {
+        flex: 1 1 auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .timer-settings {
+        justify-content: flex-start !important;
+        width: 100%;
+        margin-bottom: 1rem !important;
+    }
+
+    .timer-settings > div {
+        width: 100%;
+    }
+
+    .timer-settings-btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .timer-settings-dropdown {
+        left: 0;
+        right: auto;
+        width: min(100%, 320px);
+        min-width: 0;
+    }
+
+    #timer-challenge-prompt {
+        left: 0 !important;
+        right: auto !important;
+        width: min(100%, calc(100vw - 2rem));
+        white-space: normal !important;
+    }
+
+    .quiz-card {
+        width: 100%;
+        margin: 0;
+    }
+
+    .quiz-card-topline {
+        align-items: flex-start;
+    }
+
+    .question-tag {
+        flex-shrink: 0;
+        font-size: 0.78rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .quiz-question,
+    .quiz-question-instruction,
+    .quiz-passage,
+    .quiz-option {
+        overflow-wrap: anywhere;
+    }
+
+    .quiz-options {
+        width: 100%;
+    }
+
+    .quiz-blank-group {
+        flex: 1 1 100% !important;
+        min-width: 0 !important;
+        width: 100%;
+    }
+
+    .quiz-feedback {
+        align-items: stretch;
+    }
+
+    #next-question-btn {
+        width: 100%;
+        align-self: stretch !important;
+    }
+
+    #flashcards-view {
+        max-width: none !important;
+        width: 100%;
+        margin: 0 !important;
+        padding-top: 1rem !important;
+    }
+
+    #flashcards-view > div:first-child {
+        align-items: flex-start !important;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+
+    #flashcards-view > div:first-child > div:first-child {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.75rem !important;
+    }
+
+    .flashcard-container {
+        height: min(400px, 62vh);
+        margin: 1.25rem 0;
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+        padding: 1.5rem;
+    }
+
+    #fc-word {
+        font-size: clamp(1.75rem, 10vw, 2.5rem) !important;
+        overflow-wrap: anywhere;
+    }
+
+    #fc-actions-difficulty {
+        flex-direction: column;
+    }
+
+    #fc-actions-difficulty button,
+    #fc-actions > button {
+        width: 100%;
+    }
+
+    .vocab-list li {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .badge-card,
+    .achievement-popup-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+    }
+
+    .topbar,
+    .profile-widget {
+        min-width: 0;
+    }
+
+    .profile-widget {
+        gap: 0.45rem;
+    }
+
+    .streak-badge-days,
+    .streak-badge-correct,
+    .score-badge {
+        flex: 1 1 auto;
+        justify-content: center;
+        min-width: 0;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .quiz-timer,
+    .quiz-progress {
+        flex-basis: 100%;
+    }
+
+    .quiz-card-topline {
+        gap: 0.75rem;
+    }
+
+    .quiz-question-number {
+        font-size: 0.85rem;
+    }
+
+    .quiz-question {
+        font-size: 1rem;
+    }
+
+    .quiz-question-instruction {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .quiz-option span:last-child {
+        min-width: 0;
+    }
+
+    .flashcard-container {
+        height: min(360px, 58vh);
+    }
+
+    .flashcard-front,
+    .flashcard-back {
+        padding: 1.25rem;
+        border-radius: 14px;
+    }
+
+    .swipe-overlay {
+        font-size: 1.5rem;
+    }
+}
