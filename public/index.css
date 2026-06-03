@@ -2572,8 +2572,10 @@ body {
 
     .main-content {
         min-width: 0;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        width: auto;
+        overflow-x: visible;
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
     }
 
     .glass,
@@ -2588,6 +2590,26 @@ body {
     .flashcard-back {
         min-width: 0;
         max-width: 100%;
+    }
+
+    .topbar,
+    .welcome-text,
+    .welcome-text h1,
+    .welcome-text p,
+    .profile-widget,
+    .daily-quest-bar-card,
+    .achievements-section,
+    .kpi-grid,
+    .charts-grid,
+    .table-section {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .welcome-text p {
+        line-height: 1.45;
+        overflow-wrap: break-word;
     }
 
     .daily-quest-bar-card > div:first-child,
@@ -2773,8 +2795,8 @@ body {
 
 @media (max-width: 480px) {
     .main-content {
-        padding-left: 0.85rem;
-        padding-right: 0.85rem;
+        padding-left: max(1.25rem, env(safe-area-inset-left));
+        padding-right: max(1.25rem, env(safe-area-inset-right));
     }
 
     .topbar,
