@@ -1527,6 +1527,8 @@ function switchView(viewName) {
         renderDashboard(); // Refresh stats when coming back
     } else if (viewName === 'quiz') {
         document.getElementById('quiz-view').style.display = 'block';
+        renderQuizQuestCarousel();
+        startQuizQuestCarousel();
     } else if (viewName === 'results') {
         document.getElementById('results-view').style.display = 'block';
     } else if (viewName === 'flashcards') {
@@ -1539,6 +1541,9 @@ function switchView(viewName) {
     } else if (viewName === 'leaderboard') {
         document.getElementById('leaderboard-view').style.display = 'block';
     }
+
+    // Stop quiz carousel when not in quiz view
+    if (viewName !== 'quiz') stopQuizQuestCarousel();
 
     if (viewName === 'flashcards') {
         startPassiveStudyTimer();
@@ -2089,6 +2094,7 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     options.forEach(opt => opt.style.pointerEvents = 'none'); // Disable clicking
     
     currentQuizAttempted++;
+    _incrementTodayQuestionsAnswered();
     
     const correctAnswers = getCorrectAnswers(q);
     let isCorrect = false;
@@ -2949,6 +2955,7 @@ function getStarredWords() {
 
 function saveStarredWords(arr) {
     localStorage.setItem(getStarredWordsKey(), JSON.stringify(arr));
+    _incrementTodayStarredCount();
     if (typeof _forceStatsSync === 'function') _forceStatsSync();
 }
 
@@ -3996,39 +4003,198 @@ function updateGoalRing() {
         }
     }
 
-    // Update daily quest progress bar in overview dashboard
-    const dashTextEl = document.getElementById('dashboard-daily-quest-text');
-    const dashFillEl = document.getElementById('dashboard-daily-quest-fill');
-    if (dashTextEl) {
-        dashTextEl.innerText = `${currentXp} / ${dailyGoalXp} XP`;
-    }
-    if (dashFillEl) {
-        const percent = Math.min((currentXp / dailyGoalXp) * 100, 100);
-        dashFillEl.style.width = `${percent}%`;
-        if (percent >= 100) {
-            dashFillEl.style.background = 'linear-gradient(90deg, #fbbf24, #f59e0b)';
-            dashFillEl.style.boxShadow = '0 0 8px rgba(251, 191, 36, 0.6)';
-        } else {
-            dashFillEl.style.background = 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
-            dashFillEl.style.boxShadow = '0 0 8px var(--accent-primary)';
-        }
-    }
+    // Update daily quests UI
+    updateDailyQuests();
+}
 
-    // Update daily quest progress bar in quiz view
-    const questTextEl = document.getElementById('quiz-daily-quest-text');
-    const questFillEl = document.getElementById('quiz-daily-quest-fill');
-    if (questTextEl) {
-        questTextEl.innerText = `${currentXp} / ${dailyGoalXp} XP`;
-    }
-    if (questFillEl) {
-        const percent = Math.min((currentXp / dailyGoalXp) * 100, 100);
-        questFillEl.style.width = `${percent}%`;
-        if (percent >= 100) {
-            questFillEl.style.background = 'linear-gradient(90deg, #fbbf24, #f59e0b)';
-            questFillEl.style.boxShadow = '0 0 8px rgba(251, 191, 36, 0.6)';
-        } else {
-            questFillEl.style.background = 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
-            questFillEl.style.boxShadow = '0 0 8px var(--accent-primary)';
+// === DAILY QUESTS SYSTEM ===
+const QUEST_POOL = [
+    { id: 'xp_50',     icon: 'fa-bolt',       color: '#fbbf24', name: 'Earn 50 XP',                   target: 50,  type: 'xp' },
+    { id: 'xp_100',    icon: 'fa-fire',        color: '#f97316', name: 'Earn 100 XP',                  target: 100, type: 'xp' },
+    { id: 'xp_150',    icon: 'fa-meteor',      color: '#ef4444', name: 'Earn 150 XP',                  target: 150, type: 'xp' },
+    { id: 'streak_3',  icon: 'fa-bullseye',    color: '#10b981', name: 'Get a 3-question streak',      target: 3,   type: 'streak' },
+    { id: 'streak_5',  icon: 'fa-crosshairs',  color: '#14b8a6', name: 'Get a 5-question streak',      target: 5,   type: 'streak' },
+    { id: 'streak_10', icon: 'fa-fire-flame-curved', color: '#f43f5e', name: 'Get a 10-question streak', target: 10, type: 'streak' },
+    { id: 'time_10',   icon: 'fa-hourglass-half', color: '#8b5cf6', name: 'Study for 10 minutes',      target: 600, type: 'time' },
+    { id: 'time_20',   icon: 'fa-clock',       color: '#a78bfa', name: 'Study for 20 minutes',         target: 1200, type: 'time' },
+    { id: 'time_30',   icon: 'fa-stopwatch',   color: '#7c3aed', name: 'Study for 30 minutes',         target: 1800, type: 'time' },
+    { id: 'qs_10',     icon: 'fa-pen-to-square', color: '#3b82f6', name: 'Answer 10 questions',        target: 10,  type: 'questions' },
+    { id: 'qs_25',     icon: 'fa-list-check',  color: '#2563eb', name: 'Answer 25 questions',          target: 25,  type: 'questions' },
+    { id: 'qs_50',     icon: 'fa-clipboard-check', color: '#1d4ed8', name: 'Answer 50 questions',      target: 50,  type: 'questions' },
+    { id: 'star_3',    icon: 'fa-star',        color: '#eab308', name: 'Star 3 new words',              target: 3,   type: 'starred' },
+    { id: 'perfect_5', icon: 'fa-trophy',      color: '#f59e0b', name: 'Get 5 correct in a row',       target: 5,   type: 'peak_streak' },
+    { id: 'acc_80',    icon: 'fa-chart-line',  color: '#22d3ee', name: '80%+ accuracy (10+ Qs)',        target: 80,  type: 'accuracy' },
+];
+
+let _dailyQuests = [];
+let _quizCarouselIdx = 0;
+let _quizCarouselTimer = null;
+let _todayQuestionsAnswered = 0;
+let _todayStarredCount = 0;
+
+function _questDateSeed(dateStr) {
+    let h = 0;
+    for (let i = 0; i < dateStr.length; i++) h = ((h << 5) - h + dateStr.charCodeAt(i)) | 0;
+    return Math.abs(h);
+}
+
+function getDailyQuests() {
+    const today = getTodayDateString();
+    if (_dailyQuests.length === 3 && _dailyQuests[0]._date === today) return _dailyQuests;
+
+    // Pick 3 quests from different types using a date-seeded shuffle
+    const types = [...new Set(QUEST_POOL.map(q => q.type))];
+    const shuffledTypes = types.sort((a, b) => _questDateSeed(today + a) - _questDateSeed(today + b));
+    const selectedTypes = shuffledTypes.slice(0, 3);
+
+    _dailyQuests = selectedTypes.map(type => {
+        const candidates = QUEST_POOL.filter(q => q.type === type);
+        const idx = _questDateSeed(today + type + 'pick') % candidates.length;
+        return { ...candidates[idx], _date: today };
+    });
+    return _dailyQuests;
+}
+
+function getQuestProgress(quest) {
+    const today = getTodayDateString();
+    const currentXp = dailyXp[today] || 0;
+    const streak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+    const maxStreak = Number(localStorage.getItem(getMaxCorrectStreakKey()) || 0);
+
+    switch (quest.type) {
+        case 'xp':         return Math.min(currentXp, quest.target);
+        case 'streak':     return Math.min(Math.max(streak, maxStreak), quest.target);
+        case 'peak_streak': return Math.min(Math.max(streak, maxStreak), quest.target);
+        case 'time':       return Math.min(todayStudyTimeSeconds, quest.target);
+        case 'questions':  return Math.min(_todayQuestionsAnswered, quest.target);
+        case 'starred':    return Math.min(_todayStarredCount, quest.target);
+        case 'accuracy': {
+            if (_todayQuestionsAnswered < 10) return 0;
+            const overall = getProgressAccuracy();
+            return overall.percent >= quest.target ? quest.target : overall.percent;
         }
+        default: return 0;
     }
 }
+
+function isQuestCompleted(quest) { return getQuestProgress(quest) >= quest.target; }
+
+function formatQuestProgress(quest) {
+    const prog = getQuestProgress(quest);
+    if (quest.type === 'time') return `${Math.floor(prog / 60)}/${Math.floor(quest.target / 60)} min`;
+    if (quest.type === 'accuracy') {
+        if (_todayQuestionsAnswered < 10) return `Need ${10 - _todayQuestionsAnswered} more Qs`;
+        return prog >= quest.target ? 'Done' : `${prog}%`;
+    }
+    return `${prog}/${quest.target}`;
+}
+
+function getQuestPercent(quest) {
+    const prog = getQuestProgress(quest);
+    if (quest.type === 'accuracy') {
+        if (_todayQuestionsAnswered < 10) return 0;
+        return prog >= quest.target ? 100 : Math.min((prog / quest.target) * 100, 99);
+    }
+    return Math.min((prog / quest.target) * 100, 100);
+}
+
+function renderDashboardQuests() {
+    const quests = getDailyQuests();
+    const container = document.getElementById('dashboard-quests-list');
+    if (!container) return;
+
+    const completedCount = quests.filter(q => isQuestCompleted(q)).length;
+    const badge = document.getElementById('dashboard-quests-completed-badge');
+    if (badge) {
+        badge.textContent = `${completedCount}/3`;
+        badge.style.display = 'inline-flex';
+        badge.style.background = completedCount === 3 ? 'rgba(251,191,36,0.2)' : 'rgba(16,185,129,0.15)';
+        badge.style.color = completedCount === 3 ? '#fbbf24' : 'var(--accent-success)';
+    }
+
+    container.innerHTML = quests.map(quest => {
+        const pct = getQuestPercent(quest);
+        const done = isQuestCompleted(quest);
+        const progText = formatQuestProgress(quest);
+        const barBg = done ? 'linear-gradient(90deg, #fbbf24, #f59e0b)' : 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
+        return `
+            <div style="display: flex; align-items: center; gap: 10px; ${done ? 'opacity: 0.65;' : ''}">
+                <i class="fas ${quest.icon}" style="color: ${quest.color}; font-size: 1rem; min-width: 20px; text-align: center;"></i>
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 3px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                        <span style="color: var(--text-primary); font-weight: 500; ${done ? 'text-decoration: line-through; opacity: 0.8;' : ''}">${quest.name}</span>
+                        <span style="font-weight: 700; color: ${done ? 'var(--accent-success)' : 'var(--accent-primary)'}; font-size: 0.8rem;">${done ? '✓' : progText}</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); height: 6px; border-radius: 99px; overflow: hidden;">
+                        <div style="width: ${pct}%; height: 100%; background: ${barBg}; border-radius: 99px; transition: width 0.5s ease;"></div>
+                    </div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function renderQuizQuestCarousel() {
+    const quests = getDailyQuests();
+    const carousel = document.getElementById('quiz-quest-carousel');
+    if (!carousel) return;
+
+    carousel.innerHTML = quests.map((quest, i) => {
+        const pct = getQuestPercent(quest);
+        const done = isQuestCompleted(quest);
+        const progText = formatQuestProgress(quest);
+        const barBg = done ? 'linear-gradient(90deg, #fbbf24, #f59e0b)' : 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))';
+        return `
+            <div class="quiz-quest-slide" data-slide="${i}" style="
+                position: absolute; top: 0; left: 0; right: 0;
+                opacity: ${i === _quizCarouselIdx ? 1 : 0};
+                transform: translateY(${i === _quizCarouselIdx ? 0 : 8}px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                pointer-events: ${i === _quizCarouselIdx ? 'auto' : 'none'};
+                display: flex; flex-direction: column; gap: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                    <span style="display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text-primary);">
+                        <i class="fas ${quest.icon}" style="color: ${quest.color}; font-size: 0.9rem;"></i>
+                        ${quest.name}
+                    </span>
+                    <span style="font-weight: 700; color: ${done ? 'var(--accent-success)' : 'var(--accent-primary)'}; font-size: 0.8rem;">${done ? '✓ Done' : progText}</span>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); height: 6px; border-radius: 99px; overflow: hidden;">
+                    <div style="width: ${pct}%; height: 100%; background: ${barBg}; border-radius: 99px; transition: width 0.5s ease;"></div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function startQuizQuestCarousel() {
+    if (_quizCarouselTimer) clearInterval(_quizCarouselTimer);
+    _quizCarouselTimer = setInterval(() => {
+        _quizCarouselIdx = (_quizCarouselIdx + 1) % getDailyQuests().length;
+        const slides = document.querySelectorAll('.quiz-quest-slide');
+        slides.forEach((slide, i) => {
+            const isActive = i === _quizCarouselIdx;
+            slide.style.opacity = isActive ? '1' : '0';
+            slide.style.transform = isActive ? 'translateY(0)' : 'translateY(8px)';
+            slide.style.pointerEvents = isActive ? 'auto' : 'none';
+        });
+    }, 4000);
+}
+
+function stopQuizQuestCarousel() {
+    if (_quizCarouselTimer) { clearInterval(_quizCarouselTimer); _quizCarouselTimer = null; }
+}
+
+function updateDailyQuests() {
+    renderDashboardQuests();
+    renderQuizQuestCarousel();
+}
+
+function _incrementTodayQuestionsAnswered() {
+    _todayQuestionsAnswered++;
+    updateDailyQuests();
+}
+
+function _incrementTodayStarredCount() {
+    _todayStarredCount++;
+    updateDailyQuests();
+}
+
