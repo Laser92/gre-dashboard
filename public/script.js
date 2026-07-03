@@ -1605,6 +1605,9 @@ function renderDashboard() {
     // Render Charts
     renderRadarChart();
 
+    // Render Study Heatmap
+    renderStudyHeatmap();
+
     // Render Table
     const tbody = document.getElementById('chapter-table-body');
     if (!tbody) return;
@@ -2393,6 +2396,8 @@ function finishChapter() {
         if (!userBadges.includes('perfect_score')) {
             userBadges.push('perfect_score');
         }
+        // Celebrate perfect chapter score
+        setTimeout(() => fireBigConfetti(), 500);
     }
 
     document.getElementById('results-chapter-name').innerText = chapter.title;
@@ -4203,3 +4208,223 @@ function _incrementTodayStarredCount() {
     updateDailyQuests();
 }
 
+// === KEYBOARD SHORTCUTS ===
+document.addEventListener('keydown', (e) => {
+    // Only active during quiz view
+    if (currentViewName !== 'quiz') return;
+    // Don't intercept if typing in an input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    const feedback = document.getElementById('quiz-feedback');
+    const isFeedbackVisible = feedback && feedback.style.display !== 'none';
+
+    if (isFeedbackVisible) {
+        // Enter, Space, or ArrowRight → next question
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextQuestion();
+        }
+        return;
+    }
+
+    // 1-5 keys to select options (mapped to display order, not data-option index)
+    const keyNum = parseInt(e.key);
+    if (keyNum >= 1 && keyNum <= 9) {
+        e.preventDefault();
+        const options = document.querySelectorAll('#quiz-options-container > .quiz-option, #quiz-options-container > .quiz-blank-group .quiz-option');
+        // For non-multi-blank, select by display order
+        const nonBlankOptions = document.querySelectorAll('#quiz-options-container > .quiz-option');
+        if (nonBlankOptions.length > 0 && keyNum <= nonBlankOptions.length) {
+            const target = nonBlankOptions[keyNum - 1];
+            if (target && target.style.pointerEvents !== 'none') {
+                target.click();
+            }
+        }
+    }
+});
+
+// === CONFETTI CELEBRATIONS ===
+let _confettiGoalFired = false; // Prevent multiple fires per session for XP goal
+let _confettiQuestsFired = false;
+
+function fireConfetti(options = {}) {
+    if (typeof confetti !== 'function') return;
+    const defaults = {
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.7 },
+        colors: ['#fbbf24', '#3b82f6', '#10b981', '#8b5cf6', '#f43f5e'],
+        disableForReducedMotion: true,
+    };
+    confetti({ ...defaults, ...options });
+}
+
+function fireBigConfetti() {
+    if (typeof confetti !== 'function') return;
+    const duration = 2000;
+    const end = Date.now() + duration;
+    const colors = ['#fbbf24', '#3b82f6', '#10b981', '#8b5cf6', '#f43f5e', '#f97316'];
+
+    (function frame() {
+        confetti({
+            particleCount: 3,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors,
+            disableForReducedMotion: true,
+        });
+        confetti({
+            particleCount: 3,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors,
+            disableForReducedMotion: true,
+        });
+
+        if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+}
+
+function checkConfettiTriggers() {
+    const today = getTodayDateString();
+    const currentXp = dailyXp[today] || 0;
+
+    // Daily XP goal reached
+    if (!_confettiGoalFired && currentXp >= dailyGoalXp) {
+        _confettiGoalFired = true;
+        setTimeout(() => fireConfetti({ particleCount: 120, spread: 100 }), 300);
+    }
+
+    // All 3 daily quests completed
+    const quests = getDailyQuests();
+    const allDone = quests.every(q => isQuestCompleted(q));
+    if (!_confettiQuestsFired && allDone) {
+        _confettiQuestsFired = true;
+        setTimeout(() => fireBigConfetti(), 300);
+    }
+}
+
+// Hook confetti into addXp so it fires on goal completion
+const _originalAddXp = addXp;
+addXp = function(amount) {
+    _originalAddXp(amount);
+    checkConfettiTriggers();
+};
+
+// === STUDY HEATMAP ===
+function renderStudyHeatmap() {
+    const container = document.getElementById('study-heatmap');
+    const summaryEl = document.getElementById('heatmap-summary');
+    if (!container) return;
+
+    const today = new Date();
+    const totalWeeks = 16;
+    const totalDays = totalWeeks * 7;
+
+    // Build date range: go back totalDays from today, aligned to start on Sunday
+    const endDate = new Date(today);
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - totalDays + 1);
+    // Align to the previous Sunday
+    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+    // Collect activity data
+    const cells = [];
+    const d = new Date(startDate);
+    let activeDays = 0;
+    let totalSeconds = 0;
+
+    while (d <= endDate) {
+        const dateStr = d.toISOString().slice(0, 10);
+        const seconds = Number(dailyActivity[dateStr] || 0);
+        const isToday = dateStr === today.toISOString().slice(0, 10);
+
+        let level = 0;
+        if (seconds > 0) {
+            activeDays++;
+            totalSeconds += seconds;
+            if (seconds >= 3600) level = 4;       // 60+ min
+            else if (seconds >= 1800) level = 3;  // 30+ min
+            else if (seconds >= 600) level = 2;   // 10+ min
+            else level = 1;                        // < 10 min
+        }
+
+        const mins = Math.floor(seconds / 60);
+        const label = seconds === 0
+            ? `No activity — ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
+            : `${mins} min — ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+
+        cells.push({ dateStr, level, isToday, label });
+        d.setDate(d.getDate() + 1);
+    }
+
+    // Month labels
+    const months = [];
+    let lastMonth = -1;
+    let colIdx = 0;
+    for (let i = 0; i < cells.length; i++) {
+        if (i % 7 === 0) { // new column (week)
+            const cellDate = new Date(cells[i].dateStr);
+            const month = cellDate.getMonth();
+            if (month !== lastMonth) {
+                months.push({ label: cellDate.toLocaleDateString('en-US', { month: 'short' }), col: colIdx });
+                lastMonth = month;
+            }
+            colIdx++;
+        }
+    }
+
+    // Build HTML
+    const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+    let html = '<div style="display: inline-flex; align-items: flex-start;">';
+
+    // Day labels column
+    html += '<div class="heatmap-days">';
+    dayLabels.forEach(l => { html += `<div style="height: 14px; display: flex; align-items: center;">${l}</div>`; });
+    html += '</div>';
+
+    // Grid wrapper
+    html += '<div>';
+
+    // Month labels row
+    html += '<div class="heatmap-months">';
+    let monthColIdx = 0;
+    months.forEach((m, idx) => {
+        const nextCol = idx < months.length - 1 ? months[idx + 1].col : colIdx;
+        const span = nextCol - m.col;
+        html += `<div style="grid-column: span ${span}; width: ${span * 17}px;">${m.label}</div>`;
+    });
+    html += '</div>';
+
+    // Cells grid
+    html += '<div class="heatmap-grid">';
+    cells.forEach(cell => {
+        html += `<div class="heatmap-cell" data-level="${cell.level}" ${cell.isToday ? 'data-today="true"' : ''}>
+            <div class="heatmap-tooltip">${cell.label}</div>
+        </div>`;
+    });
+    html += '</div>';
+
+    // Legend
+    html += '<div style="display: flex; align-items: center; gap: 4px; margin-top: 8px; font-size: 0.7rem; color: var(--text-secondary);">';
+    html += '<span>Less</span>';
+    for (let l = 0; l <= 4; l++) {
+        html += `<div class="heatmap-cell" data-level="${l}" style="width: 12px; height: 12px; cursor: default;"></div>`;
+    }
+    html += '<span>More</span>';
+    html += '</div>';
+
+    html += '</div></div>';
+
+    container.innerHTML = html;
+
+    // Summary
+    if (summaryEl) {
+        const totalHrs = Math.floor(totalSeconds / 3600);
+        const totalMins = Math.floor((totalSeconds % 3600) / 60);
+        const timeStr = totalHrs > 0 ? `${totalHrs}h ${totalMins}m` : `${totalMins}m`;
+        summaryEl.textContent = `${activeDays} active days • ${timeStr} total`;
+    }
+}
