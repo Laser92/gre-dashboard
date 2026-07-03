@@ -520,6 +520,11 @@ function updateCorrectStreak(isCorrect) {
     
     localStorage.setItem(getCorrectStreakKey(), String(currentStreak));
     
+    // Track today's peak streak for daily quests (prevents spillover from yesterday)
+    if (isCorrect && currentStreak > _todayPeakStreak) {
+        _todayPeakStreak = currentStreak;
+    }
+    
     const el = document.getElementById('streak-correct');
     const countEl = document.getElementById('streak-correct-count');
     if (el && countEl) {
@@ -4022,7 +4027,7 @@ const QUEST_POOL = [
     { id: 'qs_25',     icon: 'fa-list-check',  color: '#2563eb', name: 'Answer 25 questions',          target: 25,  type: 'questions' },
     { id: 'qs_50',     icon: 'fa-clipboard-check', color: '#1d4ed8', name: 'Answer 50 questions',      target: 50,  type: 'questions' },
     { id: 'star_3',    icon: 'fa-star',        color: '#eab308', name: 'Star 3 new words',              target: 3,   type: 'starred' },
-    { id: 'perfect_5', icon: 'fa-trophy',      color: '#f59e0b', name: 'Get 5 correct in a row',       target: 5,   type: 'peak_streak' },
+    { id: 'perfect_5', icon: 'fa-trophy',      color: '#f59e0b', name: 'Get 5 correct in a row',       target: 5,   type: 'streak' },
     { id: 'acc_80',    icon: 'fa-chart-line',  color: '#22d3ee', name: '80%+ accuracy (10+ Qs)',        target: 80,  type: 'accuracy' },
 ];
 
@@ -4031,6 +4036,7 @@ let _quizCarouselIdx = 0;
 let _quizCarouselTimer = null;
 let _todayQuestionsAnswered = 0;
 let _todayStarredCount = 0;
+let _todayPeakStreak = 0;
 
 function _questDateSeed(dateStr) {
     let h = 0;
@@ -4063,8 +4069,7 @@ function getQuestProgress(quest) {
 
     switch (quest.type) {
         case 'xp':         return Math.min(currentXp, quest.target);
-        case 'streak':     return Math.min(Math.max(streak, maxStreak), quest.target);
-        case 'peak_streak': return Math.min(Math.max(streak, maxStreak), quest.target);
+        case 'streak':     return Math.min(_todayPeakStreak, quest.target);
         case 'time':       return Math.min(todayStudyTimeSeconds, quest.target);
         case 'questions':  return Math.min(_todayQuestionsAnswered, quest.target);
         case 'starred':    return Math.min(_todayStarredCount, quest.target);
