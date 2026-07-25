@@ -923,6 +923,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         await loadStoredStreaks();
         window.hasCompletedInitialLoad = true; // Mark initial load complete
         startGlobalStudyTimer();
+        loadQuestionTimerStats();
+        initSessionTracking();
         
         // Sync stats to server on page unload
         window.addEventListener('beforeunload', _forceStatsSync);
@@ -1608,6 +1610,12 @@ function renderDashboard() {
     // Render Study Heatmap
     renderStudyHeatmap();
 
+    // Render new dashboard features
+    renderWordOfTheDay();
+    renderWeakAreaCard();
+    updateSrsDueBadge();
+    renderScoreHistoryChart();
+
     // Render Table
     const tbody = document.getElementById('chapter-table-body');
     if (!tbody) return;
@@ -2096,6 +2104,11 @@ async function handleAnswer(selectedIndexes, optElement = null, isMultiBlank = f
     const savedScrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
     
     timerPaused = true;
+    // Record per-question time stats
+    if (questionStartTime && state.currentChapterId) {
+        const qTime = Math.round((Date.now() - questionStartTime) / 1000);
+        recordQuestionTime(state.currentChapterId, qTime);
+    }
     const q = quizQueue[state.currentQuestionIndex];
     
     const options = document.querySelectorAll('.quiz-option');
@@ -4427,4 +4440,289 @@ function renderStudyHeatmap() {
         const timeStr = totalHrs > 0 ? `${totalHrs}h ${totalMins}m` : `${totalMins}m`;
         summaryEl.textContent = `${activeDays} active days • ${timeStr} total`;
     }
+}
+
+// === FEATURE: WORD OF THE DAY ===
+function renderWordOfTheDay() {
+    const card = document.getElementById('wotd-card');
+    if (!card || typeof flashcardsData === 'undefined' || flashcardsData.length === 0) return;
+    
+    // Pick a deterministic word based on today's date
+    const today = getTodayDateString();
+    let h = 0;
+    for (let i = 0; i < today.length; i++) h = ((h << 5) - h + today.charCodeAt(i)) | 0;
+    const idx = Math.abs(h) % flashcardsData.length;
+    const fc = flashcardsData[idx];
+    
+    document.getElementById('wotd-word').textContent = fc.word;
+    document.getElementById('wotd-def').textContent = fc.definition || fc.meaning || '';
+    const posEl = document.getElementById('wotd-pos');
+    if (posEl) posEl.textContent = fc.pos || fc.partOfSpeech || 'vocab';
+    card.style.display = 'block';
+}
+
+// === FEATURE: WEAK AREA FOCUS CARD ===
+function renderWeakAreaCard() {
+    const card = document.getElementById('weak-area-card');
+    if (!card) return;
+    
+    const chapterData = state.chapters.map(ch => {
+        const acc = getProgressAccuracy(ch.id);
+        return { ...ch, accuracy: acc };
+    }).filter(ch => ch.accuracy.attempted >= 3); // Need at least 3 Qs attempted
+    
+    if (chapterData.length === 0) {
+        card.style.display = 'none';
+        return;
+    }
+    
+    // Find weakest chapter
+    chapterData.sort((a, b) => a.accuracy.percent - b.accuracy.percent);
+    const weakest = chapterData[0];
+    
+    const textEl = document.getElementById('weak-area-text');
+    const barEl = document.getElementById('weak-area-bar');
+    const btnEl = document.getElementById('weak-area-btn');
+    
+    // Clean chapter title (remove leading number)
+    const cleanTitle = weakest.title.replace(/^\d+\.\s*/, '');
+    textEl.textContent = `${cleanTitle} — ${weakest.accuracy.percent}% accuracy (${weakest.accuracy.attempted} Qs)`;
+    barEl.style.width = `${weakest.accuracy.percent}%`;
+    
+    // Color the bar based on accuracy
+    if (weakest.accuracy.percent >= 70) {
+        barEl.style.background = 'linear-gradient(90deg, var(--accent-warning), #fbbf24)';
+    } else {
+        barEl.style.background = 'linear-gradient(90deg, var(--accent-error), #f97316)';
+    }
+    
+    btnEl.onclick = () => startChapter(weakest.id);
+    card.style.display = 'block';
+}
+
+// === FEATURE: SRS DUE COUNTER ===
+function updateSrsDueBadge() {
+    const badge = document.getElementById('srs-due-badge');
+    if (!badge) return;
+    
+    try {
+        if (typeof flashcardsData === 'undefined' || flashcardsData.length === 0) {
+            badge.style.display = 'none';
+            return;
+        }
+        
+        const srsData = getSrsData();
+        const now = new Date();
+        let dueCount = 0;
+        
+        flashcardsData.forEach(fc => {
+            const word = fc.word.toLowerCase().trim();
+            const srs = srsData[word];
+            if (srs && new Date(srs.nextReviewDate) <= now) {
+                dueCount++;
+            }
+        });
+        
+        // Also count missed/starred words without SRS entry
+        const missedWords = getMissedWords() || {};
+        const starredWords = getStarredWords() || [];
+        flashcardsData.forEach(fc => {
+            const word = fc.word.toLowerCase().trim();
+            if (!srsData[word]) {
+                if (missedWords.hasOwnProperty(word) || starredWords.includes(word)) {
+                    dueCount++;
+                }
+            }
+        });
+        
+        if (dueCount > 0) {
+            badge.textContent = dueCount > 99 ? '99+' : dueCount;
+            badge.style.display = 'inline';
+        } else {
+            badge.style.display = 'none';
+        }
+    } catch (e) {
+        badge.style.display = 'none';
+    }
+}
+
+// === FEATURE: SCORE HISTORY TIMELINE ===
+let scoreHistoryChartInstance = null;
+
+function getScoreHistoryKey() { return `greScoreHistory:${currentUsername || 'guest'}`; }
+
+function saveScoreSnapshot() {
+    if (state.diagnosticScore <= 0) return;
+    const today = getTodayDateString();
+    try {
+        const history = JSON.parse(localStorage.getItem(getScoreHistoryKey()) || '{}');
+        history[today] = state.diagnosticScore;
+        // Keep only last 90 days
+        const keys = Object.keys(history).sort();
+        if (keys.length > 90) {
+            keys.slice(0, keys.length - 90).forEach(k => delete history[k]);
+        }
+        localStorage.setItem(getScoreHistoryKey(), JSON.stringify(history));
+    } catch (e) { /* ignore */ }
+}
+
+function renderScoreHistoryChart() {
+    const canvas = document.getElementById('scoreHistoryChart');
+    if (!canvas) return;
+    
+    // Save today's score
+    saveScoreSnapshot();
+    
+    let history = {};
+    try { history = JSON.parse(localStorage.getItem(getScoreHistoryKey()) || '{}'); } catch (e) {}
+    
+    const dates = Object.keys(history).sort();
+    if (dates.length < 2) {
+        // Not enough data, show placeholder
+        if (scoreHistoryChartInstance) { scoreHistoryChartInstance.destroy(); scoreHistoryChartInstance = null; }
+        canvas.parentElement.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:var(--text-secondary);font-size:0.9rem;"><canvas id="scoreHistoryChart" style="display:none"></canvas><span>Score history will appear after 2+ study days</span></div>';
+        return;
+    }
+    
+    const labels = dates.map(d => {
+        const dt = new Date(d + 'T00:00:00');
+        return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    });
+    const values = dates.map(d => history[d]);
+    
+    if (scoreHistoryChartInstance) scoreHistoryChartInstance.destroy();
+    
+    scoreHistoryChartInstance = new Chart(canvas, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Predicted Score',
+                data: values,
+                borderColor: '#8b5cf6',
+                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#8b5cf6',
+                borderWidth: 2,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    min: 130,
+                    max: 170,
+                    ticks: { color: 'rgba(255,255,255,0.6)', stepSize: 5 },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                },
+                x: {
+                    ticks: { color: 'rgba(255,255,255,0.6)', maxTicksLimit: 8 },
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(10,15,22,0.9)',
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 1
+                }
+            }
+        }
+    });
+}
+
+// === FEATURE: PER-QUESTION TIMER STATS ===
+let _questionTimerStats = {}; // { chapterId: { totalTime: 0, count: 0 } }
+
+function recordQuestionTime(chapterId, seconds) {
+    if (!_questionTimerStats[chapterId]) _questionTimerStats[chapterId] = { totalTime: 0, count: 0 };
+    _questionTimerStats[chapterId].totalTime += seconds;
+    _questionTimerStats[chapterId].count++;
+    // Persist to localStorage
+    try {
+        localStorage.setItem(`greQuestionTimerStats:${currentUsername || 'guest'}`, JSON.stringify(_questionTimerStats));
+    } catch (e) {}
+}
+
+function loadQuestionTimerStats() {
+    try {
+        const saved = JSON.parse(localStorage.getItem(`greQuestionTimerStats:${currentUsername || 'guest'}`) || '{}');
+        if (saved && typeof saved === 'object') _questionTimerStats = saved;
+    } catch (e) {}
+}
+
+function getAvgQuestionTime(chapterId) {
+    const s = _questionTimerStats[chapterId];
+    if (!s || s.count === 0) return null;
+    return Math.round(s.totalTime / s.count);
+}
+
+// === FEATURE: SESSION SUMMARY ===
+let _sessionStartTime = Date.now();
+let _sessionQuestionsAtStart = 0;
+let _sessionXpAtStart = 0;
+let _sessionSummaryShown = false;
+let _sessionIdleTimer = null;
+
+function initSessionTracking() {
+    _sessionStartTime = Date.now();
+    _sessionQuestionsAtStart = _todayQuestionsAnswered;
+    const today = getTodayDateString();
+    _sessionXpAtStart = dailyXp[today] || 0;
+    _sessionSummaryShown = false;
+    
+    // Reset idle timer on activity
+    const resetIdle = () => {
+        if (_sessionIdleTimer) clearTimeout(_sessionIdleTimer);
+        _sessionIdleTimer = setTimeout(showSessionSummary, 5 * 60 * 1000); // 5 min idle
+    };
+    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+        document.addEventListener(evt, resetIdle, { passive: true });
+    });
+    resetIdle();
+    
+    // Also show on tab close/hide
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden && !_sessionSummaryShown) {
+            const sessionMins = Math.floor((Date.now() - _sessionStartTime) / 60000);
+            if (sessionMins >= 2) showSessionSummary();
+        }
+    });
+}
+
+function showSessionSummary() {
+    if (_sessionSummaryShown) return;
+    const sessionSecs = Math.floor((Date.now() - _sessionStartTime) / 1000);
+    if (sessionSecs < 120) return; // Don't show for < 2 min sessions
+    
+    _sessionSummaryShown = true;
+    
+    const today = getTodayDateString();
+    const questionsThisSession = _todayQuestionsAnswered - _sessionQuestionsAtStart;
+    const xpThisSession = (dailyXp[today] || 0) - _sessionXpAtStart;
+    const sessionMins = Math.floor(sessionSecs / 60);
+    const streak = Number(localStorage.getItem(getCorrectStreakKey()) || 0);
+    
+    const items = [];
+    items.push({ icon: 'fa-clock', color: '#8b5cf6', label: 'Study Time', value: `${sessionMins} min` });
+    if (questionsThisSession > 0) items.push({ icon: 'fa-pen-to-square', color: '#3b82f6', label: 'Questions Answered', value: questionsThisSession });
+    if (xpThisSession > 0) items.push({ icon: 'fa-bolt', color: '#fbbf24', label: 'XP Earned', value: `+${xpThisSession}` });
+    if (streak > 0) items.push({ icon: 'fa-fire', color: '#f97316', label: 'Current Streak', value: `${streak} 🔥` });
+    
+    const content = document.getElementById('session-summary-content');
+    if (!content) return;
+    
+    content.innerHTML = items.map(item => `
+        <div style="display: flex; align-items: center; gap: 12px; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.03); border-radius: 10px;">
+            <i class="fas ${item.icon}" style="color: ${item.color}; font-size: 1.1rem; min-width: 24px; text-align: center;"></i>
+            <span style="flex: 1; color: var(--text-secondary); font-size: 0.9rem;">${item.label}</span>
+            <span style="font-weight: 700; color: var(--text-primary); font-size: 1rem;">${item.value}</span>
+        </div>
+    `).join('');
+    
+    document.getElementById('session-summary-modal').style.display = 'flex';
 }
